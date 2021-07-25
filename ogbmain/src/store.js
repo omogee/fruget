@@ -1242,7 +1242,7 @@ export const getvendorProducts = data =>{
   .catch(err => dispatch({type: 'error', payload: err}))
  }
 }
-//colormodal
+//fruget.herokuapp.com
 export const addtocart = data =>{
   return (dispatch) =>{
     dispatch({type:"loading"})
@@ -1306,7 +1306,7 @@ export const shoppingcart =(data)=>{
     })
   }
 }
-//checkout
+//addtocart
 export const submittedcart =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
@@ -1356,6 +1356,7 @@ export const fetchinvoice  =(data)=>{
     })
   }
 }
+//fruget.herokuapp.com
 export const fetchgroupedcartbyinvoiceId =(data)=>{
   return(dispatch)=>{
     dispatch({type:"fetchinggroupcartbyinvoiceId"})
@@ -1480,42 +1481,13 @@ export const unshowmodalsidenavbar =()=>{
     dispatch({type:"unshowmodalsidenavbar"})
   }
 }
-export const addtocart = data =>{
-  return (dispatch) =>{
-    dispatch({type:"addingtocart"})
-    axios.get(`http://fruget.herokuapp.com/customer/add-to-cart?id=${data}`,{ headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`} })
-    .then(res =>{
-      if(res.data.success){
-        dispatch ({type:"addedtocart",payloadOne:res.data.message,payloadTwo:"block"})
-      }else{
-        window.location.assign("/customer/login")
-      }
-    })
-    .catch(err => dispatch({type: 'addingtocarterror', payload: err}))
-    
-  }
-}
+
 export const undisplaymodal =()=>{
   return (dispatch)=>{
      dispatch({type: "undisplaymodal", payload:"none"})
   }
 }
-export const allcategories = ()=>{
-  return(dispatch)=>{
-     dispatch({type:"loading"})
-    axios.get("http://fruget.herokuapp.com/products/products/allcategories")
-    .then(res => dispatch({type:"allcategories", payload:res.data}))
-    .catch(err => dispatch({type:"err", payload:err}))
-  }
-}
-export const allsubcategories = (data)=>{
-  return(dispatch)=>{
-     dispatch({type:"loading"})
-    axios.get(`http://fruget.herokuapp.com/products/${data}/category`)
-    .then(res => dispatch({type:"allsubcategories", payload:res.data}))
-    .catch(err => dispatch({type:"err", payload:err}))
-  }
-}
+
 export const showmodalsidenavbar =()=>{
   return(dispatch)=>{
     dispatch({type:"showmodalsidenavbar"})
