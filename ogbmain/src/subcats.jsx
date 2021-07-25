@@ -134,7 +134,8 @@ class Subcats extends Component {
       else {
         loading = "Never pay for Items until recieved and confirmed"
       }
-    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+   /**
+    *  if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
        
       return (
            <div className="navbarcomponentlg contain" style={{backgroundColor: "#f5f5f0"}}>
@@ -390,6 +391,7 @@ class Subcats extends Component {
   
           );}else{
             alert("its a phone")
+    */
             return (
               <div>
                          
@@ -582,7 +584,7 @@ class Subcats extends Component {
                </div>
                </div>
              )
-          }
+          
     }
 }
 const mapStateToProps =(store)=>{
