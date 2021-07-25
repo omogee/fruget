@@ -20,7 +20,7 @@ class ConfirmEmail extends Component {
       let run2 = parseInt(getdetailsarray.split("mnv")[1]) + 1
       console.log(randalphaarray.slice(run,run+10))
     
-      axios.get(`https://fruget.herokuapp.com/customer/retrieve/user/email/${randuser.slice(run+1,run+run2)}`)
+      axios.get(`http://fruget.herokuapp.com/customer/retrieve/user/email/${randuser.slice(run+1,run+run2)}`)
       .then(res =>{
         if(res.data.length === 0){
           console.log("its empty")
@@ -28,7 +28,7 @@ class ConfirmEmail extends Component {
         }else{
           this.setState({email:res.data[0].email})
           console.log("hello")
-          axios.get(`https://fruget.herokuapp.com/customer/confirm/user/${this.state.email}/email/${randalphaarray.slice(run,run+10)}`)
+          axios.get(`http://fruget.herokuapp.com/customer/confirm/user/${this.state.email}/email/${randalphaarray.slice(run,run+10)}`)
           .then(res =>this.setState({confirmingmail:false,confirmmessage:res.data}) )
           .catch(err => console.log(err))   
         }      

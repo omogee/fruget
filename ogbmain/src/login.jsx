@@ -65,7 +65,7 @@ console.log("submitting")
             navigation:JSON.stringify(navigation)
         }
          data =JSON.stringify(data)
-        axios.post("https://fruget.herokuapp.com/customer/submit/login", {data},  {
+        axios.post("http://fruget.herokuapp.com/customer/submit/login", {data},  {
             headers: {
               'Content-Type': 'application/json'
             },

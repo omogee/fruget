@@ -90,7 +90,7 @@ class SearchSideNavbar extends Component {
      this.props.submitsearcher(data)
       this.setState({data: Object.values(data)})
    
-     axios.get(`https://fruget.herokuapp.com/search/category/searched/price?search=${data.search}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`)
+     axios.get(`http://fruget.herokuapp.com/search/category/searched/price?search=${data.search}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`)
  .then(res=> this.setState({price:res.data}, ()=>{
    for(var i=0; i<res.data.length; i++){
     console.log (res.data[i].highestprice)
