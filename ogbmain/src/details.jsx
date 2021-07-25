@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 // import {BrowserRouter as Router} from 'react-router-dom'
 import axios from 'axios'
 import "./main.css"
-import querystring from "query-string"
+import querystring from "query-string";
 import ReactHtmlParser from "react-html-parser"
-<<<<<<< HEAD
 import {Link,Redirect} from "react-router-dom"
 import Suggestions from "./suggestions"
 import {connect} from "react-redux"
@@ -18,12 +17,6 @@ import {unloading,setredirect,likecomment,dislikecomment,setdisplayproductrating
 import {getDistanceFromLatLonInKm} from "./mapdistance"
 import {formater} from "./formatTime"
 import {withRouter} from 'react-router';
-=======
-import {Link} from "react-router-dom"
-import Suggestions from "./suggestions"
-import {connect} from "react-redux"
-import {getdetails, addtocart, undisplaymodal} from "./store"
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 
 const logo = require("./images/goodmark.ico")
 const logo2 = require("./images/good16.ico")
@@ -44,7 +37,6 @@ class Details extends Component {
             similiarproducts:[],
             similiarproductsbybrand:[],
             save:"orange",
-<<<<<<< HEAD
             displaysavemodal:"none",
             checkfollow:"",
             productId:"",
@@ -110,44 +102,6 @@ const {cookies}=this.props
         setTimeout(()=>this.props.unloading(),2000)
         }
           
-=======
-            displaysavemodal:"none"
-         }
-    }
-    componentDidMount =()=>{
-        axios.get(`http://fruget.herokuapp.com/customer/check/save?details=${this.props.match.params.details}`,{ headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`} })
-        .then(res =>  this.setState({save:res.data}))
-        .catch(err => console.warn(err)) 
-
-        axios.get(`http://fruget.herokuapp.com/details/product/${this.props.match.params.details}`)
-        .then(res => this.setState({product: res.data}))
-        .catch(err => console.warn(err))  
-      
-        axios.get(`http://fruget.herokuapp.com/details/similiar/${this.props.match.params.details}`)
-        .then(res => this.setState({similiarproducts: res.data}))
-        .catch(err => console.warn(err))  
-
-        axios.get(`http://fruget.herokuapp.com/details/similiarbrand/${this.props.match.params.details}`)
-        .then(res => this.setState({similiarproductsbybrand: res.data}))
-        .catch(err => console.warn(err))  
-        const parsedquery = querystring.parse(this.props.match.location);
-        console.log("parsequery", parsedquery)
-
-        window.addEventListener("click", this.handlemodalclick)
-        window.addEventListener("click", this.handlesavemodalclick)
-        window.addEventListener("click", this.handlemodalcartclick)
-if(this.props.productDetails.length === 0){
-    this.props.getdetails(this.props.match.params.details)
-}
-      }
-      save =()=>{
-          axios.get(`http://fruget.herokuapp.com/customer/save?details=${this.props.match.params.details}`,{ headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`} })
-          .then(res => this.setState({saveResponse:res.data, displaysavemodal:"block"}))
-          .catch(err => console.log(err))
-      }
-      addtocart =()=>{
-
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
       }
       handlemodalclick =(e) =>{
         //  this.modaldiv.style.display = "none" 
@@ -174,11 +128,6 @@ if(this.props.productDetails.length === 0){
         this.props.undisplaysavemodal()
      //   this.props.checksaveItem(data) 
       }
-<<<<<<< HEAD
-       displaymodal =(data) =>{
-        this.setState({display:"block"})
-      //   this.props.setdisplayproductrating()
-=======
       handlemodalcartclick =(e) =>{
         if(e.target == this.cartmodaldiv){
            this.props.undisplaymodal()
@@ -195,13 +144,11 @@ if(this.props.productDetails.length === 0){
      }
        displaymodal =() =>{
          this.setState({display:"block"})
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
       }
       undisplaymodal =() =>{
         this.setState({display:"none"})
      }
      addtocart=(id)=>{
-<<<<<<< HEAD
        const data ={
          inches:this.state.preferredinches,
          litres:this.state.preferredlitres,
@@ -211,9 +158,6 @@ if(this.props.productDetails.length === 0){
          id
        }
         this.props.addtocart(data) 
-=======
-        this.props.addtocart(id) 
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
        }
      undisplaycartmodal =() =>{
       this.props.undisplaycartmodal()
@@ -291,12 +235,8 @@ if(this.props.productDetails.length === 0){
              rating: this.state.chooserating,
              comment: this.state.comment
          }
-<<<<<<< HEAD
         axios.post(`http://localhost:5000/details/${this.props.match.params.details}/rate/product`, {data: JSON.stringify(data)},
         { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":this.state.mainToken,"navigation":JSON.stringify(navigation)} })
-=======
-        axios.post(`http://fruget.herokuapp.com/details/${this.props.match.params.details}/rate`, {data: JSON.stringify(data)})
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
         .then(res => console.log(res.data))
         .catch(err => console.log(err)) 
 
@@ -339,7 +279,6 @@ if(this.props.productDetails.length === 0){
             }
             
     render() { 
-<<<<<<< HEAD
       console.log(this.props.userdetails.savedItems)
       if(this.props.redirect){
         return <Redirect to={{ pathname: '/customer/login',state: { from: this.props.location }}} />
@@ -349,15 +288,6 @@ if(this.props.productDetails.length === 0){
        <div className="navbarcomponentlg" style={{backgroundColor:`${this.props.userdetails.background === "black" ? "black" : "#f5f5f0"}`}}>
          <div className="contain" >
        <div>
-=======
-        console.log(this.props)
-   return (   
-       <div className="">
-         <div className="container" style={{backgroundColor:"#f5f5f0"}}>
-             <Suggestions></Suggestions>
-        {this.props.productDetails.map((products) =>
-       <div key={products.productId}>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
            <small style={{textTransform:"capitalize"}}> <a href="">home</a>  / 
              <a href="">{this.props.productDetails.subcat1 }</a>  / <a href="">{this.props.productDetails.subcat2 }</a>  / <a href="">{this.props.productDetails.subcat3 }</a> / <a href="">{this.props.productDetails.brand }</a> 
              <span className="fa fa-arrow-right" style={{padding:"10px"}}></span>
@@ -365,7 +295,6 @@ if(this.props.productDetails.length === 0){
            <br/>
         <div> 
            <center> 
-<<<<<<< HEAD
         {this.props.productDetails.officialimg && this.props.productDetails.officialimg[1] !== undefined && JSON.parse(this.props.productDetails.officialimg) !== undefined ? 
 <img src={ require (`./images/${JSON.parse(this.props.productDetails.officialimg)[1]}`)} style={{maxWidth:"70%"}} /> : null}              
            </center>
@@ -378,18 +307,6 @@ if(this.props.productDetails.length === 0){
             <center>
             <div className="lgdeviceimgshowcaseflex" >
             {this.props.productDetails.img1 ? Object.values(JSON.parse(this.props.productDetails.img1)).map(img =>
-=======
-        {JSON.parse(products.officialimg)[1] !== undefined && JSON.parse(products.officialimg) !== undefined ? 
-        <img src={require (`./images/${JSON.parse(products.officialimg)[1]}`)} style={{maxWidth:"70%"}} /> : null}
-               
-           </center>
-           <br/>
-        <div className="row" style={{padding:"0px 10px"}}> 
-            <div className="col-12 col-lg-6 imgshowcase">
-            <center>
-            <div className="bigdeviceimgshowcaseflex" >
-            {Object.values(JSON.parse(products.img1)).map(img =>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
             <div key={img} style={{border:"1px solid grey"}}>           
                <img
 onClick={() => this.changesrc(`https://res.cloudinary.com/fruget-com/image/upload/${this.props.productDetails.generalcategory}/${this.props.productDetails.category}/${img}`)} 
@@ -399,7 +316,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
             </div>   
           ) : null} 
           </div>
-<<<<<<< HEAD
          <div className="smalldeviceimgshowcase" style={{display:"none"}}>
          {this.props.productDetails.img1 ? Object.values(JSON.parse(this.props.productDetails.img1)).map(img =>                  
  <img src={`https://res.cloudinary.com/fruget-com/image/upload/${this.props.productDetails.generalcategory}/${this.props.productDetails.category}/${img}`} className="img-responsive" style={{borderRadius:"10px",margin:"4px",width:`${Object.values(JSON.parse(this.props.productDetails.img1)).length === 1 ? "100%" : "80%"}`}}></img>
@@ -440,32 +356,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
          
             <small>Warranty: {this.props.productDetails.warranty}</small><br/>
             <small>           
-=======
-         <div className="smalldeviceimgshowcase">
-         {Object.values(JSON.parse(products.img1)).map(img =>                  
-        <img   src={require(`./images/${img}`)} className="img-responsive" style={{borderRadius:"10px",margin:"4px",width:`${Object.values(JSON.parse(products.img1)).length === 1 ? "100%" : "80%"}`}}></img>
-          )} 
-              </div>
-<img ref={(a)=> this.imgelement = a} src={require (`./images/${JSON.parse(products.img1)[1]}`)} style={{width:"100%"}} className="bigdeviceimgshowcase img-responsive"></img>
-              <h2 style={{float:"right",top:"5%",right:"25%", position: "absolute"}} onClick={this.save}>
-                    <i className="fab fa-gratipay" style={{color:`${this.props.save}`}}></i>
-                </h2>
-                </center>
-            </div>
-            <div className="col-12 col-lg-6 detailmarginal" style={{width:"100%",backgroundColor:"white"}} >
-            
-           <p style={{textTransform:"uppercase"}}>{products.details} -{products.model} -{products.color}</p>
-         <small>Brand : {products.brand} | similiar products from {products.brand}</small><br/>
-            <div style={{float:"right",fontSize:"20px"}} onClick={this.save}>
-                    <i className="fab fa-gratipay" style={{color:`${this.props.save}`}}></i>
-                </div>
-            <small>SKU code : 20202908{products.productId}</small><br/>
-            <small>Warranty: {products.warranty}</small><br/>
-            <small>
-                <h4 style={{float:"right"}}>
-            <small style={{color:"rgb(0, 119, 179)"}}>{this.props.save === "rgb(0, 119, 179)" ? "saved" : null}</small>
-                </h4>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
             <div className="outer">
           <div className="inner" style={{width:`${this.props.productDetails.productrating*20 || 0}%`}}>
           </div>
@@ -509,7 +399,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
                   <input type="checkbox" value={litres} onChange={this.preferredlitreschange} checked={this.state.preferredlitres===litres ? true : false}/> 
                   <small style={{textTransform:"uppercase"}}> {litres}</small>
               </div>  
-<<<<<<< HEAD
            )  :  null}  
           {this.props.productDetails.wattageavail && JSON.parse(this.props.productDetails.wattageavail).split(",").length > 0 ? JSON.parse(this.props.productDetails.wattageavail).split(",").map(wattage=>
               <div key={wattage}>
@@ -533,17 +422,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
             <small style={{fontSize:"15px",color:"white"}}>ADD TO CART</small></button>
             <small style={{color:`${ this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(this.state.productId)) ? "green" : "orange"}`}}>
               {this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(this.state.productId))  ? "you saved this product" : "would you like to add this product to your repository"}`</small><br/>
-=======
-           )  : <small>{products.color}</small>}   
-                </div>
-            </div> 
-           
-            <button type="button" className="cartbutton" onClick={()=>this.addtocart(products.productId)}>
-                <span className="fa fa-cart-plus" style={{float: "left", color:"white"}}></span>
-            <small style={{fontSize:"15px",color:"white"}}>ADD TO CART</small></button>
-
-
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
             <small><a href=""><span className="fa fa-star-half-alt" style={{color:"orange"}}></span> see our review on this product</a></small><br/>
             <small><a href="">PROMOTIONS</a></small><br/>
             <small>share this product on</small><br/>
@@ -609,7 +487,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
                  </div>        
             </div>
             <br/>
-<<<<<<< HEAD
             <p>{this.props.otherstores.length > 0 ? "Other sellers" : null}</p>
             {this.props.otherstores.map(otherseller=>
               <div key={otherseller.userId} className="row" style={{borderBottom:"1px solid lightgrey",padding:"30px"}}>
@@ -648,18 +525,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
                <center>
                    <p style={{textTransform:"uppercase", textAlign:"center"}}>{this.props.productDetails.model}</p>
          <small style={{width:"100%",textTransform:"capitalize"}}>{ReactHtmlParser(this.props.productDetails.entrytext)}</small>
-=======
-            <div className="row showcase text-muted" style={{position:"sticky",top:"0px",left:"0px",backgroundColor:"white",padding:"10px",zIndex:"2",margin:"5px 2px"}}>
-              <div className="col-12">
-                 <b style={{textTransform:"uppercase"}}>{products.details} -{products.model} -{products.color}</b><br/>
-                <b style={{color:"orange"}}>{products.mainprice}</b><b style={{float:"right"}}>{- products.discount}</b><br/>
-              </div>
-            </div>
-            <div style={{backgroundColor:"white",padding:"10px"}}>
-               <center>
-                   <p style={{textTransform:"uppercase", textAlign:"center"}}>{products.model}</p>
-         <small style={{width:"100%",textTransform:"capitalize"}}>{ReactHtmlParser(products.entrytext)}</small>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
          <br/>
          
              {this.props.productDetails.brand === "lg" ? <small style={{color:"grey"}}>
@@ -683,7 +548,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
          </div>
         </div>
         </center> 
-<<<<<<< HEAD
         </div>
      </div>
             <br/>
@@ -692,15 +556,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
                     <p style={{ padding:"10px",margin:"0px"}}>Key Features :</p>
                 {this.props.productDetails.features !== null && this.props.productDetails.features ? JSON.parse(this.props.productDetails.features).split(',').map(feature =>
                 <div style={{ padding:"1px",margin:"0px",backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`}}>
-=======
-     </div>
-            <br/>
-            <div className="row">
-                <div className="col-12 col-lg-6" >
-                    <p style={{border: "1px solid lightgrey", padding:"10px",margin:"0px",backgroundColor:"white"}}>Key Features :</p>
-                {products.features !== null ? JSON.parse(products.features).split(',').map(feature =>
-                <div style={{border: "1px solid lightgrey", padding:"2px",margin:"0px",backgroundColor:"white"}}>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                 <small>
             <ul key={feature} style={{listStyleImage: `url(${logo})`}}>
                 <li style={{textTransform: "capitalize"}}>{ReactHtmlParser(feature)}</li>
@@ -709,15 +564,9 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
             </div>      
                 ) : "N/A"}
                 </div>
-<<<<<<< HEAD
             {this.props.productDetails.img1 ? JSON.parse(this.props.productDetails.img1)[2] !== undefined ? 
            <div className="col-6 detailmarginal ">
               <img src={`https://res.cloudinary.com/fruget-com/image/upload/${this.props.productDetails.generalcategory/this.props.productDetails.category}/${JSON.parse(this.props.productDetails.img1)[2]}`} style={{width:"100%"}} className="img-responsive" alt=""/>
-=======
-            {JSON.parse(products.img1)[2] !== undefined ? 
-           <div className="col-12 col-lg-6 detailmarginal">
-              <img src={require (`./images/${JSON.parse(products.img1)[2]}`)} style={{width:"100%"}} className="img-responsive" alt=""/>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
            </div> : 
            <div className="col-6" style={{display:"flex",flexWrap:"wrap",width:"100%"}}>
            {JSON.parse(this.props.productDetails.featuresimg) !== null ? Object.keys(JSON.parse(this.props.productDetails.featuresimg)).map(featureimg =>
@@ -730,12 +579,8 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
           : null } 
             </div>
          <br/>
-<<<<<<< HEAD
          {this.props.productDetails.productdescription && this.props.productDetails.productdescription.length > 0 ? 
          <center className="boxshadower" id="abouttheproduct" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"5px"}}>
-=======
-         <center style={{backgroundColor:"white",padding:"5px"}}>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
          <h3>ABOUT THE PRODUCT</h3>
          <small style={{textTransform:"capitalize"}}>
          {ReactHtmlParser(this.props.productDetails.productdescription)}
@@ -761,15 +606,9 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
                 </div>
                 : null}
             </div>
-<<<<<<< HEAD
         
            {this.props.productDetails.branddescription && this.props.productDetails.branddescription.length > 0 ? 
     <center id="aboutthebrand" className="boxshadower" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"5px"}}>
-=======
-           <br/>
-
-            <center style={{backgroundColor:"white",padding:"5px"}}>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
            <h3>ABOUT THE BRAND</h3>
          <small style={{textTransform:"capitalize"}}>
          {ReactHtmlParser(this.props.productDetails.branddescription)}
@@ -778,7 +617,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
          : null}
          <br/>
            <div className="row">
-<<<<<<< HEAD
                 <div className="col-6" >
                     <p style={{border: "1px solid lightgrey", padding:"10px",margin:"0px",backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`}}>Key specifications :</p>
                     <div style={{border: "0.5px solid lightgrey", padding:"10px", margin:"0px",backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`}}>
@@ -835,75 +673,6 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
             </div>
           
    
-=======
-                <div className="col-12 col-lg-6" >
-                    <p style={{border: "1px solid lightgrey", padding:"10px",margin:"0px",backgroundColor:"white"}}>Key specifications :</p>
-                    <div style={{border: "0.5px solid lightgrey", padding:"10px", margin:"0px",backgroundColor:"white"}}>
-                        <small>
-                             <b>Brand : {products.brand}</b><hr/>
-                <b>Model : {products.model}</b><br/>
-                <b>Colour : {products.color}</b><br/>
-                <b>Colours Available : {JSON.parse(products.coloursavail) || products.color}</b><br/>
-                <b>Capacity: {products.size}{products.subcat1==="refrigerator" ? " Litres" : products.subcat1==="fan" ? " inches" : " kg" }</b><br/>
-                <b>Weight : {products.weight || null}</b><br/>
-                <b>Sku Code : 20202908{products.productId}</b><br/>
-                <b>Store : {products.store}</b><br/>
-                <b>Ratings : {products.numOfRating || 0}</b><br/>
-                <b>Total no of searches : {products.rating}</b><br/>
-                        </small>
-                    </div>               
-                </div>
-            {(JSON.parse(products.img1)[4]) !== undefined ? 
-           <div className="col-12 col-lg-6 detailmarginal" >
-              <img src={require (`./images/${JSON.parse(products.img1)[4]}`)} style={{width:"100%"}} className="img-responsive" alt=""/>
-           </div> : null} 
-            </div>
- <div className="savemodaldiv" ref={(a) => this.savemodaldiv =a} id="savemodaldiv" style={{display:`${this.state.displaysavemodal}`,zIndex:"1",width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.4)"}}>
- <div className="savediv"  style={{backgroundColor:"white"}}>
-     <center>
-            <h5 style={{padding:"50px"}}>{ReactHtmlParser(this.state.saveResponse)}</h5>
-            
-            <div className="row" style={{padding:"10px"}}>  
-                    <div className="col-6">  
-<button className="btn btn-danger" onClick={this.undisplaymodal} style={{boxShadow:"2px 3px lightgrey",padding:"8px",color:"white",width:"100%"}} type="button">Cancel</button> 
-</div>
-<div className="col-6">
-<button className="btn btn-success"  style={{padding:"8px",color:"white",width:"100%",boxShadow:"2px 3px lightgrey"}} >Saved Items</button>
-</div>         
-               </div>
-     </center>
-     </div>
- </div>
- {this.props.loading ?     
-   
-          <center style={{position:"absolute", top:"50%",left:"50%"}}>
-            <img src={require(`./images/35.gif`)} />
-          </center>
-      
-        : null}
-         <div className="mainmodaldiv" ref={(a) => this.cartmodaldiv =a} id="modaldiv" style={{display:`${this.props.display}`}}>
-         <div className="modaldiv"  style={{backgroundColor:"white",borderRadius:"5px"}}>
-           <p onClick={this.undisplaycartmodal}>x</p>
-             <div className="inner-modal"> 
-               <br/><br/>
-               <center>
-                 <h5 style={{padding:"10px"}}>{ReactHtmlParser(this.props.cartMessage)} </h5>
-               </center>
-               <center>                        
-               <div className="row" style={{padding:"3px"}}>  
-               <div className="col-6">  
-<Link to={`/checkout/1996826ysgy7xhau8hzbhxj,${localStorage.getItem("id")},fruget0829?user$login7sgxujaiiahzjk#172`}><button className="btn btn-success checkout" type="button">CheckOut</button> </Link>
-</div>
-<div className="col-6">
-<button className="btn btn-warning continueshopping" onClick={this.undisplaycartmodal}  type="submit">Continue Shopping</button>
-</div>         
-               </div> 
-             </center> 
-         </div> 
- 
-     </div>
- </div> 
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
      <div className="mainmodaldiv" ref={(a) => this.modaldiv =a} id="modaldiv" style={{display:`${this.state.display}`,zIndex:"1",width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.4)"}}>
          <div className="ratingmodaldiv"  style={{backgroundColor:"white",borderRadius:"10px"}}>
              <div className="inner-modal">
@@ -926,30 +695,20 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
 <button className="btn btn-success"  style={{padding:"8px",color:"white",width:"100%",boxShadow:"2px 3px lightgrey"}} type="submit">Submit</button>
 </div>         
                </div>
-<<<<<<< HEAD
                      </form>              
-=======
-                     </form>
-                
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                </div>
              </center>
          </div>
      </div>
  </div>
 <div className="row" >
-<<<<<<< HEAD
 {this.props.productDetails.officialimg && typeof(JSON.parse(this.props.productDetails.officialimg)) === "object" ? Object.values(JSON.parse(this.props.productDetails.officialimg)).map(officialimgs => 
-=======
-{typeof(JSON.parse(products.officialimg)) === "object" ? Object.values(JSON.parse(products.officialimg)).map(officialimgs => 
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
   <div className="col-6">
     <img src={require(`./images/${officialimgs}`)} style={{width:"100%"}} className="img-responsive"/>
   </div>
   ) : null}
 </div>
          <br/>
-<<<<<<< HEAD
 <div className="row" id="comments" style={{margin:"2px"}}>
             <div className="col-12" style={{border: "1px solid lightgrey", borderRadius:"5px",backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"10px"}}>
 <small style={{fontSize:"15px"}}>Customer Reviews</small>
@@ -979,24 +738,10 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
             <small style={{fontSize:"20px",fontWeight:"bold"}}>{(this.props.productDetails.productrating).toFixed(2)} </small><br/>
           <div className="outer" style={{fontSize:"10px",padding:"0px"}}>
           <div className="inner" style={{width:`${(this.props.productDetails.productrating)*20 || 0}%`}}>
-=======
-<div className="row" style={{margin:"2px"}}>
-            <div className="col-12" style={{border: "1px solid lightgrey", borderRadius:"5px",backgroundColor:"white",padding:"10px"}}>
-<small style={{fontSize:"15px"}}>Customer Reviews</small><button style={{float:"right",display:`${localStorage.getItem("id") ? "block" : "none"}`}} onClick={this.displaymodal}><a href="#modaldiv">Rate</a></button><br/>
-             <hr/>
-            {products.numOfRating > 0 ?
-             <div className="row">
-             <div className="col-3">
-                 <small style={{padding:"0px",margin:"0px"}}>RATING ({products.numOfRating || 0} ) </small>
-            <h3>{(products.percentrating/20).toFixed(2)} </h3>
-          <div className="outer">
-          <div className="inner" style={{width:`${products.percentrating || 0}%`}}>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
              </div>
             </div>
              </div>
              <div className="col-9">
-<<<<<<< HEAD
              <small style={{padding:"0px",margin:"0px"}}>REVIEWS/ COMMENTS ({this.props.productcomments.length || 0} ) </small>
              <hr/>
              {this.props.productcomments.map((comments)=> 
@@ -1016,17 +761,6 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                      <small style={{float:"right",clear:"left",padding:"8px"}}>
                         <div className="outer" style={{fontSize:"10px"}}>
                 <div className="inner" style={{fontSize:"8px",width:`${(comments.rating)*20 || 0}%`}}>
-=======
-             <small style={{padding:"0px",margin:"0px"}}>REVIEWS/ COMMENTS ({products.numOfRating || 0} ) </small>
-             {Object.keys(JSON.parse(products.productrating)).map((key)=> 
-               <div style={{lineHeight:"14px",fontSize:"12px"}}>                 
-                    <small style={{padding:"0px"}}><span className="fa fa-comment-alt text-muted"></span><small style={{fontSize:"14px",fontWeight:"bold"}}> {JSON.parse(products.comments)[key]}</small></small><br/>
-                    <small>by {key} </small> <br/>
-             <small>{JSON.parse(products.productrating)[key].split(",")[1]}</small>
-                <div className="outer" style={{float:"right"}}>
-                <div className="inner" style={{width:`${(JSON.parse(products.productrating)[key].split(",")[0])*20 || 0}%`}}>
-                </div>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                 </div>
                 </div></small><br/>
                      </div>
@@ -1100,7 +834,6 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
          </div>
                
 <br/>
-<<<<<<< HEAD
 {this.props.similiarBrandDetails  && this.props.similiarBrandDetails.length > 0 ?
 <div className="row mb-1 boxshadower" style={{padding:"0px",backgroundColor:`${this.props.userdetails.background==="white"?"white":"rgb(38,38,38)"}`,color:`${this.props.userdetails.background === "black"?"white":"black"}`}}>
              <div style={{width:"100%",padding:"5px"}}>
@@ -1122,22 +855,6 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
      </small>
      </span>
             </div>
-=======
-<div className="row" style={{padding:"10px",backgroundColor:"white"}}>
-             <div style={{width:"100%",padding:"5px"}}>
-<div style={{fontSize:"15px",textTransform:"uppercase"}}>Similiar Products You May Like <small style={{float:"right",fontWeight:"bold"}}><a href="" style={{color:"black",marginRight:"30px"}}><span className="fa fa-chevron-right"></span></a></small></div>
-                 </div>
-               <div className="noscrolling">
-                   {this.props.similiarDetails.map(section3 => 
-                    <div className="col-5  col-md-3 col-lg-2" key={section3.productId}  >
-                        <div style={{backgroundColor:"white",width:"115%",padding:"8px",boxShadow:"2px 1px 2px lightgrey"}}>
-                        <div style={{height:"100%"}}>
-                       <img src={require( `./images/${section3.mainimg}`)} className="mainImg" alt=""/> 
-                       </div>
-                       <small><Link to= { `/product/${section3.details}`} style={{color:"black",textTransform:"capitalize",whiteSpace:"nowrap",textOverflow:"ellipsis",overflow:"hidden", width:"100%",display:"block"}}>{ section3.details}</Link> </small>
-                   <b>{section3.mainprice}</b> <br/>
-                   </div>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                     </div>
                     )}
                </div>
@@ -1238,7 +955,6 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
               <h4 style={{float:"left"}}>{this.props.productDetails.mainprice}</h4><small style={{float:"left",textIndent:"10px",color:"orange"}}>- {this.props.productDetails.discount}%</small><p style={{float:"right",textDecoration:"line-through",color:"grey"}}>{this.props.productDetails.initialcost}</p>
               </div> : <h4>{this.props.productDetails.mainprice}</h4>}
              <br/>
-<<<<<<< HEAD
              <br/>
              <div className="row">
                  <div className="col-6">
@@ -1289,19 +1005,6 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
               )  :  null}   
                    </div>
                      </div>
-=======
-<div className="row" style={{padding:"0px",backgroundColor:"white"}}>
-             <div style={{width:"100%",padding:"5px"}}>
-<small style={{fontSize:"15px",textTransform:"uppercase"}}>Other Products From This Brand </small><small style={{float:"right",fontWeight:"bold"}}><a href="" style={{color:"black",marginRight:"30px"}}><span className="fa fa-chevron-right"></span></a></small>
-                 </div>
-               <div className="noscrolling">
-                   {this.props.similiarBrandDetails.map(section3 => 
-                    <div className="col-5  col-md-3 col-lg-2" key={section3.productId}  >
-                        <div style={{backgroundColor:"white",width:"115%",padding:"8px",boxShadow:"2px 1px 2px lightgrey"}}>
-                       <img src={require( `./images/${section3.mainimg}`)} className="mainImg" alt=""/> 
-                       <small><Link to= { `/product/${section3.details}`} style={{color:"black",textTransform:"capitalize",whiteSpace:"nowrap",textOverflow:"ellipsis",overflow:"hidden", width:"100%",display:"block"}}>{ section3.details}</Link> </small>
-                   <b>{section3.mainprice}</b> <br/>               
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                    </div>
                </div> 
               <br/>
@@ -1756,7 +1459,6 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                </div> 
               </div>
             </div>
-<<<<<<< HEAD
                   
    <br/>
    {this.props.similiarBrandDetails  && this.props.similiarBrandDetails.length > 0 ?
@@ -1797,12 +1499,6 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                    
             );
    }
-=======
-           </div>)}
-           </div>   
-           </div>       
-         );
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     }
 }
  const mapStateToProps =(store)=>{
@@ -1813,7 +1509,6 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
     similiarDetails:store.similiarDetails,
     similiarBrandDetails:store.similiarBrandDetails,
     loading:store.loading,
-<<<<<<< HEAD
     cartMessage:store.cartMessage,
     seller:store.seller,
     sellerdetails:store.sellerdetails,
@@ -1829,15 +1524,11 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
      productcomments:store.productcomments,
      categoryloading:store.categoryloading,
      redirect:store.redirect
-=======
-    cartMessage:store.cartMessage
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
  }
  }
  const mapDispatchToProps =(dispatch)=>{
      return{
          getdetails:(data)=>dispatch(getdetails(data)),
-<<<<<<< HEAD
          viewsellerdetails:(data)=>dispatch(viewsellerdetails(data)),
          undisplaycartmodal:()=>dispatch(undisplaymodal()),
          addtocart: (data)=>dispatch(addtocart(data)),
@@ -1855,11 +1546,3 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
  }
 
 export default compose(withCookies,withRouter,connect(mapStateToProps, mapDispatchToProps))(Details);
-=======
-         undisplaycartmodal:()=>dispatch(undisplaymodal()),
-         addtocart: (data)=>dispatch(addtocart(data))
-     }
- }
-
-export default connect(mapStateToProps,mapDispatchToProps)(Details);
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac

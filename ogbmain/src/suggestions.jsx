@@ -27,19 +27,8 @@ if(this.props.inputval === suggestions[i].brand && (!filteredcategories.includes
         }  
         console.log(filteredbrands)
         return ( 
-<<<<<<< HEAD
             <div className="container">
             <div style={{display:`${this.props.inputval.length > 0 ? "block" : "none"}`}} className="suggestion">
-=======
-            <div>
-            <div>
-                <div>
-                    <center>
-<div style={{display:`${this.props.inputval.length > 0 ? "block" : "none"}`}} className="suggestion">
-<ul style={{listStyleType:"none", textAlign:"left"}}>
-         <p style={{color:"lightgrey",fontSize:"12px",borderBottom:"1px solid lightgrey",width:"100%"}}>BRANDS</p>
-{ this.props.showSuggestions === true && this.props.inputval.length > 0 && this.props.filteredSuggestions.length > 0 ?
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 
 { this.props.showSuggestions === true && this.props.inputval.length > 0 && filteredcategories.length > 0 ?
 <div>

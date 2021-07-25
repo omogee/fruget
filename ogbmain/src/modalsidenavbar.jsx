@@ -34,15 +34,7 @@ class ModalSideNavbar extends Component {
         }
         this.props.getProducts(data)
       }
-    render() { 
-<<<<<<< HEAD
-        
-=======
-      console.log(this.props.products)
-      if(this.props.products.length > 0){
-        return <Redirect to={`/category/${this.props.currentCategory}`} />;
-      }
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
+    render() {  
         return ( 
             <div>
                <div id="mySidebar" className="container"  style={{backgroundColor:"white",zIndex:"1000000"}}>
@@ -92,7 +84,6 @@ class ModalSideNavbar extends Component {
    <i style={{float:"right"}} className="fas fa-chevron-down ml-1"></i>
  </p>
  <div style={{paddingLeft:"30px"}} className="row">
-<<<<<<< HEAD
  <div className="col-12">
     {this.props.allcategory.length > 0 ? this.props.allcategory.map((categories) =>
         <div key={categories.generalcategory } style={{color:"black",cursor:"pointer"}}>
@@ -106,12 +97,6 @@ class ModalSideNavbar extends Component {
     {this.props.allsubcategory.length > 0 ? this.props.allsubcategory.map((categories) =>
         <div key={categories.category } style={{color:"black",cursor:"pointer"}}>
              <p onClick={(e)=>this.subcat(e)} ><small style={{textTransform:"capitalize"}} >{categories.category}</small>
-=======
-   <div className="col-12">
-    {this.props.allcategory.length > 0 ? this.props.allcategory.map((categories) =>
-        <div key={categories.subcat1 || categories.subcat2} style={{color:"black",cursor:"pointer"}}>
-             <p onClick={(e)=>this.subcat(e)} ><small style={{textTransform:"capitalize"}} >{categories.subcat1 || categories.subcat2}</small>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
              </p>
             <hr/>
         </div>
@@ -129,11 +114,8 @@ class ModalSideNavbar extends Component {
  const mapStateToProps =(store)=>{
    return{
    allcategory:store.allcategories,
-<<<<<<< HEAD
    allsubcategory:store.allcategory,
-=======
    allsubcategory:store.allsubcategories,
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
    products:store.products,
    loading:store.loading,
    currentCategory:store.currentCategory

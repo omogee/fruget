@@ -37,7 +37,6 @@ class SearchApp extends Component {
       highestprice:"",
       lowestprice:"",
       viewrow:"col-6 col-md-4 col-lg-3 rowclass",
-<<<<<<< HEAD
       view:"",
       displayviewbrand:"block",
       viewborder:"",
@@ -46,16 +45,6 @@ class SearchApp extends Component {
       loading:true,
       dropdownwidth:"0%",
       dropdownclass:"fa fa-chevron-up"
-=======
-      viewcol:"",
-      viewcolTwo:"",
-      displayviewbrand:"block",
-      viewborder:"",
-      griddetails:"block",
-      listdetails:"none",
-      listpadding:5,
-      listmargin:""
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
      }
   }
   componentDidMount =()=>{
@@ -71,17 +60,9 @@ class SearchApp extends Component {
          this.props.viewuserdetailsbyuserId(userId)
         }      
   const parsedQuery = queryString.parse(this.props.location.search)
-<<<<<<< HEAD
   setTimeout(()=> this.setState({loading:false}), 6000)
   if(parsedQuery.view === "grid" || !parsedQuery.view){
     this.setState({view:"grid"})
-=======
-  if(parsedQuery.view === "grid" || !parsedQuery.view){
-    this.setState({viewrow:"col-6 col-md-4 col-lg-3 rowclass", viewcolOne:"",viewcolTwo:"",griddetails:"block",listdetails:"none"})
-    }
-    else if(parsedQuery.view === "list"){
-      this.setState({viewrow:"col-12 row rowclasslist",listmargin:"2px 0px", viewcolOne:"col-5",viewcolTwo:"col-7",listpadding: "30px 10px",displayviewbrand:"none",viewborder:"10px",listdetails:"block",griddetails:"none"})
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     }
     else{
       this.setState({view:"list",viewborder:"10px",frugetshow:"right"})
@@ -93,11 +74,7 @@ class SearchApp extends Component {
   size: parsedQuery.sizes,
   colour:parsedQuery.color,
 }
-<<<<<<< HEAD
  axios.get(`http://localhost:5000/search/category/searched/price?search=${data.search}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`)
-=======
- axios.get(`http://fruget.herokuapp.com/search/category/searched/price?search=${data.search}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`)
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
  .then(res=> this.setState({price:res.data}, ()=>{
    for(var i=0; i<res.data.length; i++){
     console.log (res.data[i].highestprice)
@@ -292,7 +269,6 @@ imgObserver.observe(image)
                       </div>
                       </center>
           </div>
-<<<<<<< HEAD
             </div>    
             <div className="row" style={{position:"relative",backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background==="black"?"white":"black"}`}}>                
                  <div style={{transition:"width 2s",width:`${this.state.dropdownwidth}`,overflow:"hidden",backgroundColor:"white",position:"absolute",top:"0px",right:"17%",zIndex:"3"}}>
@@ -429,58 +405,6 @@ imgObserver.observe(image)
 
 
 
-=======
-            </div>
-          
-        <div className='row'>
-        <div className="d-none d-lg-block col-lg-3 stick" style={{backgroundColor:"rgba(242, 242, 242,0.4)"}}>
-          <SearchSideNavbar category={this.props.match.params.category}/>
-        </div>
-          <div className='col-12 col-lg-9' style={{backgroundColor:"#f5f5f0"}}>
-          <div className='row'> 
-        {this.props.searchedproducts.map((product) =>          
-           <div className={`${this.state.viewrow}`}   key={product.productId} style={{margin:`${this.state.listmargin}`,boxShadow:"2px 1px 2px lightgrey",backgroundColor:"white"}}> 
-                <div className={`${this.state.viewcolOne}`} >
-           <img className="mainImg img-responsive" src={require (`./images/${product.mainimg}`)} style={{maxWidth:"100%"}} ></img>
-           </div>
-           <div className={`${this.state.viewcolTwo}`} >
-        <small style={{float:"left",textTransform:"capitalize",display:`${this.state.displayviewbrand}`}}>{product.brand} <br/></small>
-           <div className="detaildiv" style={{lineHeight:"16px"}}>
-             
-            <div  className="details">
-            <Link to ={`/product/${product.details}`} style={{color:'black',display:`${this.state.griddetails}`}}>
-     <small style={{display:"inline-block",fontSize:"13px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
-       </Link>
-       <Link to ={`/product/${product.details}`} style={{color:'black',display:`${this.state.listdetails}`}}>
-     <small style={{display:"inline-block",fontSize:"13px"}}>{product.details.length > 60 ? product.details.slice(0,60)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
-       </Link>
-        </div>
-        <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
-       <div><small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></div>
-       {product.numOfRating > 0 ?
-       <div>
-         <div className="outer">     
-          <div className="inner" style={{width:`${product.percentrating}%`}}>   
-  
-          </div> 
-          </div>
-          <small style={{fontSize:"12px"}}>({product.numOfRating || 0}) </small></div> : null }<br/>
-       <small className="text-muted" style={{letterSpacing:"-1px",textTransform:"capitalize"}}><b style={{color:"orange"}}>{product.store}</b> @ <span className="fa fa-map-marker-alt"></span>{product.lga}</small>
-          <div><img src={require(`./images/fruget.jpg`)} className="imgSymbol" style={{float:"right"}}></img></div>
-         </div>
-         <br/>
-        <center   style={{display:`${window.innerWidth >= 600 ? this.state.viewaddtocartbutton : `none`}`,width:`${this.state.viewcartbtnwidth}`}}>
-        <br/>
-        <button style={{display:"none"}} type="button" className="btn addtocartbtn" onClick={()=>this.addtocart(product.productId)} >
-         <span>ADD TO CART</span></button><br/>
-        </center><br/>
-        </div>
-           </div> 
-           
-         )}
-         
-             </div>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
              <center>
              <Pagination size="sm">
              <Pagination.First />
@@ -497,55 +421,6 @@ imgObserver.observe(image)
              </Pagination>
              </center>
             
-<<<<<<< HEAD
-=======
-             <div className="didi bg-dark filterdiv">
-               <div className="row">
-                 <div className="col-4">
-                 <center>
-            <div style={{display:"flex",flexWrap:"nowrap"}}>
-              <div>
-              <Dropdown>
-  <Dropdown.Toggle className="bg-dark" id="filterdiv-dropdown">
-   <small className="bg-dark"> {this.state.parsedQuery.sort || "popularity"}</small>
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item onClick={() => this.sort("low-high")}><small>Price : Lowest - Highest</small></Dropdown.Item>
-    <Dropdown.Item onClick={() => this.sort("high-low")}><small>Price : Highest - Lowest</small></Dropdown.Item>
-    <Dropdown.Item onClick={() => this.sort("popularity")}><small>Popularity</small></Dropdown.Item>
-    <Dropdown.Item onClick={() => this.sort("warranty")}><small>Warranty</small></Dropdown.Item>
-    <Dropdown.Item onClick={() => this.sort("cust-rating")}><small>Customer Rating</small></Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
-              </div>
-            </div>
-            </center>               
-                 </div>
-                 <div className="col-2 fiterdiv-col" style={{borderLeft:"1px solid lightgrey"}}>
-                   <center>    
-              <button type="button" className="btn btn-link filter-btn" onClick={this.grid} style={{color:`${this.state.parsedQuery.view === "grid"  ? "white" : "rgb(0, 119, 179)"}`}}>
-              <i class="fa fa-th" ></i>
-                  </button>
-                  </center>
-                 </div>
-                 <div className="col-2 fiterdiv-col"  style={{borderLeft:"1px solid lightgrey",borderRight:"1px solid lightgrey"}}>
-                   <center>
-              <button type="button" className="btn btn-link filter-btn" onClick={this.list} style={{color:`${this.state.parsedQuery.view === "list"  ? "white" : "rgb(0, 119, 179)"}`}}>
-              <i class="fa fa-grip-vertical" ></i>
-                  </button>
-                   </center>
-                 </div>
-                 <div className="col-4">               
-                  <button type="button" className="btn btn-link filter-btn" onClick={this.displayfilter} >
-                    Filter 
-                  </button>
-               
-                 </div>
-               </div>
-             </div>
-
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
           </div>
         </div>
       </div>

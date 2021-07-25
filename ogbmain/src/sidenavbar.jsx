@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-<<<<<<< HEAD
 import {getProducts, setLoadingtoTrue,getsidenav,allsubcategories} from './store'
 import {compose} from 'redux'
 import {withRouter,Redirect} from 'react-router-dom'
-=======
-import {getProducts, setLoadingtoTrue} from './store'
-import {compose} from 'redux'
-import {withRouter,Link} from 'react-router-dom'
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 import queryString from 'query-string'
 import {checkfilter} from "./store"
 import axios from 'axios';
@@ -53,13 +47,10 @@ class Sidenavbar extends Component {
     }
     componentDidMount =()=>{
   //      getProducts(this.props.category)
-<<<<<<< HEAD
  
   const parsedQuery = queryString.parse(this.props.location.search);
   
   let val =[] 
-=======
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 
   for (var i=0; i<Object.values(parsedQuery).length; i++){
     if(Object.values(parsedQuery)[i].split(",").length === 1 ){
@@ -83,7 +74,6 @@ class Sidenavbar extends Component {
       if(parsedQuery.vendor && parsedQuery.vendor.length > 0){
         this.setState({vendor:parsedQuery.vendor.split(",")}); 
       }
-<<<<<<< HEAD
       if(parsedQuery.inches && parsedQuery.inches.length > 0){
         this.setState({inches:parsedQuery.inches.split(",")}); 
       }
@@ -99,32 +89,6 @@ this.inputelement.min =`${this.state.lowestprice}`
 this.inputelement.value=`${this.state.highestprice}`
 console.log(this.state)
 
-=======
-    
-     const data={
-       category:this.props.category,
-       brand: parsedQuery.brand,
-       size: parsedQuery.sizes,
-       colour:parsedQuery.color,
-       min:parsedQuery.min,
-       max:parsedQuery.max,
-       page:parsedQuery.page,
-       sort:parsedQuery.sort
-     }
-     
- axios.get(`http://fruget.herokuapp.com/products/${this.props.category}/price`)
- .then(res=> this.setState({price:res.data}, ()=>{
-   for(var i=0; i<res.data.length; i++){
-    console.log (res.data[i].highestprice)
-    this.setState({highestprice:res.data[i].highestprice, lowestprice:res.data[i].lowestprice}, ()=> {
-      this.inputelement.max= `${this.state.highestprice}`
-      this.inputelement.min =`${this.state.lowestprice}`
-      this.inputelement.value=`${this.state.highestprice}`
-    })
-   }
- }))
- .then(err => console.warn(err))
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     }
     
     brandchange=(e) =>{
@@ -174,11 +138,7 @@ console.log(this.state)
     change = (e)=>{
       const uri = window.location.href;
      const  parsedQuery = queryString.parse(this.props.location.search);
-<<<<<<< HEAD
   
-=======
-     if(window.innerWidth >= 1000){
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
       if(parsedQuery[e.target.name] !== undefined){
        // const query = parsedQuery[e.target.name]
         if(uri.indexOf(encodeURI(e.target.value)) > -1){
@@ -246,7 +206,6 @@ this.inputelement.min =`${this.state.lowestprice}`
     window.location.assign(window.location.pathname +"?"+ currentUrlParams.toString()); 
    }
    navigate =(category)=>{
-<<<<<<< HEAD
      console.log("navigating")
      const data ={
       category,
@@ -309,32 +268,12 @@ this.inputelement.min =`${this.state.lowestprice}`
             {subcat1.subcat2}</small> 
             <small  style={{textAlign:"left",cursor:"pointer",textTransform:"capitalize"}} onClick={() => this.navigate(subcat1.subcat3)}>
             {subcat1.subcat3}</small> 
-=======
-     window.location.assign(`/category/${category}`)
-   }
-    render() { 
-      
-        return ( 
-            <div>
-              <small>CATEGORIES</small>
-              <br/>
-              <ul>
-              {this.props.subcategories.map((subcategory) =>
-                <div key={subcategory}>
-<small style={{cursor:"pointer"}} onClick={() => this.navigate(subcategory.subcat2)}> {subcategory.subcat2}</small>
-                <small> {subcategory.subcat3}</small> 
-                 
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                 </div>
                 )}
                 <hr/>
                 <small>PRICES (₦)</small> <small   className={this.state.applycolour !== "black" ?"btn btn-warning btn-sm" : null} style={{float:"right"}}> <a href="" style={{color:`${this.state.applycolour}`}} onClick={this.state.applycolour !== "black" ? this.pricefilter : null}>Apply Filter</a></small><br/>
                  <center>
-<<<<<<< HEAD
                 <input type="range"  ref={(a)=> this.inputelement = a} name="price" min="" max="" value={this.state.highestprice} onChange={this.pricechange}/>
-=======
-                <input type="range" ref={(a)=> this.inputelement = a} name="price" min="" max="" value="" onChange={this.pricechange}/>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                 <br/>
                 <div className="row">
                   <div className="col-5">
@@ -624,18 +563,12 @@ this.state.filteredwattage.map(product =>  <div key={product}>
  }
  const mapDispatchToProps = (dispatch) =>{
    return{
-<<<<<<< HEAD
     getProducts:(data)=> dispatch(getProducts(data)),
     checkfilter:(data)=> dispatch(checkfilter(data)),
     setLoadingtoTrue:()=> dispatch(setLoadingtoTrue()),
     checkfilter:(data)=>dispatch(checkfilter(data)),
     getsidenav:(data)=>dispatch(getsidenav(data)),
     allsubcategories:(data)=>dispatch(allsubcategories(data))
-=======
-    getProducts: (data)=> dispatch(getProducts(data)),
-    checkfilter:(data)=> dispatch(checkfilter(data)),
-    setLoadingtoTrue:()=> dispatch(setLoadingtoTrue())
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
    }
  }
 export default compose(withRouter ,connect(mapStateToProps,mapDispatchToProps))(Sidenavbar);

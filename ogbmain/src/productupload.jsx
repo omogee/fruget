@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 import {allcategories, subcat2, subcat3} from "./store"
 import {category} from "./state"
 import "./main.css"
-<<<<<<< HEAD
 import axios from 'axios';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-=======
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 
 
 class ProductUpload extends Component {
@@ -15,36 +12,25 @@ class ProductUpload extends Component {
         super(props);
         this.state = { 
             category:"",
-<<<<<<< HEAD
             categorycolor:"lightgrey",
             generalcategory:"",
             generalcategorycolor:"lightgrey",
             subcat1:"",
             subcat1color:"lightgrey",
-=======
-            generalcategory:"",
-            subcat1:"",
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
             subcat2:"",
             subcat3:"",
             brand:"",
             entrytext:"",
             details:"",
-<<<<<<< HEAD
             detailscolor:"lightgrey",
             color:"",
             size:"",
             sizecolor:"lightgrey",
-=======
-            color:"",
-            size:"",
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
             feature1:"",
             feature2:"",
             feature3:"",
             feature4:"",
             feature5:"",
-<<<<<<< HEAD
             price:null,
             pricecolor:"black",
             initialprice:null,
@@ -84,24 +70,10 @@ class ProductUpload extends Component {
             this.setState({uploadmessage:"file format is not supported"})
         }
     }
-=======
-            price:"",
-            discount:"",
-            model:"",
-            power:"",
-            aboutbrand:""
-
-         }
-    }
-    componentDidMount=()=>{
-        this.props.allcategories()
-    }
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     change=(e)=>{
         this.setState({[e.target.name]:e.target.value}, ()=>{
     //        this.props.subcat2(this.state.selectedSubcat1)
     //    this.props.subcat3(this.state.selectedSubcat1)
-<<<<<<< HEAD
   //  console.log(this.state.allDetails)
   this.state.allDetails.map(checker =>{
     if(checker.details === this.state.details){
@@ -220,41 +192,21 @@ const formdata = new FormData();
 }
  
     render() { 
-=======
-        })       
-    }
-
-    render() { 
-        {Object.keys(category).map(cat =>
-           console.log(cat)
-            )}
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
         return ( 
             <div>
                 <div className="container">
                 <p> <span style={{color:"#004d99",textShadow: "0.5px 0.5px #ff0000"}}>Upload</span> Product On Fruget</p><small className="mr-5" style={{float:"right",fontSize:"20px"}}>30/30</small>
-<<<<<<< HEAD
                 <div className="row">
                 <div className="col-12 col-md-6 alert alert-danger" style={{display:`${this.state.displayMessage}`, backgroundColor:`${this.state.displayColor}`}}>
                  <small>{this.state.Message}</small>
                  </div>
                 </div>
                  <form action="" method="get" onSubmit={this.submit}>
-=======
-                 <div className="alert" style={{display:`${this.state.displayMessage}`, backgroundColor:`${this.state.displayColor}`}}>
-                 <small>{this.state.Message}</small>
-                 </div>
-                 <form action="">
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                      <div className="row">
                         <div className="col-12 col-md-6">
                             <div style={{padding:"10px"}}>
                             <label htmlFor="category">Category</label> 
-<<<<<<< HEAD
 <select type="text" style={{border:`1px solid ${this.state.categorycolor}`}} id="category" name="category" onChange={this.change} className="form-control" value={this.state.category}  placeholder="Enter Category e.g home Appliance,clothing, accessories etc">
-=======
-<select type="text" id="category" name="category" onChange={this.change} className="form-control" value={this.state.category}  placeholder="Enter Category e.g home Appliance,clothing, accessories etc">
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
    <option value="">select general category</option>
     {Object.keys(category).map(cat =>
             <option value={`${cat}`}>{cat}</option>
@@ -266,11 +218,7 @@ const formdata = new FormData();
                         <div className="col-12 col-md-6">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="gencategory">Generalcategory</label>
-<<<<<<< HEAD
    <select style={{backgroundColor:"white",border:`1px solid ${this.state.generalcategorycolor}`}} type="text" onChange={this.change} id="gencategory" name="generalcategory" className="form-control" value={this.state.generalcategory} >
-=======
-   <select style={{backgroundColor:"white"}} type="text" onChange={this.change} id="gencategory" name="generalcategory" className="form-control" value={this.state.generalcategory} >
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
    <option value="">select category</option>     
                          {category[`${this.state.category}`].map(subcat=>
                         <option value={`${subcat.name}`}>{subcat.name}</option>
@@ -279,7 +227,6 @@ const formdata = new FormData();
                          </div>
                         </div> 
                     :null}
-<<<<<<< HEAD
                     
                         <div className="col-12 col-md-6">
                         <div style={{padding:"10px"}}>
@@ -299,16 +246,6 @@ const formdata = new FormData();
                        ) : <p className="text-danger">No image selected</p>}
                          </div>
                         </div>
-=======
-                        
-                        <div className="col-12 col-md-6">
-                        <div style={{padding:"10px"}}>
-                        <label >Image Upload</label>
-                         <input type="file"  className="form-control"  />
-                         <small className="text-danger">Make sure image is clear enough and in jpeg or png format</small>
-                         </div>
-                        </div>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                         {this.state.generalcategory.length > 0 ?
                         <div className="col-12 col-md-6">
                         <div style={{padding:"10px"}}> 
@@ -370,30 +307,19 @@ const formdata = new FormData();
                         <div className="col-12 col-md-6">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="details">details</label>
-<<<<<<< HEAD
     <input type="text"  id="details" name="details" style={{border:`1px solid ${this.state.detailscolor}`}} onChange={this.change} className="form-control" value={this.state.details} placeholder="e.g bianco standing fan, lg copper double door refrigerator...etc(50)"/>
                         </div>
                         <small style={{display:`${this.state.displayifdetailsmatch}`}} className="text-danger">This product already exist on fruget community...<span className="btn btn-danger btn-sm" onClick={this.fillform}>Click Here</span> to update all columns then submit ro register as a seller of this product</small>                        
-=======
-    <input type="text"  id="details" name="details" onChange={this.change} className="form-control" value={this.state.details} placeholder="e.g bianco standing fan, lg copper double door refrigerator...etc(50)"/>
-                        </div>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                         </div>
                         <div className="col-12 col-md-6">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="colors">colours available <span style={{color:"red", fontSize:"20px"}}>*</span></label>
-<<<<<<< HEAD
                          <input type="text" id="colors" name="color" onChange={this.change} style={{fontSize:"14px"}} className="form-control" value={this.state.color} placeholder="Enter all the colours available in your store seperated by commas ( , )"/>
                          <small style={{fontSize:"11px"}} className="text-danger">E.g red , blue, black e.t.c( ensure to begin with the color of this exact product)</small>
-=======
-                         <input type="text" id="colors" name="colors" onChange={this.change} style={{fontSize:"14px"}} className="form-control" value={this.state.color} placeholder="Enter all the colours available in your store seperated by commas ( , )"/>
-                         <small style={{fontSize:"14px"}} className="text-muted">E.g red , blue, black...</small>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                         </div>
                         </div>
                         <div className="col-12 col-md-4">
                         <div style={{padding:"10px"}}>
-<<<<<<< HEAD
                             <label htmlFor="currentsize">size <span style={{color:"red", fontSize:"20px"}}>*</span></label>
  <input type="text" id="currentsize" name="currentsize" style={{fontSize:"14px"}} onChange={this.change} className="form-control" value={this.state.currentsize} placeholder="Enter size of the this product"/>
                          <small style={{fontSize:"11px"}} className="text-danger">E.g 16 inches (ensure the unit of measurement is specified e.g inches,litres,kilogram,watts etc)</small>
@@ -418,11 +344,6 @@ const formdata = new FormData();
                             <label htmlFor="megapixel">mega pixel<span style={{color:"red", fontSize:"20px"}}>{this.state.category === "phones" ? "*" : null}</span></label>
  <input type="text" id="megapixel" name="megapixel" style={{fontSize:"14px"}} onChange={this.change} className="form-control" value={this.state.megapixel} placeholder="Enter size of the this product"/>
                          <small style={{fontSize:"11px"}} className="text-danger"> (ensure the unit of measurement is specified)</small>
-=======
-                            <label htmlFor="size">size <span style={{color:"red", fontSize:"20px"}}>*</span></label>
- <input type="text" id="size" name="size" style={{fontSize:"14px"}} onChange={this.change} className="form-control" value={this.state.size} placeholder="Enter all the sizes available in your store seperated by commas ( , )"/>
-                         <small style={{fontSize:"14px"}} className="text-muted">E.g 16 inches , 20 inches , 2 litres ...</small>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                         </div>
                         </div>
                         <div className="col-12 col-md-4">
@@ -455,7 +376,6 @@ const formdata = new FormData();
                          <input type="text" id="feature5"  name="feature5" className="form-control" onChange={this.change} value={this.state.feature5} />
                         </div>
                         </div>
-<<<<<<< HEAD
                         <div className="col-12 col-md-3">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="price">Selling Price <span style={{color:"red", fontSize:"20px"}}>*</span></label>
@@ -468,22 +388,12 @@ const formdata = new FormData();
                             <label htmlFor="initialprice">initial Price <span style={{color:"red", fontSize:"20px"}}>*</span></label>
                          <input type="text" id="initialprice" name="initialprice" className="form-control" onChange={this.change} value={this.state.initialprice}/>
                                <small className="text-danger">if there is a discount from {this.state.price || "selling price"} so customers can see it </small>
-=======
-                        <div className="col-6 col-md-3">
-                        <div style={{padding:"10px"}}>
-                            <label htmlFor="price">Price <span style={{color:"red", fontSize:"20px"}}>*</span></label>
-                         <input type="text" id="price" name="price" className="form-control" onChange={this.change} value={this.state.price}/>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                         </div>
                         </div>
                         <div className="col-6 col-md-3">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="discount">discount</label>
-<<<<<<< HEAD
             <input type="text" id="discount" readOnly name="discount" className="form-control" Onchange={this.change} value={this.state.discount || "0%"} />
-=======
-            <input type="text" id="discount" name="discount" className="form-control" Onchange={this.change} value={this.state.discount} />
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                         </div>
                         </div>
                         <div className="col-6 col-md-3">
@@ -498,15 +408,13 @@ const formdata = new FormData();
  <input type="text" id="power" name="power" className="form-control" onChange={this.change} value={this.state.power} placeholder="Enter the wattage e.g 20w, 30w, 50w etc"/>
                         </div>
                         </div>
-<<<<<<< HEAD
+                        
                         <div className="col-6 col-md-3">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="weight">weight</label>
  <input type="text" id="weight" name="weight" className="form-control" onChange={this.change} value={this.state.weight} placeholder="Enter weight in Kg"/>
                         </div>
                         </div>
-=======
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                         <div className="col-12 col-md-6">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="aboutbrand">About Brand </label>
@@ -515,12 +423,9 @@ const formdata = new FormData();
                         </div>
                         </div>
                      </div>
-<<<<<<< HEAD
                      <div style={{padding:"10px"}}>
                   <button type="submit" className="btn btn-success">Upload</button>
                      </div>
-=======
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                  </form>
                 </div>
             </div>

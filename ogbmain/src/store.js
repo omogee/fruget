@@ -63,7 +63,6 @@ axios.get(`http://localhost:5000/details/product/display/userdetailsbyuserId?use
     showSuggestions: false,
     inputval:"",
     cartMessage:"",
-<<<<<<< HEAD
     cartHeader:"",
     cartOpacity:"1",
     display:"none",
@@ -74,26 +73,16 @@ axios.get(`http://localhost:5000/details/product/display/userdetailsbyuserId?use
     allsubcat3:[],
     allsubcat2:[],
     allsubcat1:[],
-=======
-    display:"none",
-    loading: false,
-    allcategories:[],
-    allsubcategories:[],
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     subcat2:[],
     subcat3:[],
     mainbgcolor:"white",
     modalsidenavbarwidth:"0%",
-<<<<<<< HEAD
     modaliconopacity:"0",
     navbariconopacity:"1",
-=======
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     modalsidenavbardisplay:"none",
     modalsidenavbarwidthmargin:"0%",
     save:"",
     productDetails:[],
-<<<<<<< HEAD
     seller:[],
     sellerdetails:[],
     otherstores:[],
@@ -104,13 +93,10 @@ axios.get(`http://localhost:5000/details/product/display/userdetailsbyuserId?use
     myprofilenumOfRows:"",
     sellerproducts:[],
     othersellerproducts:[],
-=======
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     similiarDetails:[],
     similiarBrandDetails:[],
     appDisplay:"",
     currentCategory:"",
-<<<<<<< HEAD
     currentDetailcategory:"",
     currentProductIdcategory:"",
     min:null,
@@ -176,10 +162,6 @@ axios.get(`http://localhost:5000/details/product/display/userdetailsbyuserId?use
     redirect:false
   }
 
-=======
-    currentDetailcategory:""
-}
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 const reducer= (state = initialState, action)=>{
   
   if(action.type === "redirect"){
@@ -278,7 +260,6 @@ if(action.type === 'undisplaycategorymodal'){
   }
     if(action.type === 'loading'){
       state = {...state , loading:true}
-<<<<<<< HEAD
       return state;
     }
     if(action.type === 'catloading'){
@@ -293,13 +274,6 @@ if(action.type === 'undisplaycategorymodal'){
       else if(action.type === 'vendorproductsloaded'){
         state = {...state,mainbgcolor: "white",loading:false,currentCategory:action.payload, products: action.payloadOne,currentPage:action.payloadThree,totalPages:action.payloadTwo,numOfRows:action.payloadFour,max:action.payloadmax,min:action.payloadmin,overallMax:action.payloadoverallMax,overallMin:action.payloadoverallMin}
         console.log("no need for filter for vendor products", action.payloadFour)
-=======
-      return state;
-    }
-    else if(action.type === 'loaded'){
-        state = {...state,mainbgcolor: "white",loading: false,currentCategory:action.payload, products: action.payloadOne,currentPage:action.payloadThree,totalPages:action.payloadTwo,numOfRows:action.payloadFour}
-        console.log("no need for filter", action.payloadOne)
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
         return state;
       }
       else if(action.type==='setLoadingtoTrue'){
@@ -665,12 +639,7 @@ if(action.type === 'undisplaycategorymodal'){
         return state;
       }
       else if(action.type === 'suggestionloaded'){
-<<<<<<< HEAD
         const suggestions = action.payload;         
-=======
-        const suggestions = action.payload;
-         
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
         var filteredSuggestions =[];
         var filteredbrands =[];
        const inputval = action.input;
@@ -700,7 +669,6 @@ export const test =()=>{
     {type: 'test'}
   )
 }
-<<<<<<< HEAD
 export const connectedusers =(data)=>{
   return(dispatch)=>{
     dispatch({type:"connectedusers",payloadconnusers:data})
@@ -989,22 +957,13 @@ export const unsaveItem =(data)=>{
 export const subcat2 =(data)=>{
   return(dispatch)=>{
     axios.get(`http://localhost:5000/products/productsellernumOfRows/${data}/subcat2`)
-=======
-export const subcat2 =(data)=>{
-  return(dispatch)=>{
-    axios.get(`http://fruget.herokuapp.com/products/productupload/${data}/subcat2`)
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     .then( res => dispatch({type:"getsubcat2", payload:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
 }
 export const subcat3 =(data)=>{
   return(dispatch)=>{
-<<<<<<< HEAD
       axios.get(`http://localhost:5000/products/productsellernumOfRows/${data}/subcat3`)
-=======
-    axios.get(`http://fruget.herokuapp.com/products/productupload/${data}/subcat3`)
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     .then( res => dispatch({type:"getsubcat3", payload:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
@@ -1013,7 +972,6 @@ export const setLoadingtoTrue =()=>{
   return (dispatch)=>{
      dispatch ({type:"setLoadingtoTrue"})
   }
-<<<<<<< HEAD
 }   
 export const unsetAppDisplay=()=>{
   return(
@@ -1044,39 +1002,11 @@ export const searcher =(data)=>{
 
    // dispatch({type: 'loading'})
     axios.post(`http://localhost:5000/search/searchsize`, {data: JSON.stringify(data)})
-=======
-}
-export const setAppDisplay=()=>{
-  return(
-    {type:"undisplayApp"}
-  )
-}
-export const searcher =(data)=>{
-  return (dispatch)=>{
-     dispatch({type: 'searched'})
-  axios.post('http://fruget.herokuapp.com/search/search',{data: JSON.stringify(data)})
-  .then(res => dispatch({type:'searching',payload:res.data.files,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows}))
-  .catch(err => dispatch({type: 'error', payload: err}))
-
-  dispatch({type: 'brandsearching'})
-    axios.post(`http://fruget.herokuapp.com/search/searchbrand`, {data: JSON.stringify(data)})
-    .then(res=> dispatch({type: 'brandsearched', payload: res.data}))
-    .then(err => dispatch({type: 'error', payload: err}))
-
-    dispatch({type: 'colorsearching'})
-    axios.post(`http://fruget.herokuapp.com/search/searchcolour`, {data: JSON.stringify(data)})
-    .then(res=> dispatch({type: 'colorsearched', payload: res.data}))
-    .then(err => dispatch({type: 'error', payload: err}))
-
-    dispatch({type: 'sizesearching'})
-    axios.post(`http://fruget.herokuapp.com/search/searchsize`, {data: JSON.stringify(data)})
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     .then(res=> dispatch({type: 'sizesearched', payload: res.data}))
     .then(err => dispatch({type: 'error', payload: err}))
 
   }
 }
-<<<<<<< HEAD
 export const followservice =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
@@ -1206,18 +1136,6 @@ export const getdetails =(data)=>{
   }})   
  }
 }
-=======
-export const getdetails =(data)=>{
- return(dispatch)=>{
-   dispatch({type:"loading"})
-  axios.get(`http://fruget.herokuapp.com/customer/check/save?details=${data}`,{ headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`} })
-  .then(res =>  dispatch({type:"checkifsaved",payload:res.data}))
-  .catch(err => dispatch({type:"err",payload:err})) 
-
-  axios.get(`http://fruget.herokuapp.com/details/similiar/${data}`)
-  .then(res => dispatch({type:"similiarproducts",payload: res.data}))
-  .catch(err => dispatch({type:"err",payload:err}))  
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 
   axios.get(`http://fruget.herokuapp.com/details/similiarbrand/${data}`)
   .then(res => dispatch({type:"similiarproductsbybrand",payload: res.data}))
@@ -1233,17 +1151,12 @@ export const getdetails =(data)=>{
 export const submitsearcher =(data)=>{
   return (dispatch)=>{
      dispatch({type: 'submitsearched'})
-<<<<<<< HEAD
      console.log(data)
   axios.get(`http://localhost:5000/search/items/search?search=${data.search}&vendor=${data.vendor}&gun=${data.currentq}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&inches=${data.inches}&litres=${data.litres}&colour=${data.colour}&page=${data.page}`)
-=======
-  axios.get(`http://fruget.herokuapp.com/search/items/search?search=${data.search}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}&page=${data.page}`)
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
   .then(res => dispatch({type:'submitsearching',payload:res.data.files,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows}))
   .catch(err => dispatch({type:"err",payload:err}))
   
 
-<<<<<<< HEAD
   dispatch({type: 'loading'})
   axios.get(`http://localhost:5000/search/items/searchbrand?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand !== undefined ?data.brand : null}&size=${data.size}&colour=${data.colour}`)
   .then(res=> dispatch({type: 'submitbrandsearched', payload: res.data}))
@@ -1262,21 +1175,6 @@ export const submitsearcher =(data)=>{
   dispatch({type: 'loading'})
   axios.get(`http://localhost:5000/search/items/searchvendor?search=${data.search}&vendor=${data.vendor}`)
   .then(res=> dispatch({type: 'submitvendorsearched', payload: res.data}))
-=======
-  dispatch({type: 'submitbrandsearching'})
-  axios.get(`http://fruget.herokuapp.com/search/items/searchbrand?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand !== undefined ?data.brand : null}&size=${data.size}&colour=${data.colour}`)
-  .then(res=> dispatch({type: 'submitbrandsearched', payload: res.data}))
-  .then(err => dispatch({type: 'error', payload: err}))
-
-  dispatch({type: 'submitcolorsearching'})
-  axios.get(`http://fruget.herokuapp.com/search/items/searchcolour?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`)
-  .then(res=> dispatch({type: 'submitcolorsearched', payload: res.data}))
-  .then(err => dispatch({type: 'error', payload: err}))
-
-  dispatch({type: 'sizesearching'})
-  axios.get(`http://fruget.herokuapp.com/search/items/searchsize?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`)
-  .then(res=> dispatch({type: 'submitsizesearched', payload: res.data}))
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
   .then(err => dispatch({type: 'error', payload: err}))
 
   dispatch({type:"unloading"})
@@ -1286,7 +1184,6 @@ export const submitsearcher =(data)=>{
 export const checkfilter = data =>{
   return (dispatch) =>{
   dispatch({type: "filter"})
-<<<<<<< HEAD
   axios.get(`http://localhost:5000/products/items/filter/${data.category}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&vendor=${data.vendor}&brand=${data.brand}&litres=${data.litres}&inches=${data.inches}&colour=${data.colour}&q=${data.q}&rating=${data.rating}`)
   .then(res => dispatch({type:"filteritems", payload:res.data.files,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows,payloadoverallMax:res.data.overallMax,payloadoverallMin:res.data.overallMin,payloadmax:res.data.max,payloadmin:res.data.min,input:data.files}))
   .catch(err => console.log(err))
@@ -1298,10 +1195,6 @@ export const checkvendorfilter = data =>{
   //dispatch({type: "filter"})
   axios.get(`http://localhost:5000/products/goods/filter/${data.vendor}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&vendor=${data.vendor}&brand=${data.brand}&litres=${data.litres}&inches=${data.inches}&colour=${data.colour}&q=${data.q}&rating=${data.rating}`)
   .then(res => dispatch({type:"filtervendoritems", payload:res.data.files,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows,payloadoverallMax:res.data.overallMax,payloadoverallMin:res.data.overallMin,payloadmax:res.data.max,payloadmin:res.data.min,input:data.files}))
-=======
-  axios.get(`http://fruget.herokuapp.com/products/items/filter/${data.category}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`)
-  .then(res => dispatch({type:"filteritems", payload:res.data.files,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows,input:data.files}))
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
   .catch(err => console.log(err))
   }
 }
@@ -1311,13 +1204,9 @@ export const getfilteredSuggestions = data =>{
 
     
   dispatch({type: "suggestions"})
-<<<<<<< HEAD
   dispatch({type:"suggestionloaded", payload:[], input:data})
   /*
   axios.get("http://localhost:5000/suggestions/suggestion")
-=======
-  axios.get("http://fruget.herokuapp.com/suggestions/suggestion")
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
   .then(res => dispatch({type:"suggestionloaded", payload:res.data, input:data}))
   .catch(err => console.log(err))
   */
@@ -1328,19 +1217,13 @@ export const getfilteredSuggestions = data =>{
  export const getProducts = data =>{
    return (dispatch)=>{
       dispatch({type: 'loading'})
-<<<<<<< HEAD
     axios.get(`http://localhost:5000/products/${data.category}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}&rating=${data.rating}`)
     .then(res =>{ dispatch({type: 'loaded',payload:data.category, payloadOne: res.data.file,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows,payloadoverallMax:res.data.overallMax,payloadoverallMin:res.data.overallMin,payloadmax:res.data.max,payloadmin:res.data.min})
     dispatch({type:"unloading"})
   })
-=======
-    axios.get(`http://fruget.herokuapp.com/products/${data.category}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`,{ headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`} })
-    .then(res => dispatch({type: 'loaded',payload:data.category, payloadOne: res.data.file,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows}))
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     .catch(err => dispatch({type: 'error', payload: err}))
 /*
    dispatch({type: 'categoryloading'})
-<<<<<<< HEAD
    axios.get(`http://localhost:5000/products/${data.category}/category?page=${data.page}`)
    .then(res=> dispatch({type: 'categoryloaded', payload: res.data}))
    .catch(err => dispatch({type: 'error', payload: err}))
@@ -1578,11 +1461,6 @@ export const allsubcategories = (data)=>{
   }
 }
 
-=======
-   axios.get(`http://fruget.herokuapp.com/products/${data.category}/category?page=${data.page}`,{ headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`} })
-   .then(res=> dispatch({type: 'categoryloaded', payload: res.data}))
-   .catch(err => dispatch({type: 'error', payload: err}))
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 
 export const allvendorsubcategories = (data)=>{
   return(dispatch)=>{
@@ -1652,7 +1530,6 @@ export const unshowmodalsidenavbar =()=>{
 }
 export const getsidenav = data =>{
   return (dispatch)=>{
-<<<<<<< HEAD
    dispatch({type: 'loading'})
    axios.get(`http://localhost:5000/products/${data.category}/brand?selectedBrand=${data.brand}`)
    .then(res=> dispatch({type: 'brandloaded', payload: res.data}))
@@ -1672,32 +1549,12 @@ export const getsidenav = data =>{
   
    dispatch({type: 'priceloading'})
    axios.get(`http://localhost:5000/products/${data.category}/price`)
-=======
-   dispatch({type: 'brandloading'})
-   axios.get(`http://fruget.herokuapp.com/products/${data}/brand`)
-   .then(res=> dispatch({type: 'brandloaded', payload: res.data}))
-   .then(err => dispatch({type: 'error', payload: err}))
-
-   dispatch({type: 'colorloading'})
-   axios.get(`http://fruget.herokuapp.com/products/${data}/color`)
-   .then(res=> dispatch({type: 'colorloaded', payload: res.data}))
-   .then(err => dispatch({type: 'error', payload: err}))
-
-   dispatch({type: 'sizeloading'})
-   axios.get(`http://fruget.herokuapp.com/products/${data}/size`)
-   .then(res=> dispatch({type: 'sizeloaded', payload: res.data}))
-   .then(err => dispatch({type: 'error', payload: err}))
-  
-   dispatch({type: 'priceloading'})
-   axios.get(`http://fruget.herokuapp.com/products/${data}/price`)
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
    .then(res=> dispatch({type: 'priceloaded', payload: res.data}))
    .then(err => dispatch({type: 'error', payload: err}))
 
    dispatch({type:"unloading"})
  }
 }
-<<<<<<< HEAD
 export const getvendorsidenav = data =>{
   return (dispatch)=>{
    dispatch({type: 'loading'})
@@ -1768,7 +1625,3 @@ export const fetchconnections = data =>{
  }
 }
 export default store;
-=======
-// store.dispatch(getProducts)
-export default store;
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
