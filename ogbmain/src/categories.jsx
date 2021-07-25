@@ -1,14 +1,9 @@
 import React, { Component , lazy, Suspense} from 'react';
 import "./fontawesome"
 import Navbar from './navbar'
-<<<<<<< HEAD
 import {BrowserRouter as Router, Route, Switch, withRouter,Link} from 'react-router-dom'
 
  //import App from './App'
-=======
-import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom'
- import App from './App'
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 import Details from './details'
 // import SideNav from './sidenav' 
 import ReactHtmlParser from "react-html-parser"
@@ -30,7 +25,6 @@ import Profile from "./profile"
 import SavedItems from "./savedItems"
 import CheckOut from "./checkout"
 import ModalSideNavbar from "./modalsidenavbar"
-<<<<<<< HEAD
 import Register from "./register"
 import SellerRegister from "./sellerregister"
 import ProductUpload from "./productupload"
@@ -69,10 +63,6 @@ import ProfileDetails from "./profiledetails"
 // const App =lazy(()=>import("./App"))
 import Products from "./products"
 import { formater } from './formatTime';
-=======
-import SellerRegister from "./sellerregister"
-import ProductUpload from "./productupload"
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 
 class Category extends Component {
     constructor(props) {
@@ -88,7 +78,6 @@ class Category extends Component {
          }
     }
     
-<<<<<<< HEAD
    componentDidMount=()=>{  
     //  window.addEventListener("load", this.checkstatus())
     let mainToken;
@@ -412,15 +401,11 @@ loading = "Upload Items with ease and meet buyers in minutes"
          */
         const uri = window.location.href;
 
-=======
-    render() {  
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
         return (
           
             <CookiesProvider>
             <div> 
                 <Router>
-<<<<<<< HEAD
                  <Provider store={store}>    
                  {this.props.loading ?     
           <div style={{position:"fixed", top:"0%",left:"0%",zIndex:"2",backgroundColor:"lightgrey",width:"100%",minHeight:"100%",opacity:"0.4"}}>
@@ -710,28 +695,6 @@ Proceed</button>
                      </div>    
                  </div>   
                  </div>
-=======
-                 <Provider store={store}>
-                    <Navbar />
-                 <Switch> 
-                 
-                 <Route path='/' exact component={Subcats} />
-                 <Route path="/sellerregister" exact component={SellerRegister} />
-                 <Route path="/productupload" exact component={ProductUpload} />
-                 
-                     <Route path='/customer/login' exact component={Login}/>
-                 <Route path='/product/:details' exact   component={Details} />  
-                 <Route path='/category/:category' exact   component={withRouter(App)} />
-                 <Route path='/search' exact   component={SearchApp} />   
-                 <Route path='/profile/:userId' exact component={Profile} />   
-                 <Route path="/saved-items/:userId" exact component={SavedItems} />  
-                 <Route path="/checkout/:userId" exact component={CheckOut}/>       
-                 <Route path="/suggestions" exact component={Suggestions}/>                       
-                 </Switch>          
-                
-                
-                
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                      </Provider>
                 </Router>
             </div>
