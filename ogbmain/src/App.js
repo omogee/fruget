@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import {Link, Redirect, withRouter} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import {test, undisplaymodal} from './store'
-<<<<<<< HEAD
 import {setredirect,saveItem,undisplaysavemodal,unloading,viewuserdetailsbyuserId,getvendorProducts ,getProducts,checksaveItem,getseller,getdetails,getsidenav,getvendorsidenav,checkfilter,checkvendorfilter,addtocart,undisplaymodal,setLoadingtoTrue,allsubcategories,allvendorsubcategories} from './store'
-=======
-import {getProducts,getdetails,getsidenav,checkfilter,addtocart,undisplaymodal,setLoadingtoTrue} from './store'
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,11 +11,7 @@ import Sidenavbar from "./sidenavbar"
 import Suggestions from "./suggestions"
 import querystring from 'query-string'
 import axios from "axios"
-<<<<<<< HEAD
 import {formater} from "./formatTime"
-=======
-import ModalSideNavbar from "./modalsidenavbar"
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 import ReactHtmlParser from "react-html-parser"
 import {Pagination, Dropdown} from 'react-bootstrap'
 import './main.css'
@@ -61,7 +53,6 @@ class App extends Component {
       griddetails: "block",
       listdetails:"none",
       frugetshow:"",
-<<<<<<< HEAD
       listmargin:"",
       hoverapp:"",
       view:"grid",
@@ -97,56 +88,17 @@ class App extends Component {
  if(!checker  && this.props.products.length === 0){
   const data ={
     category: this.props.category,
-=======
-      listmargin:""
-     }
-  }
-  componentWillMount =()=>{
-    var parsedQuery = querystring.parse(this.props.location.search);
-    if(window.innerWidth <= 800){
-      this.setState({displayviewbrand:"none"})
-    }
-    if(parsedQuery.view === "grid" || !parsedQuery.view){
-    this.setState({viewrow:"col-6 col-md-4 col-lg-3 rowclass", viewcol:""})
-    }
-    else if(parsedQuery.view === "list"){
-      this.setState({viewrow:"col-12 row rowclasslist", viewcol:"col-5",listmargin:"2px 0px",viewcoldetails:"col-7",viewborder:"10px",frugetshow:"right",viewcartbtnwidth:"40%",viewbgcolor:"lightgrey",displayviewbrand:"none",griddetails:"none",listdetails:"block"})
-      if(window.innerWidth <= 600){ 
-        this.setState({viewaddtocartbutton:"none"})
-      }
-    }
-    axios.get(`http://fruget.herokuapp.com/products/${this.props.match.params.category}/price`)
- .then(res=> this.setState({price:res.data}, ()=>{
-   for(var i=0; i<res.data.length; i++){
-    this.setState({highestprice:res.data[i].highestprice, lowestprice:res.data[i].lowestprice}, () =>{
-     // var parsedQuery = querystring.parse(this.props.location.search);
-      this.setState({parsedUrl:parsedQuery, parsedQuery})  
-      console.log(Object.keys(parsedQuery))
-      const checker = Object.keys(parsedQuery).includes("brand") || Object.keys(parsedQuery).includes("sizes") || Object.keys(parsedQuery).includes("color")
-if(!checker){
-  console.log("hello i am here")     
-  const data ={
-          category: this.props.match.params.category,
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
           page: parsedQuery.page || 1,
           sort:parsedQuery.sort, 
           min:parsedQuery.min ,
           max:parsedQuery.max,
           rating:parsedQuery.rating
         }
-<<<<<<< HEAD
      this.props.getsidenav(data)
        this.props.getProducts(data)
     //    this.props.allsubcategories(this.props.category)
        } 
         else if(checker && this.props.products.length === 0){ 
-=======
-        if(this.props.products.length === 0){
-   this.props.getProducts(data)
-        }
-     }
-      else{ 
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
       const data ={
         brand : parsedQuery.brand,
         inches: parsedQuery.inches, 
@@ -161,7 +113,6 @@ if(!checker){
         q :parsedQuery.q || "brand",
         rating:parsedQuery.rating
       }
-<<<<<<< HEAD
      
       this.props.checkfilter(data)
       this.props.getsidenav(data)
@@ -204,25 +155,6 @@ if(!checker){
         }
         }   
       window.addEventListener("click", this.handlemodalclick) 
-=======
-      console.log("i would filter")
-      this.props.checkfilter(data)
-    }  
-
-    })
-   }
- }))
- .then(err => console.warn(err))
-
- this.setState({loading:false})
-   
-    this.props.getsidenav(this.props.match.params.category)
-    window.addEventListener("click", this.handlemodalclick)
-    
-  }
-  componentDidMount =()=>{
-    this.setState({ productss: this.props.products });
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
   }
   /*
   componentDidUpdate(prevProps){
@@ -275,7 +207,6 @@ changeview =() =>{
  window.history.pushState({}, "", window.location.pathname +"?"+ currentUrlParams.toString())
   }
 }
-<<<<<<< HEAD
 undisplaycartmodal =() =>{
   this.props.undisplaycartmodal()
  }
@@ -288,10 +219,6 @@ addtocart=(datum)=>{
    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
     setTimeout(()=>this.props.undisplaymodal(), 10000)
     }
-=======
-addtocart=(id)=>{
-   this.props.addtocart(id) 
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
   }
 undisplaymodal =() =>{
  this.props.undisplaymodal()
@@ -304,7 +231,6 @@ handlemodalclick =(e) =>{
 displaycartbtn =(e)=>{
   e.currentTarget.button.style.display ="block";
 }
-<<<<<<< HEAD
 openDetails=(datum)=>{
   const data = {
   productId :datum.id,
@@ -340,13 +266,6 @@ setTimeout(()=>this.props.undisplaysavemodal(), 10000)
 }
   }
   
-=======
-openDetails=(data)=>{
- // console.log(e.currentTarget.textContent)
- this.props.getdetails(data)
- // this.props.setLoadingtoTrue()
-}  
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
   render() { 
     if(this.props.redirect){
       return <Redirect to={{ pathname: '/customer/login',state: { from: this.props.location }}} />
@@ -396,7 +315,6 @@ images.forEach(image=>{
     for (var i=1; i<=this.props.totalPages; i++){
        PageNumbers.push(i)
     }
-<<<<<<< HEAD
     let loading;
     const ranoo =Math.floor(Math.random()*100)
     console.log("ranoo", ranoo)
@@ -431,56 +349,6 @@ loading = "Upload Items with ease and meet buyers in minutes"
             {this.props.vendor ? 
             <span style={{fontSize:"15px",padding:"2px"}} className="fa fa-check-circle text-warning"></span>
             : null }
-=======
-    console.log(this.props.loading)
-    if(this.props.productDetails.length > 0){
-      return <Redirect to={`/product/${this.props.currentDetailcategory}`} />
-    }
-    console.log(window.innerHeight)
-  /*  console.log(Object.keys(this.state.parsedQuery).toString())
-    if(this.props.products.length === 0){
-      return(
-        <div style={{width:"100%", height:"100%"}}>
-          <center style={{position:"absolute", top:"50%",left:"50%"}}>
-            <img src={require(`./images/35.gif`)} /> 
-          </center>
-        </div>
-      ) 
-    }else{  */ 
-    return (   
-            <div>
-             <div style={{display:`${this.props.inputval.length > 0 ? "block" : "none"}`,zIndex:"2",width:"100%",height:"100%",position:"absolute"}} className="indexer"> 
-             <Suggestions></Suggestions>       
-             </div>
-           <div style={{display:`${this.props.appDisplay}`}}>
-             <div style={{display:`${this.props.mainbgcolor==="white" ? "none" : "block"}`,backgroundColor:"rgba(242,242,242,0.5)",width:"100%",height:"200%",position:"absolute",top:"0px",zIndex:"2"}}>
-               x
-             <div className="sidenavbar" style={{zIndex:"1",display:`${this.props.modalsidenavbardisplay}`,position:"absolute",top:"0px",width:`${this.props.modalsidenavbarwidth}`}}>
-                          
-             </div>
-             </div>
-            
-          <div className="container main" style={{position:`${this.props.loading ? "fixed" : ""}`}}>
-          {this.props.loading ?     
-          <div style={{position:"absolute", top:"0%",left:"0%",zIndex:"2",backgroundColor:"lightgrey",width:"100%",height:`100%`,opacity:"0.2"}}>
-            <center style={{position:"absolute", top:"10%",left:"50%"}}>
-            <img src={require(`./images/35.gif`)} />
-            </center>
-          </div>
-        : null}
-          <div className="row dodo" style={{backgroundColor:"white"}}>
-              <div className="col-9" >
-    <small><a href="" style={{color:"black"}}>Home</a> > <a href="" style={{color:"rgb(0, 119, 179)",textTransform:"capitalize"}}>{this.props.match.params.category}</a></small>
-<p style={{ textTransform:"capitalize",fontWeight:"bolder",padding:"0px"}}>{this.props.match.params.category}</p>
-              </div>
-              <div className="col-3">
-              <small>
-            <small>
-            ({(((this.props.currentPage || 1)-1)*20) + 1} - {(this.props.currentPage || 1)*(this.props.numOfRows < 20 ? this.props.numOfRows : 20)}) of  
-            <span >
-             {" " +this.props.numOfRows} products
-            </span>
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
             </small>
             {this.props.numOfRows > 0 ?
             <small style={{float:"right"}}>{" " +this.props.numOfRows || 0} Products Found </small>
@@ -496,7 +364,6 @@ loading = "Upload Items with ease and meet buyers in minutes"
             <img className="mainImg img-responsive"  data-src={`https://res.cloudinary.com/fruget-com/image/upload/${product.generalcategory}/${product.category}/${product.mainimg || 'emptyimg.jpg'}`} ></img>
             </center>
           </div>
-<<<<<<< HEAD
           <div> 
 <div className="row" style={{width:"100%"}}>
 <div className="col-12">
@@ -599,91 +466,6 @@ loading = "Upload Items with ease and meet buyers in minutes"
         </div>
         </div>
          )}     
-=======
-            <br/>
-            
-        <div className='row' >
-        <div className={this.state.sidenavbarclass} >
-          <div className="row didi">
-        <div className="col-9">
-                <span className="fa fa-arrow-left"></span>
-              </div>
-              <div className="col-3">
-    <span style={{color:"blue"}}><a href="">Apply</a></span>
-              </div> 
-              </div>
-            
-          <Sidenavbar category={this.props.match.params.category} />
-        </div>
-        
-
-         
-          <div className={this.state.appclass} style={{backgroundColor: "#f5f5f0"}}>
-     
-          <div className="mainmodaldiv" ref={(a) => this.modaldiv =a} id="modaldiv" style={{display:`${this.props.display}`}}>
-         <div className="modaldiv"  style={{backgroundColor:"white",borderRadius:"5px"}}>
-           <p onClick={this.undisplaymodal}>x</p>
-             <div className="inner-modal"> 
-               <br/><br/>
-               <center>
-                 <h5 style={{padding:"10px"}}>{ReactHtmlParser(this.props.cartMessage)} </h5>
-               </center>
-               <center>                        
-               <div className="row" style={{padding:"3px"}}>  
-               <div className="col-6">  
-<Link to={`/checkout/1996826ysgy7xhau8hzbhxj,${localStorage.getItem("id")},fruget0829?user$login7sgxujaiiahzjk#172`}><button className="btn btn-success checkout" type="button">CheckOut</button> </Link>
-</div>
-<div className="col-6">
-<button className="btn btn-warning continueshopping" onClick={this.undisplaymodal}  type="submit">Continue Shopping</button>
-</div>         
-               </div> 
-             </center> 
-         </div> 
- 
-     </div>
- </div> 
-          <div className='row'>      
-           {this.props.products.map((product) =>          
-           <div className={`${this.state.viewrow}`} style={{backgroundColor:"white",margin:`${this.state.listmargin}`}}  key={product.productId} >        
-          <div className={`${this.state.viewcol}`}>
-            <center>
-            <img className="mainImg img-responsive" src={require (`./images/${product.mainimg || 'emptyimg.jpg'}`)} ></img>
-            </center>
-          </div>
-          <div className={`${this.state.viewcoldetails}`}> 
-<small style={{float:"left",textTransform:"capitalize",display:`${this.state.displayviewbrand}`}}>{product.brand}<br/></small>
-           <div className="detaildiv" style={{lineHeight:"16px"}}> 
-            <div  className="details"> 
-   
-     <small onClick={()=>this.openDetails(product.details)} style={{display:`${this.state.griddetails}`,fontSize:"12px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
-      
-
-     <small onClick={()=>this.openDetails(product.details)} style={{display:`${this.state.listdetails}`,fontSize:"12px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
-
-        </div> 
-        <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
-       <div><small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></div> 
-       {product.numOfRating > 0 ?
-       <div>
-         <div className="outer">     
-          <div className="inner" style={{width:`${product.percentrating}%`}}>   
-
-          </div> 
-          </div>  <small style={{fontSize:"12px"}}>({product.numOfRating || 0}) </small></div> : null }
-          <small className="text-muted" style={{letterSpacing:"-1px",textTransform:"capitalize",fontSize:"10px"}}><b style={{color:"orange"}}>{product.store}</b> @ <span className="fa fa-map-marker-alt"></span>{product.lga}</small>
-          <div><img src={require(`./images/fruget.jpg`)} className="imgSymbol" style={{float:"right"}}></img></div>
-         </div>
-        <br/>
-        <center   style={{display:`${window.innerWidth >= 600 ? this.state.viewaddtocartbutton : `none`}`,width:`${this.state.viewcartbtnwidth}`}}>
-        <br/>
-        <button style={{display:"none"}} type="button" ref={this.detailsRef} className="btn addtocartbtn" onClick={()=>this.addtocart(product.productId)}>
-         <span>ADD TO CART</span></button><br/>
-        </center><br/>
-        </div>
-           </div> 
-         )}
-         
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
              </div>
              <center>
              <Pagination size="sm">
@@ -701,7 +483,6 @@ loading = "Upload Items with ease and meet buyers in minutes"
              </Pagination>
              <br/><br/>
              </center>
-<<<<<<< HEAD
              <div style={{width:`${this.state.dropdownwidth}`,transition:"width 2s",overflow:"hidden",backgroundColor:"white",position:"fixed",bottom:"5%",left:"3%",zIndex:"3"}}>
             <div style={{padding:"15px",border:"0.8px solid lightgrey"}}>
            <p className="linker" onClick={() => this.sort("low-high")}><small>Price : Lowest - Highest</small></p>
@@ -732,50 +513,6 @@ loading = "Upload Items with ease and meet buyers in minutes"
                     Filter <small className="badge badge-danger"  style={{display:Object.keys(this.state.parsedUrl).length > 0 ? "inline-block": "none"}}>{Object.keys(this.state.parsedUrl).length}</small>
                   </small>
                   </center>
-=======
-             <div className="didi bg-dark filterdiv">
-               <div className="row">
-                 <div className="col-4">
-                 <center>
-            <div style={{display:"flex",flexWrap:"nowrap"}}>
-              <div>
-              <Dropdown>
-  <Dropdown.Toggle className="bg-dark" id="filterdiv-dropdown">
-   <small className="bg-dark"> {this.state.parsedQuery.sort || "popularity"}</small>
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item onClick={() => this.sort("low-high")}><small>Price : Lowest - Highest</small></Dropdown.Item>
-    <Dropdown.Item onClick={() => this.sort("high-low")}><small>Price : Highest - Lowest</small></Dropdown.Item>
-    <Dropdown.Item onClick={() => this.sort("popularity")}><small>Popularity</small></Dropdown.Item>
-    <Dropdown.Item onClick={() => this.sort("warranty")}><small>Warranty</small></Dropdown.Item>
-    <Dropdown.Item onClick={() => this.sort("cust-rating")}><small>Customer Rating</small></Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
-              </div>
-            </div>
-            </center>               
-                 </div>
-                 <div className="col-2 fiterdiv-col" style={{borderLeft:"1px solid lightgrey"}}>
-                   <center>    
-              <button type="button" className="btn btn-link filter-btn" onClick={this.grid} style={{color:`${this.state.parsedQuery.view === "grid"  ? "white" : "rgb(0, 119, 179)"}`}}>
-              <i class="fa fa-th" ></i>
-                  </button>
-                  </center>
-                 </div>
-                 <div className="col-2 fiterdiv-col"  style={{borderLeft:"1px solid lightgrey",borderRight:"1px solid lightgrey"}}>
-                   <center>
-              <button type="button" className="btn btn-link filter-btn" onClick={this.list} style={{color:`${this.state.parsedQuery.view === "list"  ? "white" : "rgb(0, 119, 179)"}`}}>
-              <i class="fa fa-grip-vertical" ></i>
-                  </button>
-                   </center>
-                 </div>
-                 <div className="col-4">               
-                  <button type="button" className="btn btn-link filter-btn" onClick={this.displayfilter} >
-                    Filter <small className="badge badge-danger" style={{display:Object.keys(this.state.parsedUrl).length > 0 ? "inline-block": "none"}}>{Object.keys(this.state.parsedUrl).length}</small>
-                  </button>
-               
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
                  </div>
                </div>
              </div>
@@ -788,7 +525,6 @@ loading = "Upload Items with ease and meet buyers in minutes"
 
         </div>
       </div>
-<<<<<<< HEAD
 
       :  this.props.loading ?
       new Array(8).fill("lalala").map((product) =>          
@@ -845,10 +581,6 @@ ADD TO CART
          </div>}
       </div>
      
-=======
-      </div>
-      </div> 
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
      );
                   }else{
                     return(
@@ -1074,7 +806,6 @@ ADD TO CART
        modalsidenavbardisplay: store.modalsidenavbardisplay,
        appDisplay:store.appDisplay,
        productDetails:store.productDetails,
-<<<<<<< HEAD
        currentDetailcategory:store.currentDetailcategory,
        currentProductIdcategory:store.currentProductIdcategory,
        min:store.min,
@@ -1082,9 +813,6 @@ ADD TO CART
        userdetails:store.userdetails,
        cart:store.shoppingcart,
        redirect:store.redirect
-=======
-       currentDetailcategory:store.currentDetailcategory
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
      }
  }
 
@@ -1098,7 +826,6 @@ ADD TO CART
     addtocart: (data) => dispatch(addtocart(data)),
     undisplaymodal:()=> dispatch(undisplaymodal()),
     getdetails:(data)=>dispatch(getdetails(data)),
-<<<<<<< HEAD
     setLoadingtoTrue:()=>dispatch(setLoadingtoTrue()),
     allsubcategories:(data)=>dispatch(allsubcategories(data)),
     getseller:(data)=>dispatch(getseller(data)),
@@ -1112,9 +839,6 @@ ADD TO CART
     unloading:()=>dispatch(unloading()),
     undisplaysavemodal:()=>dispatch(undisplaysavemodal()),
     setredirect:()=>dispatch(setredirect())
-=======
-    setLoadingtoTrue:()=>dispatch(setLoadingtoTrue())
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
    }
  }
  export default compose(withCookies, withRouter, connect(mapStateToProps, mapDispatchToProps))(App);

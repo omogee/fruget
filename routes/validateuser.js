@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const express = require ("express")
 const jwt = require("jsonwebtoken");
 var conn = require("./connection")
@@ -73,17 +72,6 @@ function verifyToken(req,res,next){
         res.json("you are not authorized to access this page").status(404);
     }
     console.log("token",bearer)
-=======
-const jwt = require("jsonwebtoken");
-
-function verifyToken(req,res,next){
-    const bearerHead = req.headers["authorization"]
-    const bearer = bearerHead && bearerHead.split(" ")[1];
-    if (bearer === null){
-        console.log("no bearer")
-        res.json("you are not authorized to access this page").status(404);
-    }
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     const secret = "a667bc75dfff555f1f66c58ec41d7011653220dca6f3d72de1f027deb2883b009e55134ea82bd509cf0bc4e381a4cef79f14e1828f839a8b364a682af4d0c07e";
     jwt.verify(bearer, secret, (err, isAuthUser)=>{
      if (err){
@@ -95,10 +83,6 @@ function verifyToken(req,res,next){
      next() 
     })
 } 
-<<<<<<< HEAD
 */
 module.exports = verifyToken; 
 
-=======
-module.exports = verifyToken; 
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac

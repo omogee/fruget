@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var express = require('express');
 var conn = require('./connection'); 
 const verifyToken = require('./validateuser');
@@ -113,32 +112,6 @@ var numPerPage =20;
       }
    
 
-=======
-var express = require('express')
-var conn = require('./connection')
-const router = express.Router()
-
- router.get('/items/search', (req,res) =>{ 
-    const search = req.query.search;
-    let min= req.query.min; 
-    let max = req.query.max;
-    console.log("min", min,max) 
-    
-    if(req.query.brand !== "undefined" || req.query.size !== "undefined" || req.query.colour !== "undefined"){
-        var brands = req.query.brand
-    var sizes = req.query.size
-    var colors = req.query.colour
-    brands= JSON.stringify(brands.split(",")).toString()
-    sizes= JSON.stringify(sizes.split(",")).toString()
-    colors= JSON.stringify(colors.split(",")).toString()
-    var brandno = brands.split(",").toString().length
-    var sizeno = sizes.split(",").toString().length
-    var colorno = colors.split(",").toString().length 
-    brands = brands.slice(1,brandno-1)
-    sizes = sizes.slice(1,sizeno-1)
-    colors = colors.slice(1,colorno-1)  
-    let sort = req.query.sort;
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     switch (sort){
         case "low-high":
             sorter = "sellingprice"
@@ -156,7 +129,6 @@ const router = express.Router()
             sorter = "warranty"
             setting= "ASC"
             break;
-<<<<<<< HEAD
             default:   
             setting="DESC"
             sorter= `FIELD(${q || "brand"},${orderbyvalues})`
@@ -180,25 +152,6 @@ var currentPage = parseInt(req.query.page)
 var numPerPage =20;
 */
     conn.query("SELECT *,CONCAT('₦', FORMAT(sellingprice, 0)) AS mainprice FROM product INNER JOIN product_rating using (productId) WHERE (brand IN ("+brands+") OR inches IN ("+inches+") OR litres IN ("+litres+")  OR color IN ("+colors+")) AND details LIKE '%"+search+"%' AND (sellingprice >= '"+min+"' AND sellingprice <= '"+max+"') ORDER BY "+sorter+" "+setting+" LIMIT ? OFFSET ?",[numPerPage, skips],(err,files)=>{
-=======
-            default:
-            sorter = `FIELD(brand, ${brands})`
-            setting="ASC"
-            break;
-    }
-    conn.query("SELECT COUNT(*) AS numOfRows FROM product WHERE (brand IN ("+brands+") OR size IN ("+sizes+") OR color IN ("+colors+")) AND details LIKE '%"+search+"%'  AND (sellingprice >= '"+min+"' AND sellingprice <= '"+max+"')", (err, nofile)=>{
-        if (err) throw err;
-        const numOfRows = nofile[0].numOfRows;
-        const numPages = Math.ceil(numOfRows/20)
-        const pagee = req.query.page || 1;  
-        const mainpage = parseInt(pagee)
-        console.log(mainpage)  
-    const skips = (mainpage-1)*20;
-    console.log("skips",skips)          
-    var currentPage = parseInt(req.query.page) 
-    var numPerPage =20;
-    conn.query("SELECT *,CONCAT('₦', FORMAT(sellingprice, 0)) AS mainprice FROM product INNER JOIN product_rating using (productId) WHERE (brand IN ("+brands+") OR size IN ("+sizes+") OR color IN ("+colors+")) AND details LIKE '%"+search+"%' AND (sellingprice >= '"+min+"' AND sellingprice <= '"+max+"') ORDER BY "+sorter+" "+setting+" LIMIT ? OFFSET ?",[numPerPage, skips],(err,files)=>{
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
         if (err) throw err;
         files.map(file => { 
     file["authur"] = "Eze... Ogbonnaya..."
@@ -222,7 +175,6 @@ var numPerPage =20;
                      }
 
         })
-<<<<<<< HEAD
         console.log("fetching",numOfRows)
         res.json({files,numPages,currentPage,numOfRows})
     })  
@@ -232,15 +184,6 @@ conn.query("SELECT COUNT(*) AS numOfRows FROM product WHERE details LIKE '%"+sea
     if (err) throw err;
     const numOfRows = nofile[0].numOfRows;
     const numPages = Math.ceil(numOfRows/20)
-=======
-        console.log("fetching")
-        res.json({files,numPages,currentPage,numOfRows})
-    })  
-})
-}else{
-conn.query("SELECT COUNT(*) AS numOfRows FROM product WHERE details LIKE '%"+search+"%' AND sellingprice >= '"+min+"' AND sellingprice <= '"+max+"' ", (err, nofile)=>{
-    if (err) throw err;
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     let sort = req.query.sort;
     switch (sort){
         case "low-high":
@@ -264,18 +207,7 @@ conn.query("SELECT COUNT(*) AS numOfRows FROM product WHERE details LIKE '%"+sea
             setting="ASC"
             break;
     }
-<<<<<<< HEAD
    
-=======
-    const numOfRows = nofile[0].numOfRows;
-    const numPages = Math.ceil(numOfRows/20)
-    const pagee = parseInt(req.query.page) || 1; 
-const mainpage = pagee - 1;
-const skips = mainpage*20;
-console.log(skips)
-var currentPage = parseInt(req.query.page)
-var numPerPage =20;
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 conn.query("SELECT *,CONCAT('₦', FORMAT(sellingprice, 0)) AS mainprice FROM product INNER JOIN product_rating using (productId) WHERE details LIKE '%"+search+"%' AND sellingprice >= '"+min+"' AND sellingprice <= '"+max+"' ORDER BY "+sorter+" "+setting+" LIMIT ? OFFSET ?",[numPerPage, skips],(err,files)=>{
     if (err) throw err;
     files.map(file => { 
@@ -304,21 +236,14 @@ conn.query("SELECT *,CONCAT('₦', FORMAT(sellingprice, 0)) AS mainprice FROM pr
           //         <Link to ={`/product/${product.details}`} style={{color:'black',display:`${this.state.listdetails}`}}>
      //<ModalSideNavbar/> put back in app.js
         }) 
-<<<<<<< HEAD
         console.log("fetching",numOfRows)
-=======
-    console.log("fetching only search")
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     res.json({files,numPages,currentPage,numOfRows})
 }) 
 })  
 }   
 })    
-<<<<<<< HEAD
  })
 
-=======
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 router.post('/search', (req,res)=>{
      const search = JSON.parse(req.body.data);
 conn.query("SELECT COUNT(*) AS numOfRows from product WHERE details LIKE '%"+search+"%'", (err, nofile)=>{
@@ -332,13 +257,8 @@ conn.query("SELECT COUNT(*) AS numOfRows from product WHERE details LIKE '%"+sea
     var numPerPage =20;
     console.log(numOfRows)
     conn.query("SELECT *,CONCAT('₦', FORMAT(sellingprice, 0)) AS mainprice FROM product INNER JOIN product_rating using (productId) WHERE details LIKE '%"+search+"%' LIMIT ? OFFSET ?",[numPerPage, skips],(err,files)=>{
-<<<<<<< HEAD
         if (err) throw err;  
         files.map(file => {    
-=======
-        if (err) throw err;
-        files.map(file => {   
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
             file["authurrr"] = "Eze..... Ogbonnaya"
             if(file.productrating){      
                 file["authur"] = "Eze Okereke"
@@ -362,7 +282,6 @@ conn.query("SELECT COUNT(*) AS numOfRows from product WHERE details LIKE '%"+sea
         })
         res.json({files,numPages,currentPage,numOfRows})
     }) 
-<<<<<<< HEAD
 })   
 })  
 
@@ -383,30 +302,6 @@ router.get('/items/searchbrand', (req,res)=>{
         res.send(files)
     })
 }
-=======
-})
-})
-router.get('/items/searchbrand', (req,res)=>{
-    const search = req.query.search 
-    var brands = req.query.brand 
-    var sizes = req.query.size
-    var colors = req.query.colour
-    console.log(colors)
-    var category = req.params.category
-    brands= JSON.stringify(brands.split(",")).toString()
-    sizes= JSON.stringify(sizes.split(",")).toString()
-    colors= JSON.stringify(colors.split(",")).toString()
-    var brandno = brands.split(",").toString().length
-    var sizeno = sizes.split(",").toString().length
-    var colorno = colors.split(",").toString().length
-    brands = brands.slice(1,brandno-1)
-    sizes = sizes.slice(1,sizeno-1)
-    colors = colors.slice(1,colorno-1)
-   conn.query("SELECT DISTINCT brand FROM product WHERE details LIKE '%"+search+"%' ",(err,files)=>{
-       if (err) throw err;
-       res.send(files)
-   })
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 })
 router.get('/items/searchcolour', (req,res)=>{
     const search = req.query.search;
@@ -417,18 +312,13 @@ router.get('/items/searchcolour', (req,res)=>{
     var category = req.params.category
     brands= JSON.stringify(brands.split(",")).toString()
     sizes= JSON.stringify(sizes.split(",")).toString()
-<<<<<<< HEAD
     colors= JSON.stringify(colors.split(",").reverse()).toString()
-=======
-    colors= JSON.stringify(colors.split(",")).toString()
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
     var brandno = brands.split(",").toString().length
     var sizeno = sizes.split(",").toString().length
     var colorno = colors.split(",").toString().length
     brands = brands.slice(1,brandno-1)
     sizes = sizes.slice(1,sizeno-1)
     colors = colors.slice(1,colorno-1)
-<<<<<<< HEAD
    conn.query("select  color, COUNT(color) as colory  from product where  details LIKE '%"+search+"%' group by color ORDER by FIELD(color,"+colors+") DESC",(err,files)=>{
     if (err) throw err;
        res.send(files)
@@ -458,20 +348,12 @@ else{
 }
 })
 
-=======
-   conn.query("SELECT DISTINCT color FROM product WHERE details LIKE '%"+search+"%' OR brand IN ("+brands+") OR size IN ("+sizes+") OR color IN ("+colors+")",(err,files)=>{
-       if (err) throw err;
-       res.send(files)
-   })
-})
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 router.get('/items/searchsize', (req,res)=>{
     const search = req.query.search;
     var brands = req.query.brand 
     var sizes = req.query.size
     var colors = req.query.colour
     console.log(colors)
-<<<<<<< HEAD
     let litres=req.query.selectedLitres
     let inches=req.query.selectedInches 
      inches= inches.split(",").reverse()
@@ -502,24 +384,6 @@ router.get('/items/searchsize', (req,res)=>{
 })
     })
    })   
-=======
-    var category = req.params.category
-    brands= JSON.stringify(brands.split(",")).toString()
-    sizes= JSON.stringify(sizes.split(",")).toString()
-    colors= JSON.stringify(colors.split(",")).toString()
-    var brandno = brands.split(",").toString().length
-    var sizeno = sizes.split(",").toString().length
-    var colorno = colors.split(",").toString().length
-    brands = brands.slice(1,brandno-1)
-    sizes = sizes.slice(1,sizeno-1)
-    colors = colors.slice(1,colorno-1)
-   conn.query("SELECT DISTINCT size FROM product WHERE details LIKE '%"+search+"%' OR brand IN ("+brands+") OR size IN ("+sizes+") OR color IN ("+colors+")",(err,files)=>{
-       if (err) throw err;
-       res.send(files)
-   })
-})
-
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
 
 router.post('/searchbrand', (req,res)=>{
     const search = JSON.parse(req.body.data); 
@@ -564,7 +428,6 @@ router.get('/category/searched/price', (req,res)=>{
        res.send(file)
    })
 })
-<<<<<<< HEAD
    
 router.post('/connection/chat/message',verifyToken, (req,res)=>{
     const data = JSON.parse(req.body.data)
@@ -679,8 +542,3 @@ module.exports = router;
 //select *,sum(case when t1.status='sent' or t1.status='delivered' then 1 else 0 end) as noOfunread from (select * from messages where (messages.sender=221 or messages.reciever=221) order by time desc ) as t1 inner join user on ((user.userId != 221) and (user.userId = t1.sender or  user.userId =t1.reciever)) group by connectionId
 //select *,sum(case when messages.status="sent" or messages.status="delivered" then 1 else 0 end) as noOfunread from messages inner join connection using (connectionId) inner join user on ((user.userId !=221) and (user.userId = connection.conn1 or  user.userId =connection.conn2)) where (messages.sender=221 or messages.reciever=221) group by connection.connectionId 
 //select *,sum(case when messages.status='sent' then 1 else 0 end) as noOfunread from messages inner join connection using (connectionId) inner join user on ((user.userId !=221) and (user.userId = connection.conn1 or  user.userId =connection.conn2)) where (messages.sender=221 or messages.reciever=221 or connection.connectionId=(select max(connection.connectionId) from connection)) group by connection.connectionId order by messages.time desc
-=======
-
-
- module.exports = router;
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
