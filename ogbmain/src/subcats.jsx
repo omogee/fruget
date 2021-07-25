@@ -103,7 +103,7 @@ class Subcats extends Component {
       }
     }
     render() { 
-      console.log("navigator.userAgent",navigator.userAgent)
+      alert("navigator.userAgent",navigator.userAgent)
          if(this.props.redirect){
           return <Redirect to={{ pathname: '/customer/login',state: { from: this.props.location }}} />
       }
