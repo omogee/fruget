@@ -135,7 +135,8 @@ class Subcats extends Component {
         loading = "Never pay for Items until recieved and confirmed"
       }
     if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
-        return (
+       
+      return (
            <div className="navbarcomponentlg contain" style={{backgroundColor: "#f5f5f0"}}>
       
    <div style={{display:`${this.props.appDisplay}`}}>          
@@ -388,6 +389,7 @@ class Subcats extends Component {
             </div>
   
           );}else{
+            alert("its a phone")
             return (
               <div>
                          
