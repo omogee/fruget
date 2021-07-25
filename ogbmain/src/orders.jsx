@@ -20,7 +20,7 @@ class Orders extends Component {
     }
     render() { 
        let uri = window.location.href;
-       if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+     if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
         return (         
                     <div className="navbarcomponentlg" style={{backgroundColor:"white"}}>
                        <div className="contain">

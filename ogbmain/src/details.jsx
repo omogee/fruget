@@ -283,7 +283,7 @@ const {cookies}=this.props
       if(this.props.redirect){
         return <Redirect to={{ pathname: '/customer/login',state: { from: this.props.location }}} />
     }
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
    return (   
        <div className="navbarcomponentlg" style={{backgroundColor:`${this.props.userdetails.background === "black" ? "black" : "#f5f5f0"}`}}>
          <div className="contain" >

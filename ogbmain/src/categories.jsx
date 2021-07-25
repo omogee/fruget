@@ -270,7 +270,7 @@ undismodal=()=>{
   })
 }
  cartMessage=()=>{
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
   return (
     <div className="mainmodaldiv" ref={(a) => this.modaldiv =a} id="modaldiv" style={{display:`${this.props.display}`}}>
     <div className="modaldiv"  style={{backgroundColor:"white",borderRadius:"5px"}}>
@@ -311,7 +311,7 @@ undismodal=()=>{
   )}
 }
 savedMessage=()=>{
-  if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
   return (
     <div className="savemodaldiv" ref={(a) => this.savemodaldiv =a} id="savemodaldiv" style={{display:`${this.props.displaysavemodal}`,zIndex:"1",width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.4)"}}>
     <div className="savediv"  style={{backgroundColor:"white"}}>
@@ -350,7 +350,7 @@ savedMessage=()=>{
 }
 newMessage=()=>{
   let d = new Date()
-  if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
  return(
   <div className="row bg-dark" style={{display:`${this.props.sender.fullName ? this.props.messagedisplay : "none"}`,opacity:`${this.props.cartOpacity}`,transition:"opacity 1s",width:"100%",zIndex:"2",padding:"0px",margin:"0px",position:"fixed",top:"0px"}}>
 <div className="col-12  alert" style={{width:"100%",padding:"2px"}}>

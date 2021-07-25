@@ -194,7 +194,7 @@ class myProfileTop extends Component {
 </div>
  <span onClick={this.displaysidenavbar} style={{color:`${this.props.userdetails.background==="white"?"black":"white"}`,position:"absolute",top:"15px",left:"20px"}} className="fa fa-bars "></span>
        */
-      if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
   return ( 
     <div style={{backgroundColor:`${this.props.userdetails.background}`}} className="navbarcomponentlg">
   <div className="contain" style={{height:"100%",overflow:"hidden"}}>

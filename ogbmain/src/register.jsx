@@ -190,7 +190,7 @@ axios.post("http://localhost:5000/customer/submit/register", formdata)
   }  
   }
     render() {
-      if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
         return ( 
         <div classNamme="navbarcomponentlg">
              <div className="contain register registerlg">

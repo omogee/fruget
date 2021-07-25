@@ -37,8 +37,7 @@ class Subcats extends Component {
     
     componentDidMount = () =>{
     //  console.log(csc.getCitiesOfCountry("NG"))
-    console.log("navigator.userAgent",navigator.userAgent)
-    alert(navigator.userAgent)
+  
    if (navigator.geolocation) {
      navigator.geolocation.getCurrentPosition(function(position){
       console.log("latitude",position.coords.latitude)
@@ -103,7 +102,7 @@ class Subcats extends Component {
       }
     }
     render() { 
-      alert(navigator.userAgent)
+     
          if(this.props.redirect){
           return <Redirect to={{ pathname: '/customer/login',state: { from: this.props.location }}} />
       }
@@ -135,7 +134,7 @@ class Subcats extends Component {
       else {
         loading = "Never pay for Items until recieved and confirmed"
       }
-      if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
         return (
            <div className="navbarcomponentlg contain" style={{backgroundColor: "#f5f5f0"}}>
       

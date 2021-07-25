@@ -473,7 +473,7 @@ this.state.messages[`${this.state.userId+"%"+follower.userId}`][this.state.messa
      console.log("otheruserId",otheruserId)
       //messages
       // <Message typingClients={this.state.typingClients} userId={this.props.match.params.id} productId={this.state.productId}/>  
-      if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
       return (       
  <div  className="messages" style={{overflow:"auto"}}>             
  <div style={{display:"flex",flexWrap:"nowrap"}}>      

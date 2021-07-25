@@ -117,7 +117,7 @@ class CheckOut extends Component {
        loading = "Never pay for Items until recieved and confirmed"
      }
         // <img src={`https://res.cloudinary.com/fruget-com/image/upload/${carts.generalcategory}/${carts.category}/${Object.values(JSON.parse(carts.img1))[0]}`} style={{width:"100%",padding:"5px"}} alt=""/>
-        if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
           return (         
             <div className="navbarcomponentlg" style={{backgroundColor:"white",minHeight:`${this.props.cart.length ===0 ? "100%" : ""}`}}>
                <div className="container">
