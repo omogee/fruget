@@ -37,6 +37,8 @@ class Subcats extends Component {
     
     componentDidMount = () =>{
     //  console.log(csc.getCitiesOfCountry("NG"))
+    console.log("navigator.userAgent",navigator.userAgent)
+    alert(navigator.userAgent)
    if (navigator.geolocation) {
      navigator.geolocation.getCurrentPosition(function(position){
       console.log("latitude",position.coords.latitude)
@@ -101,6 +103,7 @@ class Subcats extends Component {
       }
     }
     render() { 
+      console.log("navigator.userAgent",navigator.userAgent)
          if(this.props.redirect){
           return <Redirect to={{ pathname: '/customer/login',state: { from: this.props.location }}} />
       }
