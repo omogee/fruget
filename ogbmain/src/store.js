@@ -1482,22 +1482,6 @@ export const unshowmodalsidenavbar =()=>{
   }
 }
 
-export const undisplaymodal =()=>{
-  return (dispatch)=>{
-     dispatch({type: "undisplaymodal", payload:"none"})
-  }
-}
-
-export const showmodalsidenavbar =()=>{
-  return(dispatch)=>{
-    dispatch({type:"showmodalsidenavbar"})
-  }
-}
-export const unshowmodalsidenavbar =()=>{
-  return(dispatch)=>{
-    dispatch({type:"unshowmodalsidenavbar"})
-  }
-}
 export const getsidenav = data =>{
   return (dispatch)=>{
    dispatch({type: 'loading'})
