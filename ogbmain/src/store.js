@@ -1134,9 +1134,7 @@ export const getdetails =(data)=>{
     dispatch({type:"unloading"})
     dispatch({type: 'redirect'})
   }})   
- }
-}
-
+/*
   axios.get(`http://fruget.herokuapp.com/details/similiarbrand/${data}`)
   .then(res => dispatch({type:"similiarproductsbybrand",payload: res.data}))
   .catch(err => dispatch({type:"err",payload:err}))  
@@ -1144,7 +1142,7 @@ export const getdetails =(data)=>{
   axios.get(`http://fruget.herokuapp.com/details/product/${data}`)
   .then(res => dispatch({type:"detailsloaded",payloadOne:data,payload: res.data}))
   .catch(err => dispatch({type:"err",payload:err}))   
-
+*/
   
  }
 }
