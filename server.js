@@ -7,7 +7,6 @@ const  MySQLStore = require('express-mysql-session')(session);
 const cookieParser= require('cookie-parser')
 const {check,validationResult}= require('express-validator') 
 const Rcustomer = require("./routes/customer");
-<<<<<<< HEAD
 const Rsearch = require("./routes/search")       
 const Rproducts = require("./routes/products")  
 const Rdetails = require("./routes/details")  
@@ -232,70 +231,30 @@ socket.on('typing', (data) => {
                                
 app.use(bodyParser.urlencoded({extended: true}))  
 app.use(bodyParser.json())   
-=======
-const Rsearch = require("./routes/search")
-const Rproducts = require("./routes/products")
-const Rdetails = require("./routes/details")
-const path = require("path") 
- 
-const app = express();  
-const options = {
-    host: 'us-cdbr-east-02.cleardb.com',
-    user: 'b9b001ef539d5b',       
-    password: '8b36306e',  
-    database: 'heroku_ea5621dea112dad'
-   }  
-
-const conn = mysql.createPool(options)
-   
-    console.log('mysql connected successfully')
-   
-const sessionStore= new MySQLStore(options);
-app.use(cookieParser())
-app.use(session({  
-    key: 'session_cookie_name',  
-    secret: 'otosh', 
-    store: sessionStore,       
-    resave: false,       
-    saveUninitialized: false,    
-    checkExpirationInterval: 900000, 
-    // The maximum age of a valid session; milliseconds
-    expiration: 200000, 
-})); 
-app.use(bodyParser.urlencoded({extended: true}))  
-app.use(bodyParser.json())   
-
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
  app.use('/customer',Rcustomer);  
  app.use('/search',Rsearch);
  app.use('/products',Rproducts); 
  app.use("/details",Rdetails)  
-<<<<<<< HEAD
   
 app.get('/suggestions/suggestion',(req,res)=>{ 
     conn.query('SELECT brand,generalcategory,category,subcat1,subcat2,mainimg,details FROM product',(err,files)=>{
-=======
 app.get('/suggestions/suggestion',(req,res)=>{ 
     conn.query('SELECT brand,subcat1,subcat2,subcat3,mainimg,details FROM product',(err,files)=>{
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
         if (err) throw err;
         res.send(files)  
     }) 
 }) 
-<<<<<<< HEAD
 
-/*
-=======
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
+    })
+  })
 if(process.env.NODE_ENV === "production"){ 
 app.use(express.static("ogbmain/build"))
 
 app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname, 'ogbmain','build', 'index.html'));
 })
-<<<<<<< HEAD
 }  
-*/
+
 
 app.get('/',(req,res)=>{
   res.send(req.session)
@@ -305,10 +264,5 @@ app.get('/get',(req,res)=>{
 })
 const port = process.env.PORT || 5000;   
 server.listen(port, ()=>{   
-=======
-} 
-const port = process.env.PORT || 5000;   
-app.listen(port, ()=>{   
->>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac
-    console.log('connected on 5000 expected')
+  console.log('connected on 5000 expected')
 })
