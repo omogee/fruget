@@ -255,13 +255,14 @@ app.get('*',(req,res)=>{
 })
 }  
 
-
+/*
 app.get('/',(req,res)=>{
   res.send(req.session)
 })
 app.get('/get',(req,res)=>{
     res.send(req.session.token);
 })
+*/
 const port = process.env.PORT || 5000;   
 server.listen(port, ()=>{   
   console.log('connected on 5000 expected')
