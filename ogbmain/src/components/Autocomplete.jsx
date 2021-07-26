@@ -14,7 +14,7 @@ import axios from 'axios';
          }
     }
     componentDidMount = () =>{
-        axios.get('http://fruget.herokuapp.com/suggestion')
+        axios.get('https://fruget.herokuapp.com/suggestion')
         .then(res => {
             this.setState({suggestions: res.data})
         })
