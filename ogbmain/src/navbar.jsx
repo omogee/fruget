@@ -278,22 +278,21 @@ class Navbar extends Component {
        </div>
          );   
     }else{
+      //margi
       return(
        <div style={{width:"100%"}}>
         <div  className="" style={{width:"100%",position:"sticky", top:"0"}}>
         <div className="container" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,height:"100%",width:"100%"}}>
 <div className="row navdivsm" style={{paddingRight:"10px",display:`${this.props.appDisplay}`,backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,zIndex:"2",paddingTop:"6px"}}>
-             <div className="col-5">
+             <div className="col-4">
             <div style={{padding:"0px",float:"left"}}>
 <span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"18px",paddingRight:"2px"}}></span>
              <small style={{fontWeight:"bolder",fontSize:"20px",color:"rgb(0, 119, 179)"}}>FRU</small>
             <small style={{fontWeight:"bolder",fontSize:"20px",color:"red"}}>GET</small>
             </div>
              </div>
-             <div className="col-3">               
+             <div className="col-4">               
              </div>
-             <div className="col-1"></div>
-
              <div className="col-1">
              <div style={{float:"left"}}>
                   <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontWeight:"bold",fontSize:"18px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
@@ -316,14 +315,14 @@ class Navbar extends Component {
             
              <div className="col-2">
 <Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/${Math.floor(Math.random()*1000000000)}/lg/cart`}>
-          <div className="mb-5" style={{position:"relative"}}>
+          <small className="mb-5" style={{position:"relative"}}>
             <span className="fab fa-opencart ml-1" style={{fontSize:"22px"}}></span>
             <div style={{position:"absolute",top:"-5px",left:"25px"}}>
             <small className="badge ml-1" style={{backgroundColor:"brown",color:"white",padding:"3px",borderRadius:"50%"}}>
         {this.props.shoppingcarts?this.props.shoppingcarts.length: null}
     </small>
     </div>
-          </div>
+          </small>
           </Link>
         </div>
                   
@@ -337,7 +336,7 @@ class Navbar extends Component {
                <center>
                <form   action="/search" method="get" onSubmit={this.submit}>
                 <div className="input-group mb-3">
-               <input type="text" onFocus={this.offocus} className={`form-control ${this.state.navInputclass}`} name="search" style={{borderRight:"none"}} value={this.state.inputval}  onChange={this.change2} placeholder="Search products , brand etc" />
+               <input type="text" onFocus={this.offocus} className={`form-control navsearch ${this.state.navInputclass}`} name="search" style={{borderRight:"none"}} value={this.state.inputval}  onChange={this.change2} placeholder="Search products , brand etc" />
               <div className="input-group-append">
              <button className={`btn ${this.state.navInputbtnclass}`} type="submit"><span onClick={this.clearinput} className={`${this.state.inputbtnclass}`}></span></button>  
               </div>
