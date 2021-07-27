@@ -397,7 +397,11 @@ loading = "Upload Items with ease and meet buyers in minutes"
                      </div>
                  </div>
                  <Route path='/'  component={Navbar} /> 
-                 <div style={{position:"absolute",top:"25%",left:"25%",width:"50%"}}>       
+                 <div style={{position:"absolute",top:"25%",left:"25%",width:"50%"}}>
+                  
+                   <this.cartMessage />
+          <this.savedMessage/>
+          <this.newMessage/>      
          */
         const uri = window.location.href;
 

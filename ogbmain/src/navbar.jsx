@@ -290,7 +290,7 @@ class Navbar extends Component {
             <small style={{fontWeight:"bolder",fontSize:"20px",color:"red"}}>GET</small>
             </div>
              </div>
-             <div className="col-4">               
+             <div className="col-3">               
              </div>
              <div className="col-1"></div>
 
@@ -314,16 +314,16 @@ class Navbar extends Component {
       </div>
              </div>
             
-             <div className="col-1">
+             <div className="col-2">
 <Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/${Math.floor(Math.random()*1000000000)}/lg/cart`}>
-          <small className="mb-5">
+          <div className="mb-5" style={{position:"relative"}}>
             <span className="fab fa-opencart ml-1" style={{fontSize:"22px"}}></span>
             <div style={{position:"absolute",top:"-5px",left:"25px"}}>
             <small className="badge ml-1" style={{backgroundColor:"brown",color:"white",padding:"3px",borderRadius:"50%"}}>
         {this.props.shoppingcarts?this.props.shoppingcarts.length: null}
     </small>
     </div>
-          </small>
+          </div>
           </Link>
         </div>
                   
