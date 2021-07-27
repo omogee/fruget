@@ -299,8 +299,9 @@ undismodal=()=>{
 </div> 
   )}
   else{
+    //,opacity:`${this.props.cartOpacity}`
    return(
-    <div className="row bg-dark" style={{display:`${this.props.display}`,opacity:`${this.props.cartOpacity}`,transition:"opacity 1s",width:"100%",zIndex:"2",padding:"0px",margin:"0px",position:"fixed",top:"0px"}}>
+    <div className="row bg-dark" style={{display:`${this.props.display}`,transition:"opacity 1s",width:"100%",zIndex:"2",padding:"0px",margin:"0px",position:"fixed",top:"0px"}}>
  <div className="col-12  alert" style={{width:"100%",padding:"2px"}}>
    <small><span className="fa fa-times mr-1" onClick={this.undisplaymodal} style={{float:"right",color:"white"}}></span></small>
 <small style={{fontSize:"15px",color:"lightgrey"}}>{this.props.cartHeader}</small><br/>
@@ -336,8 +337,9 @@ if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|i
         </div>
     </div>
   )}else{
+    //,opacity:`${this.props.saveOpacity}`
     return(
-      <div className="row bg-dark" style={{display:`${this.props.displaysavemodal}`,opacity:`${this.props.saveOpacity}`,transition:"opacity 1s",width:"100%",zIndex:"2",padding:"0px",margin:"0px",position:"fixed",top:"0px"}}>
+      <div className="row bg-dark" style={{display:`${this.props.displaysavemodal}`,transition:"opacity 1s",width:"100%",zIndex:"2",padding:"0px",margin:"0px",position:"fixed",top:"0px"}}>
       <div className="col-12  alert" style={{width:"100%",padding:"2px"}}>
         <small><span className="fa fa-times mr-1" onClick={this.undisplaysavemodal} style={{float:"right",color:"white"}}></span></small>
      <small style={{fontSize:"15px",color:"lightgrey"}}>{this.props.saveHeader}</small><br/>
@@ -397,11 +399,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
                      </div>
                  </div>
                  <Route path='/'  component={Navbar} /> 
-                 <div style={{position:"absolute",top:"25%",left:"25%",width:"50%"}}>    
-                  <this.cartMessage />
-          <this.savedMessage/>
-          <this.newMessage/>
-             
+                 <div style={{position:"absolute",top:"25%",left:"25%",width:"50%"}}>       
          */
         const uri = window.location.href;
 
@@ -423,7 +421,10 @@ loading = "Upload Items with ease and meet buyers in minutes"
         : null}
         <Route path='/'  component={Navbar} />
          <Route path='/in_box/dk/:id/:random' exact component={Messages} />
-       
+        <this.cartMessage />
+          <this.savedMessage/>
+          <this.newMessage/>
+          
 <div style={{position:"fixed",opacity:"0.5",overflow:"hidden",height:"100%",width:"100%",display:`${this.props.categoryModaldisplay}`,backgroundColor:"lightgrey",width:"100%",zIndex:"3"}}>
  </div>
 
