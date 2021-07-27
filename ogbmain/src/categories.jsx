@@ -397,7 +397,11 @@ loading = "Upload Items with ease and meet buyers in minutes"
                      </div>
                  </div>
                  <Route path='/'  component={Navbar} /> 
-                 <div style={{position:"absolute",top:"25%",left:"25%",width:"50%"}}>       
+                 <div style={{position:"absolute",top:"25%",left:"25%",width:"50%"}}>    
+                  <this.cartMessage />
+          <this.savedMessage/>
+          <this.newMessage/>
+             
          */
         const uri = window.location.href;
 
@@ -419,10 +423,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
         : null}
         <Route path='/'  component={Navbar} />
          <Route path='/in_box/dk/:id/:random' exact component={Messages} />
-        <this.cartMessage />
-          <this.savedMessage/>
-          <this.newMessage/>
-          
+       
 <div style={{position:"fixed",opacity:"0.5",overflow:"hidden",height:"100%",width:"100%",display:`${this.props.categoryModaldisplay}`,backgroundColor:"lightgrey",width:"100%",zIndex:"3"}}>
  </div>
 
