@@ -290,9 +290,9 @@ class Navbar extends Component {
             <small style={{fontWeight:"bolder",fontSize:"20px",color:"red"}}>GET</small>
             </div>
              </div>
-             <div className="col-5">               
+             <div className="col-4">               
              </div>
-             <div className="col-xs-1 d-sm-none"></div>
+             <div className="col-1"></div>
 
              <div className="col-1">
              <div style={{float:"left"}}>
