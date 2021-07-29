@@ -201,7 +201,8 @@ console.log(sorter,numPages,numOfRows, max, min)
 //(sellingprice >= "'+min+'" AND sellingprice <= "'+max+'") AND 
 connection.query('SELECT *,  CONCAT("₦", FORMAT(sellingprice, 0)) AS mainprice FROM product WHERE (`generalcategory` = "'+cat+'" OR`category` = "'+cat+'" OR subcat1 = "'+cat+'" OR subcat2 = "'+cat+'" OR subcat3 = "'+cat+'") AND (sellingprice >= "'+min+'" AND sellingprice <= "'+max+'") AND productrating >= "'+mainratingvalue+'" ORDER BY '+sorter+' '+setting+' LIMIT ? OFFSET ?',[numPerPage,skip],(err,file)=>{ 
     if (err) throw err;      
-           connection.release();
+           connection.release(); 
+         
         res.json({file,numPages,currentPage,numOfRows,max,min,overallMax,overallMin})
    }) 
 })

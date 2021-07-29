@@ -35,7 +35,7 @@ axios.get(`https://fruget.herokuapp.com/details/product/display/userdetailsbyuse
 }) 
 .catch(err => console.log(err))
     } else {
-      //follow
+      //opacit
     }
  const initialState ={
   numOfRows:"",
@@ -649,7 +649,7 @@ if(action.type === 'undisplaycategorymodal'){
     }
     return state;
   }
-  //getvendorsidenav,allvendorsubcategories,checkvendorfilter
+  
 const store = createStore(reducer, applyMiddleware(thunk,createCookieMiddleware(Cookies)))
 export const setredirect=()=>{
   return({type:"redirect"})
