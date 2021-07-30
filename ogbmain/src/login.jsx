@@ -106,7 +106,7 @@ console.log("submitting")
         .catch(err => console.log(err))
     }
     render() { 
-    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+    if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
         return (         
             <div className="navbarcomponentlg" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black"? "white":"black"}`}}>
             <div className="contain">
@@ -159,13 +159,32 @@ console.log("submitting")
       return (         
         <div style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black"? "white":"black"}`}}>
         <div className="container">
-            <div className="row">
-            <div className="col-md-6 col-xs-12" style={{padding:"2vw",borderRight:"1px solid rgba(242,242,242,0.7)"}}>
-    <h5 style={{fontWeight:"bolder",color:"#004d99",textShadow: `0.5px 0.5px ${this.props.userdetails.background === "black"?"white":"grey"}`}}> Login</h5>
-
+        <div className="row">
+         <div className="d-none d-md-block col-md-4"></div>
+<div className="col-12 col-md-4" style={{padding:"0",margin:"0",background:`url(${require(`./images/fruget.jpg`)}) center no-repeat`,backgroundSize:"contain"}}>
+        
+               <div style={{boxShadow: "6px 2px 8px 4px lightgrey",width:"100%",padding:"0",margin:"0"}}>
+<div style={{padding:"20px"}}>
+<center>
+<h5 style={{fontWeight:"bolder",color:"#004d99",textShadow: `0.5px 0.5px ${this.props.userdetails.background === "black"?"white":"grey"}`}}> Login</h5>
+</center>
+</div>
+<div style={{backgroundColor:"rgb(236, 241, 243)",border:"1px solid lightgrey"}}>
+                 <center>
+                    <div style={{padding:"20px",fontWeight: "normal",fontFamily: "Open Sans, sans-serif",wordSpacing: "0.8px"}}>
+                     <small style={{fontSize:"15px",fontWeight:"bold"}}>
+                         New to Fruget?<br/>
+                         <a href="" style={{textDecoration:"underline"}}>Create an Email account</a>
+                     </small>
+                    </div>
+                 </center>
+             </div>
+    <center>
     <div className="alert" style={{backgroundColor:`${this.state.colorMessage}`,display:`${this.state.displayMessage}`}}>
       {this.state.Message}
     </div>
+    </center>
+    <div style={{padding:"20px"}}>
    <form method="post" action="/customers/login" onSubmit={this.submit}>
    <label for="email">Email/User</label>
 <input type="text" id="email"  name="email"  onChange={this.change} value={this.state.email} placeholder="" className="form-control" /><br/>
@@ -179,7 +198,7 @@ console.log("submitting")
                   </div>
                  </div><br/>
  <small style={{fontWeight:"bolder"}}><input type="checkbox"/>  <span>  Remember  me</span></small> <small style={{float:"right",color:"#004d99"}}>Forgot your password</small>
-<input type="text" name="_csrf"  value={this.state._csrf} />
+
 <br/><br/>
 <div style={{minWidth: "100%"}}>
  <button type="submit" className="" style={{width: "100%",backgroundColor:"#004d99",borderRadius: "5px",padding: "7px",color:"white"}}><span className="fa fa-sign-in" style={{float:"left",fontSize:"25px"}}></span><span style={{fontWeight:"bolder",color:"white"}}>LOGIN</span></button><br/><br/>
@@ -187,17 +206,9 @@ console.log("submitting")
       </div>
 </form>  
   </div>
-  <div className="d-none d-md-block col-md-6" style={{padding:"2vw"}}>
-<div style={{height:"15vw"}}>
-<h3 style={{fontWeight: "bolder",color:"#004d99",textShadow: `0.5px 0.5px ${this.props.userdetails.background === "black"?"white":"grey"}`}}>Register An Account</h3><br/>
-
-<p>
-Create an account with us in just few steps and gain access to numerous services and platform. You can register with either your email address or facebook account.
-</p>
-</div><br/><br/>
-<a href="/customer/register"><button type="button" style={{width: "100%",border:"1px solid grey",boxShadow:"1px 5px 5px 1px lightgrey",backgroundColor:"#white",borderRadius:"5px",padding: "7px",color:"#004d99"}}><span style={{fontWeight:"bolder"}}>CREATE AN EMAIL ACCOUNT</span></button></a><br/><br/>
-<button type="button" style={{width: "100%",backgroundColor:"#004d99",border:"1px solid grey",borderRadius:"5px",padding: "7px",boxShadow:"1px 5px 5px 1px lightgrey",color:"white"}}><span className="fab fa-facebook-square" style={{float:"left",fontsSize:"25px"}}></span><span style={{fontWeight:"bolder",color:"white"}}>REGISTER WITH FACEBOOK</span></button>
-</div>
+  </div>
+  </div>
+  <div className="d-none d-md-block col-md-4" ></div>
             </div>
         </div>
         </div>
