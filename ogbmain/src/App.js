@@ -250,7 +250,7 @@ hoverapp=()=>{
 }
 displayfilterdropdown=()=>{
   if(this.state.dropdownwidth === "0%"){
-  this.setState({dropdownwidth:"40%",dropdownclass:"fa fa-chevron-down"})
+  this.setState({dropdownwidth:"50%",dropdownclass:"fa fa-chevron-down"})
   }else{
     this.setState({dropdownwidth:"0%",dropdownclass:"fa fa-chevron-up"})
   }
@@ -410,21 +410,26 @@ loading = "Upload Items with ease and meet buyers in minutes"
             <small style={{float:"right"}}>{" " +this.props.numOfRows} Products Found </small>
  
           </div>   
-          <hr/>
+
 
            {this.props.products.map((product) =>          
-<div className="col-12  rowclasslist" onMouseOver={this.hoverapp}  style={{backgroundColor:`${this.props.userdetails.background || "white"}`,display:`${this.state.view === "list" ? "block" : "none"}`,margin:"2px 0px",padding:"3px"}}  key={product.productId} >               
-        <div className="row"  style={{margin:"0px"}}>
-          <div className="col-5 col-md-4 col-lg-3"  style={{margin:"0px"}}>
+<div className="col-12  " onMouseOver={this.hoverapp}  style={{backgroundColor:`${this.props.userdetails.background || "white"}`,display:`${this.state.view === "list" ? "block" : "none"}`,margin:"2px 0px",padding:"3px"}}  key={product.productId} >               
+        <div className="row rowclasslist"  style={{margin:"0px"}}>
+          <div className="col-5 col-md-4 col-lg-3"  style={{margin:"0px",padding:"5px"}}>
  <span onClick={()=>this.save({productId:product.productId,details:product.details})} className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(product.productId)) ? "fa fa-heart" : "far fa-heart"} style={{position:"absolute",fontSize:"20px",top:"10px",left:"10px", color:"orange"}}></span>
             <center>
-            <img className="mainImg img-responsive" data-src={`https://res.cloudinary.com/fruget-com/image/upload/${product.generalcategory}/${product.category}/${product.mainimg || 'emptyimg.jpg'}`} ></img>
-            
+            <img className="mainImg img-responsive" data-src={`https://res.cloudinary.com/fruget-com/image/upload/${product.generalcategory}/${product.category}/${product.mainimg || 'emptyimg.jpg'}`} ></img>           
             </center>
+            <div className="row" style={{width:"100%"}}>
+<div className="col-12 d-md-none">
+<small style={{float:"left"}}>{product.brand}</small>
+<small style={{float:"right",color:`${product.viewrating > 0 ? "orange" : "grey"}`}}><span className="fa fa-eye" ></span> {product.viewrating}</small>
+</div>
+  </div>
           </div>
           <div className="col-7" style={{margin:"0px"}}> 
           <div className="row" style={{width:"100%"}}>
-<div className="col-12">
+<div className="d-none d-md-block col-md-12">
 <small style={{float:"left"}}>{product.brand}</small>
 <small style={{float:"right",color:`${product.viewrating > 0 ? "orange" : "grey"}`}}><span className="fa fa-eye" ></span> {product.viewrating}</small>
 </div>
@@ -446,7 +451,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
           <small style={{fontStyle:"italic",float:"right",fontSize:"11px"}}>{formater(product.time)}</small> 
          </div>       
         <center >
-        <button  type="button" style={{papdding:"0px",margin:"0px"}}  className="btn smaddtocartbtn" onClick={()=>this.addtocart({productId:product.productId,color:product.color})}>
+        <button  type="button" style={{padding:"0px",marginTop:"3px"}}  className="btn smaddtocartbtn" onClick={()=>this.addtocart({productId:product.productId,color:product.color})}>
          <small>
          ADD TO CART
           {this.props.cart.map(carts=>
@@ -492,8 +497,8 @@ loading = "Upload Items with ease and meet buyers in minutes"
              <p  className="linker" onClick={() => this.sort("most-searched")}><small>Most Searched</small></p>
              <p  className="linker" onClick={() => this.sort("most-viewed")}><small>Most Viewed</small></p></div>             
             </div>
-             <div className="filterdiv bg-dark" style={{height:"25px"}}>
-               <div className="row">
+             <div className="filterdiv bg-dark" style={{height:"40px"}}>
+               <div className="row" style={{padding:"10px"}}>
                  <div className="col-4">
                  <center>
                        <small>
