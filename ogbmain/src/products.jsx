@@ -104,7 +104,7 @@ if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
      );
 }else{
     return ( 
-        <div className={"container"}>
+        <div className={"container"} style={{position:`${this.props.mainbgcolor==="white" ? "" : "fixed"}`}}>
             <div className="row" >
                 <div className={!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? "col-5 col-md-4 col-lg-3" :"d-none"} style={{padding:"5px"}}>
                    <Sidenavbar category={this.props.match.params.category} />
@@ -132,7 +132,8 @@ const mapStateToProps =(store)=>{
      following:store.following,
      sellerdetails:store.sellerdetails,
      userdetails:store.userdetails,
-     redirect:store.redirect
+     redirect:store.redirect,
+     mainbgcolor:store.mainbgcolor
 
      }
   }

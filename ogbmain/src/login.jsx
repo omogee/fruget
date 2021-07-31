@@ -106,7 +106,7 @@ console.log("submitting")
         .catch(err => console.log(err))
     }
     render() { 
-    if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
         return (         
             <div className="navbarcomponentlg" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black"? "white":"black"}`}}>
             <div className="contain">
@@ -158,7 +158,7 @@ console.log("submitting")
     }else{
       return (         
         <div style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black"? "white":"black"}`}}>
-        <div className="container">
+        <div className="container" style={{position:`${this.props.mainbgcolor==="white" ? "" : "fixed"}`}}>
         <div className="row" style={{marginTop:"30px"}}>
          <div className="d-none d-md-block col-md-4"></div>
 <div className="col-12 col-md-4 loginbox" style={{padding:"0",margin:"0"}}>
@@ -221,7 +221,8 @@ console.log("submitting")
  
 const mapStateToProps =(store)=>{
     return{           
-       userdetails:store.userdetails
+       userdetails:store.userdetails,
+       mainbgcolor:store.mainbgcolor
   }
 }
   const mapDispatchToProps =(dispatch)=>{

@@ -295,9 +295,10 @@ class Navbar extends Component {
              </div>
              <div className="col-1">
              <div style={{float:"left"}}>
+                  <Link to={`/customer/login`}>
                   <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontWeight:"bold",fontSize:"18px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
                     <span className="far fa-user nav-margin"></span>
-                </small> 
+                </small> </Link>
                   </div>
                   <div style={{position:"relative"}} onMouseEnter={()=>this.setState({accountheight:"150px",categoryheight:"0%"})}>
 <div style={{position:"absolute",zIndex:"3",top:"5px",width:"300%",height:`${this.state.accountheight}`,overflow:"hidden",transition:"height 2s",backgroundColor:`${this.props.userdetails.background || "white"}`}}>
@@ -316,8 +317,8 @@ class Navbar extends Component {
              <div className="col-2">
 <Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/${Math.floor(Math.random()*1000000000)}/lg/cart`}>
           <small className="mb-5" style={{position:"relative"}}>
-            <span className="fab fa-opencart ml-1" style={{fontSize:"22px"}}></span>
-            <div style={{position:"absolute",top:"-5px",left:"25px"}}>
+            <span className="fab fa-opencart ml-1" style={{fontSize:"18px"}}></span>
+            <div style={{position:"absolute",top:"-5px",left:"20px"}}>
             <small className="badge ml-1" style={{backgroundColor:"brown",color:"white",padding:"3px",borderRadius:"50%"}}>
         {this.props.shoppingcarts?this.props.shoppingcarts.length: null}
     </small>
