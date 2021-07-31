@@ -508,7 +508,7 @@ class Subcats extends Component {
             
                 <div className="row mb-1" style={{backgroundColor:"white"}}>
                 <div style={{width:"100%",padding:"5px"}}>
-    <small style={{fontSize:"14px",textTransform:"capitalize"}}>Cooling Appliances </small><small style={{float:"right",fontWeight:"bold"}}><a href="" style={{color:"black",marginRight:"30px"}}><span className="fa fa-chevron-right"></span> </a></small>
+    <small style={{fontSize:"14px",textTransform:"capitalize"}}>Cooling Appliances <span className="fa fa-sign-out"></span> </small><small style={{float:"right",fontWeight:"bold"}}><a href="" style={{color:"black",marginRight:"30px"}}><span className="fa fa-chevron-right"></span> </a></small>
                     </div>
                   <div className="noscrolling">
                       {this.state.sectionOne.map(section1 => 

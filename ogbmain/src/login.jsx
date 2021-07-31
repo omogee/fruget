@@ -106,7 +106,7 @@ console.log("submitting")
         .catch(err => console.log(err))
     }
     render() { 
-    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+    if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
         return (         
             <div className="navbarcomponentlg" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black"? "white":"black"}`}}>
             <div className="contain">
@@ -159,9 +159,9 @@ console.log("submitting")
       return (         
         <div style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black"? "white":"black"}`}}>
         <div className="container">
-        <div className="row">
+        <div className="row" style={{marginTop:"30px"}}>
          <div className="d-none d-md-block col-md-4"></div>
-<div className="col-12 col-md-4" style={{padding:"0",margin:"0",background:`url(${require(`./images/fruget.jpg`)}) center no-repeat`,backgroundSize:"contain"}}>
+<div className="col-12 col-md-4 loginbox" style={{padding:"0",margin:"0"}}>
         
                <div style={{boxShadow: "6px 2px 8px 4px lightgrey",width:"100%",padding:"0",margin:"0"}}>
 <div style={{padding:"20px"}}>
@@ -173,8 +173,9 @@ console.log("submitting")
                  <center>
                     <div style={{padding:"20px",fontWeight: "normal",fontFamily: "Open Sans, sans-serif",wordSpacing: "0.8px"}}>
                      <small style={{fontSize:"15px",fontWeight:"bold"}}>
-                         New to Fruget?<br/>
-                         <a href="" style={{textDecoration:"underline"}}>Create an Email account</a>
+                         New to    <small style={{fontWeight:"bolder",fontSize:"15px",color:"rgb(0, 119, 179)"}}>FRU</small>
+            <small style={{fontWeight:"bolder",fontSize:"15px",color:"red"}}>GET</small>?<br/>
+                         <a href="/customer/seller/register" style={{textDecoration:"underline"}}>Create an Email account</a>
                      </small>
                     </div>
                  </center>
@@ -186,21 +187,21 @@ console.log("submitting")
     </center>
     <div style={{padding:"20px"}}>
    <form method="post" action="/customers/login" onSubmit={this.submit}>
-   <label for="email">Email/User</label>
+   <label style={{fontWeight:"bold"}} for="email">Email/User</label>
 <input type="text" id="email"  name="email"  onChange={this.change} value={this.state.email} placeholder="" className="form-control" /><br/>
 
-<label for="password">Password</label><br/>
+<label style={{fontWeight:"bold"}} for="password">Password</label><br/>
 
 <div class="input-group mb-3">
                   <input type={this.state.passwordType} title="<b>Must contain text and numbers</b>" name="password" id="password" placeholder="" onChange={this.change} pattern="[a-zA-Z0-9/]+" value={this.state.password} style={{borderRight:"0px"}} className="form-control" ></input>
-                <div class="input-group-append" style={{border:"1px solid lightgrey",borderTopRightRadius:"5px",borderBottomRightRadius:"5px",borderLeft:"0px"}} className="text-primary">
+                <div class="input-group-append" style={{border:"1px solid lightgrey",backgroundColor:"white",borderTopRightRadius:"5px",borderBottomRightRadius:"5px",borderLeft:"0px"}} className="text-primary">
                       <span style={{padding:"10px 10px 0px 10px",fontSize:"16px"}} onClick={()=>this.state.passwordType === "password" ? this.setState({passwordType:"text",passwordClass:"fa-eye"}) : this.setState({passwordClass:"fa-eye-slash",passwordType:"password"})} className={`fa ${this.state.passwordClass} `}></span>
                   </div>
                  </div><br/>
  <small style={{fontWeight:"bolder"}}><input type="checkbox"/>  <span>  Remember  me</span></small> <small style={{float:"right",color:"#004d99"}}>Forgot your password</small>
 
 <br/><br/>
-<div style={{minWidth: "100%"}}>
+<div style={{minWidth: "100%",marginBottom:"20px"}}>
  <button type="submit" className="" style={{width: "100%",backgroundColor:"#004d99",borderRadius: "5px",padding: "7px",color:"white"}}><span className="fa fa-sign-in" style={{float:"left",fontSize:"25px"}}></span><span style={{fontWeight:"bolder",color:"white"}}>LOGIN</span></button><br/><br/>
 <button type="button" className="" style={{width: "100%",backgroundColor:"white",borderRadius: "5px",padding: "7px",boxShadow:"1px 1px 1px 1px lightgrey",color:"#004d99"}}><span className="fab fa-facebook" style={{float:"left",fontSize:"20px"}}></span>  <span style={{fontWeight:"bolder"}}>LOGIN WITH FACEBOOK</span></button>
       </div>

@@ -398,7 +398,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
                  </div>
                  <Route path='/'  component={Navbar} /> 
                  <div style={{position:"absolute",top:"25%",left:"25%",width:"50%"}}>
-                  
+
                    <this.cartMessage />
           <this.savedMessage/>
           <this.newMessage/>      
@@ -421,6 +421,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
          </div>
           </div>
         : null}
+        
         <Route path='/'  component={Navbar} />
          <Route path='/in_box/dk/:id/:random' exact component={Messages} />
       {
@@ -452,6 +453,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
  </div>
 
 {
+  //modalsidenavbar
   //CLEAR CART-MODAL
 }
             <div className="mainmodaldiv" ref={(a) => this.clearcartmodaldiv =a} id="modaldiv" style={{display:`${this.props.clearcartdisplay}`,zIndex:"1",width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.4)"}}>
@@ -603,6 +605,7 @@ Proceed</button>
    </div>         
    <div style={{marginLeft:`${this.props.modalsidenavbarwidth}`,transition:"margin 2s",WebkitTransform:"margin 2s",mozTransition:"margin 2s"}}> 
         {//<Route path="/" component={Navbar} />
+        //marginLeft:`${this.props.modalsidenavbarwidth}`,
          }
     <Route path='/se/se'  component={Settings} />  
      

@@ -284,7 +284,7 @@ class Navbar extends Component {
         <div  className="" style={{width:"100%",position:"sticky", top:"0"}}>
         <div className="container" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,height:"100%",width:"100%"}}>
 <div className="row navdivsm" style={{paddingRight:"10px",display:`${this.props.appDisplay}`,backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,zIndex:"2",paddingTop:"6px"}}>
-             <div className="col-5">
+             <div className="col-6">
             <div style={{padding:"0px",float:"left"}}>
 <span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"18px",paddingRight:"2px"}}></span>
              <small style={{fontWeight:"bolder",fontSize:"20px",color:"rgb(0, 119, 179)"}}>FRU</small>

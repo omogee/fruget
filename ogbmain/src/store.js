@@ -270,7 +270,7 @@ if(action.type === 'undisplaycategorymodal'){
         state = {...state,mainbgcolor: "white",currentCategory:action.payload, products: action.payloadOne,currentPage:action.payloadThree,totalPages:action.payloadTwo,numOfRows:action.payloadFour,max:action.payloadmax,min:action.payloadmin,overallMax:action.payloadoverallMax,overallMin:action.payloadoverallMin}
         return state;
       }
-      //getfilteredSuggestions
+      //showmodalsidenavbar
       else if(action.type === 'vendorproductsloaded'){
         state = {...state,mainbgcolor: "white",loading:false,currentCategory:action.payload, products: action.payloadOne,currentPage:action.payloadThree,totalPages:action.payloadTwo,numOfRows:action.payloadFour,max:action.payloadmax,min:action.payloadmin,overallMax:action.payloadoverallMax,overallMin:action.payloadoverallMin}
         console.log("no need for filter for vendor products", action.payloadFour)
@@ -445,7 +445,7 @@ if(action.type === 'undisplaycategorymodal'){
         return state;
       }  
       else if(action.type === 'showmodalsidenavbar'){
-        state = {...state, status:'showmodalsidenavbar', mainbgcolor: "rgba(242,242,242,0.7)",modalsidenavbarwidth:"50%",modalsidenavbarwidthmargin:"0%",navbariconopacity:"0",modaliconopacity:"1",modalsidenavbardisplay:"block"}
+        state = {...state, status:'showmodalsidenavbar', mainbgcolor: "rgba(242,242,242,0.7)",modalsidenavbarwidth:"60%",modalsidenavbarwidthmargin:"0%",navbariconopacity:"0",modaliconopacity:"1",modalsidenavbardisplay:"block"}
         return state;  
       }
       else if(action.type === 'unshowmodalsidenavbar'){

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {connect} from "react-redux" 
 import {increasesettingsheight,decreasesettingsheight,decreaseshoppingcart,showcolormodal,displaycategorymodal,viewuserdetailsbyuserId,viewuserdetails,getProducts,getfilteredSuggestions,unshowmodalsidenavbar,allcategories,allsubcategories} from "./store"
 import Cookies from 'js-cookie';
-import {Link,Redirect} from "react-router-dom"
+import {Link,Redirect,withRouter} from "react-router-dom"
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 class ProfileSideNavbar extends Component {
     constructor(props) {
@@ -37,7 +38,6 @@ class ProfileSideNavbar extends Component {
             let uri = window.location.href
             uri = uri.split("/")[6]
             this.setState({currentCategory:uri})
-    
     /*    const userId = this.props.match.params.userId.split("%2C")[1]
         console.log("userId", userId)
         if(this.props.sellerdetails.length === 0){
@@ -65,6 +65,8 @@ class ProfileSideNavbar extends Component {
             page:1
           }
           this.props.getProducts(data)
+          this.props.unshowmodalsidenavbar()
+          setTimeout(()=> this.props.history.push(`/${data.category}`), 2000)
         }
     undisplaysidenavbar=()=>{
         this.props.unshowmodalsidenavbar()
@@ -102,7 +104,7 @@ decreasesettingsheight =()=>{
             <div className="container">
  <div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background==="white"?"black": this.props.userdetails.background==="white"?"black":"black"}`}}>
  <div className="col-sm-12 d-md-none" style={{position:"sticky",top:"0px",padding:"0px", zIndex:"10"}}>  
- <small onClick={this.undisplaysidenavbar} style={{display:`${this.props.modalsidenavbardisplay}`,float:"right",fontSize:"20px",cursor:"pointer"}}>x</small>
+ <small onClick={this.undisplaysidenavbar} style={{display:`${this.props.modalsidenavbardisplay}`,float:"right",fontSize:"20px",fontWeight:"bolder",marginRight:"10px",cursor:"pointer"}}>x</small>
  {this.props.userdetails.email ?         
  <div style={{backgroundColor:"rgb(10, 20, 41)",padding:"10px",color:"white",zIndex:"10"}}>
  <small onClick={this.undisplaysidenavbar} style={{float:"right",fontSize:"20px",cursor:"pointer"}}>x</small>
@@ -118,25 +120,26 @@ decreasesettingsheight =()=>{
 <div className="row" style={{padding:"0px 10px"}}>
 <div className="col-6">
 <button className="btn" onClick={()=> window.location.assign("/customer/login")} style={{backgroundColor:"orange",textDecoration:"none",borderRadius:"3px",width: "100%",color:"white",padding:"2px"}}>
-  <small> <span className="fa fa-sign-in "></span>sign in </small></button>
+  <small> <span className="fa fa-sign-in-alt "></span> Sign in </small></button>
 </div>
 
  <div className="col-6">
 <button className="btn btn-link" onClick={()=> window.location.assign("/customer/register")}  style={{backgroundColor:"orange",textDecoration:"none",borderRadius:"3px",width:"100%",padding:"2px",color:"white"}}> 
-<small><span className="fa fa-heart"></span> Register</small></button>
+<small><span className="fa fa-pencil-square"></span> Register</small></button>
 </div>
 </div>
 <br/>
 
- <p onClick={(e)=>this.opencategory(e)} style={{backgroundColor:`${this.props.userdetails.background==="black"?"white":"black"}`,color:`${this.props.userdetails.background === "black" ? "black" : "white"}`,padding:"10px",display:`${this.state.subcategorydisplay}`}}>
+ <p onClick={(e)=>this.opencategory(e)} style={{cursor:"pointer",backgroundColor:`${this.props.userdetails.background==="black"?"white":"black"}`,color:`${this.props.userdetails.background === "black" ? "black" : "white"}`,padding:"10px",display:`${this.state.subcategorydisplay}`}}>
   {this.state.currentcategory}
    <i style={{float:"right"}} className="fas fa-chevron-down ml-1"></i>
  </p>
+ <small className="text-danger" style={{fontSize:"12px",fontStyle:"italic"}}>Note: double click to open category</small>
  <div style={{paddingLeft:"35px",display:`${this.state.subcategorydisplay || "white"}`}} className="row">
  <div className="col-12" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"10px",display:`${this.state.subcategorydisplay}`}}>
     {this.props.allsubcategory.length > 0 ? this.props.allsubcategory.map((categories) =>
         <div key={categories.category } style={{cursor:"pointer",borderBottom:"1px solid lightgrey"}}>
-             <p onClick={(e)=>this.subcat(e)} ><small style={{textTransform:"capitalize"}} >{categories.category}</small>
+             <p onClick={(e)=>this.subcat(e)} onDoubleClick={(e)=>this.opencategory(e)} ><small style={{textTransform:"capitalize"}} >{categories.category}</small>
              </p>
         </div>
         ) : null}
@@ -147,7 +150,7 @@ decreasesettingsheight =()=>{
    <div className="col-12" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : "black"}`}}>
     {this.props.allcategory.length > 0 ? this.props.allcategory.map((categories) =>
         <div key={categories.generalcategory } style={{cursor:"pointer",borderBottom:"1px solid lightgrey"}}>
-             <p onClick={(e)=>this.subcat(e)} ><small style={{fontWeight:"bold",textTransform:"capitalize"}} >{categories.generalcategory}</small>
+             <p onClick={(e)=>this.subcat(e)} onDoubleClick={(e)=>this.opencategory(e)}><small style={{fontWeight:"bold",textTransform:"capitalize"}} >{categories.generalcategory}</small>
              </p>
         </div>
         ) : null}
@@ -286,7 +289,7 @@ decreasesettingsheight =()=>{
 </div> 
 
 <div onClick={this.logout} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"10px"}}>
-           <small  style={{fontSize:"14px"}}><span className="fa fa-sign-out"></span> Log Out
+           <small  style={{fontSize:"15px"}}> Log Out
            </small>
 </div>                    
      </div>
@@ -329,4 +332,4 @@ const mapStateToProps=(store)=>{
              decreasesettingsheight:()=>dispatch(decreasesettingsheight())
          }
      }
-export default connect(mapStateToProps,mapDispatchToProps)(ProfileSideNavbar);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(ProfileSideNavbar));

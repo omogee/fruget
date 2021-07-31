@@ -1,4 +1,9 @@
 
+.loginbox{
+    background: url("./images/fruget.jpg") center no-repeat;
+    background-size:contain;
+    background-blend-mode: luminosity;
+}
 input:focus,
 .form-control:focus,
 textarea:focus,
