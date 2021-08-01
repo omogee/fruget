@@ -180,7 +180,7 @@ displayfilter=()=>{
 //  this.setState({displayfilter:"block"})
 let currentUrlParams = new URLSearchParams(window.location.search);
 currentUrlParams.set('q', this.props.category);
-window.location.assign("/select/filter" +"?"+ currentUrlParams.toString());
+this.props.history.push("/select/filter" +"?"+ currentUrlParams.toString());
 // this.setState({sidenavbarclass: "d-block col-sm-12 d-none", appclass:"d-none"})
 }
 sort =(value) =>{
@@ -376,8 +376,15 @@ loading = "Upload Items with ease and meet buyers in minutes"
      <small className="detailtext" onClick={()=>this.openDetails(product.productId)} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
         </div> 
         <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
-       <div><small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></div> 
+        {product.discount ?
        <div>
+         <small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px",whiteSpace:"pre"}}> {product.mainprice}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b>
+         </div> 
+         : 
+         <br/>
+         }
+       <div>
+          
          <div className="outer">     
           <div className="inner" style={{width:`${product.productrating*20}%`}}>    
           </div> 
@@ -514,7 +521,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
                  </div>
                  <div className="col-4">  
                       <center>
-                        <small style={{fontWeight:"bolder"}} onClick={this.displayfilter}>
+                        <small style={{fontWeight:"bolder",cursor:"pointer"}} onClick={this.displayfilter}>
                     Filter <small className="badge badge-danger"  style={{display:Object.keys(this.state.parsedUrl).length > 0 ? "inline-block": "none"}}>{Object.keys(this.state.parsedUrl).length}</small>
                   </small>
                   </center>

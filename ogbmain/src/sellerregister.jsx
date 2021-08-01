@@ -259,34 +259,34 @@ filechange=(e)=>{
                <small style={{fontSize:"10px",fontStyle:"italic"}} className="text-danger">Images must be jpeg/png/gif</small>
                </div>  
                 </div>
-                <div className="col-sm-12 col-md-6"> 
+                <div className="col-6"> 
                 <div style={{padding:"10px"}}>
 <input type="checkbox"  checked={this.state.showbvn} onChange={this.checkstate}/> Verify me using my BVN<br/>
 <small className="text-muted" style={{fontSize:"10px"}}>Note: sellers verified using their bvn would be given a tag buyers can see and this would increase customer trust </small>
                 </div>                   
                 </div>
-                <div className="col-sm-12 col-md-6"> 
+                <div className="col-6"> 
                 <div style={{padding:"10px"}} style={{display:`${this.state.displaybvn}`}}>
                   <label for="bvn" >BVN <span style={{color:"red",fontSize:"20px"}}>*</span></label>
 <input type="text" id="bvn" name="bvn"  value={this.state.bvn} onChange={this.change} className="form-control" style={{width:"100%"}}/>
 <small><small style={{color:"red"}}>{this.state.bvnerr}</small></small> 
                 </div>                  
                 </div>
-                <div className="col-sm-12 col-md-6"> 
+                <div className="col-6"> 
                 <div style={{padding:"10px"}}>
                   <label for="fname" >First Name <span style={{color:"red",fontSize:"20px"}}>*</span></label>
 <input type="text" id="fname" name="firstname" required  pattern="[A-Za-z]+" value={this.state.firstname} onChange={this.change} className="form-control " style={{width:"100%"}}/>
     <small><small style={{color:"red"}}>{this.state.firstnameerr}</small></small>
                 </div>
                 </div>
-                <div className="col-sm-12 col-md-6"> 
+                <div className="col-6"> 
                 <div style={{padding:"10px"}}>
                   <label for="lname" >Last Name <span style={{color:"red",fontSize:"20px"}}>*</span></label>
 <input type="text" id="lname" name="lastname" required  pattern="[A-Za-z]+" value={this.state.lastname} onChange={this.change} className="form-control " style={{width:"100%"}}/>
 <small><small style={{color:"red"}}>{this.state.lastnameerr}</small></small>
                 </div>                   
                 </div>
-                <div className="col-sm-12 col-md-6">
+                <div className="col-6">
                 <div style={{padding:"10px"}}>
                   <label for="email" >Email <span style={{color:"red",fontSize:"20px"}}>*</span></label>
 <input type="text" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value={this.state.email} onChange={this.change} className="form-control " style={{width:"100%"}}/>
@@ -294,13 +294,13 @@ filechange=(e)=>{
 <small><small style={{color:"red"}}>{this.state.emailerr}</small></small>
                 </div>
                 </div>
-                <div className="col-sm-12 col-md-6" style={{display:`${this.state.sellerdisplay}`}}> 
+                <div className="col-6" style={{display:`${this.state.sellerdisplay}`}}> 
                 <div style={{padding:"10px"}}>
                   <label for="bname" >Business Name <span style={{color:"red",fontSize:"20px"}}>*</span></label>
 <input type="text" id="bname" name="businessname"  pattern="[A-Za-z0-9]+" value={this.state.businessname} onChange={this.change} className="form-control " style={{width:"100%"}}/>
                 </div>
                 </div>
-                <div className="col-sm-12 col-md-6" style={{display:`${this.state.sellerdisplay}`}}> 
+                <div className="col-6" style={{display:`${this.state.sellerdisplay}`}}> 
                 <div style={{padding:"10px"}}>
         <label for="aboutbiz" >About {this.state.businessname.length > 0 ? this.state.businessname : "your business"} <span style={{color:"red",fontSize:"20px"}}>*</span></label>
 <input type="text" id="aboutbiz" name="aboutbusiness"    value={this.state.aboutbusiness} onChange={this.change} className="form-control " style={{width:"100%"}}/>
@@ -308,14 +308,14 @@ filechange=(e)=>{
                 </div>                   
                 </div>
 
-                <div className="col-sm-12 col-md-6">
+                <div className="col-6">
                 <div style={{padding:"10px"}}>
                   <label for="contact">{this.state.priviledge==="seller"?"Business ":""} Phone number <span style={{color:"red",fontSize:"20px"}}>*</span></label>
 <input type="text" id="contact" name="contact" required pattern="[0-9]{11}" value={this.state.contact} onChange={this.change} className="form-control " style={{width:"100%"}}/>
 <small><small style={{color:"red"}}>{this.state.contacterr}</small></small>
                 </div> 
                 </div>
-                <div className="col-sm-12 col-md-6" style={{display:`${this.state.sellerdisplay}`}}>
+                <div className="col-6" style={{display:`${this.state.sellerdisplay}`}}>
                 <div style={{padding:"10px"}} >
                   <label for="contactTwo">Business Phone number 2 </label>
 <input type="text" id="contactTwo" name="contactTwo" pattern="[0-9]{11}" value={this.state.contactTwo} onChange={this.change} className="form-control " style={{width:"100%"}}/>
@@ -323,8 +323,51 @@ filechange=(e)=>{
                 </div> 
                 </div>
                
+                <div style={{padding:"10px"}} className="col-6">
+                <label style={{padding:"0",margin:"0",marginLeft:"5px"}} for="facebook">{this.state.priviledge==="seller"?"Business ":""} Facebook  </label>
+                <div  className="input-group">
+                  <div className="input-group-prepend" style={{backgroundColor:"white"}}>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"18px",color:"blue",backgroundColor:"white"}}  className="fab fa-facebook"></span>
+                  </div>
+<input type="text" id="facebook" name="facebook" required pattern="[0-9]{11}" value={this.state.facebook} onChange={this.change} className="form-control " />
+<small><small style={{color:"red"}}>{this.state.facebookerr}</small></small>
+                </div> 
+                </div>
+
+                <div style={{padding:"10px"}}  className="col-6">
+                <label style={{padding:"0",margin:"0",marginLeft:"10px"}} for="instagram">{this.state.priviledge==="seller"?"Business ":""} Instagram </label>
+                <div className="input-group">          
+                  <div className="input-group-prepend" style={{backgroundColor:"white"}}>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"18px",backgroundColor:"white",color:"grey"}}  className="fab fa-instagram"></span>
+                  </div>
+<input type="text" id="instagram" name="instagram" required pattern="[0-9]{11}" value={this.state.instagram} onChange={this.change} className="form-control" />
+<small><small style={{color:"red"}}>{this.state.instagramerr}</small></small>
+                </div> 
+                </div>
+
+                <div style={{padding:"10px"}}  className="col-6">
+                <label style={{padding:"0",margin:"0",marginLeft:"10px"}} for="twitter">{this.state.priviledge==="seller"?"Business ":""} Twitter </label>
+                <div className="input-group">          
+                  <div className="input-group-prepend" style={{backgroundColor:"white"}}>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"18px",backgroundColor:"white",color:"blue"}}  className="fab fa-twitter"></span>
+                  </div>
+<input type="text" id="twitter" name="twitter" required pattern="[0-9]{11}" value={this.state.twitter} onChange={this.change} className="form-control" />
+<small><small style={{color:"red"}}>{this.state.twittererr}</small></small>
+                </div> 
+                </div>
+
+                <div style={{padding:"10px"}}  className="col-6">
+                <label style={{padding:"0",margin:"0",marginLeft:"10px"}} for="linkedin">{this.state.priviledge==="seller"?"Business ":""} LinkedIn </label>
+                <div className="input-group">          
+                  <div className="input-group-prepend" style={{backgroundColor:"white"}}>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"18px",backgroundColor:"white",color:"blue"}}  className="fab fa-linkedin"></span>
+                  </div>
+<input type="text" id="linkedin" name="linkedin" required pattern="[0-9]{11}" value={this.state.linkedin} onChange={this.change} className="form-control" />
+<small><small style={{color:"red"}}>{this.state.linkedinerr}</small></small>
+                </div> 
+                </div>
                 
-                <div className="col-sm-12 col-md-6">
+                <div className="col-6">
                   <div style={{padding:"10px"}}>
                  <label for="gender">Gender <span style={{color:"red",fontSize:"20px"}}>*</span></label>
                  <select name="gender" className="form-control" id="gender" onChange={this.change} value={this.state.gender} required>
@@ -333,13 +376,13 @@ filechange=(e)=>{
                  </select>
                     </div>
                   </div>              
-                  <div className="col-sm-12 col-md-6"> 
+                  <div className="col-6"> 
                   <div style={{padding:"10px"}}>
                <label for="address">Address <span style={{color:"red",fontSize:"20px"}}>*</span></label>
 <textarea name="address" id="address" required cols="60" className="form-control" value={this.state.address} onChange={this.change} rows="3" placeholder="Enter your Address"></textarea>
                     </div>
                     </div>
-                    <div className="col-sm-12 col-md-6"> 
+                    <div className="col-6"> 
                     <div style={{padding:"10px"}}>
                  <label for="state">Select State of Residence <span style={{color:"red",fontSize:"20px"}}>*</span></label>
                 <select name="state" required className="form-control" id="state" onChange={this.change} value={this.state.state}>
@@ -350,7 +393,7 @@ filechange=(e)=>{
                 </select>
                     </div>                                   
                     </div>
-                    <div className="col-sm-12 col-md-6">
+                    <div className="col-6">
                     <div style={{padding:"10px"}}>
                  <label for="lga">Select lga of business <span style={{color:"red",fontSize:"20px"}}>*</span></label>
                  <select name="lga" required className="form-control" id="lga" value={this.state.lga} onChange={this.change}>
@@ -366,7 +409,7 @@ filechange=(e)=>{
                     </div>                                   
                     </div>
 
-                    <div className="col-sm-12 col-md-6" style={{display:`${this.state.sellerdisplay}`}}>
+                    <div className="col-6" style={{display:`${this.state.sellerdisplay}`}}>
                     <div style={{padding:"10px"}}>
                  <label for="bustop">Popular bustop <span style={{color:"red",fontSize:"20px"}}>*</span></label>
                  <input name="bustop"  className="form-control" id="bustop" value={this.state.bustop} onChange={this.change}  />
@@ -374,7 +417,7 @@ filechange=(e)=>{
                     <small className="text-danger">{this.state.bustoperr}</small>
                     </div>                                   
                     </div>
-                <div className="col-sm-12 col-md-6">
+                <div className="col-6">
                 <div style={{padding:"10px"}}>
              <label htmlFor="password">Password <span style={{color:"red",fontSize:"20px"}}>*</span></label>
              <div className="input-group">     
@@ -386,7 +429,7 @@ filechange=(e)=>{
              <small><small style={{color:"red"}}>{this.state.passworderr}</small></small>
              </div>
              </div>
-             <div className="col-sm-12 col-md-6">
+             <div className="col-6">
                 <div style={{padding:"10px"}}>
              <label htmlFor="confirmpassword">confirm Password <span style={{color:"red",fontSize:"20px"}}>*</span></label>
              <div className="input-group">     
@@ -499,6 +542,49 @@ filechange=(e)=>{
                         </div> 
                         </div>
                        
+                        <div style={{padding:"10px"}} className="col-12  col-md-6">
+                <label style={{padding:"0",margin:"0",marginLeft:"5px"}} for="facebook">{this.state.priviledge==="seller"?"Business ":""} Facebook  </label>
+                <div  className="input-group">
+                  <div className="input-group-prepend" style={{backgroundColor:"white"}}>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"18px",color:"blue",backgroundColor:"white"}}  className="fab fa-facebook"></span>
+                  </div>
+<input type="text" id="facebook" name="facebook" required pattern="[0-9]{11}" value={this.state.facebook} onChange={this.change} className="form-control " />
+<small><small style={{color:"red"}}>{this.state.facebookerr}</small></small>
+                </div> 
+                </div>
+
+                <div style={{padding:"10px"}}  className="col-12  col-md-6">
+                <label style={{padding:"0",margin:"0",marginLeft:"10px"}} for="instagram">{this.state.priviledge==="seller"?"Business ":""} Instagram </label>
+                <div className="input-group">          
+                  <div className="input-group-prepend" style={{backgroundColor:"white"}}>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"18px",backgroundColor:"white",color:"grey"}}  className="fab fa-instagram"></span>
+                  </div>
+<input type="text" id="instagram" name="instagram" required pattern="[0-9]{11}" value={this.state.instagram} onChange={this.change} className="form-control" />
+<small><small style={{color:"red"}}>{this.state.instagramerr}</small></small>
+                </div> 
+                </div>
+
+                <div style={{padding:"10px"}}  className="col-12  col-md-6">
+                <label style={{padding:"0",margin:"0",marginLeft:"10px"}} for="twitter">{this.state.priviledge==="seller"?"Business ":""} Twitter </label>
+                <div className="input-group">          
+                  <div className="input-group-prepend" style={{backgroundColor:"white"}}>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"18px",backgroundColor:"white",color:"blue"}}  className="fab fa-twitter"></span>
+                  </div>
+<input type="text" id="twitter" name="twitter" required pattern="[0-9]{11}" value={this.state.twitter} onChange={this.change} className="form-control" />
+<small><small style={{color:"red"}}>{this.state.twittererr}</small></small>
+                </div> 
+                </div>
+
+                <div style={{padding:"10px"}}  className="col-12  col-md-6">
+                <label style={{padding:"0",margin:"0",marginLeft:"10px"}} for="linkedin">{this.state.priviledge==="seller"?"Business ":""} LinkedIn </label>
+                <div className="input-group">          
+                  <div className="input-group-prepend" style={{backgroundColor:"white"}}>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"18px",backgroundColor:"white",color:"blue"}}  className="fab fa-linkedin"></span>
+                  </div>
+<input type="text" id="linkedin" name="linkedin" required pattern="[0-9]{11}" value={this.state.linkedin} onChange={this.change} className="form-control" />
+<small><small style={{color:"red"}}>{this.state.linkedinerr}</small></small>
+                </div> 
+                </div>
                         
                         <div className="col-sm-12 col-md-6">
                           <div style={{padding:"10px"}}>

@@ -445,7 +445,7 @@ if(action.type === 'undisplaycategorymodal'){
         return state;
       }  
       else if(action.type === 'showmodalsidenavbar'){
-        state = {...state, status:'showmodalsidenavbar', mainbgcolor: "rgba(242,242,242,0.7)",modalsidenavbarwidth:"60%",modalsidenavbarwidthmargin:"0%",navbariconopacity:"0",modaliconopacity:"1",modalsidenavbardisplay:"block"}
+        state = {...state, status:'showmodalsidenavbar', mainbgcolor: "rgba(242,242,242,0.7)",modalsidenavbarwidth:"90%",modalsidenavbarwidthmargin:"0%",navbariconopacity:"0",modaliconopacity:"1",modalsidenavbardisplay:"block"}
         return state;  
       }
       else if(action.type === 'unshowmodalsidenavbar'){

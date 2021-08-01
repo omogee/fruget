@@ -62,7 +62,7 @@ div small .whitebg:hover{color:orange}
 .widthhundred{width:100% !important}
 .point{cursor:pointer}
 .zeropadding{padding:0px}
-.outer{ position:relative; display: inline-block;}
+.outer{ position:relative; display: inline-block;font-size: 5px;}
 .inner{ position: absolute; top:0px;overflow: hidden;}
 .innerone::before{content:"★";font-family: 'Font Awesome 5 Free';font-size: 20px; color:orange; font-weight: 700;}
 .mainmodaldiv{ position:fixed; top: 0px;left:0px;z-index:1;width:100%;height:100%;background-color:rgba(0,0,0,0.4)}
@@ -141,8 +141,8 @@ html{
     .detaildiv{height:80px}
     .smdetaildiv{height:100px}
     .hoversidenav:hover {box-shadow:1px 2px 5px 2px lightgrey}
-    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 15px;}
-    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 900;}
+    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:500; font-size: 13px;}
+    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 500;}
     .modaldiv{ position: absolute;width:35%;top:30%;left:35%}
     .savediv{ position: absolute;width:45%;top:30%;left:30%;}
     .register{padding:0px 250px}
@@ -465,8 +465,8 @@ html{
     .navImg{width:100%;height:90%}
     .detaildiv{height:100px}
     
-    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 900;}
-    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 15px;}
+    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 13px; color:orange;font-weight: 900;}
+    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 13px;}
     
     .mainImg{height:100px;width:100%}
     .savediv{ position: absolute;width:100%;height:35%;top:30%;left:0%;}

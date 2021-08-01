@@ -104,10 +104,11 @@ decreasesettingsheight =()=>{
             <div className="container">
  <div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background==="white"?"black": this.props.userdetails.background==="white"?"black":"black"}`}}>
  <div className="col-sm-12 d-md-none" style={{position:"sticky",top:"0px",padding:"0px", zIndex:"10"}}>  
- <small onClick={this.undisplaysidenavbar} style={{display:`${this.props.modalsidenavbardisplay}`,float:"right",fontSize:"20px",fontWeight:"bolder",marginRight:"10px",cursor:"pointer"}}>x</small>
+ <small onClick={this.undisplaysidenavbar} style={{display:`${this.props.modalsidenavbardisplay}`,float:"left",fontSize:"20px",fontWeight:"bolder",marginLeft:"15px",cursor:"pointer"}}>x</small>
+ <img src={require(`./images/fruget.jpg`)} style={{height:"40px",marginLeft:"20px"}} alt=""/>
  {this.props.userdetails.email ?         
  <div style={{backgroundColor:"rgb(10, 20, 41)",padding:"10px",color:"white",zIndex:"10"}}>
- <small onClick={this.undisplaysidenavbar} style={{float:"right",fontSize:"20px",cursor:"pointer"}}>x</small>
+ <small onClick={this.undisplaysidenavbar} style={{float:"right",fontSize:"25px",cursor:"pointer"}}>x</small>
         <small style={{textTransform:"uppercase",fontWeight:"bold",padding:"0px",fontSize:"15px"}}>Fruget Community</small><br/>
         <small style={{textTransform:"capitalize"}}>{this.props.userdetails.businessName}</small> 
         <span style={{padding:"10px"}} className="fa fa-angle-down"></span><br/>
