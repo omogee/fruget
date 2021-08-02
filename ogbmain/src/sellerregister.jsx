@@ -19,6 +19,14 @@ class SellerRegister extends Component {
             contact:"",
             contactTwo:"",
             contacterr:"",
+            facebook:"",
+            facebookerr:"",
+            instagram:"",
+            instagramerr:"",
+            twitter:"",
+            twittererr:"",
+            linkedin:"",
+            linkedinerr:"",
             gender:"male",
             gendererr:"",
             password:"",
@@ -159,6 +167,10 @@ class SellerRegister extends Component {
        email:this.state.email,
        businesscontact:this.state.contact,
        gender:this.state.gender,
+       facebook:this.state.facebook,
+       twitter:this.state.twitter,
+       instagram:this.state.instagram,
+       linkedin:this.state.linkedin,
        password:this.state.password,
      state:this.state.state,
      lga: this.state.lga,
@@ -176,6 +188,10 @@ aboutbusiness:this.state.aboutbusiness
        formdata.append("email",this.state.email)
        formdata.append("address",this.state.address)
        formdata.append( "bustop", this.state.bustop)
+       formdata.append( "facebook", this.state.facebook)
+       formdata.append( "instagram", this.state.instagram)
+       formdata.append( "twitter", this.state.twitter)
+       formdata.append( "linkedin", this.state.linkedin)
        formdata.append("contact",this.state.contact)
        formdata.append("contactTwo",this.state.contactTwo )
        formdata.append("gender",this.state.gender)
@@ -195,7 +211,7 @@ aboutbusiness:this.state.aboutbusiness
       .then(res => { 
         if(res.data.register){
           this.setState({Message:res.data.message,displayMessage:"block",
-          displayColor:"lightgreen",firstname:"",lastname:"",email:"",
+          displayColor:"lightgreen",firstname:"",lastname:"",email:"",facebook:"",twitter:"",instagram:"",linkedin:"",
           password:"",confirmpassword:"",confirmpasswordmatchsign:"none",confirmpasswordmatch:"",contact:"",
         businessname:"",aboutbusiness:"",submitloading:false})
         }
@@ -233,6 +249,7 @@ filechange=(e)=>{
 }
 }
     render() { 
+      console.log( this.state)
     if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
         return ( 
             <div className="navbarcomponentlg">  
@@ -444,7 +461,7 @@ filechange=(e)=>{
              <div className="col-12">
              <br/>
         <input type="checkbox" checked/> <small>I would love to recieve updates via {this.state.email}</small> <br/><br/>
-<button type="submit" className="" style={{marginBottom:"30px",width: "100%",backgroundColor:"#004d99",borderRadius: "5px",padding: "7px",color:"white"}}><span className="fa fa-sign-in" style={{float:"left",fontSize:"25px"}}></span><span style={{fontWeight:"bolder",color:"white"}}>REGISTER</span>
+<button type="submit" onClick={this.submit} style={{marginBottom:"30px",width: "100%",backgroundColor:"#004d99",borderRadius: "5px",padding: "7px",color:"white"}}><span className="fa fa-sign-in" style={{float:"left",fontSize:"25px"}}></span><span style={{fontWeight:"bolder",color:"white"}}>REGISTER</span>
 <span style={{float:"right"}}>{this.state.submitloading ?  <img style={{width:"60%"}} src={require(`./images/35.gif`)} /> : null}</span></button><br/>
              </div>
               </div>
@@ -663,7 +680,7 @@ filechange=(e)=>{
                      <div className="col-12">
                      <br/>
                 <input type="checkbox" checked/> <small>I would love to recieve updates via {this.state.email}</small> <br/><br/>
-        <button type="submit" className="" style={{marginBottom:"30px",width: "100%",backgroundColor:"#004d99",borderRadius: "5px",padding: "7px",color:"white"}}><span className="fa fa-sign-in" style={{float:"left",fontSize:"25px"}}></span><span style={{fontWeight:"bolder",color:"white"}}>REGISTER</span>
+        <button type="submit" onClick={this.submit} style={{marginBottom:"30px",width: "100%",backgroundColor:"#004d99",borderRadius: "5px",padding: "7px",color:"white"}}><span className="fa fa-sign-in" style={{float:"left",fontSize:"25px"}}></span><span style={{fontWeight:"bolder",color:"white"}}>REGISTER</span>
         <span style={{float:"right"}}>{this.state.submitloading ?  <img style={{width:"60%"}} src={require(`./images/35.gif`)} /> : null}</span></button><br/>
                      </div>
                       </div>

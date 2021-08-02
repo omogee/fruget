@@ -190,6 +190,10 @@ router.post("/submit/register",upload.single("files"),(req,res)=>{
     const lastname = data.lastname;
     const contact = data.contact;
     const email = data.email;
+    const facebook = data.facebook;
+    const twitter=data.twitter;
+    const instagram= data.instagram;
+    const linkedin = data.linkedin;
     const gender = data.gender; 
     const password = data.password;
     const state = data.state;
@@ -254,8 +258,10 @@ router.post("/submit/register",upload.single("files"),(req,res)=>{
                       folder: "/profile",       
                   }, 
                   function(error, result) {
-                      console.log(error,result.secure_url.split("/")[8]);              
-            conn.query("INSERT INTO user (authorization,subscription,profileImage,fullName,businessName,email,emailconfirmationcode,hash,contact,contactTwo,gender,aboutbusiness,address,state,lga,navigation,bustop,dateOfReg) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",[priviledge,subscription,result.secure_url.split("/")[8],fullname,businessname,email,rand,hash,contact,contactTwo,gender,aboutbusiness,address,state,lga,navigation,bustop,currentDate], (err,file)=>{
+                      //authorization,
+                     
+                      console.log(error,result.secure_url.split("/")[8]);
+            conn.query("INSERT INTO user (authorization,subscription,profileImage,fullName,businessName,email,emailconfirmationcode,hash,contact,contactTwo,gender,aboutbusiness,address,state,facebook,instagram, twitter,linkedin,lga,navigation,bustop,dateOfReg) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",[priviledge,subscription,result.secure_url.split("/")[8],fullname,businessname,email,rand,hash,contact,contactTwo,gender,aboutbusiness,address,state,facebook,instagram,twitter,linkedin,lga,navigation,bustop,currentDate], (err,file)=>{
                 if (err) throw err;
             conn.query("SELECT userId  from user WHERE email = ?",[email],(err,userIdentity)=>{    
                 if (err) throw err;
@@ -343,7 +349,7 @@ router.post("/submit/register",upload.single("files"),(req,res)=>{
       }
      );   
     }else {           
-        conn.query("INSERT INTO user (authorization,subscription,fullName,businessName,email,emailconfirmationcode,hash,contact,contactTwo,gender,aboutbusiness,address,state,lga,navigation,bustop,dateOfReg) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",[priviledge,subscription,fullname,businessname,email,rand,hash,contact,contactTwo,gender,aboutbusiness,address,state,lga,navigation,bustop,currentDate], (err,file)=>{
+        conn.query("INSERT INTO user (authorization,subscription,fullName,businessName,email,emailconfirmationcode,hash,contact,contactTwo,gender,aboutbusiness,address,state,facebook,instagram, twitter,linkedin,lga,navigation,bustop,dateOfReg) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",[priviledge,subscription,fullname,businessname,email,rand,hash,contact,contactTwo,gender,aboutbusiness,address,state,facebook,instagram,twitter,linkedin,lga,navigation,bustop,currentDate], (err,file)=>{
             if (err) throw err;
         conn.query("SELECT userId  from user WHERE email = ?",[email],(err,userIdentity)=>{    
             if (err) throw err;
