@@ -603,7 +603,7 @@ Proceed</button>
     <div className="sidenavbar" style={{overflow:"auto",transition:"width 2s",WebkitTransform:"width 2s",mozTransition:"width 2s",zIndex:"3",width:`${this.props.modalsidenavbarwidth}`,overflowX:"hidden",height:"100%",left:"0px",position:"absolute",top:"0px"}}>
       <Profilesidenavbar />            
    </div>         
-   <div style={{marginLeft:`${this.props.modalsidenavbarwidth}`,transition:"margin 2s",WebkitTransform:"margin 2s",mozTransition:"margin 2s"}}> 
+   <div style={{backgroundColor:"lightgrey",marginLeft:`${this.props.modalsidenavbarwidth}`,transition:"margin 2s",WebkitTransform:"margin 2s",mozTransition:"margin 2s"}}> 
         {//<Route path="/" component={Navbar} />
         //marginLeft:`${this.props.modalsidenavbarwidth}`,
          }

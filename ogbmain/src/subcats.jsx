@@ -134,12 +134,10 @@ class Subcats extends Component {
       else {
         loading = "Never pay for Items until recieved and confirmed"
       }
-   /**
-    *  if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
-       
+
+      if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){     
       return (
            <div className="navbarcomponentlg contain" style={{backgroundColor: "#f5f5f0"}}>
-      
    <div style={{display:`${this.props.appDisplay}`}}>          
         <div >         
             <div  style={{position:`${this.props.mainbgcolor==="white" ? "" : "fixed"}`}}>
@@ -390,8 +388,6 @@ class Subcats extends Component {
             </div>
   
           );}else{
-            alert("its a phone")
-    */
             return (
               <div>
                          
@@ -408,8 +404,7 @@ class Subcats extends Component {
          
          
       <div style={{display:`${this.props.appDisplay}`}}>          
-           <div style={{backgroundColor: "#f5f5f0"}}> 
-        
+           <div style={{backgroundColor: "#f5f5f0"}}>        
                <div className="container"  style={{position:`${this.props.mainbgcolor==="white" ? "" : "fixed"}`}}>
                  <div className="row">              
                 <div className="col-12 col-md-9 caro #f5f5f0 mt-2" >
@@ -584,6 +579,7 @@ class Subcats extends Component {
                </div>
                </div>
              )
+                      }
           
     }
 }

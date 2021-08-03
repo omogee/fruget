@@ -236,13 +236,13 @@ openDetails=(datum)=>{
   productId :datum.id,
   details:datum.details
   }
-  /*if(!Cookies.get("token")){
+  if(!Cookies.get("token")){
     this.props.setredirect()
-  }else{ */
+  }else{ 
  this.props.getdetails(data)
  this.props.getseller(data)
    this.props.history.push(`/product/202029190128891%2C${datum.id}%2C245719/${datum.details}`)
-//  }
+  }
 }  
 
 hoverapp=()=>{

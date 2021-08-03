@@ -65,7 +65,7 @@ console.log("submitting")
             navigation:JSON.stringify(navigation)
         }
          data =JSON.stringify(data)
-        axios.post("http://localhost:5000/customer/submit/login", {data},  {
+        axios.post("https://fruget.herokuapp.com/customer/submit/login", {data},  {
             headers: {
               'Content-Type': 'application/json'
             },
@@ -202,7 +202,7 @@ console.log("submitting")
 
 <br/><br/>
 <div style={{minWidth: "100%",marginBottom:"20px"}}>
- <button type="submit" className="" style={{width: "100%",backgroundColor:"#004d99",borderRadius: "5px",padding: "7px",color:"white"}}><span className="fa fa-sign-in" style={{float:"left",fontSize:"25px"}}></span><span style={{fontWeight:"bolder",color:"white"}}>LOGIN</span></button><br/><br/>
+ <button type="submit" onClick={this.submit} className="" style={{width: "100%",backgroundColor:"#004d99",borderRadius: "5px",padding: "7px",color:"white"}}><span className="fa fa-sign-in" style={{float:"left",fontSize:"25px"}}></span><span style={{fontWeight:"bolder",color:"white"}}>LOGIN</span></button><br/><br/>
 <button type="button" className="" style={{width: "100%",backgroundColor:"white",borderRadius: "5px",padding: "7px",boxShadow:"1px 1px 1px 1px lightgrey",color:"#004d99"}}><span className="fab fa-facebook" style={{float:"left",fontSize:"20px"}}></span>  <span style={{fontWeight:"bolder"}}>LOGIN WITH FACEBOOK</span></button>
       </div>
 </form>  

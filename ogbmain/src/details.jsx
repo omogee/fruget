@@ -428,7 +428,7 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
             </div>
             </div>   
             <br/>       
-            <div className="row boxshadower" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"10px"}}>
+            <div className="row boxshadower" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"10px"}}>
             <div className="col-12">
                 <small>MEET THE SELLER</small>
                 <small style={{float:"right"}}><button className="btn btn-danger btn-sm" onClick={()=>this.viewsellerdetails(this.props.seller.userId)}>Message Seller</button></small>
@@ -453,11 +453,14 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
                    </small>
                  </div>  
                    <div className="col-7" style={{padding:"0px 30px"}}>
-<small style={{padding:"0px"}}> <span className="fa fa-user-shield"></span> : <span style={{textTransform:"capitalize"}}>{this.props.seller.fullName}</span></small><br/>
+<small style={{padding:"0px"}}> <span className="fa fa-user-shield"></span> : <span style={{textTransform:"capitalize"}}>{this.props.businessName}</span>  <div className="outer">
+                         <div className="inner" style={{width:"20px"}}>
+                         </div>
+                     </div> </small><br/>
  <small className=""> <span className="fa fa-envelope 2x"></span> @<span >{this.props.seller.email}</span></small><br/>
 <small className=""> <span className="fa fa-home mr-2"></span> <span style={{fontWeight:"bold",textTransform:"capitalize"}}>"{this.props.seller.businessName}"</span> located at <span >{this.props.seller.state+" , "+this.props.seller.lga}</span></small><br/>
-<small className=""> <span className="fab fa-twitter 2x mr-2"></span> <span >AdeIsCrown</span></small><br/>
-<small className=""> <span className="fab fa-facebook-square 2x mr-2"></span><span > Eze Ogbonnaya</span></small><br/>
+<small className=""> <span className="fab fa-twitter 2x mr-2"></span> <span >{this.props.userdetails.twitter}</span></small><br/>
+<small className=""> <span className="fab fa-facebook-square 2x mr-2"></span><span >{this.props.userdetails.facebook}</span></small><br/>
 <small className=""> <span className="fa fa-link mr-2"></span><span ><a style={{color:"green"}} href={`http://localhost:3000/fruget/myproducts/${this.props.seller.businessName}`}> {` http://localhost:3000/fruget/myproducts/${this.props.seller.businessName}`}</a></span> <span title="click to share link" className="fa fa-reply ml-2"></span></small><br/>
       <small style={{padding:"0px"}}><span className="fa fa-mobile"></span> : {this.props.seller.contact}</small><br/>
                  <small style={{padding:"0px"}}><span className="fa fa-users"></span> :  {this.props.seller.followers ? JSON.parse(this.props.seller.followers).length : null}
@@ -468,12 +471,7 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
                  </small>
                  <br/>
 <small><span className="fa fa-check-circle" style={{color:"orange",fontSize:"15px"}}></span> Verified Sales : 20</small> <br/>
-                   Seller Rating : <small>
-                     <div className="outer">
-                         <div className="inner" style={{width:"20px"}}>
-                         </div>
-                     </div>
-                 </small><br/>
+                  
                  <small><span className="fa fa-globe-asia"></span> : http://localhost:3000/product/standing%20fan</small><br/>
                  <small style={{cursor:"pointer"}}>Distance in <b>km</b> : <b> {getDistanceFromLatLonInKm(this.state.userlat,this.state.userlng,parseFloat(this.props.seller.storelat),parseFloat(this.props.seller.storelong)).toFixed(2)} </b> KM <small className="text-muted"> (as crow flies)</small></small><br/>
                 <small style={{cursor:"pointer"}} onClick={()=>this.setState({viewmap:"block",mapHeight:"100%"})}>view on map</small>

@@ -30,7 +30,6 @@ const { checkout } = require('./search')
        },
        rejectUnauthorized:false
    })
-   
 /*
    function verifyToken(req,res,next){
     // { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(na
@@ -57,7 +56,6 @@ const { checkout } = require('./search')
          console.log(err)
            return res.status(403).json("you are not authorized to access this page")
       }     
-     
       const user= isAuthUser.user.userId
       console.log(isAuthUser.user.userId)
      conn.getConnection(function(err, connection) {
@@ -206,6 +204,7 @@ router.post("/submit/register",upload.single("files"),(req,res)=>{
     const priviledge = data.priviledge
     const subscription = priviledge === "seller" ? "regular" : ""
     const fullname = firstname+" "+lastname;
+    console.log("facebook",facebook, twitter, instagram)
     let d = new Date()
     let currentDay = `${d.getDay()} ${d.getDate()} | ${d.getMonth()} | ${d.getFullYear()}`
     let currentTime = `${d.getHours() > 12 ? (d.getHours() -12 ) : d.getHours() }:${d.getMinutes()}` + `${d.getHours() > 12 ? "pm":"am"}`
@@ -261,7 +260,7 @@ router.post("/submit/register",upload.single("files"),(req,res)=>{
                       //authorization,
                      
                       console.log(error,result.secure_url.split("/")[8]);
-            conn.query("INSERT INTO user (authorization,subscription,profileImage,fullName,businessName,email,emailconfirmationcode,hash,contact,contactTwo,gender,aboutbusiness,address,state,facebook,instagram, twitter,linkedin,lga,navigation,bustop,dateOfReg) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",[priviledge,subscription,result.secure_url.split("/")[8],fullname,businessname,email,rand,hash,contact,contactTwo,gender,aboutbusiness,address,state,facebook,instagram,twitter,linkedin,lga,navigation,bustop,currentDate], (err,file)=>{
+            conn.query("INSERT INTO user (authorization,subscription,profileImage,fullName,businessName,email,emailconfirmationcode,hash,contact,contactTwo,gender,aboutbusiness,address,state,facebook,instagram, twitter,linkedin,lga,navigation,bustop,dateOfReg,following,followers) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",[priviledge,subscription,result.secure_url.split("/")[8],fullname,businessname,email,rand,hash,contact,contactTwo,gender,aboutbusiness,address,state,facebook,instagram,twitter,linkedin,lga,navigation,bustop,currentDate,"[]","[]"], (err,file)=>{
                 if (err) throw err;
             conn.query("SELECT userId  from user WHERE email = ?",[email],(err,userIdentity)=>{    
                 if (err) throw err;
@@ -789,6 +788,7 @@ router.get("/deletecart",verifyToken, (req,res)=>{
 router.get("/checkout",verifyToken, (req,res)=>{
     const userIdentity = req.user
     const user = userIdentity.user["userId"]
+    console.log("shoppingcart user", user)
     conn.query("SELECT * FROM user WHERE userid = ?",[user], (err,file)=>{
         if (err) throw err;
         if(!file) return res.sendStatus(403)
@@ -856,7 +856,7 @@ router.get("/save",verifyToken, (req,res)=>{
                     if (err) throw err;
  connection.query("SELECT * from user WHERE userId=?", [userIdentity],(err, currentuserdetails)=>{
                         if (err) throw err;
-                        const messages ={  
+                        const messages ={   
                             success: true,
                             message: `${details}`,
                             header:`Product Has Been Unsaved Successfully`

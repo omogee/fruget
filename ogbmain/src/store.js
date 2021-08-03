@@ -1297,7 +1297,7 @@ export const shoppingcart =(data)=>{
   dispatch({type:"unloading"})
 })
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     
      // dispatch({type: 'fetchingcarterr', payload: err})
       if(err.response.status != 200){
         dispatch({type:"unloading"})
