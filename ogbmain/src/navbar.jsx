@@ -315,7 +315,7 @@ class Navbar extends Component {
              </div>
             
              <div className="col-2">
-<Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/${Math.floor(Math.random()*1000000000)}/lg/cart`}>
+<Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/checkout/cart`}>
           <small className="mb-5" style={{position:"relative"}}>
             <span className="fab fa-opencart ml-1" style={{fontSize:"18px"}}></span>
             <div style={{position:"absolute",top:"-5px",left:"20px"}}>
