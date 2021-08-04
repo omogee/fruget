@@ -71,12 +71,11 @@ console.log("submitting")
             },
        //      withCredentials: true 
              })
-        .then( async res => this.setState({token:res.data.token, user:res.data.user,displayMessage:"block"},()=>{
+        .then(res => this.setState({token:res.data.token, user:res.data.user,displayMessage:"block"},()=>{
             if(res.data.token){
                 localStorage.clear();
        //         console.log(res.data[`userIexypoxy${res.data.messageId.charAt(0)+res.data.messageId.charAt(1)+res.data.messageId.charAt(2)}2gwy6g`])
    //  localStorage.setItem(`fruget152019081996b9gh2991hvhyb`, res.data[`userIexypoxy${res.data.messageId}2gwy6g`])
-   console.log("m bc")
    //,{path:"/",maxAge: 60 * 60 * 60 * 1000}
   // Cookies.remove("token",{path:"/"})
   // Cookies.remove("cm_pp",{path:"/"})

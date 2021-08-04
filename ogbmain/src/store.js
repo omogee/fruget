@@ -35,7 +35,7 @@ axios.get(`https://fruget.herokuapp.com/details/product/display/userdetailsbyuse
 }) 
 .catch(err => console.log(err))
     } else {
-      //opacit
+      //modalsidenavbarwidth
     }
  const initialState ={
   numOfRows:"",
@@ -76,7 +76,7 @@ axios.get(`https://fruget.herokuapp.com/details/product/display/userdetailsbyuse
     subcat2:[],
     subcat3:[],
     mainbgcolor:"white",
-    modalsidenavbarwidth:"0%",
+    modalsidenavbarwidth:"0px",
     modaliconopacity:"0",
     navbariconopacity:"1",
     modalsidenavbardisplay:"none",
@@ -449,7 +449,7 @@ if(action.type === 'undisplaycategorymodal'){
         return state;  
       }
       else if(action.type === 'unshowmodalsidenavbar'){
-        state = {...state, status:'unshowmodalsidenavbar',mainbgcolor: "white",modalsidenavbarwidth:"0%", modalsidenavbarwidthmargin:"0%",modaliconopacity:"0",navbariconopacity:"1",modalsidenavbardisplay:"none"}
+        state = {...state, status:'unshowmodalsidenavbar',mainbgcolor: "white",modalsidenavbarwidth:"0px", modalsidenavbarwidthmargin:"0%",modaliconopacity:"0",navbariconopacity:"1",modalsidenavbardisplay:"none"}
         return state;
       }
       else if(action.type === 'fetchsavedItembyemail'){

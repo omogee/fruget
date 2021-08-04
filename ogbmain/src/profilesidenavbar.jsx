@@ -103,7 +103,7 @@ decreasesettingsheight =()=>{
         return ( 
             <div className="container">
  <div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background==="white"?"black": this.props.userdetails.background==="white"?"black":"black"}`}}>
- <div className="col-sm-12 d-md-none" style={{position:"sticky",top:"0px",padding:"0px", zIndex:"10"}}>  
+ <div className="col-sm-12 d-md-none" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,position:"sticky",top:"0px",padding:"0px", zIndex:"10"}}>  
  <small onClick={this.undisplaysidenavbar} style={{display:`${this.props.modalsidenavbardisplay}`,float:"left",fontSize:"20px",fontWeight:"bolder",marginLeft:"15px",cursor:"pointer"}}>x</small>
  <img src={require(`./images/fruget.jpg`)} style={{height:"40px",marginLeft:"20px"}} alt=""/>
  {this.props.userdetails.email ?         

@@ -117,7 +117,7 @@ class CheckOut extends Component {
        loading = "Never pay for Items until recieved and confirmed"
      }
         // <img src={`https://res.cloudinary.com/fruget-com/image/upload/${carts.generalcategory}/${carts.category}/${Object.values(JSON.parse(carts.img1))[0]}`} style={{width:"100%",padding:"5px"}} alt=""/>
-      if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+      if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
           return (         
             <div className="navbarcomponentlg" style={{backgroundColor:"white",minHeight:`${this.props.cart.length ===0 ? "100%" : ""}`}}>
                <div className="container">
@@ -306,13 +306,13 @@ class CheckOut extends Component {
          );
     }else{
       return (         
-        <div style={{backgroundColor:"white",minHeight:`${this.props.cart.length ===0 ? "100%" : ""}`}}>
-           <div className="container">
+        <div className="container-fluid" style={{backgroundColor:"white",minHeight:`${this.props.cart.length ===0 ? "100%" : ""}`}}>
+           <div style={{padding:"0",margin:"0"}}>
            <div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"0px"}}>               
 <div className="col-5 col-md-6" style={{fontSize:"20px",padding:"10px"}}>                     
                        <small>Shopping Cart ({this.props.cart?this.props.cart.length : null})</small>
                            </div>                           
-    <div className="col-4 col-m4-3" style={{padding:"10px",display:`${this.props.cart.length > 0 ? "block" :"none"}`}}>                
+    <div className="col-4 col-md-3" style={{padding:"10px",display:`${this.props.cart.length > 0 ? "block" :"none"}`}}>                
           
                            </div>                                          
            <div style={{padding:"10px",display:`${this.props.cart.length > 0 ? "block" :"none"}`}}>
@@ -391,10 +391,14 @@ class CheckOut extends Component {
                           </div> : null }
                           <div style={{margin:"0px",padding:"0px"}}>
                           {this.props.cart.length > 0 ? this.props.cart.map(carts=>
-                    <div  className="row" key={carts.id} style={{borderRadius:"10px",boxShadow:"1px 2px 5px 2px lightgrey",width:"100%",backgroundColor:"white",margin:"0px",padding:"0px"}} >
+                    <div  className="row" key={carts.id} style={{borderRadius:"10px",boxShadow:"1px 2px 5px 2px lightgrey",width:"100%",backgroundColor:"white"}} >
                         <div className="col-4 col-md-2" >
                         <span className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(carts.productId)) ? "fa fa-heart didi" : "far fa-heart didi"} onClick={()=>this.saveItem({"detail":carts.details,"id":carts.productId})} style={{fontSize:"20px",position:"absolute",top:"5px",color:"orange"}}></span>
-                        <img  src={`https://res.cloudinary.com/fruget-com/image/upload/${carts.generalcategory}/${carts.category}/${carts.mainimg}`} style={{width:"100%",height:"100px"}} className="img-responsive mb-1 "></img>                           
+                        <img  src={`https://res.cloudinary.com/fruget-com/image/upload/${carts.generalcategory}/${carts.category}/${carts.mainimg}`} style={{width:"100%",height:"100px"}} className="img-responsive"></img>                           
+                        <small className="text-muted">Vendor :</small> <small style={{textTransform:"capitalize",fontSize:"13px",fontWeight:"bold"}}>{carts.seller}</small><br/>
+                          {carts.time ? 
+                           <small style={{fontSize:"11px"}}><span style={{color:"orange"}} className="fa fa-clock mr-1"></span> <b>{formater(carts.time)}</b></small>
+                            : null}
                         </div>
                        <div className="col-7 col-md-4" style={{padding:"0px",margin:"0px"}}>
                              <Link to={`/product/202029190128891%2C${carts.productId}%2C245719/${carts.details}`}>
@@ -402,13 +406,18 @@ class CheckOut extends Component {
                           {carts.details}</small></Link><br/>
                            <small className="text-muted">Color :</small> <small style={{textTransform:"capitalize",fontSize:"13px",fontWeight:"bold"}}>{carts.color}</small>
                            <span className="ml-1 mr-1 mb-5" style={{borderRadius:"60%",fontSize:"8px",lineHeight:"0.2px",margin:"0px",padding:"0px 5px",border:"1px solid lightgrey",backgroundColor:`${carts.color}`,color:`${carts.color}`}}><small>.</small></span> ,
-                <small className="ml-2">Size : </small>  {carts.inches && carts.inches !== "null" && carts.inches.length > 0 ? <small style={{fontWeight:"bold"}}>{carts.inches}</small> : null}
+                <small className="ml-2">Size : {
+                /**
+                 * </small>  {carts.inches && carts.inches !== "null" && carts.inches.length > 0 ? <small style={{fontWeight:"bold"}}>{carts.inches}</small> : null}
                           {carts.litres && carts.litres !== "null" && carts.litres.length > 0 ?<small style={{fontWeight:"bold"}}>{carts.litres}</small> : null}
                           {carts.wattage && carts.wattage !== "null" && carts.wattage.length > 0 ? <small style={{fontWeight:"bold"}}>{carts.wattage}</small> : null}
-                          {carts.kilogram && carts.kilogram !== "null" && carts.kilogram.length > 0 ? <small style={{fontWeight:"bold"}}>{carts.kilogram}</small> : null}<br/>
+                          {carts.kilogram && carts.kilogram !== "null" && carts.kilogram.length > 0 ? <small style={{fontWeight:"bold"}}>{carts.kilogram}: null}<br/>
+                 */
+                 }
+                 </small> <br/>
                            <small className="text-muted">Vendor :</small> <small style={{textTransform:"capitalize",fontSize:"13px",fontWeight:"bold"}}>{carts.seller}</small><br/>
                           {carts.time ? 
-                           <small><span style={{color:"orange"}} className="fa fa-clock mr-1"></span> <b>{formater(carts.time)}</b> { " " + carts.date} </small>
+                           <small style={{fontSize:"11px"}}>{carts.date} </small>
                             : null}
                            <div className="row" style={{padding:"5px 0px 0px 0px"}}>
                              <div className="d-none d-md-block col-md-6 text-danger" >
@@ -444,7 +453,7 @@ class CheckOut extends Component {
                        <p className="topmarginer">{carts.mainprice}</p>
                        </center>                          
                        </div>
-                       <div className="col-5 col-md-2">
+                       <div className="col-4 col-md-2">
                        <center>
                            <p className="topmarginer" style={{padding:"auto",fontWeight:"bold"}}>{carts.subtotal}</p>
                        </center>
