@@ -307,7 +307,6 @@ class CheckOut extends Component {
     }else{
       return (         
         <div className="container-fluid" style={{backgroundColor:"white",minHeight:`${this.props.cart.length ===0 ? "100%" : ""}`}}>
-           <div style={{padding:"0",margin:"0"}}>
            <div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"0px"}}>               
 <div className="col-5 col-md-6" style={{fontSize:"20px",padding:"10px"}}>                     
                        <small>Shopping Cart ({this.props.cart?this.props.cart.length : null})</small>
@@ -389,16 +388,16 @@ class CheckOut extends Component {
                        </center>
                        </div>
                           </div> : null }
-                          <div style={{margin:"0px",padding:"0px"}}>
+                          <div  className="row" style={{margin:"0px",padding:"0px"}}>
                           {this.props.cart.length > 0 ? this.props.cart.map(carts=>
-                    <div  className="row" key={carts.id} style={{borderRadius:"10px",boxShadow:"1px 2px 5px 2px lightgrey",width:"100%",backgroundColor:"white"}} >
-                        <div className="col-4 col-md-2" >
+                    <div className="col-12 mb-1" key={carts.id} style={{borderRadius:"10px",boxShadow:"1px 2px 5px 2px lightgrey",width:"100%",backgroundColor:"white"}} >
+                    <div className="row">
+                       
+                    <div className="col-5 col-md-2" >
                         <span className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(carts.productId)) ? "fa fa-heart didi" : "far fa-heart didi"} onClick={()=>this.saveItem({"detail":carts.details,"id":carts.productId})} style={{fontSize:"20px",position:"absolute",top:"5px",color:"orange"}}></span>
                         <img  src={`https://res.cloudinary.com/fruget-com/image/upload/${carts.generalcategory}/${carts.category}/${carts.mainimg}`} style={{width:"100%",height:"100px"}} className="img-responsive"></img>                           
-                        <small className="text-muted">Vendor :</small> <small style={{textTransform:"capitalize",fontSize:"13px",fontWeight:"bold"}}>{carts.seller}</small><br/>
-                          {carts.time ? 
-                           <small style={{fontSize:"11px"}}><span style={{color:"orange"}} className="fa fa-clock mr-1"></span> <b>{formater(carts.time)}</b></small>
-                            : null}
+                        <small className="text-muted"></small> <small style={{textTransform:"capitalize",fontSize:"13px",fontWeight:"bold"}}>{carts.seller}</small><br/>
+                        
                         </div>
                        <div className="col-7 col-md-4" style={{padding:"0px",margin:"0px"}}>
                              <Link to={`/product/202029190128891%2C${carts.productId}%2C245719/${carts.details}`}>
@@ -415,9 +414,12 @@ class CheckOut extends Component {
                  */
                  }
                  </small> <br/>
-                           <small className="text-muted">Vendor :</small> <small style={{textTransform:"capitalize",fontSize:"13px",fontWeight:"bold"}}>{carts.seller}</small><br/>
+                         
                           {carts.time ? 
-                           <small style={{fontSize:"11px"}}>{carts.date} </small>
+                           <small style={{fontSize:"11px"}}>{carts.date} <br/></small>
+                            : null}
+                              {carts.time ? 
+                           <small style={{fontSize:"11px"}}><span style={{color:"orange"}} className="fa fa-clock mr-1"></span> <b>{formater(carts.time)}</b></small>
                             : null}
                            <div className="row" style={{padding:"5px 0px 0px 0px"}}>
                              <div className="d-none d-md-block col-md-6 text-danger" >
@@ -434,16 +436,17 @@ class CheckOut extends Component {
                              </div>
                            </div>
                        </div>
-                       <div className="col-1 d-md-none">
-                         <span className="fa fa-ellipsis-v">
+                       <div className="d-none d-md-block col-md-1">
+                         <span className="fa fa-ellipsis-v top-marginer">
                          </span>
                        </div>
-                       <div className="col-4 col-md-2" style={{padding:"0px",margin:"0px",borderLeft:"1px solid lightgrey",borderRight:"1px solid lightgrey"}}>
-                      <center className="topmarginer" style={{padding:"10px"}}>
-<small style={{fontSize:"15px",cursor:"pointer",backgroundColor:"brown",borderRadius:"50%",color:"white"}} className="badge" onClick={()=> this.decreaseCart(carts.id)}>
+                      
+                       <div className="col-3 col-md-2" style={{padding:"0px",margin:"0px",borderLeft:"1px solid lightgrey",borderRight:"1px solid lightgrey"}}>
+                      <center className="topmarginer" style={{padding:"8px"}}>
+<small style={{fontSize:"18px",cursor:"pointer",backgroundColor:"brown",borderRadius:"50%",color:"white"}} className="badge" onClick={()=> this.decreaseCart(carts.id)}>
 -</small> 
 <small style={{fontSize:"15px",padding:"5px"}}> {carts.quantity}</small>
-<small style={{fontSize:"15px",cursor:"pointer",backgroundColor:"orange",borderRadius:"50%",color:"white"}} className="badge" onClick={()=> this.increaseCart(carts.id)}>
+<small style={{fontSize:"18px",cursor:"pointer",backgroundColor:"orange",borderRadius:"50%",color:"white"}} className="badge" onClick={()=> this.increaseCart(carts.id)}>
   +</small><br/>
             </center>
                       
@@ -459,7 +462,11 @@ class CheckOut extends Component {
                        </center>
                        
                        </div>
-    
+                       <div className="col-1 d-md-none">
+                         <span className="fa fa-ellipsis-v top-marginer">
+                         </span>
+                       </div>
+                    </div>
                           </div>
                     ) : null} 
                  </div>
@@ -516,7 +523,7 @@ class CheckOut extends Component {
               </div>
               
                 </div>
-        </div>
+        
      );
     }
 }

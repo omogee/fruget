@@ -39,6 +39,7 @@ class Login extends Component {
     }
     componentDidUpdate=()=>{
       this.props.unloading()
+      this.props.unsetredirect()
     }
     change =(e)=>{
      this.setState({[e.target.name]:e.target.value})
