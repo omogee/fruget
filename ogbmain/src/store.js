@@ -159,7 +159,11 @@ axios.get(`https://fruget.herokuapp.com/details/product/display/userdetailsbyuse
     messagedisplay:"none",
     noofunreadmessages:0,
     noofcontacts:0,
-    redirect:false
+    redirect:false,
+    savedcount:0,
+    ordercount:0,
+    cartcount:0
+
   }
 
 const reducer= (state = initialState, action)=>{
@@ -638,6 +642,11 @@ if(action.type === 'undisplaycategorymodal'){
         console.log(action.payload)
         return state;
       }
+      else if(action.type === 'countdetails'){   
+        state = {...state, status:'countdetails', cartcount: action.payloadcart,savedcount:action.payloadsaved,ordercount:action.payloadorder}
+        console.log("payloads",action.payloadcart,action.payloadorder,action.payloadsaved)
+        return state;
+      }
       else if(action.type === 'suggestionloaded'){
         const suggestions = action.payload;         
         var filteredSuggestions =[];
@@ -651,6 +660,16 @@ if(action.type === 'undisplaycategorymodal'){
   }
   
 const store = createStore(reducer, applyMiddleware(thunk,createCookieMiddleware(Cookies)))
+export const countuserdetails =()=>{
+  return(dispatch)=>{
+    dispatch({type:"countloading"})
+  axios.get(`https://fruget.herokuapp.com/customer/count/userdetails`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+  .then(res => dispatch({type:"countdetails",payloadcart:res.data.cartcount,payloadsaved:res.data.savedcount,payloadorder:res.data.ordercount}))
+  .catch(err => dispatch({type:"err"})) 
+
+  }
+}
+
 export const setredirect=()=>{
   return({type:"redirect"})
 }
@@ -1289,6 +1308,7 @@ export const submitshoppingcart =()=>{
     .catch(err => dispatch({type: 'submitshoppingcarterr', payload: err}))
   }
 }
+//fetchsavedItembyuserId
 export const shoppingcart =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})

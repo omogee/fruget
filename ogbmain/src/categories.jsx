@@ -8,7 +8,7 @@ import Details from './details'
 // import SideNav from './sidenav' 
 import ReactHtmlParser from "react-html-parser"
 import Autocomplete from './components/Autocomplete';
-import store, {fetchunreadmessages,fetchconnections,viewsender,pushmessages,setlastseen,connectedusers,undisplaymodal,undisplaysavemodal,undisplayclearcartsuccess,rateproduct,ratevendor,clearcart,undisplayclearcartmodal,undisplaysellerrating,undisplayproductrating,setdisplayvendorrating,setdisplayproductrating,confirmtoclearcart,changecolor, unshowcolormodal,showcolormodal,viewuserdetailsbyuserId,shoppingcart} from './store'
+import store, {countuserdetails,fetchunreadmessages,fetchconnections,viewsender,pushmessages,setlastseen,connectedusers,undisplaymodal,undisplaysavemodal,undisplayclearcartsuccess,rateproduct,ratevendor,clearcart,undisplayclearcartmodal,undisplaysellerrating,undisplayproductrating,setdisplayvendorrating,setdisplayproductrating,confirmtoclearcart,changecolor, unshowcolormodal,showcolormodal,viewuserdetailsbyuserId,shoppingcart} from './store'
 import {Provider} from 'react-redux'
 import queryString from 'query-string'
 import Suggestions from "./suggestions"
@@ -94,6 +94,7 @@ class Category extends Component {
       this.props.viewuserdetailsbyuserId(userId)
       this.props.shoppingcart(userId)
       this.props.fetchunreadmessages()
+      this.props.countuserdetails()
         }     
      
      socket.on('connected users', users => {
@@ -775,7 +776,8 @@ const mapStateToProps =(store)=>{
    pushmessages:(data)=>dispatch(pushmessages(data)),
    viewsender:(data)=>dispatch(viewsender(data)),
    fetchconnections:(data)=>dispatch(fetchconnections(data)),
-   fetchunreadmessages:()=>dispatch(fetchunreadmessages())
+   fetchunreadmessages:()=>dispatch(fetchunreadmessages()),
+   countuserdetails:()=>dispatch(countuserdetails())
      }
   }
 export default connect(mapStateToProps,mapDispatchToProps)(Category);

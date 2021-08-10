@@ -835,55 +835,84 @@ router.get("/",(req,res)=>{
         res.send(JSON.parse(file[0].savedItems));
  //   })
 })
-})                                                             
+})     
+router.get("/count/userdetails",verifyToken,(req,res)=>{
+    const user = req.user;
+    let userIdentity = user.user["userId"]
+    conn.getConnection((err, connection) => {
+        if (err) throw err
+ conn.query("SELECT COUNT (*) AS noOfSaved from saveditems WHERE userId=?",[userIdentity],(err, savedcount)=>{
+     if (err) throw err;
+ conn.query("SELECT COUNT (*) AS noOfCart from submittedcart WHERE userId=?",[userIdentity],(err, cartcount)=>{
+    if (err) throw err;
+conn.query("SELECT businessName from user WHERE userId =?", [userIdentity], (err, name)=>{
+    if (err) throw err;
+conn.query("SELECT COUNT (*) AS noOfOrder from submittedcart WHERE seller=?",[name[0].businessName],(err, ordercount)=>{
+    if (err) throw err;
+
+console.log("savedcount,cartcount,ordercount",savedcount[0],cartcount[0],ordercount[0])
+res.send({savedcount,cartcount,ordercount})
+    })
+})   })
+})
+})
+})                                       
 router.get("/save",verifyToken, (req,res)=>{
     const user = req.user;           
     const details = req.query.details
+    let d = new Date()
+    let time = d.getTime();
+
+    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December']; 
+    let currentDate = `${days[d.getDay()]} ${d.getDate()}${d.getDate() === 22 || d.getDate() === 22 ? "nd" : d.getDate() === 3 || d.getDate()===23 ? "rd" : "th" } of ${months[d.getMonth()]}  ${d.getFullYear()}`
+     
     const productId = parseInt(req.query.productId)
     let userIdentity = user.user["userId"]
     conn.getConnection((err, connection) => {
         if (err) throw err
-    connection.query("SELECT * from user WHERE userId=?", [userIdentity],(err, userdetails)=>{
-        if (err) throw err;
-     if(JSON.parse(userdetails[0].savedItems).includes(parseInt(productId))){
-             let oldSavedItems = userdetails[0].savedItems;
-                oldSavedItems = JSON.parse(oldSavedItems);
-                console.log("it is included",oldSavedItems.indexOf(productId), oldSavedItems)
-                oldSavedItems.splice(oldSavedItems.indexOf(productId),1)
-                const oldSavedItem = JSON.stringify(oldSavedItems)
-                console.log("it is included",oldSavedItems.indexOf(productId), oldSavedItems)
-                connection.query("UPDATE user SET savedItems = ? WHERE userId =?", [oldSavedItem, userIdentity], (err,file)=>{
-                    if (err) throw err;
- connection.query("SELECT * from user WHERE userId=?", [userIdentity],(err, currentuserdetails)=>{
-                        if (err) throw err;
-                        const messages ={   
-                            success: true,
-                            message: `${details}`,
-                            header:`Product Has Been Unsaved Successfully`
-                        } 
-      res.send({messages,userdetails:currentuserdetails[0]});
-                  })
-                })
-            
-            }else{              
-                console.log("it is not included")
-            let oldSavedItems = userdetails[0].savedItems;
-            oldSavedItems = JSON.parse(oldSavedItems);
-            oldSavedItems.push(parseInt(productId)) 
-            oldSavedItems = JSON.stringify(oldSavedItems);
-            connection.query("UPDATE user SET savedItems = ? WHERE userId =?", [oldSavedItems, userIdentity], (err,file)=>{
+        connection.query("SELECT * from product WHERE productId=?",[productId],(err, product)=>{
+            if (err) throw err;
+            connection.query("select * from saveditems WHERE userId = ? AND productId =?", [userIdentity,productId], (err, savedproducts)=>{
                 if (err) throw err;
-                connection.query("SELECT * from user WHERE userId=?", [userIdentity],(err, currentuserdetails)=>{
+     connection.query("SELECT * from user WHERE userId = ?", [userIdentity], (err, items)=>{
                     if (err) throw err;
-                    const messages ={  
-                        success: true,
-                        message: `${details}`,
-                        header:`Product Has Been Saved Successfully`
-                    } 
-  res.send({messages,userdetails:currentuserdetails[0]});
-              })
-            })
+                    let newsavedItems;
+                    console.log("savedproducts[0]",savedproducts[0])
+                    let oldSavedItems = items[0].savedItems
+            if (savedproducts && savedproducts[0]){
+                connection.query("DELETE from saveditems WHERE userId =? AND productId =?",[userIdentity,productId],(err, deleted)=>{
+                    if (err) throw err;
+                })        
+            }else{
+                connection.query("insert into saveditems (userId,productId,generalcategory,category,mainimg,officialimg,brand,date,time,details, model, color) values (?,?,?,?,?,?,?,?,?,?,?,?)", [userIdentity,product[0].productId,product[0].generalcategory,product[0].category,product[0].mainimg,product[0].officialimg,product[0].brand,time,currentDate,product[0].details,product[0].model,product[0].color],(err, userdetails)=>{
+                    if (err) throw err;
+                })
             }
+            
+         if(items[0] && items[0].savedItems && JSON.parse(items[0].savedItems).includes(parseInt(productId))){
+            oldSavedItems = JSON.parse(oldSavedItems)
+            oldSavedItems.splice(oldSavedItems.indexOf(productId),1)
+            newsavedItems = JSON.stringify(oldSavedItems)
+         }else{
+            oldSavedItems = JSON.parse(oldSavedItems)
+            oldSavedItems.push(parseInt(productId)) 
+            newsavedItems = JSON.stringify(oldSavedItems)
+         }
+         connection.query("UPDATE user SET savedItems = ? WHERE userId =?", [newsavedItems, userIdentity], (err,file)=>{
+            if (err) throw err;
+            connection.query("SELECT * from user WHERE userId=?", [userIdentity],(err, currentuserdetails)=>{
+                if (err) throw err;
+                const messages ={  
+                    success: true,
+                    message: `${details}`,
+                    header:`Product Has Been Saved Successfully`
+                } 
+res.send({messages,userdetails:currentuserdetails[0]});
+          })
+        }) 
+        })
+     })
     })
 }) 
 })
@@ -895,6 +924,8 @@ router.get("/unsave",verifyToken, (req,res)=>{
     let userIdentity = user.user["userId"]
     conn.getConnection((err, connection) => {
         if (err) throw err
+        connection.query("DELETE from saveditems WHERE userId =? AND productId =?",[userIdentity,productId],(err, deleted)=>{
+            if (err) throw err;
     connection.query("SELECT savedItems from user WHERE userId=?", [userIdentity],(err, savedItem)=>{
         if (err) throw err;
             let newSavedItems = savedItem[0].savedItems
@@ -905,7 +936,7 @@ router.get("/unsave",verifyToken, (req,res)=>{
               if (err) throw err;
     
               res.send(`<b> Product Unsaved Successfully </b>`);
-         
+            })
         })
     })  
 })    
@@ -1154,7 +1185,7 @@ router.get("/invoice",verifyToken,(req,res)=>{
 })            
 })             
 })           
-             //follow
+             //save
 router.get("/group/invoice",verifyToken,(req,res)=>{    
     const user = req.user;     
    let userIdentity = user.user["userId"] 
@@ -1220,42 +1251,12 @@ router.get("/fetchbyuserId/saveditems",verifyToken,(req,res)=>{
    // const id= req.params.userId;
    const userIdentity= req.user;         
    let id = userIdentity.user["userId"]   
-   console.log("na saved items route be this")   
-    conn.query('SELECT savedItems FROM user WHERE userId =?',[id],(err, savedItems)=>{
-        if (err) throw err;      
-        if(!savedItems[0].savedItems || savedItems[0].savedItems.length === 0){                
-         res.send([])       
-        }else{        
-            let savedItemss = savedItems[0].savedItems
-            savedItemss = JSON.parse(savedItemss)
-           savedItemss.join(",");
-            conn.query("SELECT *, CONCAT('₦', FORMAT(sellingprice, 0)) AS mainprice FROM product INNER JOIN product_rating using (productId) WHERE productId IN ("+savedItemss+")", (err, files)=>{
-            if (err) throw err;                   
-            files.map(file => {      
-                file["authur"] = "Eze Ogbonnaya"   
-                if(file.productrating){        
-                    const prating =JSON.parse(file.productrating);
-                    const mainrating =[];         
-                    for (var i=0; i<Object.values(prating).length; i++){
-                     mainrating.push(parseInt(Object.values(prating)[i][0]))
-                  }  
-                       const reducer = (a,b) => (a+b)
-                       const prating2 =mainrating.map(pratings => pratings*20)  
-                   //    console.log( Object.values(prating2).reduce(reducer)/Object.keys(prating).length)
-                       file["numOfRating"] = Object.keys(prating).length
-                       if(Object.values(prating).length > 0){
-                           file["percentrating"] = Object.values(prating2).reduce(reducer)/Object.keys(prating).length
-                       }
-                      else{
-                         file["percentrating"] = 0
-                      }
-                         }
-            })
-           
-    //         console.log(files)
+   console.log("na saved items route be this")              
+            conn.query("SELECT * FROM saveditems WHERE userId = ?",[id], (err, files)=>{
+            if (err) throw err;                    
+            console.log(id,"saved",files)      
              res.send(files)
-            })
-        } 
+  
     })
 
 })
@@ -1264,9 +1265,10 @@ router.get("/fetchbyemail/saveditems",verifyToken,(req,res)=>{
     // const id= req.params.userId;
     const userIdentity= req.user;
     let id = userIdentity.user["userId"]
+    console.log(req.query.email,"req.query.email")
      conn.query('SELECT savedItems FROM user WHERE email =?',[req.query.email],(err, savedItems)=>{
          if (err) throw err;
-         if(!savedItems[0].savedItems || savedItems[0].savedItems.length === 0){                
+         if(!savedItems || savedItems[0].savedItems.length === 0){                
           res.send([])     
          }else{        
              let savedItemss = savedItems[0].savedItems

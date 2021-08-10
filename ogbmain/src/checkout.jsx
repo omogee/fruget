@@ -314,14 +314,9 @@ class CheckOut extends Component {
     <div className="col-4 col-md-3" style={{padding:"10px",display:`${this.props.cart.length > 0 ? "block" :"none"}`}}>                
           
                            </div>                                          
-           <div style={{padding:"10px",display:`${this.props.cart.length > 0 ? "block" :"none"}`}}>
-          <i class="fa fa-th" style={{color:`${this.state.view === "grid"  ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.grid}></i>
-          </div>
-          <div style={{padding:"10px",display:`${this.props.cart.length > 0 ? "block" :"none"}`}}>
-          <i class="fa fa-grip-vertical" style={{color:`${this.state.view === "list" ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.list}></i>
-          </div>
+           
           <div style={{padding:"10px",fontSize:"20px"}}>
-          <a href={`/checkout/cart`}><i class="fa fa-shopping-cart" style={{color:`orange`}} onClick={this.list}></i></a>
+          <a href={`/checkout/cart`}><i className="ml-3 fa fa-shopping-cart" style={{color:`orange`}} onClick={this.list}></i></a>
           </div>
           </div>
           <br/>

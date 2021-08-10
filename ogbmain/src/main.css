@@ -101,7 +101,6 @@ html{
   .grid .addtocartbtn{display: none;}
   .addtocartbtn{display: none;}
   .list .addtocartbtn {display:none;width: 80%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
-
 .unhoveredsubcatapp:hover{color:orange}
  .hoveredapp:hover .addtocartbtn{display:block;width: 80%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
 .smhoveredapp{box-shadow:1px 2px 5px 2px lightgrey}
@@ -356,6 +355,7 @@ html{
 } 
 
 @media all and (max-width: 600px) and (min-width:450px){
+  .contain{padding: 0px 40px}
   .undisplaydiv{left:0%;width:0%}
   .servicediv{left:0%;width:100%}
   .subcatimg{height:120px}
@@ -437,7 +437,7 @@ html{
   .messages{padding:0px 40px;width:180%}
     .followdiv{top:20%;left:20%;width:60%}
     .innermessageBox{overflow:scroll !important}
-    
+    .contain{padding: 0px 40px}
     .loadingdiv{position:fixed; top:50%;left:25%}
     .cartImg{width: 70%;}
     .unhoveredapp{height:260px;}
@@ -448,6 +448,7 @@ html{
 
 }
 @media all and (max-width: 450px){
+  .contain{padding: 0px 40px}
     .bigdeviceimgshowcaseflex{display:none}
     .bigdeviceimgshowcase{display:none}
     .smalldeviceimgshowcase{display:flex;flex-wrap:nowrap;width:100%}

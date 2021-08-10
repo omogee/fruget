@@ -278,13 +278,12 @@ class Navbar extends Component {
        </div>
          );   
     }else{
-      //margi
+  
       return(
-       <div style={{width:"100%"}}>
-        <div className="container-fluid" style={{width:"100%",position:"sticky", top:"0"}}>
-        <div  style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,height:"100%",width:"100%"}}>
-<div className="row navdivsm" style={{paddingRight:"10px",display:`${this.props.appDisplay}`,backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,zIndex:"2",paddingTop:"6px"}}>
-             <div className="col-6">
+       <div style={{width:"100%",position:"sticky", top:"0",backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,zIndex:"4"}}>
+        <div className="container-fluid"> 
+<div className="row navdivsm" style={{paddingRight:"10px",display:`${this.props.appDisplay}`,paddingTop:"6px"}}>
+             <div className="col-5">
             <div style={{padding:"0px",float:"left"}}>
 <span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"18px",paddingRight:"2px"}}></span>
              <small style={{fontWeight:"bolder",fontSize:"20px",color:"rgb(0, 119, 179)"}}>FRU</small>
@@ -294,10 +293,13 @@ class Navbar extends Component {
              <div className="col-3">               
              </div>
              <div className="col-1">
+               <span className="fa fa-search text-muted  nav-margin" style={{fontSize:"20px"}}></span>
+             </div>
+             <div className="col-1">
              <div style={{float:"left"}}>
                   <Link to={`/customer/login`}>
-                  <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontWeight:"bold",fontSize:"18px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
-                    <span className="far fa-user nav-margin"></span>
+                  <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontWeight:"bold",fontSize:"20px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
+                    <span className="far fa-user nav-margin text-muted"></span>
                 </small> </Link>
                   </div>
                   <div style={{position:"relative"}} onMouseEnter={()=>this.setState({accountheight:"150px",categoryheight:"0%"})}>
@@ -317,7 +319,7 @@ class Navbar extends Component {
              <div className="col-2">
 <Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/checkout/cart`}>
           <small className="mb-5" style={{position:"relative"}}>
-            <span className="fab fa-opencart ml-1" style={{fontSize:"18px"}}></span>
+            <span className="fab fa-opencart ml-1 text-muted" style={{fontSize:"20px"}}></span>
             <div style={{position:"absolute",top:"-5px",left:"20px"}}>
             <small className="badge ml-1" style={{backgroundColor:"brown",color:"white",padding:"3px",borderRadius:"50%"}}>
         {this.props.shoppingcarts?this.props.shoppingcarts.length: null}
@@ -347,8 +349,7 @@ class Navbar extends Component {
                </div>
           </div>
         </div>
-     </div>
-     
+ 
    <div style={{display:`${this.props.inputval.length > 0 ? "block" : "none"}`,zIndex:"2",height:"100%",backgroundColor:"white", height:"300%"}} className="indexer"> 
    <center>
      <div>
@@ -356,7 +357,7 @@ class Navbar extends Component {
      </div>     
       </center>      
    </div>  
-     </div>
+ </div>
       )
     }
     }

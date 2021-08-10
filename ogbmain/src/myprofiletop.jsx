@@ -47,18 +47,18 @@ class myProfileTop extends Component {
              let userId2 = mainToken.slice(userIdpos, userIdpos+userIdlen)
              const compass = this.props.match.params.compass
             this.setState({userId})
-            this.props.shoppingcart()
+         //   this.props.shoppingcart()
            // this.props.fetchinvoice(this.props.match.params.cartId)
-            this.props.fetchorders()
+        //    this.props.fetchorders()
            
-             this.props.viewuserdetailsbyuserId(userId)
+         //    this.props.viewuserdetailsbyuserId(userId)
               
             let uri = window.location.href
            
          //   uri.indexOf = uri.split("/")[6]
             this.setState({currentCategory:uri})           
             this.scrollToTop();    
-            this.props.submittedcart() 
+         //   this.props.submittedcart() 
         }else{
           this.props.setredirect()
         }
@@ -163,7 +163,7 @@ class myProfileTop extends Component {
       if(this.props.redirect){
         return <Redirect to={{ pathname: '/customer/login',state: { from: this.props.location }}} />
     }
-     console.log(this.props.submittedcarts, "isLoggedin")
+     console.log(this.props.savedcount,this.props.ordercount, "userdetails")
     // && parseInt(this.state.userId) == this.props.userdetails.userId  || parseInt(this.state.userId) === this.props.userdetails.userId
         let uri = window.location.href
       //  uri = uri.split("/")[3]
@@ -328,7 +328,7 @@ class myProfileTop extends Component {
    <Link to={`/${Math.floor(Math.random()*1000000000)}/lg/cart`}>
    <small style={{position:"relative"}}><span className="fa fa-shopping-cart text-muted" style={{fontSize:"20px"}}></span>
     <small style={{position:"absolute",right:"-10px"}} className="badge badge-success">
-        {this.props.submittedcarts?this.props.submittedcarts.length: null}
+        {this.props.cartcount ?this.props.cartcount.noOfCart: 0}
     </small>
     </small> 
     <small className="text-muted"  style={{fontSize:"13px"}}> Cart</small>
@@ -352,7 +352,7 @@ class myProfileTop extends Component {
    <Link style={{color:`${uri === "orders" ? "orange" : "grey"}`}} to={`/lg/orders`}>
    <small style={{position:"relative"}}><span className="fa fa-store " style={{fontSize:"15px"}}></span>
   <small style={{position:"absolute",right:"-8px"}} className="badge badge-danger">
-        {this.props.orders.length}
+  {this.props.ordercount ?this.props.ordercount.noOfOrder : 0}
     </small>
     </small>
   <small className=""  style={{fontSize:"13px"}}> orders</small>
@@ -556,7 +556,10 @@ const mapStateToProps=(store)=>{
         modaliconopacity:store.modaliconopacity,
         navbariconopacity:store.navbariconopacity,
         noofcontacts:store.noofcontacts,
-        redirect:store.redirect
+        redirect:store.redirect,
+        savedcount:store.savedcount[0],
+    ordercount:store.ordercount[0],
+    cartcount:store.cartcount[0]
     }
      }
      const mapDispatchToProps=(dispatch)=>{
