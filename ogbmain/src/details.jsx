@@ -873,8 +873,7 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
         return (   
           <div className="" style={{backgroundColor:`${this.props.userdetails.background === "black" ? "black" : "#f5f5f0"}`}}>
             <div className="container" >
-                <Suggestions></Suggestions>
-          
+                <Suggestions></Suggestions>         
           <div>
               <small style={{textTransform:"capitalize"}}> <a href="">home</a>  / 
                 <a href="">{this.props.productDetails.subcat1 }</a>  / <a href="">{this.props.productDetails.subcat2 }</a>  / <a href="">{this.props.productDetails.subcat3 }</a> / <a href="">{this.props.productDetails.brand }</a> 

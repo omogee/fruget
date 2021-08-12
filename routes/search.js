@@ -439,6 +439,12 @@ router.post('/connection/chat/message',verifyToken, (req,res)=>{
   console.log("user",user)
   console.log("reciever",reciever)
   let d = new Date();       
+  let time = d.getTime();
+
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December']; 
+ let currentDay = `${days[d.getDay()]} ${d.getDate()}${d.getDate() === 22 || d.getDate() === 22 ? "nd" : d.getDate() === 3 || d.getDate()===23 ? "rd" : "th" } of ${months[d.getMonth()]}  ${d.getFullYear()}`
+   
     const currentDate = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} Tz ${d.getHours() > 12 ? d.getHours() - 12 : d.getHours()}:${d.getMinutes()} ${d.getHours() > 12 ? "pm" : "am"}`   
     const currentTime = d.getTime(); 
     conn.getConnection(function(err, connection) {
@@ -460,7 +466,7 @@ router.post('/connection/chat/message',verifyToken, (req,res)=>{
             res.send("its not empty")
         })                       
       }else{         
-        connection.query("insert into connection (`conn1`, `conn2`) values (?,?)",[user,reciever],(err,connected)=>{
+        connection.query("insert into connection (`conn1`, `conn2`, date,time) values (?,?,?,?)",[user,reciever,currentDay, currentTime],(err,connected)=>{
             if (err) throw err;
         })
       connection.query("select connectionId from connection where (conn1=? AND conn2=?) OR (conn1=? AND conn2=?)",[reciever,user,user,reciever],(err,newconnectionId)=>{

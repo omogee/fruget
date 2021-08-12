@@ -388,7 +388,7 @@ sendmessage=(e)=>{
                    <span  className="fa fa-smile text-muted"></span>
                </button>  
                 </div>        
-                 <input type="text"  className="form-control form-control-lg" name="message" style={{borderLeft:"none",borderRight:"none"}} value={this.state.message}  onChange={this.change} placeholder="Type a message" />
+                 <input type="text"  className="form-control form-control-lg navsearch" name="message" style={{borderLeft:"none",borderRight:"none"}} value={this.state.message}  onChange={this.change} placeholder="Type a message" />
                 <div className="input-group-append">
                <button style={{border:"1px solid lightgrey",borderTopRightRadius:"20px",borderBottomRightRadius:"20px",borderLeft:"none"}} className={`btn ${this.state.navInputbtnclass}`} type="submit">
                    <span style={{fontSize:"20px"}} className="fa fa-camera text-muted"></span>
@@ -522,7 +522,7 @@ sendmessage=(e)=>{
                         <span  className="fa fa-smile text-muted"></span>
                     </button>  
                      </div>        
-                      <input type="text"  className="form-control form-control-lg" name="message" style={{borderLeft:"none",borderRight:"none"}} value={this.state.message}  onChange={this.change} placeholder="Type a message" />
+                      <input type="text"  className="form-control form-control-lg navsearch" name="message" style={{borderLeft:"none",borderRight:"none"}} value={this.state.message}  onChange={this.change} placeholder="Type a message" />
                      <div className="input-group-append">
                     <button style={{border:"1px solid lightgrey",borderTopRightRadius:"20px",borderBottomRightRadius:"20px",borderLeft:"none"}} className={`btn ${this.state.navInputbtnclass}`} type="submit">
                         <span style={{fontSize:"20px"}} className="fa fa-camera text-muted"></span>
