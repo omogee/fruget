@@ -409,7 +409,6 @@ loading = "Upload Items with ease and meet buyers in minutes"
         return (
           
             <CookiesProvider>
-            <div> 
                 <Router>
                  <Provider store={store}>    
                  {this.props.loading ?     
@@ -601,7 +600,7 @@ Proceed</button>
 
 
 
-    <div className="sidenavbar" style={{overflow:"auto",transition:"width 2s",WebkitTransform:"width 2s",mozTransition:"width 2s",zIndex:"3",width:`${this.props.modalsidenavbarwidth}`,overflowX:"hidden",height:"100%",left:"0px",position:"absolute",top:"54px"}}>
+    <div className="sidenavbar" style={{overflow:"auto",transition:"width 2s",WebkitTransform:"width 2s",mozTransition:"width 2s",zIndex:"3",width:`${this.props.modalsidenavbarwidth}`,overflow:"hidden",height:"100%",left:"0px",position:"absolute",top:"100px"}}>
       <Profilesidenavbar />            
    </div>         
    <div style={{backgroundColor:"rgba(242,242,242,0.5)",marginLeft:`${this.props.modalsidenavbarwidth}`,transition:"margin 2s",WebkitTransform:"margin 2s",mozTransition:"margin 2s"}}> 
@@ -705,7 +704,6 @@ Proceed</button>
                  </div>
                      </Provider>
                 </Router>
-            </div>
             </CookiesProvider>
         
          );

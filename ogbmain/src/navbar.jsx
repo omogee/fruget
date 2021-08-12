@@ -280,9 +280,8 @@ class Navbar extends Component {
     }else{
   
       return(
-       <div style={{width:"100%",position:"sticky", top:"0",backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,zIndex:"4"}}>
-        <div className="container-fluid"> 
-<div className="row navdivsm" style={{paddingRight:"10px",display:`${this.props.appDisplay}`,paddingTop:"6px"}}>
+       <div className="container-fluid" style={{width:"100%",position:"fixed", top:"0",backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,zIndex:"4"}}>       
+<div className="row" style={{paddingRight:"10px",display:`${this.props.appDisplay}`,paddingTop:"6px"}}>
              <div className="col-5">
             <div style={{padding:"0px",float:"left"}}>
 <span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"18px",paddingRight:"2px"}}></span>
@@ -331,7 +330,7 @@ class Navbar extends Component {
                   
           </div>
 
-          <div className="row" style={{}}>
+          <div className="row">
             <div className="col-1 mt-2" style={{display:`${this.state.navInputrow === "col-11" ? "block" : "none"}`}}>
             <span className="fa fa-arrow-left" onClick={this.focus}></span>
             </div>
@@ -348,7 +347,7 @@ class Navbar extends Component {
                </center>
                </div>
           </div>
-        </div>
+        
  
    <div style={{display:`${this.props.inputval.length > 0 ? "block" : "none"}`,zIndex:"2",height:"100%",backgroundColor:"white", height:"300%"}} className="indexer"> 
    <center>
