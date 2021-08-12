@@ -196,7 +196,7 @@ class Navbar extends Component {
               <small style={{fontWeight:"bolder",fontSize:"30px",color:"red"}}>GET</small>
       */
      const uri = window.location.href;
-    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+    if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
         return (         
  <div className="navbarcomponentlg " style={{position:"sticky",top:"0px",zIndex:"11",boxShadow:" 0 4px 2px -2px lightgrey"}}>          
          

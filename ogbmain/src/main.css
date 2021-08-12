@@ -31,7 +31,7 @@ button:focus {
     animation: bounce 0.5s infinite alternate;
   -webkit-animation: bounce 0.5s infinite alternate;
   } 
-  
+ 
   @keyframes bounce {
     from {
       transform: translateY(0px);
@@ -104,6 +104,7 @@ html{
 .unhoveredsubcatapp:hover{color:orange}
  .hoveredapp:hover .addtocartbtn{display:block;width: 80%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
 .smhoveredapp{box-shadow:1px 2px 5px 2px lightgrey}
+.savedsmhoveredapp{box-shadow:1px 2px 5px 2px lightgrey}
 .hoveredapp:hover {box-shadow:1px 2px 5px 2px lightgrey}
 .smaddtocartbtn{display:block;width: 80%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
 .innermessageBoxlg{height:220px !important}
@@ -123,8 +124,8 @@ html{
   .registerbtn{left:10%;width:40%}
   .loginbtn{left:55%;width:40%}
   .subsuggestions{width:50%}
-  .smaddtocartbtn{margin-top:20px}
-  .addtocartbtn{margin-top: 25px;}
+ .smaddtocartbtn{margin-top:10px}
+  .addtocartbtn{margin-top: 10px;}
   .topmarginer{margin-top:30px;}
     .followdiv{top:20%;left:35%;width:30%}
     .userratingdiv{top:20%;left:25%;width:50%}
@@ -222,8 +223,7 @@ html{
    .lgdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
    
    .profile{padding: 0px 200px;}
-   .smhoveredapp{height:280px}
-   .unhoveredapp{height:300px;}
+  
 }
 
 @media all and (max-width: 1000px) and (min-width: 800px){
@@ -239,7 +239,7 @@ html{
   .subsuggestions{width:100%}
   .smaddtocartbtn{margin-top:8px}
   .addtocartbtn{margin-top: 8px;}
-  .unhoveredapp{height:300px;}
+ 
   .topmarginer{margin-top:10px;}
     .followdiv{top:20%;left:35%;width:35%}
     .innermessageBox{height:480px;overflow:auto}
@@ -304,7 +304,7 @@ html{
   .subsuggestions{width:100%}
   .smaddtocartbtn{margin-top:8px}
   .addtocartbtn{margin-top: 8px;}
-  .unhoveredapp{height:300px;}
+
   .topmarginer{margin-top:10px;}
     .followdiv{top:20%;left:35%;width:35%}
     .innermessageBox{height:480px;overflow:auto}
@@ -419,8 +419,7 @@ html{
     .mynavbtn{color:grey;border:1px solid lightgrey;border-left:none}
     .onfocus:focus{border:none}
     .gifclass{width: 50%;}
-    .unhoveredapp{height:280px;}
-    .smunhoveredapp{height:280px;}
+   //unhoveredapp
     .innermessageBoxlg{height:420px !important}
 }
 @media all and (max-width: 450px){

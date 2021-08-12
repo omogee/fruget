@@ -82,7 +82,7 @@ class ProfileSideNavbar extends Component {
           }
   logoutredirect =()=>{
              if(!Cookies.get("cm_pp")){
-                 window.location.href("/customer/login")
+                 this.props.history.push("/customer/login")
              } 
          }
  displaycategorymodal=()=>{
@@ -95,6 +95,10 @@ this.setState({settings_state:"fa fa-chevron-down"})
 decreasesettingsheight =()=>{
     this.props.decreasesettingsheight()
     this.setState({settings_state:"fa fa-chevron-right"})
+}
+opencat=(data)=>{
+    this.props.unshowmodalsidenavbar()
+    this.props.history.push(`/${Math.floor(Math.random()*100000000)}/lg/${data}`)
 }
     render() { 
         let uri = window.location.href
@@ -181,46 +185,43 @@ decreasesettingsheight =()=>{
                    ORDERS
                </small>
             </div>
-<a style={{color:`${uri === "cleared_carts" ? "orange" :this.props.userdetails.background==="white"?"black":"white"}`}} href={`/${this.props.email}/lg/orders`}>
+<a style={{cursor:"pointer",color:`${uri === "cleared_carts" ? "orange" :this.props.userdetails.background==="white"?"black":"white"}`}} href={`/${(Math.random()*1000000000).toFixed()}/lg/orders`}>
  <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
            <small  style={{fontSize:"14px"}}><span className="fa fa-shopping-cart"></span> Pending Cart 
            <small className="badge badge-danger" style={{float:"right"}}>{this.props.shoppingcarts.length}</small>
             </small>
     </div>
     </a>
-    <Link style={{color:`${uri === "submitted_carts" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}} to={`/${this.props.email}/lg/pending_carts`}>
- <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
-           <small  style={{fontSize:"14px"}}><span className="fa fa-shopping-cart"></span> Submitted Cart 
+  
+ <div  style={{cursor:"pointer",color:`${uri === "cart" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
+           <small onClick={()=>this.opencat("cart")}  style={{fontSize:"14px"}}><span className="fa fa-shopping-cart"></span> Submitted Cart 
            <small className="badge badge-danger" style={{float:"right"}}>{this.props.submittedcarts.length}</small>
             </small>
     </div>
-    </Link>
-    <Link style={{color:`${uri === "cleared_carts" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}} to={`/${this.props.email}/lg/cleared_carts`}>
- <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
+    
+    
+ <div onClick={()=>this.opencat("cleared_cart")} style={{cursor:"pointer",color:`${uri === "cleared_carts" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
            <small  style={{fontSize:"14px"}}><small style={{fontSize:"15px",position:"relative"}}>
            <span className="fa fa-shopping-cart" ></span>
            <span className="fa fa-times" style={{fontSize:"25px",position:"absolute",right:"0px",top:"0px",color:"red"}}></span>
                 </small> Cleared Cart <small className="badge badge-success" style={{float:"right"}}>0</small>
             </small>
     </div>
-    </Link>
-    <Link style={{color:`${uri === "orders" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}} to={`/lg/orders`}>
- <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
+
+ <div  onClick={()=>this.opencat("orders")} style={{cursor:"pointer",color:`${uri === "orders" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
            <small  style={{fontSize:"14px"}}><small style={{fontSize:"15px",position:"relative"}}>
            <span className="fa fa-shopping-cart" ></span>
            <span className="fa fa-times" style={{fontSize:"25px",position:"absolute",right:"0px",top:"0px",color:"red"}}></span>
                 </small> Orders <small className="badge badge-success" style={{float:"right"}}> {this.props.orders.length}</small>
             </small>
     </div>
-    </Link>
 
 <div style={{padding:"15px 0px 0px 23px"}}>
                <small style={{fontSize:"13px",fontWeight:"bolder",color:"lightgrey"}}>
                    ACCOUNT
                </small>
             </div>
-            <a style={{color:`${uri === "uploads" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}} href={`/${this.props.email}/lg/uploads`}>
- <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
+ <div onClick={()=>this.opencat("uploads")} style={{cursor:"pointer",color:`${uri === "uploads" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
            <small  style={{fontSize:"14px"}}><span className="fa fa-upload"></span> 
             Uploads 
             <span style={{float:"right"}}>
@@ -228,16 +229,15 @@ decreasesettingsheight =()=>{
             </span>
             </small>
     </div>
-    </a>
-<a style={{color:`${uri === "saved_items" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}} href={`/${this.props.userdetails.email || this.props.email}/lg/saved_items`}>
-    <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
+
+    <div onClick={()=>this.opencat("saved_items")} style={ {cursor:"pointer",color:`${uri === "saved_items" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
            <small  style={{fontSize:"14px"}}><span className="fa fa-cloud"></span>  Saved Items 
            <small className="badge badge-warning" style={{float:"right"}}>
            {this.props.userdetails.savedItems && this.props.userdetails.savedItems !== null ? JSON.parse(this.props.userdetails.savedItems).length : 0}
            </small>
            </small>
 </div>
-</a>
+
 <Link style={{color:`${uri === "followers" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}} to={`/${this.props.email}/lg/followers`}>
     <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
            <small  style={{fontSize:"14px"}}><span className="fa fa-users"></span>   Followers 
@@ -284,12 +284,12 @@ decreasesettingsheight =()=>{
 
 : null}
 
-<div onClick={this.logout} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"10px",borderBottom:"1px solid lightgrey"}}>
+<div style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"10px",borderBottom:"1px solid lightgrey"}}>
            <small  style={{fontSize:"14px"}}><span className="fa fa-map-maker"></span>Locate us
            </small>
 </div> 
 
-<div onClick={this.logout} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"10px"}}>
+<div onClick={this.logout} style={{cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"10px"}}>
            <small  style={{fontSize:"15px"}}> Log Out
            </small>
 </div>                    

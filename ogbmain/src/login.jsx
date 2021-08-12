@@ -4,7 +4,7 @@ import { instanceOf } from 'prop-types';
 import {connect} from "react-redux"
 import axios from "axios"
  import { withCookies} from "react-cookie"
- import {unsetredirect,unshowcolormodal,showcolormodal,unloading} from "./store"
+ import {unsetredirect,unshowmodalsidenavbar,unshowcolormodal,showcolormodal,unloading,viewuserdetailsbyuserId} from "./store"
 // import Cookies from 'universal-cookie';
 import Cookies from "js-cookie"
 
@@ -81,6 +81,8 @@ console.log("submitting")
   // Cookies.remove("token",{path:"/"})
   // Cookies.remove("cm_pp",{path:"/"})
   // Cookies.remove("ado_f",{path:"/"})
+  this.props.unshowmodalsidenavbar()
+  this.props.viewuserdetailsbyuserId()
    localStorage.setItem("cm_pp", `${res.data.cm_p}`)
    localStorage.setItem("token", `${res.data.token}`)
    localStorage.setItem("ado_f", `${res.data.username}`)
@@ -230,7 +232,9 @@ const mapStateToProps =(store)=>{
     unshowcolormodal:()=>dispatch(unshowcolormodal()),
     showcolormodal:()=>dispatch(showcolormodal()),
    unloading:()=>dispatch(unloading()),
-   unsetredirect:()=>dispatch(unsetredirect())
+   unsetredirect:()=>dispatch(unsetredirect()),
+   viewuserdetailsbyuserId:()=>dispatch(viewuserdetailsbyuserId()),
+   unshowmodalsidenavbar:()=>dispatch(unshowmodalsidenavbar())
    }
   }
  

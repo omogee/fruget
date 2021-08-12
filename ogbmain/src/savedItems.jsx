@@ -122,26 +122,14 @@ images.forEach(image=>{
       console.log(this.state.unsavingDetail, "products")
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         return (       
-                <div style={{backgroundColor:`${this.props.userdetails.background==="black"?"rgb(38,38,38)":"rgb(242,242,242)"}`}}>
-
-                 {this.props.savedProducts.length > 0 ?       
-               <div style={{display:`${this.props.appDisplay}`}}>         
-              <div  className="container main"> 
+                <div style={{display:`${this.props.appDisplay}`,backgroundColor:`${this.props.userdetails.background==="black"?"rgb(38,38,38)":"rgb(242,242,242)"}`}}>
+<div  className="container-fluid" style={{backgroundColor:`${this.props.userdetails.background || "white"}`}}> 
+                 {this.props.savedProducts.length > 0 ?              
+              
             <div className='row'  style={{padding:"2px"}}>
               <div className="col-12" style={{backgroundColor: `${this.props.userdetails.background ==="black" ?"black" : "#f5f5f0" }`}}>     
-              <div className='row' style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,height:`${this.props.loading?"100%":""}`,display:`${this.state.view === "grid" ? "inline-block" : "none"}`,padding:"2px"}}>   
-              <div className="col-12" style={{borderBottom:"1px solid lightgrey"}}>
-                <small style={{fontSize:'20px',textTransform:"capitalize"}}>{this.props.category  || this.props.vendor}
-                {this.props.vendor ? 
-                <span style={{fontSize:"15px",padding:"2px"}} className="fa fa-check-circle text-warning"></span>
-                : null }
-                </small>
-                {this.props.numOfRows > 0 ?
-                <small style={{float:"right"}}>{" " +this.props.numOfRows || 0} savedProducts Found </small>
-                : null}
-              </div>   
-              
-              <div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"35px"}}>               
+             
+                  <div className="row " style={{backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"35px"}}>               
  <div className="col-5 col-md-6" style={{fontSize:"20px",padding:"10px"}}>                     
                            <small > {this.props.savedProducts.length > 0 ? `Saved Items (${this.props.savedProducts.length})`  : null}</small>
                                </div>                           
@@ -149,15 +137,16 @@ images.forEach(image=>{
               
                                </div>                                          
                <div style={{padding:"10px",display:`${this.props.savedProducts.length > 0 ? "block" :"none"}`}}>
-              <i class="fa fa-th" style={{color:`${this.state.view === "grid"  ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.grid}></i>
+              <i class="fa fa-th" style={{color:`${view === "grid"  ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.grid}></i>
               </div>
               <div style={{padding:"10px",display:`${this.props.savedProducts.length > 0 ? "block" :"none"}`}}>
-              <i class="fa fa-grip-vertical" style={{color:`${this.state.view === "list" ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.list}></i>
+              <i class="fa fa-grip-vertical" style={{color:`${view === "list" ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.list}></i>
               </div>
               <div style={{padding:"10px",fontSize:"20px"}}>
               <span className="fa fa-cloud" style={{color:"orange"}}></span>
               </div>
-              </div>
+              </div>                    
+             
               <div className="savemodaldiv" ref={(a) => this.savemodaldiv =a} id="savemodaldiv"
                style={{display:`${this.state.displayaskdiv}`,zIndex:"1",width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.4)"}}>
               <div className="savediv" style={{padding:"5px",border:"1px solid lightgrey",backgroundColor:`${this.props.userdetails.background || "rgba(0,0,0,0.4)"}`}}>
@@ -180,11 +169,10 @@ images.forEach(image=>{
      </center>
      </div>
  </div> 
-
-
+ 
                {view === "grid" ? this.props.savedProducts.map((product) =>          
-               <div className="col-6 col-md-4 col-lg-3 mb-1"  style={{marginBottom:"0px",width:"100%",padding:"1px",display:"inline-block"}}  key={product.productId} >        
-               <div className={`${this.state.hoverapp} smhoveredapp smunhoveredapp`} style={{backgroundColor:`${this.props.userdetails.background || "white"}`,padding:"5px"}}>
+               <div className="col-6 col-md-3 col-lg-2 mb-1"  style={{marginBottom:"0px",width:"100%",padding:"1px",display:"inline-block"}}  key={product.productId} >        
+               <div className={`${this.state.hoverapp} savedsmhoveredapp`} style={{boxShadow:"1px 2px 5px 2px lightgrey",backgroundColor:`${this.props.userdetails.background || "white"}`,padding:"5px"}}>
               <div>
               <span onClick={()=>this.askToUnsave({details:product.details,id:product.productId})} className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(product.productId)) ? "fa fa-heart" : "far fa-heart"} style={{position:"absolute",fontSize:"20px",top:"10px",left:"10px", color:"orange"}}></span>
                 <center>
@@ -201,7 +189,7 @@ images.forEach(image=>{
     <div className="" style={{lineHeight:"16px"}}> 
      <div  className="details">  
          <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>
-           {product.details}</small>  
+           {product.details ? product.details : <br/>}</small>  
             </div> 
           
               <small className="text-muted" style={{letterSpacing:"-1px",textTransform:"capitalize",fontSize:"10px"}}><b style={{color:"orange"}}>{product.store}</b> @ <span className="fa fa-map-marker-alt"></span>{product.lga}</small>
@@ -219,20 +207,14 @@ images.forEach(image=>{
             </div>      
       </div> 
              ): null}     
-                 </div>
+                
     
-               <div className='row' style={{backgroundColor:`${this.props.userdetails.background==="black" || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${view === "list" ? "inline-block" : "none"}`,padding:"2px"}}>   
-              <div className="col-12">
-                <small style={{fontSize:'20px',textTransform:"capitalize"}}>{this.props.category}</small>
-                <small style={{float:"right"}}>{" " +this.props.numOfRows} savedProducts Found </small>
-     
-              </div>   
-    
-    
-               {this.props.savedProducts.map((product) =>          
-    <div className="col-12  " onMouseOver={this.hoverapp}  style={{backgroundColor:`${this.props.userdetails.background || "white"}`,display:`${view === "list" ? "block" : "none"}`,margin:"2px 0px",padding:"3px"}}  key={product.productId} >               
-            <div className="row "  style={{margin:"0px"}}>
-              <div className="col-5 col-md-4 col-lg-3"  style={{margin:"0px",padding:"5px"}}>
+               <div className='row' style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"2px"}}>   
+               {view === "list" ?this.props.savedProducts.map((product) =>
+                      
+    <div className="col-12" onMouseOver={this.hoverapp}  style={{boxShadow:"1px 2px 5px 2px lightgrey",margin:"2px 0px",padding:"3px"}}  key={product.productId} >               
+           <div className="row" style={{padding:"10px"}}>
+              <div className="col-5 col-md-4 col-lg-3"  style={{padding:"5px"}}>
               <span onClick={()=>this.askToUnsave({details:product.details,id:product.productId})} className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(product.productId)) ? "fa fa-heart" : "far fa-heart"} style={{position:"absolute",fontSize:"20px",top:"10px",left:"10px", color:"orange"}}></span>
                 <center>
                 <img className="mainImg img-responsive" data-src={`https://res.cloudinary.com/fruget-com/image/upload/${product.generalcategory}/${product.category}/${product.mainimg || 'emptyimg.jpg'}`} ></img>           
@@ -244,7 +226,7 @@ images.forEach(image=>{
     </div>
       </div>
               </div>
-              <div className="col-7" style={{margin:"0px"}}> 
+              <div className="col-7 col-md-8 col-lg-9" style={{margin:"0px"}}> 
               <div className="row" style={{width:"100%"}}>
     <div className="d-none d-md-block col-md-12">
     <small style={{float:"left"}}>{product.brand}</small>
@@ -253,7 +235,8 @@ images.forEach(image=>{
       </div>
                <div className="smdetaildiv" style={{lineHeight:"16px"}}> 
                 <div  className="details">  
-         <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
+         <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>
+           { product.details +"-"+ product.model +"-"+ product.color}</small>  
             </div> 
             <small style={{fontStyle:"italic",color:"red",float:"right",fontSize:"11px"}}>{formater(product.date)}</small>
           <br/>
@@ -272,7 +255,8 @@ images.forEach(image=>{
             </div>     
             </div>
             </div>
-             )}     
+             ) : null}  
+                
                  </div>
                  <center>
                 
@@ -281,8 +265,7 @@ images.forEach(image=>{
              
              </div>
              </div>
-         </div>
-          </div>
+     
     
           :  this.props.loading ?
           new Array(8).fill("lalala").map((product) =>          
@@ -337,6 +320,7 @@ images.forEach(image=>{
                  <h1 style={{padding:"50px"}}>Fetching savedProducts...</h1>
                  </center>
              </div>}
+             </div>
           </div>
          
          );
@@ -377,10 +361,10 @@ images.forEach(image=>{
               
                                </div>                                          
                <div style={{padding:"10px",display:`${this.props.savedProducts.length > 0 ? "block" :"none"}`}}>
-              <i class="fa fa-th" style={{color:`${this.state.view === "grid"  ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.grid}></i>
+              <i class="fa fa-th" style={{color:`${view === "grid"  ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.grid}></i>
               </div>
               <div style={{padding:"10px",display:`${this.props.savedProducts.length > 0 ? "block" :"none"}`}}>
-              <i class="fa fa-grip-vertical" style={{color:`${this.state.view === "list" ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.list}></i>
+              <i class="fa fa-grip-vertical" style={{color:`${view === "list" ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.list}></i>
               </div>
               <div style={{padding:"10px",fontSize:"20px"}}>
               <span className="fa fa-cloud" style={{color:"orange"}}></span>
