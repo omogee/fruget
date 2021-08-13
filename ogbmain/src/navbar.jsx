@@ -196,7 +196,11 @@ class Navbar extends Component {
               <small style={{fontWeight:"bolder",fontSize:"30px",color:"red"}}>GET</small>
       */
      const uri = window.location.href;
-    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+     const {pathname} = this.props.location;
+     if(pathname.indexOf("/in_box") > -1 || pathname.indexOf("/connection") > -1) {
+         return null;
+     }
+   else if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
         return (         
  <div className="navbarcomponentlg " style={{position:"sticky",top:"0px",zIndex:"11",boxShadow:" 0 4px 2px -2px lightgrey"}}>          
          
@@ -278,24 +282,26 @@ class Navbar extends Component {
        </div>
          );   
     }else{
-  
-      return(
-       <div className="container-fluid" style={{width:"100%",position:"fixed", top:"0",backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,zIndex:"4"}}>       
-<div className="row" style={{paddingRight:"10px",display:`${this.props.appDisplay}`,paddingTop:"6px"}}>
-             <div className="col-5">
+        return(
+       <div className="container-fluid" style={{width:"100%",position:"sticky", top:"0",backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,zIndex:"4"}}>       
+<div  style={{paddingRight:"10px",width:"100%",display:`${this.props.appDisplay}`,paddingTop:"6px"}}>
+  <div style={{display:"flex",flexWrap:"nowrap",flexDirection:"",width:"100%"}}>
+             <div style={{width:"50%"}}>
             <div style={{padding:"0px",float:"left"}}>
 <span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"18px",paddingRight:"2px"}}></span>
              <small style={{fontWeight:"bolder",fontSize:"20px",color:"rgb(0, 119, 179)"}}>FRU</small>
             <small style={{fontWeight:"bolder",fontSize:"20px",color:"red"}}>GET</small>
             </div>
              </div>
-             <div className="col-3">               
+         
+             <div style={{width:"20%"}}>
+              <center>
+              <span onClick={this.offocus} className="fa fa-search text-muted  nav-margin" style={{fontSize:"20px"}}></span>
+              </center>
              </div>
-             <div className="col-1">
-               <span className="fa fa-search text-muted  nav-margin" style={{fontSize:"20px"}}></span>
-             </div>
-             <div className="col-1">
-             <div style={{float:"left"}}>
+             <div style={{width:"10%"}}>
+         <center>
+         <div >
                   <Link to={`/customer/login`}>
                   <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontWeight:"bold",fontSize:"20px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
                     <span className="far fa-user nav-margin text-muted"></span>
@@ -313,9 +319,11 @@ class Navbar extends Component {
   </div>
      </div>
       </div>
+         </center>
              </div>
             
-             <div className="col-2">
+             <div style={{width:"20%"}}>
+<center>
 <Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/checkout/cart`}>
           <small className="mb-5" style={{position:"relative"}}>
             <span className="fab fa-opencart ml-1 text-muted" style={{fontSize:"20px"}}></span>
@@ -326,8 +334,9 @@ class Navbar extends Component {
     </div>
           </small>
           </Link>
+</center>
         </div>
-                  
+        </div>   
           </div>
 
           <div className="row">

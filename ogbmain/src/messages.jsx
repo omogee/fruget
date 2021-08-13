@@ -499,7 +499,7 @@ this.state.messages[`${this.state.userId+"%"+follower.userId}`][this.state.messa
           <div  style={{width:"100%",height:"100%",overflow:"hidden"}}>
           <div stle={{height:"100%"}}>
           <div style={{width:"100%",overflow:"hidden"}}>
-          <Message typingClients={this.state.typingClients} userId={this.props.match.params.id} productId={this.state.productId}/>  
+          <Message typingClients={this.state.typingClients} otheruser={otheruserId} userId={this.props.match.params.id} productId={this.state.productId}/>  
           </div>
           </div>
            </div>

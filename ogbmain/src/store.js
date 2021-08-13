@@ -513,6 +513,9 @@ if(action.type === 'undisplaycategorymodal'){
         }
         else if(action.type === 'otheruserdetailsbyid'){  
           state = {...state,failed:action.payloadFailure,statos:action.payloadstatus,otheruserdetails: action.payloaduser}      
+          console.log(action.payloaduser,"payloaduser")
+          alert("hello")
+        
           return state;
           }      
         else if(action.type === 'errorOutput'){
@@ -1165,6 +1168,7 @@ export const getdetails =(data)=>{
   
  }
 }
+//viewotheruserdetailsbyuserId
 export const submitsearcher =(data)=>{
   return (dispatch)=>{
      dispatch({type: 'submitsearched'})

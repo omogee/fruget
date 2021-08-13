@@ -53,7 +53,7 @@ class Message extends Component {
               mainToken = myToken.slice(userIdpos+userIdlen, myMainTokenlen)
              let userId2 = mainToken.slice(userIdpos, userIdpos+userIdlen)
              this.setState({userId})
-             console.log(userId)
+             console.log(userId,otheruserId,"otheruserId")
             
       const data ={productId,otheruserId,userId,token:Cookies.get("token")}
              if(parsedQuery.item !== undefined){
@@ -181,6 +181,7 @@ class Message extends Component {
  //  this.dummyDiv.scrollIntoView({behavior:"smooth"})
     }
     change=(e)=>{
+      console.log(e.target.value,"e.target.value")
         const data ={
             "reciept": this.props.otheruserdetails.userId,
             "sender":this.state.userId
@@ -451,7 +452,8 @@ sendmessage=(e)=>{
      <div  style={{backgroundColor:`${this.props.userdetails.background || "white"}`,width:"100%",padding:"3px"}} >
      {overallMessages !== undefined ? overallMessages.map((message,i) =>
          <div key={message.time} style={{padding:"0px"}}>
-           {i === 0 || overallMessages[i].daysent !== overallMessages[i > 0 ? i-1 : 0].daysent ? 
+           {//productDetails
+           i === 0 || overallMessages[i].daysent !== overallMessages[i > 0 ? i-1 : 0].daysent ? 
            <div style={{width:"100%",clear:"both"}}>
            <center>
              <small><button className="btn" style={{padding:"0px"}}>

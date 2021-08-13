@@ -368,7 +368,7 @@ router.get("/product/display/seller", verifyToken,(req,res)=>{
 })
 })
 
-
+///product/display/otheruserdetailsbyuserId
 router.get("/product/display/sellerdetails", (req,res)=>{
     
     const userId = req.query.userId;
@@ -437,12 +437,13 @@ router.get("/product/display/userdetailsbyuserId",verifyToken,(req,res)=>{
 }) 
 router.get("/product/display/otheruserdetailsbyuserId",verifyToken,(req,res)=>{
    const userId = req.query.userId;
+   console.log("its an empty detail",userId)
     conn.getConnection((err,connection)=>{
         if (err) throw err;  
         connection.query("SELECT * from user WHERE userId =?", [userId], (err, details)=>{
         if (err) throw err;
         if(details.length === 0 || !details){
-            console.log("its an empty detail")
+           
          res.json({details:{}, isLoggedin:false,status:"done"})
         }else{
         connection.query("SELECT *,CONCAT('₦', FORMAT(sellingprice, 0)) AS mainprice FROM product INNER JOIN product_rating using (productId) WHERE store =? LIMIT 30 OFFSET 0", [details[0].businessName], (err, products)=>{
@@ -450,7 +451,7 @@ router.get("/product/display/otheruserdetailsbyuserId",verifyToken,(req,res)=>{
         connection.query("SELECT COUNT(*) as numOfRows FROM product  WHERE store =?", [details[0].businessName], (err, numOfRows)=>{
                     if (err) throw err
          connection.release()
-         console.log("otheruserdetails otheruserdetailsotheruserdetailsotheruserdetails")
+       //  console.log(otheruserdetails,"otheruserdetails otheruserdetailsotheruserdetailsotheruserdetails")
          res.json({otheruserdetails:details[0],products, numOfRows,isLoggedin:true,status:"done"})      
             })
         })
