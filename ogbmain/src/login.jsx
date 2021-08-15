@@ -66,7 +66,7 @@ console.log("submitting")
             navigation:JSON.stringify(navigation)
         }
          data =JSON.stringify(data)
-        axios.post("https://fruget.herokuapp.com/customer/submit/login", {data},  {
+        axios.post("http://localhost:5000/customer/submit/login", {data},  {
             headers: {
               'Content-Type': 'application/json'
             },
@@ -83,6 +83,8 @@ console.log("submitting")
   // Cookies.remove("ado_f",{path:"/"})
   this.props.unshowmodalsidenavbar()
   this.props.viewuserdetailsbyuserId()
+  this.props.shoppingcart()
+  this.props.countuserdetails()
    localStorage.setItem("cm_pp", `${res.data.cm_p}`)
    localStorage.setItem("token", `${res.data.token}`)
    localStorage.setItem("ado_f", `${res.data.username}`)
@@ -159,7 +161,7 @@ console.log("submitting")
          );
     }else{
       return (         
-        <div style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black"? "white":"black"}`}}>
+        <div style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black"? "white":"black"}`,position:`${this.props.modalsidenavbarwidth === "90%" ? "fixed" : "static" }`}}>
         <div className="container" style={{position:`${this.props.mainbgcolor==="white" ? "" : "fixed"}`}}>
         <div className="row" style={{marginTop:"30px"}}>
          <div className="d-none d-md-block col-md-4"></div>
@@ -224,6 +226,7 @@ console.log("submitting")
 const mapStateToProps =(store)=>{
     return{           
        userdetails:store.userdetails,
+       modalsidenavbarwidth:store.modalsidenavbarwidth,
        mainbgcolor:store.mainbgcolor
   }
 }

@@ -106,10 +106,7 @@ if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     return ( 
         <div className={"container"} style={{position:`${this.props.mainbgcolor==="white" ? "" : "fixed"}`}}>
             <div className="row" >
-                <div className={!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? "col-5 col-md-4 col-lg-3" :"d-none"} style={{padding:"5px"}}>
-                   <Sidenavbar category={this.props.match.params.category} />
-                </div>
-                <div className={!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ?"col-7 col-md-8 col-lg-9":"col-12"} style={{padding:"5px"}}>
+                <div className={"col-12"} style={{padding:"5px"}}>
                     <Suspense style={{padding:"10px"}} fallback={
                          <div className="row">
                              <center>

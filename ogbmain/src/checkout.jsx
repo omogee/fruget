@@ -306,7 +306,7 @@ class CheckOut extends Component {
          );
     }else{
       return (         
-        <div className="container-fluid" style={{backgroundColor:"white",minHeight:`${this.props.cart.length ===0 ? "100%" : ""}`}}>
+        <div className="container-fluid" style={{backgroundColor:"white",minHeight:`${this.props.cart.length ===0 ? "100%" : ""}`,position:`${this.props.modalsidenavbarwidth === "90%" ? "fixed" : "static" }`}}>
            <div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"0px"}}>               
 <div className="col-5 col-md-6" style={{fontSize:"20px",padding:"10px"}}>                     
                        <small>Shopping Cart ({this.props.cart?this.props.cart.length : null})</small>
@@ -534,7 +534,8 @@ const mapStateToProps =(store)=>{
       saveResponse: store.saveResponse,
       displaysavemodal:store.displaysavemodal,
       userdetails:store.userdetails,
-      redirect:store.redirect
+      redirect:store.redirect,
+      modalsidenavbarwidth:store.modalsidenavbarwidth
      }
   }
   const mapDispatchToProps =(dispatch)=>{

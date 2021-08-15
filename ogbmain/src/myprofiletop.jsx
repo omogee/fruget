@@ -397,7 +397,6 @@ class myProfileTop extends Component {
     }else{
     return(
       <div className="container">
-              
               <div className="row" style={{boxShadow:" 0 4px 2px -2px lightgrey",backgroundColor:"white"}}>
         <div className="col-12" style={{position:"fixed",top:"0px",backgroundColor:"white",zIndex:"2",height:"35px"}}>
           <div style={{margin:"6px 0px",display:"flex",flexWrap:"nowrap",padding:"5px"}}>
@@ -461,11 +460,7 @@ class myProfileTop extends Component {
       </div>
       </div>
       <div className="row" style={{marginTop:"130px"}} >
-     <div className="col-12 mb-2" >
-       <h4 style={{fontWeight:"bold",color:"orange"}}>
-         fruget
-       </h4>
-     </div>
+  
       <div className="col-12 " style={{borderBottom:"1px solid lightgrey",zIndex:"1"}}>
         <div className="row">
  <div className="col-2 " style={{borderBottom: `${uri.indexOf("profile") > -1 ? "1px solid brown" : ""}`}}>

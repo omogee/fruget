@@ -207,7 +207,7 @@ aboutbusiness:this.state.aboutbusiness
       .catch(err => console.log(err))
       
     */  
-      axios.post("https://fruget.herokuapp.com/customer/submit/register",formdata)
+      axios.post("http://localhost:5000/customer/submit/register",formdata)
       .then(res => { 
         if(res.data.register){
           this.setState({Message:res.data.message,displayMessage:"block",

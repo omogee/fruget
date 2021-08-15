@@ -600,7 +600,7 @@ Proceed</button>
 
 
 
-    <div className="sidenavbar" style={{overflow:"auto",transition:"width 2s",WebkitTransform:"width 2s",mozTransition:"width 2s",zIndex:"3",width:`${this.props.modalsidenavbarwidth}`,overflow:"hidden",height:"100%",left:"0px",position:"absolute",top:"100px"}}>
+    <div className="sidenavbar" style={{overflow:"auto",transition:"width 2s",WebkitTransform:"width 2s",mozTransition:"width 2s",zIndex:"3",width:`${this.props.modalsidenavbarwidth}`,overflow:"hidden",left:"0px",position:"absolute",top:"100px"}}>
       <Profilesidenavbar />            
    </div>         
    <div style={{backgroundColor:"rgba(242,242,242,0.5)",marginLeft:`${this.props.modalsidenavbarwidth}`,transition:"margin 2s",WebkitTransform:"margin 2s",mozTransition:"margin 2s"}}> 

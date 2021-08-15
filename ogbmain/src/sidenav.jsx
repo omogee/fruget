@@ -40,17 +40,17 @@ class SideNav extends Component {
   componentDidMount =()=>{
     
 
-    axios.get('https://fruget.herokuapp.com/fetch')
+    axios.get('http://localhost:5000/fetch')
     .then(res => this.setState({products: res.data}))
     .catch(err => console.warn(err))
 
-    axios.get('https://fruget.herokuapp.com/sizes')
+    axios.get('http://localhost:5000/sizes')
     .then(res => this.setState({sizedata: res.data}))
     .catch(err => console.warn(err))
-    axios.get('https://fruget.herokuapp.com/colour')
+    axios.get('http://localhost:5000/colour')
     .then(res => this.setState({colourdata: res.data}))
     .catch(err => console.warn(err))
-    axios.get('https://fruget.herokuapp.com/brands')
+    axios.get('http://localhost:5000/brands')
     .then(res => this.setState({branddata: res.data}))
     .catch(err => console.warn(err))
   }  

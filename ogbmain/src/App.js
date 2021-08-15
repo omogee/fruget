@@ -339,7 +339,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
              </div>
             
              {this.props.products.length > 0 ?       
-           <div style={{display:`${this.props.appDisplay}`}}>         
+           <div style={{display:`${this.props.appDisplay}`,position:`${this.props.modalsidenavbarwidth === "90%" ? "fixed" : "static" }`}}>         
           <div  className="container main"> 
         <div className='row'  style={{padding:"2px"}}>
           <div className="col-12" style={{backgroundColor: `${this.props.userdetails.background ==="black" ?"black" : "#f5f5f0" }`}}>     
@@ -672,6 +672,7 @@ ADD TO CART
           <div className="col-12 rowclasslist" onMouseOver={this.hoverapp} className={`${this.state.hoverapp} `}  style={{width:"100%",backgroundColor:`${this.props.userdetails.background || "white"}`,margin:"2px 0px",padding:"3px"}}  key={product.productId} >               
                   <div className="row"  style={{margin:"0px"}}>
                     <div className="col-5 col-md-4 col-lg-3"  style={{margin:"0px"}}>
+                    <span onClick={()=>this.save({productId:product.productId,details:product.details})} className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(product.productId)) ? "fa fa-heart" : "far fa-heart"} style={{position:"absolute",fontSize:"20px",top:"10px",left:"10px", color:"orange"}}></span>
                       <center>
                       <img className="mainImg img-responsive" src={`https://res.cloudinary.com/fruget-com/image/upload/${product.generalcategory}/${product.category}/${product.mainimg || 'emptyimg.jpg'}`} ></img>
                       </center>
