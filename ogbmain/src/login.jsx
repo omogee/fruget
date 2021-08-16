@@ -4,7 +4,7 @@ import { instanceOf } from 'prop-types';
 import {connect} from "react-redux"
 import axios from "axios"
  import { withCookies} from "react-cookie"
- import {unsetredirect,unshowmodalsidenavbar,unshowcolormodal,showcolormodal,unloading,viewuserdetailsbyuserId} from "./store"
+ import {unsetredirect,unshowmodalsidenavbar,unshowcolormodal,shoppingcart,countuserdetails,showcolormodal,unloading,viewuserdetailsbyuserId} from "./store"
 // import Cookies from 'universal-cookie';
 import Cookies from "js-cookie"
 
@@ -81,16 +81,16 @@ console.log("submitting")
   // Cookies.remove("token",{path:"/"})
   // Cookies.remove("cm_pp",{path:"/"})
   // Cookies.remove("ado_f",{path:"/"})
-  this.props.unshowmodalsidenavbar()
-  this.props.viewuserdetailsbyuserId()
-  this.props.shoppingcart()
-  this.props.countuserdetails()
    localStorage.setItem("cm_pp", `${res.data.cm_p}`)
    localStorage.setItem("token", `${res.data.token}`)
    localStorage.setItem("ado_f", `${res.data.username}`)
    Cookies.set("token", `${res.data.token}`, { expires: 0.0255 })
    Cookies.set("cm_pp", `${res.data.cm_p}`, { expires: 0.0255 })
    Cookies.set("ado_f", `${res.data.username}`, { expires: 0.0255 })
+   this.props.unshowmodalsidenavbar()
+   this.props.viewuserdetailsbyuserId()
+   this.props.shoppingcart()
+   this.props.countuserdetails()
    //   this.setState({Message:res.data.message,colorMessage:"lightgreen",email:"",password:""}, ()=>{
  // await this.props.showcolormodal()
  // this.setState({Message:"",colorMessage:"",email:"",password:""}, ()=>{
@@ -237,7 +237,9 @@ const mapStateToProps =(store)=>{
    unloading:()=>dispatch(unloading()),
    unsetredirect:()=>dispatch(unsetredirect()),
    viewuserdetailsbyuserId:()=>dispatch(viewuserdetailsbyuserId()),
-   unshowmodalsidenavbar:()=>dispatch(unshowmodalsidenavbar())
+   unshowmodalsidenavbar:()=>dispatch(unshowmodalsidenavbar()),
+   shoppingcart:()=>dispatch(shoppingcart()),
+   countuserdetails:()=>dispatch(countuserdetails())
    }
   }
  
