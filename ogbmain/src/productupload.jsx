@@ -51,7 +51,7 @@ class ProductUpload extends Component {
          }
     }
     componentDidMount=()=>{
-    axios.get("http://localhost:5000/details/fetch/details")
+    axios.get("https://fruget.herokuapp.com/details/fetch/details")
     .then(res => this.setState({allDetails:res.data}))
     .catch(err => console.warn(err))
 
@@ -175,7 +175,7 @@ const formdata = new FormData();
       }
   }
   
-  axios.post(`http://localhost:5000/products/seller/productupload`, formdata, config)
+  axios.post(`https://fruget.herokuapp.com/products/seller/productupload`, formdata, config)
     .then(res => {
         if(res.data.failure){
             this.setState({Message:res.data.message,displayMessage:"block"})
