@@ -72,6 +72,7 @@ class ProfileSideNavbar extends Component {
         this.props.unshowmodalsidenavbar()
           }
     logout=()=>{
+        this.props.unshowmodalsidenavbar()
             localStorage.clear();
             //         console.log(res.data[`userIexypoxy${res.data.messageId.charAt(0)+res.data.messageId.charAt(1)+res.data.messageId.charAt(2)}2gwy6g`])
         //  localStorage.setItem(`fruget152019081996b9gh2991hvhyb`, res.data[`userIexypoxy${res.data.messageId}2gwy6g`])
@@ -125,12 +126,12 @@ opencat=(data)=>{
 <div className="row" style={{padding:"0px 10px"}}>
 <div className="col-6">
 <button className="btn" onClick={()=> window.location.assign("/customer/login")} style={{backgroundColor:"orange",textDecoration:"none",borderRadius:"3px",width: "100%",color:"white",padding:"2px"}}>
-  <small> <span className="fa fa-sign-in-alt "></span> Sign in </small></button>
+  <small style={{fontSize:"16px"}}> <span className="fa fa-sign-in-alt "></span> Sign in </small></button>
 </div>
 
  <div className="col-6">
 <button className="btn btn-link" onClick={()=> window.location.assign("/customer/register")}  style={{backgroundColor:"orange",textDecoration:"none",borderRadius:"3px",width:"100%",padding:"2px",color:"white"}}> 
-<small><span className="fa fa-pencil-square"></span> Register</small></button>
+<small style={{fontSize:"16px"}}><span className="fa fa-pencil-square"></span> Register</small></button>
 </div>
 </div>
 <br/>
@@ -144,7 +145,8 @@ opencat=(data)=>{
  <div className="col-12" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"10px",display:`${this.state.subcategorydisplay}`}}>
     {this.props.allsubcategory.length > 0 ? this.props.allsubcategory.map((categories) =>
         <div key={categories.category } style={{cursor:"pointer",borderBottom:"1px solid lightgrey"}}>
-             <p onClick={(e)=>this.subcat(e)} onDoubleClick={(e)=>this.opencategory(e)} ><small style={{textTransform:"capitalize"}} >{categories.category}</small>
+             <p onClick={(e)=>this.subcat(e)} onDoubleClick={(e)=>this.opencategory(e)} >
+                 <small style={{textTransform:"capitalize",fontSize:"15px"}} >{categories.category}</small>
              </p>
         </div>
         ) : null}
@@ -155,7 +157,7 @@ opencat=(data)=>{
    <div className="col-12" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : "black"}`}}>
     {this.props.allcategory.length > 0 ? this.props.allcategory.map((categories) =>
         <div key={categories.generalcategory } style={{cursor:"pointer",borderBottom:"1px solid lightgrey"}}>
-             <p onClick={(e)=>this.subcat(e)} onDoubleClick={(e)=>this.opencategory(e)}><small style={{fontWeight:"bold",textTransform:"capitalize"}} >{categories.generalcategory}</small>
+             <p onClick={(e)=>this.subcat(e)} onDoubleClick={(e)=>this.opencategory(e)}><small style={{fontWeight:"bold",textTransform:"capitalize",fontSize:"16px"}} >{categories.generalcategory}</small>
              </p>
         </div>
         ) : null}
@@ -167,13 +169,13 @@ opencat=(data)=>{
 
 <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
 <Link style={{width:"0px",fontSize:"0px",color:`${uri === "home" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}} to={`/${this.props.email}/lg`}>
-<small onClick={this.change} style={{fontSize:"14px"}}>
+<small onClick={this.change} style={{fontSize:"16px"}}>
  <span className="fa fa-home"> </span>  Home</small>
  </Link>
 </div>
 
 <div onClick={this.displaycategorymodal} style={{padding:"10px",borderBottom:`1px solid lightgrey`,color:`${uri === "home" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}}>
-<small onClick={this.change} style={{fontSize:"14px"}}>
+<small onClick={this.change} style={{fontSize:"16px"}}>
 <span className="fa fa-user-md"></span> Our Services </small>
 </div>
 
@@ -187,21 +189,21 @@ opencat=(data)=>{
             </div>
 <a style={{cursor:"pointer",color:`${uri === "cleared_carts" ? "orange" :this.props.userdetails.background==="white"?"black":"white"}`}} href={`/${(Math.random()*1000000000).toFixed()}/lg/orders`}>
  <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
-           <small  style={{fontSize:"14px"}}><span className="fa fa-shopping-cart"></span> Pending Cart 
+           <small  style={{fontSize:"16px"}}><span className="fa fa-shopping-cart"></span> Pending Cart 
            <small className="badge badge-danger" style={{float:"right"}}>{this.props.shoppingcarts.length}</small>
             </small>
     </div>
     </a>
   
  <div  style={{cursor:"pointer",color:`${uri === "cart" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
-           <small onClick={()=>this.opencat("cart")}  style={{fontSize:"14px"}}><span className="fa fa-shopping-cart"></span> Submitted Cart 
-           <small className="badge badge-danger" style={{float:"right"}}>{this.props.submittedcarts.length}</small>
+           <small onClick={()=>this.opencat("cart")}  style={{fontSize:"16px"}}><span className="fa fa-shopping-cart"></span> Submitted Cart 
+           <small className="badge badge-danger" style={{float:"right"}}> {this.props.cartcount ?this.props.cartcount.noOfCart: 0}</small>
             </small>
     </div>
     
     
  <div onClick={()=>this.opencat("cleared_cart")} style={{cursor:"pointer",color:`${uri === "cleared_carts" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
-           <small  style={{fontSize:"14px"}}><small style={{fontSize:"15px",position:"relative"}}>
+           <small  style={{fontSize:"16px"}}><small style={{fontSize:"15px",position:"relative"}}>
            <span className="fa fa-shopping-cart" ></span>
            <span className="fa fa-times" style={{fontSize:"25px",position:"absolute",right:"0px",top:"0px",color:"red"}}></span>
                 </small> Cleared Cart <small className="badge badge-success" style={{float:"right"}}>0</small>
@@ -209,10 +211,10 @@ opencat=(data)=>{
     </div>
 
  <div  onClick={()=>this.opencat("orders")} style={{cursor:"pointer",color:`${uri === "orders" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
-           <small  style={{fontSize:"14px"}}><small style={{fontSize:"15px",position:"relative"}}>
+           <small  style={{fontSize:"16px"}}><small style={{fontSize:"15px",position:"relative"}}>
            <span className="fa fa-shopping-cart" ></span>
            <span className="fa fa-times" style={{fontSize:"25px",position:"absolute",right:"0px",top:"0px",color:"red"}}></span>
-                </small> Orders <small className="badge badge-success" style={{float:"right"}}> {this.props.orders.length}</small>
+                </small> Orders <small className="badge badge-success" style={{float:"right"}}> {this.props.ordercount ?this.props.ordercount.noOfOrder : 0}</small>
             </small>
     </div>
 
@@ -222,7 +224,7 @@ opencat=(data)=>{
                </small>
             </div>
  <div onClick={()=>this.opencat("uploads")} style={{cursor:"pointer",color:`${uri === "uploads" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
-           <small  style={{fontSize:"14px"}}><span className="fa fa-upload"></span> 
+           <small  style={{fontSize:"16px"}}><span className="fa fa-upload"></span> 
             Uploads 
             <span style={{float:"right"}}>
             ({this.props.sellernumOfRows.length===0 ? 0 : this.props.sellernumOfRows})
@@ -231,7 +233,7 @@ opencat=(data)=>{
     </div>
 
     <div onClick={()=>this.opencat("saved_items")} style={ {cursor:"pointer",color:`${uri === "saved_items" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`,padding:"10px",borderBottom:`1px solid lightgrey`}}>
-           <small  style={{fontSize:"14px"}}><span className="fa fa-cloud"></span>  Saved Items 
+           <small  style={{fontSize:"16px"}}><span className="fa fa-cloud"></span>  Saved Items 
            <small className="badge badge-warning" style={{float:"right"}}>
            {this.props.userdetails.savedItems && this.props.userdetails.savedItems !== null ? JSON.parse(this.props.userdetails.savedItems).length : 0}
            </small>
@@ -240,7 +242,7 @@ opencat=(data)=>{
 
 <Link style={{color:`${uri === "followers" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}} to={`/${this.props.email}/lg/followers`}>
     <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}}>
-           <small  style={{fontSize:"14px"}}><span className="fa fa-users"></span>   Followers 
+           <small  style={{fontSize:"16px"}}><span className="fa fa-users"></span>   Followers 
            <small className="badge badge-danger" style={{float:"right"}}>
            {this.props.userdetails.followers && this.props.userdetails.followers.length>0 ?JSON.parse(this.props.userdetails.followers).length : 0}
            </small>
@@ -250,7 +252,7 @@ opencat=(data)=>{
 
 <div style={{cursor:"pointer",color:`${uri === "settings" ? "orange" : this.props.userdetails.background==="white"?"black":"white"}`}} to={`/${this.props.email}/lg/category`}>
     <div style={{padding:"10px",borderBottom:`1px solid lightgrey`}} title="double click to remove settings" onDoubleClick={this.decreasesettingsheight} onClick={this.increasesettingsheight} >
-           <small  style={{fontSize:"14px"}}><span className="fa fa-cog" ></span> Settings
+           <small  style={{fontSize:"16px"}}><span className="fa fa-cog" ></span> Settings
            </small>
            <small style={{float:"right"}}>
                <span className={`${this.state.settings_state}`}></span>
@@ -285,7 +287,7 @@ opencat=(data)=>{
 : null}
 
 <div style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"10px",borderBottom:"1px solid lightgrey"}}>
-           <small  style={{fontSize:"14px"}}><span className="fa fa-map-maker"></span>Locate us
+           <small  style={{fontSize:"16px"}}><span className="fa fa-map-maker"></span>Locate us
            </small>
 </div> 
 
@@ -315,7 +317,10 @@ const mapStateToProps=(store)=>{
         modalsidenavbardisplay:store.modalsidenavbardisplay,
         allcategory:store.allcategories,
         allsubcategory:store.allcategory,
-        settingsheight:store.settingsheight
+        settingsheight:store.settingsheight,
+        cartcount:store.cartcount[0],
+        savedcount:store.savedcount[0],
+        ordercount:store.ordercount[0]
     }
      }
      const mapDispatchToProps=(dispatch)=>{  

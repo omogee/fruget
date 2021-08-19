@@ -46,8 +46,10 @@ class Invoice extends Component {
                   <b>Price :</b> {cart.mainprice} <br/>
                   <b>Quantity :</b> {cart.quantity} <br/>
                   <b>Amount :</b> <b>{cart.subtotal}</b> <br/> 
-                  <b>Date :</b> {cart.dateoforder.split("T")[0]} <br/>
-                  <b>Time :</b> {cart.dateoforder.split("T")[1]} <br/> 
+                  <b>Date :</b> {cart.date//cart.dateoforder.split("T")[0]
+                  } <br/>
+                  <b>Time :</b> {cart.time//cart.dateoforder.split("T")[1]
+                  } <br/> 
                   <b>Status :</b> {cart.status}  <hr/>
                          </div>
                          <div className="col-5 col-md-5">
@@ -141,8 +143,10 @@ class Invoice extends Component {
                       <b>Price :</b> {cart.mainprice} <br/>
                       <b>Quantity :</b> {cart.quantity} <br/>
                       <b>Amount :</b> <b>{cart.subtotal}</b> <br/> 
-                      <b>Date :</b> {cart.dateoforder.split("T")[0]} <br/>
-                      <b>Time :</b> {cart.dateoforder.split("T")[1]} <br/> 
+                      <b>Date :</b> {//cart.dateoforder.split("T")[0]
+                      } <br/>
+                      <b>Time :</b> {//cart.dateoforder.split("T")[1]
+                      } <br/> 
                       <b>Status :</b> {cart.status}  <hr/>
                              </div>
                              <div className="col-5 col-md-5">

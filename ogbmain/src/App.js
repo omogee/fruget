@@ -373,7 +373,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
   </div>
 <div className="" style={{lineHeight:"16px"}}> 
  <div  className="details">  
-     <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
+     <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
         </div> 
         <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
         {product.discount ?
@@ -443,7 +443,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
   </div>
            <div className="smdetaildiv" style={{lineHeight:"16px"}}> 
             <div  className="details">  
-     <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
+     <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
         </div> 
         <small  style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> 
        <span><small className="text-muted ml-1" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></span> 
@@ -628,7 +628,7 @@ ADD TO CART
             </div>
                      <div className="" style={{lineHeight:"16px"}}> 
                       <div  className="details">  
-               <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
+               <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
                   </div> 
                   <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
                  <div><small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></div> 
@@ -686,7 +686,7 @@ ADD TO CART
             </div>
                      <div className="detaildiv" style={{lineHeight:"16px"}}> 
                       <div  className="details">  
-               <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
+               <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
                   </div> 
                   <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
                  <div><small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></div> 
@@ -762,7 +762,7 @@ ADD TO CART
            <div className="detaildiv" style={{lineHeight:"16px"}}> 
            <br/>
            <div  className="details" style={{backgroundColor:"rgba(242,242,242,0.6)",width:"90%",height:"30px"}}>  
-            <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}></small>  
+            <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}></small>  
                </div> 
                <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
               <div><small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></div> 

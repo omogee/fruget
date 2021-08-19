@@ -197,7 +197,7 @@ class Navbar extends Component {
       */
      const uri = window.location.href;
      const {pathname} = this.props.location;
-     if(pathname.indexOf("/in_box") > -1 || pathname.indexOf("/connection") > -1) {
+     if(pathname.indexOf("/in_box") > -1 || pathname.indexOf("/connection") > -1|| pathname.indexOf("/lg/") > -1) {
          return null;
      }
    else if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
@@ -288,22 +288,22 @@ class Navbar extends Component {
   <div style={{display:"flex",flexWrap:"nowrap",flexDirection:"",width:"100%"}}>
              <div style={{width:"50%"}}>
             <div style={{padding:"0px",float:"left"}}>
-<span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"18px",paddingRight:"2px"}}></span>
-             <small style={{fontWeight:"bolder",fontSize:"20px",color:"rgb(0, 119, 179)"}}>FRU</small>
-            <small style={{fontWeight:"bolder",fontSize:"20px",color:"red"}}>GET</small>
+<span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"25px",paddingRight:"2px"}}></span>
+             <small style={{fontWeight:"bolder",fontSize:"25px",color:"rgb(0, 119, 179)"}}>FRU</small>
+            <small style={{fontWeight:"bolder",fontSize:"25px",color:"red"}}>GET</small>
             </div>
              </div>
          
              <div style={{width:"20%"}}>
               <center>
-              <span onClick={this.offocus} className="fa fa-search text-muted  nav-margin" style={{fontSize:"20px"}}></span>
+              <span onClick={this.offocus} className="fa fa-search text-muted  nav-margin" style={{fontSize:"25px"}}></span>
               </center>
              </div>
              <div style={{width:"10%"}}>
          <center>
          <div >
                   <Link to={`/customer/login`}>
-                  <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontWeight:"bold",fontSize:"20px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
+                  <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontWeight:"bold",fontSize:"25px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
                     <span className="far fa-user nav-margin text-muted"></span>
                 </small> </Link>
                   </div>
@@ -326,7 +326,7 @@ class Navbar extends Component {
 <center>
 <Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/checkout/cart`}>
           <small className="mb-5" style={{position:"relative"}}>
-            <span className="fab fa-opencart ml-1 text-muted" style={{fontSize:"20px"}}></span>
+            <span className="fab fa-opencart ml-1 text-muted" style={{fontSize:"25px"}}></span>
             <div style={{position:"absolute",top:"-5px",left:"20px"}}>
             <small className="badge ml-1" style={{backgroundColor:"brown",color:"white",padding:"3px",borderRadius:"50%"}}>
         {this.props.shoppingcarts?this.props.shoppingcarts.length: null}

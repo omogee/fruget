@@ -116,21 +116,18 @@ console.log("submitting")
             <div className="contain">
                 <div style={{display:"flex",flexWrap:"nowrap"}}>
                 <div style={{width:"50%",padding:"2vw",borderRight:"1px solid rgba(242,242,242,0.7)"}}>
-        <h5 style={{fontWeight:"bolder",color:"#004d99",textShadow: `0.5px 0.5px ${this.props.userdetails.background === "black"?"white":"grey"}`}}> Login</h5>
-    
+        <h5 style={{fontWeight:"bolder",color:"#004d99",textShadow: `0.5px 0.5px ${this.props.userdetails.background === "black"?"white":"grey"}`}}> Login</h5> 
         <div className="alert" style={{backgroundColor:`${this.state.colorMessage}`,display:`${this.state.displayMessage}`}}>
           {this.state.Message}
         </div>
        <form method="post" action="/customers/login" onSubmit={this.submit}>
        <label for="email">Email/User</label>
 <input type="text" id="email"  name="email"  onChange={this.change} value={this.state.email} placeholder="" className="form-control" /><br/>
-
     <label for="password">Password</label><br/>
-  
                  <div class="input-group mb-3">
                   <input type={this.state.passwordType} title="<b>Must contain text and numbers</b>" name="password" id="password" placeholder="" onChange={this.change} pattern="[a-zA-Z0-9/]+" value={this.state.password} style={{borderRight:"0px"}} className="form-control" ></input>
                 <div class="input-group-append" style={{border:"1px solid lightgrey",borderTopRightRadius:"5px",borderBottomRightRadius:"5px",borderLeft:"0px"}} className="text-primary">
-                      <span style={{padding:"10px 10px 0px 10px",fontSize:"16px"}} onClick={()=>this.state.passwordType === "password" ? this.setState({passwordType:"text",passwordClass:"fa-eye"}) : this.setState({passwordClass:"fa-eye-slash",passwordType:"password"})} className={`fa ${this.state.passwordClass} `}></span>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"20px"}} onClick={()=>this.state.passwordType === "password" ? this.setState({passwordType:"text",passwordClass:"fa-eye"}) : this.setState({passwordClass:"fa-eye-slash",passwordType:"password"})} className={`fa ${this.state.passwordClass} `}></span>
                   </div>
                  </div><br/>
      <small style={{fontWeight:"bolder"}}><input type="checkbox"/>  <span>  Remember  me</span></small> <small style={{float:"right",color:"#004d99"}}>Forgot your password</small>
@@ -199,7 +196,7 @@ console.log("submitting")
 <div class="input-group mb-3">
                   <input type={this.state.passwordType} title="<b>Must contain text and numbers</b>" name="password" id="password" placeholder="" onChange={this.change} pattern="[a-zA-Z0-9/]+" value={this.state.password} style={{borderRight:"0px"}} className="form-control" ></input>
                 <div class="input-group-append" style={{border:"1px solid lightgrey",backgroundColor:"white",borderTopRightRadius:"5px",borderBottomRightRadius:"5px",borderLeft:"0px"}} className="text-primary">
-                      <span style={{padding:"10px 10px 0px 10px",fontSize:"16px"}} onClick={()=>this.state.passwordType === "password" ? this.setState({passwordType:"text",passwordClass:"fa-eye"}) : this.setState({passwordClass:"fa-eye-slash",passwordType:"password"})} className={`fa ${this.state.passwordClass} `}></span>
+                      <span style={{padding:"10px 10px 0px 10px",fontSize:"20px"}} onClick={()=>this.state.passwordType === "password" ? this.setState({passwordType:"text",passwordClass:"fa-eye"}) : this.setState({passwordClass:"fa-eye-slash",passwordType:"password"})} className={`fa ${this.state.passwordClass} `}></span>
                   </div>
                  </div><br/>
  <small style={{fontWeight:"bolder"}}><input type="checkbox"/>  <span>  Remember  me</span></small> <small style={{float:"right",color:"#004d99"}}>Forgot your password</small>

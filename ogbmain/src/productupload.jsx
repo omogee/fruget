@@ -192,18 +192,19 @@ const formdata = new FormData();
 }
  
     render() { 
+       if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         return ( 
-            <div>
-                <div className="container">
+            <div className="navbarcomponentlg">
+                <div className="contain">
                 <p> <span style={{color:"#004d99",textShadow: "0.5px 0.5px #ff0000"}}>Upload</span> Product On Fruget</p><small className="mr-5" style={{float:"right",fontSize:"20px"}}>30/30</small>
                 <div className="row">
-                <div className="col-12 col-md-6 alert alert-danger" style={{display:`${this.state.displayMessage}`, backgroundColor:`${this.state.displayColor}`}}>
+                <div className="col-6 alert alert-danger" style={{display:`${this.state.displayMessage}`, backgroundColor:`${this.state.displayColor}`}}>
                  <small>{this.state.Message}</small>
                  </div>
                 </div>
                  <form action="" method="get" onSubmit={this.submit}>
                      <div className="row">
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                             <div style={{padding:"10px"}}>
                             <label htmlFor="category">Category</label> 
 <select type="text" style={{border:`1px solid ${this.state.categorycolor}`}} id="category" name="category" onChange={this.change} className="form-control" value={this.state.category}  placeholder="Enter Category e.g home Appliance,clothing, accessories etc">
@@ -215,7 +216,7 @@ const formdata = new FormData();
                         </div>
                         </div>
                         {this.state.category.length > 0 ?
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="gencategory">Generalcategory</label>
    <select style={{backgroundColor:"white",border:`1px solid ${this.state.generalcategorycolor}`}} type="text" onChange={this.change} id="gencategory" name="generalcategory" className="form-control" value={this.state.generalcategory} >
@@ -228,7 +229,7 @@ const formdata = new FormData();
                         </div> 
                     :null}
                     
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                         <div style={{padding:"10px"}}>
                          <label >Image Upload <b>{10-this.state.files.length}</b>/10</label>
                  <input type="file" multiple className="form-control" onChange={this.changefile}  name="files"/>
@@ -247,7 +248,7 @@ const formdata = new FormData();
                          </div>
                         </div>
                         {this.state.generalcategory.length > 0 ?
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                         <div style={{padding:"10px"}}> 
                             <label htmlFor="subcat1">Select sub-category</label>
                             <select className="form-control" onChange={this.change} value={`${this.state.subcat1}`} name="subcat1" id="subcat1">
@@ -262,7 +263,7 @@ const formdata = new FormData();
                         </div>
                         : null}
                          {this.state.generalcategory.length > 0 ?
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                             <div style={{padding:"10px"}}>
                             <label htmlFor="subcat2" >Select sub-category2</label>
                             <select className="form-control" id="subcat2" name="subcat2" onChange={this.change} value={`${this.state.subcat2}`}>
@@ -277,7 +278,7 @@ const formdata = new FormData();
                         </div>
                         : null}
                          {this.state.generalcategory.length >  0 ?
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                             <div style={{padding:"10px"}}>
                             <label htmlFor="subcat3" >Select sub-category3</label>
                             <select className="form-control" name="subcat3" id="subcat3" onChange={this.change} value={`${this.state.subcat3}`}>
@@ -291,27 +292,27 @@ const formdata = new FormData();
                             </div>
                         </div>
                         : null}
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                              <div style={{padding:"10px"}}>
                             <label htmlFor="brand">brand</label>
          <input type="text" id="brand"  name="brand" onChange={this.change} className="form-control" value={this.state.brand} placeholder="Note : No spacing inbetween E.g lg, hisense, tummyhilfiger"/>
                         </div>
                         </div>
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                              <div style={{padding:"10px"}}>
                             <label htmlFor="entrytext">Entry Text</label>
 <input type="text" id="entrytext"  name="entrytext" onChange={this.change} className="form-control" value={this.state.entrytext} placeholder="convince your seller in less than 100 words.."/>
 <small className="text-muted" style={{fontSize:"10px"}}>get off the wether with quality and affordable jackets from tummyhilfiger</small>
                         </div>
                         </div>
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="details">details</label>
     <input type="text"  id="details" name="details" style={{border:`1px solid ${this.state.detailscolor}`}} onChange={this.change} className="form-control" value={this.state.details} placeholder="e.g bianco standing fan, lg copper double door refrigerator...etc(50)"/>
                         </div>
                         <small style={{display:`${this.state.displayifdetailsmatch}`}} className="text-danger">This product already exist on fruget community...<span className="btn btn-danger btn-sm" onClick={this.fillform}>Click Here</span> to update all columns then submit ro register as a seller of this product</small>                        
                         </div>
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="colors">colours available <span style={{color:"red", fontSize:"20px"}}>*</span></label>
                          <input type="text" id="colors" name="color" onChange={this.change} style={{fontSize:"14px"}} className="form-control" value={this.state.color} placeholder="Enter all the colours available in your store seperated by commas ( , )"/>
@@ -415,7 +416,7 @@ const formdata = new FormData();
  <input type="text" id="weight" name="weight" className="form-control" onChange={this.change} value={this.state.weight} placeholder="Enter weight in Kg"/>
                         </div>
                         </div>
-                        <div className="col-12 col-md-6">
+                        <div className="col-6">
                         <div style={{padding:"10px"}}>
                             <label htmlFor="aboutbrand">About Brand </label>
          <textarea  id="aboutbrand" className="form-control" onChange={this.change} name="aboutbrand" value={this.state.aboutbrand} placeholder="Enter the wattage e.g 20w, 30w, 50w etc"/>
@@ -430,13 +431,257 @@ const formdata = new FormData();
                 </div>
             </div>
          );
+       }else{
+        return ( 
+            <div style={{position:`${this.props.modalsidenavbarwidth === "90%" ? "fixed" : "static"}`}}>
+                <div className="container">
+               
+                <div className="row">
+                    <div className="col-12">
+                    <p> <span style={{color:"#004d99",textShadow: "0.5px 0.5px #ff0000"}}>Upload</span> Product On Fruget</p><small className="mr-5" style={{float:"right",fontSize:"20px"}}>30/30</small>
+                    </div>
+                <div className="col-12 alert alert-danger" style={{display:`${this.state.displayMessage}`, backgroundColor:`${this.state.displayColor}`}}>
+                 <small>{this.state.Message}</small>
+                 </div>
+                </div>
+                 <form action="" method="get" onSubmit={this.submit}>
+                     <div className="row">
+                        <div className="col-12">
+                            <div style={{padding:"10px"}}>
+                            <label htmlFor="category">Category</label> 
+<select type="text" style={{border:`1px solid ${this.state.categorycolor}`}} id="category" name="category" onChange={this.change} className="form-control" value={this.state.category}  placeholder="Enter Category e.g home Appliance,clothing, accessories etc">
+   <option value="">select general category</option>
+    {Object.keys(category).map(cat =>
+            <option value={`${cat}`}>{cat}</option>
+        )}
+</select>
+                        </div>
+                        </div>
+                        {this.state.category.length > 0 ?
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="gencategory">Generalcategory</label>
+   <select style={{backgroundColor:"white",border:`1px solid ${this.state.generalcategorycolor}`}} type="text" onChange={this.change} id="gencategory" name="generalcategory" className="form-control" value={this.state.generalcategory} >
+   <option value="">select category</option>     
+                         {category[`${this.state.category}`].map(subcat=>
+                        <option value={`${subcat.name}`}>{subcat.name}</option>
+                          )}
+   </select>
+                         </div>
+                        </div> 
+                    :null}
+                    
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                         <label >Image Upload <b>{10-this.state.files.length}</b>/10</label>
+                 <input type="file" multiple className="form-control" onChange={this.changefile}  name="files"/>
+                         <small className="text-danger">Make sure image is clear enough and in jpeg or png format</small>
+                         </div>
+                        </div>
+                        <div className="col-12">
+                            <p className="text-danger animated bounce" style={{textTransform:"capitalize"}}>{this.state.uploadmessage}</p>
+                        <div className="row" >
+                       {this.state.files.length > 0 ? this.state.files.map((file)=>
+                       <div key={file.lastmodified} className="col-3 col-md-2">
+                      <span className="fa fa-times text-danger" onClick={file.name ?()=>this.popImage(file.name) : ()=>this.popImagebyfile(file)} style={{fontSize:"15px",fontWeight:"bolder"}}></span>
+                       <img style={{width:"100%"}} src={file.name ? require(`./images/${file.name}`) : `https://res.cloudinary.com/fruget-com/image/upload/${this.state.category}/${this.state.generalcategory}/${file}`} alt=""/>
+                       </div>
+                       ) : <p className="text-danger">No image selected</p>}
+                         </div>
+                        </div>
+                        {this.state.generalcategory.length > 0 ?
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}> 
+                            <label htmlFor="subcat1">Select sub-category</label>
+                            <select className="form-control" onChange={this.change} value={`${this.state.subcat1}`} name="subcat1" id="subcat1">
+                           {category[`${this.state.category}`].map(cat=>
+                             cat.name === this.state.generalcategory ?
+                               cat.subcat1.map(cat1=>
+                                <option value={`${cat1}`}>{cat1}</option>
+                                ) : null
+                            )}
+                            </select>
+                        </div>
+                        </div>
+                        : null}
+                         {this.state.generalcategory.length > 0 ?
+                        <div className="col-12">
+                            <div style={{padding:"10px"}}>
+                            <label htmlFor="subcat2" >Select sub-category2</label>
+                            <select className="form-control" id="subcat2" name="subcat2" onChange={this.change} value={`${this.state.subcat2}`}>
+                            {category[`${this.state.category}`].map(cat=>
+                             cat.name === this.state.generalcategory ?
+                               cat.subcat2.map(cat2=>
+                                <option value={`${cat2}`}>{cat2}</option>
+                                ) : null
+                            )}
+                            </select>
+                            </div>
+                        </div>
+                        : null}
+                         {this.state.generalcategory.length >  0 ?
+                        <div className="col-12">
+                            <div style={{padding:"10px"}}>
+                            <label htmlFor="subcat3" >Select sub-category3</label>
+                            <select className="form-control" name="subcat3" id="subcat3" onChange={this.change} value={`${this.state.subcat3}`}>
+                            {category[`${this.state.category}`].map(cat=>
+                             cat.name === this.state.generalcategory && cat.subcat3?
+                               cat.subcat3.map(cat3=>
+                                <option value={`${cat3}`}>{cat3}</option>
+                                ) : null
+                            )}
+                            </select>
+                            </div>
+                        </div>
+                        : null}
+                        <div className="col-12">
+                             <div style={{padding:"10px"}}>
+                            <label htmlFor="brand">brand</label>
+         <input type="text" id="brand"  name="brand" onChange={this.change} className="form-control" value={this.state.brand} placeholder="Note : No spacing inbetween E.g lg, hisense, tummyhilfiger"/>
+                        </div>
+                        </div>
+                        <div className="col-12">
+                             <div style={{padding:"10px"}}>
+                            <label htmlFor="entrytext">Entry Text</label>
+<input type="text" id="entrytext"  name="entrytext" onChange={this.change} className="form-control" value={this.state.entrytext} placeholder="convince your seller in less than 100 words.."/>
+<small className="text-muted" style={{fontSize:"10px"}}>get off the wether with quality and affordable jackets from tummyhilfiger</small>
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="details">details</label>
+    <input type="text"  id="details" name="details" style={{border:`1px solid ${this.state.detailscolor}`}} onChange={this.change} className="form-control" value={this.state.details} placeholder="e.g bianco standing fan, lg copper double door refrigerator...etc(50)"/>
+                        </div>
+                        <small style={{display:`${this.state.displayifdetailsmatch}`}} className="text-danger">This product already exist on fruget community...<span className="btn btn-danger btn-sm" onClick={this.fillform}>Click Here</span> to update all columns then submit ro register as a seller of this product</small>                        
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="colors">colours available <span style={{color:"red", fontSize:"20px"}}>*</span></label>
+                         <input type="text" id="colors" name="color" onChange={this.change} style={{fontSize:"14px"}} className="form-control" value={this.state.color} placeholder="Enter all the colours available in your store seperated by commas ( , )"/>
+                         <small style={{fontSize:"11px"}} className="text-danger">E.g red , blue, black e.t.c( ensure to begin with the color of this exact product)</small>
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="currentsize">size <span style={{color:"red", fontSize:"20px"}}>*</span></label>
+ <input type="text" id="currentsize" name="currentsize" style={{fontSize:"14px"}} onChange={this.change} className="form-control" value={this.state.currentsize} placeholder="Enter size of the this product"/>
+                         <small style={{fontSize:"11px"}} className="text-danger">E.g 16 inches (ensure the unit of measurement is specified e.g inches,litres,kilogram,watts etc)</small>
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="size">other size available </label>
+ <input type="text" id="size" name="size" style={{fontSize:"14px"}} onChange={this.change} className="form-control" value={this.state.size} placeholder="Enter all the sizes available in your store seperated by commas ( , )"/>
+                         <small style={{fontSize:"11px"}} className="text-danger">E.g 16 inches, 20 inches etc (ensure the units of measurement are specified e.g inches,litres,kilogram,watts etc)</small>
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="operatingsystem">operating systems available<span style={{color:"red", fontSize:"20px"}}>{this.state.generalcategory === "computer & accessories" ? "*" : null}</span></label>
+ <input type="text" id="operatingsystem" name="operatingsystem" style={{fontSize:"14px"}} onChange={this.change} className="form-control" value={this.state.operatingsystem} placeholder="Enter size of the this product"/>
+                         <small style={{fontSize:"11px"}} className="text-danger"> (ensure the unit of measurement is specified)</small>
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="megapixel">mega pixel<span style={{color:"red", fontSize:"20px"}}>{this.state.category === "phones" ? "*" : null}</span></label>
+ <input type="text" id="megapixel" name="megapixel" style={{fontSize:"14px"}} onChange={this.change} className="form-control" value={this.state.megapixel} placeholder="Enter size of the this product"/>
+                         <small style={{fontSize:"11px"}} className="text-danger"> (ensure the unit of measurement is specified)</small>
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="feature1">Feature 1 <span style={{color:"red", fontSize:"20px"}}>*</span></label>
+                         <input type="text" id="feature1" name="feature1" className="form-control" onChange={this.change} value={this.state.feature1} />
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="feature2">Feature 2 <span style={{color:"red", fontSize:"20px"}}>*</span></label>
+                         <input type="text" id="feature2" name="feature2" className="form-control" onChange={this.change} value={this.state.feature2} />
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="feature3">Feature 3 <span style={{color:"red", fontSize:"20px"}}>*</span></label>
+                         <input type="text" id="feature3" name="feature3" className="form-control" onChange={this.change} value={this.state.feature3} />
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="feature4">Feature 4</label>
+                         <input type="text" id="feature4" name="feature4" className="form-control" onChange={this.change} value={this.state.feature4} />
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="feature5">Feature 5</label>
+                         <input type="text" id="feature5"  name="feature5" className="form-control" onChange={this.change} value={this.state.feature5} />
+                        </div>
+                        </div>
+                        <div className="col-12 col-md-3">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="price">Selling Price <span style={{color:"red", fontSize:"20px"}}>*</span></label>
+                         <input type="text" id="price" name="price" className="form-control" onChange={this.change} value={this.state.price}/>
+    <small className="text-danger">Kindly enter the best release price as prices on fruget are not negotiable</small>
+                        </div>
+                        </div>
+                        <div className="col-6 col-md-3">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="initialprice">initial Price <span style={{color:"red", fontSize:"20px"}}>*</span></label>
+                         <input type="text" id="initialprice" name="initialprice" className="form-control" onChange={this.change} value={this.state.initialprice}/>
+                               <small className="text-danger">if there is a discount from {this.state.price || "selling price"} so customers can see it </small>
+                        </div>
+                        </div>
+                        <div className="col-6 col-md-3">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="discount">discount</label>
+            <input type="text" id="discount" readOnly name="discount" className="form-control" Onchange={this.change} value={this.state.discount || "0%"} />
+                        </div>
+                        </div>
+                        <div className="col-6 col-md-3">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="model">model</label>
+   <input type="text" id="model" name="model" className="form-control" onChange={this.change} value={this.state.model} placeholder="Enter the model number for easier identification"/>
+                        </div>
+                        </div>
+                        <div className="col-6 col-md-3">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="power">power</label>
+ <input type="text" id="power" name="power" className="form-control" onChange={this.change} value={this.state.power} placeholder="Enter the wattage e.g 20w, 30w, 50w etc"/>
+                        </div>
+                        </div>
+
+                        <div className="col-6 col-md-3">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="weight">weight</label>
+ <input type="text" id="weight" name="weight" className="form-control" onChange={this.change} value={this.state.weight} placeholder="Enter weight in Kg"/>
+                        </div>
+                        </div>
+                        <div className="col-12">
+                        <div style={{padding:"10px"}}>
+                            <label htmlFor="aboutbrand">About Brand </label>
+         <textarea  id="aboutbrand" className="form-control" onChange={this.change} name="aboutbrand" value={this.state.aboutbrand} placeholder="Enter the wattage e.g 20w, 30w, 50w etc"/>
+                        <small className="text-muted" style={{size:"10px"}}>You can save this to be used while uploading other products of same brand</small>
+                        </div>
+                        </div>
+                     </div>
+                     <div style={{padding:"10px"}}>
+                  <button type="submit" className="btn btn-success">Upload</button>
+                     </div>
+                 </form>
+                </div>
+            </div>
+         );
+       }
     }
 }
  const mapStateToProps=(store)=>{
      return{
          allcategory:store.allcategories,
          secondsubcat:store.subcat2,
-         thirdsubcat:store.subcat3
+         thirdsubcat:store.subcat3,
+         modalsidenavbarwidth:store.modalsidenavbarwidth
      }
  }
  const mapDispatchToProps =(dispatch)=>{
