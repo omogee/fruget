@@ -426,10 +426,8 @@ openDetails=(datum)=>{
          );
     }else{
       return (         
-        <div style={{backgroundColor:"white"}}>
+        <div style={{backgroundColor:"white",position:`${this.props.modalsidenavbarwidth === "90%" ? "fixed" : "static" }`}}>
            <div className="container">
-
-
            <div className="mainmodaldiv" ref={(a) => this.confirmmodaldiv =a} id="modaldiv" style={{display:`none`,zIndex:"1",width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.4)"}}>
      <div className="ratingmodaldiv"  style={{backgroundColor:"white",borderRadius:"10px"}}>
          <div className="inner-modal">
@@ -461,20 +459,18 @@ openDetails=(datum)=>{
  </div>
 </div>
 
-<div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"35px"}}>               
-<div className="col-5 col-md-6" style={{fontSize:"20px",padding:"10px"}}>                     
+<div style={{display:"flex",flexWrap:"nowrap",backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"35px"}}>               
+<div style={{width:"70%",fontSize:"20px",padding:"10px"}}>                     
                        <small > Cart ({this.props.submittedcarts?this.props.submittedcarts.length : null})</small>
                            </div>                           
-<div className="col-4 col-m4-3" style={{padding:"10px",display:`${this.props.submittedcarts.length > 0 ? "block" :"none"}`}}>                
-          
-</div>                                          
-           <div style={{padding:"10px",display:`${this.props.submittedcarts.length > 0 ? "block" :"none"}`}}>
+                                        
+           <div style={{width:"10%",padding:"10px",display:`${this.props.submittedcarts.length > 0 ? "block" :"none"}`}}>
           <i class="fa fa-th" style={{color:`${this.state.view === "grid"  ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.grid}></i>
           </div>
-          <div style={{padding:"10px",display:`${this.props.submittedcarts.length > 0 ? "block" :"none"}`}}>
+          <div style={{width:"10%",padding:"10px",display:`${this.props.submittedcarts.length > 0 ? "block" :"none"}`}}>
           <i class="fa fa-grip-vertical" style={{color:`${this.state.view === "list" ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.list}></i>
           </div>
-          <div style={{padding:"10px",fontSize:"20px"}}>
+          <div style={{width:"10%",padding:"10px",fontSize:"20px"}}>
           <a href={`/checkout/cart`}><i class="fa fa-shopping-cart" style={{color:`orange`}} onClick={this.list}></i></a>
           </div>
           </div>
@@ -709,6 +705,7 @@ openDetails=(datum)=>{
 }
 const mapStateToProps=(store)=>{
     return{
+      modalsidenavbarwidth:store.modalsidenavbarwidth,
        categoryloading:store.categoryloading,
         userdetails:store.userdetails,
         sellernumOfRows:store.sellernumOfRows,

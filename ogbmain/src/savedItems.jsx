@@ -127,26 +127,21 @@ images.forEach(image=>{
                  {this.props.savedProducts.length > 0 ?              
               
             <div className='row'  style={{padding:"2px"}}>
-              <div className="col-12" style={{backgroundColor: `${this.props.userdetails.background ==="black" ?"black" : "#f5f5f0" }`}}>     
-             
-                  <div className="row " style={{backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"35px"}}>               
- <div className="col-5 col-md-6" style={{fontSize:"20px",padding:"10px"}}>                     
+              <div className="col-12" style={{backgroundColor: `${this.props.userdetails.background ==="black" ?"black" : "#f5f5f0" }`}}>                                   
+              <div  style={{display:"flex",flexWrap:"nowrap",backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"35px"}}>               
+ <div  style={{fontSize:"20px",padding:"10px",width:"70%"}}>                     
                            <small > {this.props.savedProducts.length > 0 ? `Saved Items (${this.props.savedProducts.length})`  : null}</small>
-                               </div>                           
-        <div className="col-4 col-md-3" >                
-              
-                               </div>                                          
-               <div style={{padding:"10px",display:`${this.props.savedProducts.length > 0 ? "block" :"none"}`}}>
+                               </div>                                                                  
+               <div style={{width:"10%",padding:"10px",display:`${this.props.savedProducts.length > 0 ? "block" :"none"}`}}>
               <i class="fa fa-th" style={{color:`${view === "grid"  ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.grid}></i>
               </div>
-              <div style={{padding:"10px",display:`${this.props.savedProducts.length > 0 ? "block" :"none"}`}}>
+              <div style={{width:"10%",padding:"10px",display:`${this.props.savedProducts.length > 0 ? "block" :"none"}`}}>
               <i class="fa fa-grip-vertical" style={{color:`${view === "list" ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.list}></i>
               </div>
-              <div style={{padding:"10px",fontSize:"20px"}}>
+              <div style={{width:"10%",padding:"10px",fontSize:"20px"}}>
               <span className="fa fa-cloud" style={{color:"orange"}}></span>
               </div>
-              </div>                    
-             
+              </div> 
               <div className="savemodaldiv" ref={(a) => this.savemodaldiv =a} id="savemodaldiv"
                style={{display:`${this.state.displayaskdiv}`,zIndex:"1",width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.4)"}}>
               <div className="savediv" style={{padding:"5px",border:"1px solid lightgrey",backgroundColor:`${this.props.userdetails.background || "rgba(0,0,0,0.4)"}`}}>

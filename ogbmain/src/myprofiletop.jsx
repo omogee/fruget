@@ -395,6 +395,7 @@ class myProfileTop extends Component {
   </div>
          );
     }else{
+      //user
     return(
       <div className="container">
               <div className="row" style={{boxShadow:" 0 4px 2px -2px lightgrey",backgroundColor:"white"}}>
@@ -414,7 +415,7 @@ class myProfileTop extends Component {
      <Suggestions />
      </div>
         </div>
-         {this.props.userdetails.email} <span className="far fa-user ml-1"></span>
+         {this.props.userdetails.email}
          </small>  
          </center>
      </div>{

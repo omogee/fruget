@@ -288,7 +288,7 @@ class Navbar extends Component {
   <div style={{display:"flex",flexWrap:"nowrap",flexDirection:"",width:"100%"}}>
              <div style={{width:"50%"}}>
             <div style={{padding:"0px",float:"left"}}>
-<span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"25px",paddingRight:"2px"}}></span>
+<span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"22px",padding:"4px"}}></span>
              <small style={{fontWeight:"bolder",fontSize:"25px",color:"rgb(0, 119, 179)"}}>FRU</small>
             <small style={{fontWeight:"bolder",fontSize:"25px",color:"red"}}>GET</small>
             </div>
