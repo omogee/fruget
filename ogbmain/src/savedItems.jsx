@@ -119,16 +119,11 @@ images.forEach(image=>{
         view = "list"
       }
   
-      console.log(this.state.unsavingDetail, "products")
+     
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         return (       
                 <div style={{display:`${this.props.appDisplay}`,backgroundColor:`${this.props.userdetails.background==="black"?"rgb(38,38,38)":"rgb(242,242,242)"}`}}>
-<div  className="container-fluid" style={{backgroundColor:`${this.props.userdetails.background || "white"}`}}> 
-                 {this.props.savedProducts.length > 0 ?              
-              
-            <div className='row'  style={{padding:"2px"}}>
-              <div className="col-12" style={{backgroundColor: `${this.props.userdetails.background ==="black" ?"black" : "#f5f5f0" }`}}>                                   
-              <div  style={{display:"flex",flexWrap:"nowrap",backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"35px"}}>               
+                   <div  style={{display:"flex",flexWrap:"nowrap",backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"35px"}}>               
  <div  style={{fontSize:"20px",padding:"10px",width:"70%"}}>                     
                            <small > {this.props.savedProducts.length > 0 ? `Saved Items (${this.props.savedProducts.length})`  : null}</small>
                                </div>                                                                  
@@ -142,6 +137,11 @@ images.forEach(image=>{
               <span className="fa fa-cloud" style={{color:"orange"}}></span>
               </div>
               </div> 
+<div  className="container-fluid" style={{backgroundColor:`${this.props.userdetails.background || "white"}`}}> 
+                 {this.props.savedProducts.length > 0 ?              
+              
+            <div className='row'  style={{padding:"2px"}}>
+              <div className="col-12" style={{backgroundColor: `${this.props.userdetails.background ==="black" ?"black" : "#f5f5f0" }`}}>                                   
               <div className="savemodaldiv" ref={(a) => this.savemodaldiv =a} id="savemodaldiv"
                style={{display:`${this.state.displayaskdiv}`,zIndex:"1",width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.4)"}}>
               <div className="savediv" style={{padding:"5px",border:"1px solid lightgrey",backgroundColor:`${this.props.userdetails.background || "rgba(0,0,0,0.4)"}`}}>

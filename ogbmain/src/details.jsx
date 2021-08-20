@@ -279,7 +279,7 @@ const {cookies}=this.props
             }
             
     render() { 
-      console.log(this.props.userdetails.savedItems)
+      //ABOUT THE PRODUCT
       if(this.props.redirect){
         return <Redirect to={{ pathname: '/customer/login',state: { from: this.props.location }}} />
     }
@@ -1168,12 +1168,16 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                </div>
             <br/>
             {this.props.productDetails.productdescription && this.props.productDetails.productdescription.length > 0 ? 
-            <center className="boxshadower" id="abouttheproduct" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"5px"}}>
+            <div className="row">
+             <div className="col-12 boxshadower">
+            <center  id="abouttheproduct" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`}}>
             <h3>ABOUT THE PRODUCT</h3>
             <small style={{textTransform:"capitalize"}}>
             {ReactHtmlParser(this.props.productDetails.productdescription)}
             </small> <br/>
             </center>
+            </div>
+            </div>
             : null }
            
                <div className="row">
@@ -1196,12 +1200,16 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                </div>
            
               {this.props.productDetails.branddescription && this.props.productDetails.branddescription.length > 0 ? 
-       <center id="aboutthebrand" className="boxshadower" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"5px"}}>
+        <div className="row">
+        <div className="col-12 boxshadower">
+     <center id="aboutthebrand"  style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"5px"}}>
               <h3>ABOUT THE BRAND</h3>
             <small style={{textTransform:"capitalize"}}>
             {ReactHtmlParser(this.props.productDetails.branddescription)}
             </small>
             </center>
+            </div>
+            </div>
             : null}
             <br/>
               <div className="row">
