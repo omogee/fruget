@@ -116,7 +116,7 @@ socket.on("read", id => {
       }    
       
     }
-            if(product.length > 0 && product !== undefined ){
+ if(product.length > 0 && product !== undefined ){
    connection.query("update  messages set refproductId=?,refdetails=?,refgencategory=?,refcategory=?,refmainimg=?,refprice=? where messagesId =?",[productId,details,generalcategory,category,mainimg,sellingprice,messages.insertId],(err,inserted)=>{
     if (err) throw err;
     

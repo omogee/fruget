@@ -425,6 +425,11 @@ loading = "Upload Items with ease and meet buyers in minutes"
         <Route path='/'  component={Navbar} />
          <Route path='/in_box/dk/:id/:random' exact component={Messages} />
       {
+        <div>
+           <this.cartMessage />
+           <this.savedMessage/>
+          <this.newMessage/> 
+        </div>
         //this is the place
       }
           

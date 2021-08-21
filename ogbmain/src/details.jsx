@@ -279,7 +279,7 @@ const {cookies}=this.props
             }
             
     render() { 
-      //ABOUT THE PRODUCT
+     console.log("this.props.otherstores",this.props.otherstores)
       if(this.props.redirect){
         return <Redirect to={{ pathname: '/customer/login',state: { from: this.props.location }}} />
     }
@@ -485,9 +485,12 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
                  </div>        
             </div>
             <br/>
-            <p>{this.props.otherstores.length > 0 ? "Other sellers" : null}</p>
+            <div className="row boxshadower" style={{backgroundColor:"white"}}>
+           <div className="col-12">
+           <p>{this.props.otherstores.length > 0 ? "Other sellers" : null}</p>
+           </div>
             {this.props.otherstores.map(otherseller=>
-              <div key={otherseller.userId} className="row" style={{borderBottom:"1px solid lightgrey",padding:"30px"}}>
+              <div key={otherseller.userId} className="row" style={{padding:"30px"}}>
                <div className="col-5">
                <img src={this.props.seller.profileImage ? `https://res.cloudinary.com/fruget-com/image/upload/profile/${otherseller.profileImage}`: require(`./images/maleprofile.png`)} className="img-thumbnail" style={{borderRadius:"50%",width:"80%",height:"150px"}}  alt=""/>
                <br/>
@@ -518,8 +521,10 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
                </div>
               </div>
               )}
+              </div>
+              <br/>
             <div className="row boxshadower" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"10px"}}>
-             <div classae="col-12">
+             <div className="col-12">
                <center>
                    <p style={{textTransform:"uppercase", textAlign:"center"}}>{this.props.productDetails.model}</p>
          <small style={{width:"100%",textTransform:"capitalize"}}>{ReactHtmlParser(this.props.productDetails.entrytext)}</small>
@@ -1076,7 +1081,7 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                </div>
                <br/>
                <p>{this.props.otherstores.length > 0 ? "Other sellers" : null}</p>
-               {this.props.otherstores.map(otherseller=>
+               {this.props.otherstores.length > 0 ? this.props.otherstores.map(otherseller=>
                  <div key={otherseller.userId} className="row" style={{borderBottom:"1px solid lightgrey",padding:"30px"}}>
                   <div className="col-5">
                   <img src={this.props.seller.profileImage ? `https://res.cloudinary.com/fruget-com/image/upload/profile/${otherseller.profileImage}`: require(`./images/maleprofile.png`)} className="img-thumbnail" style={{borderRadius:"50%",width:"80%",height:"150px"}}  alt=""/>
@@ -1107,7 +1112,7 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
          </button>
                   </div>
                  </div>
-                 )}
+                 ) : null}
                <div className="row boxshadower" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"10px"}}>
                 <div classae="col-12">
                   <center>

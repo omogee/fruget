@@ -344,12 +344,12 @@ router.get("/product/display/seller", verifyToken,(req,res)=>{
                 }
             })  
         }else{
-             stores =""
+             stores ="undefined"
         }
             console.log("stores",stores)
      connection.query("SELECT * from user WHERE businessName =?", [mainstore[0].store], (err, sellerdetail)=>{
                 if (err) throw err;
-    connection.query("SELECT * from user WHERE businessName IN (?)", [stores], (err, otherstores)=>{
+    connection.query("SELECT * from user WHERE businessName IN (?) AND businessName != ?", [stores,mainstore[0].store], (err, otherstores)=>{
                 if (err) throw err;     
                 connection.release()  
                 if(sellerdetail[0].userId === user){
@@ -411,6 +411,7 @@ connection.query("SELECT *,CONCAT('₦', FORMAT(sellingprice, 0)) AS mainprice F
     })  
     })  
 })   
+//other
 router.get("/product/display/userdetailsbyuserId",verifyToken,(req,res)=>{
     const user = req.user 
     let userId = user.user["userId"]
@@ -435,6 +436,7 @@ router.get("/product/display/userdetailsbyuserId",verifyToken,(req,res)=>{
     })    
     })  
 }) 
+//display/userdetailsbyuserId
 router.get("/product/display/otheruserdetailsbyuserId",verifyToken,(req,res)=>{
    const userId = req.query.userId;
    console.log("its an empty detail",userId)
