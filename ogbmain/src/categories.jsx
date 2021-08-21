@@ -424,14 +424,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
         
         <Route path='/'  component={Navbar} />
          <Route path='/in_box/dk/:id/:random' exact component={Messages} />
-      {
-        <div>
-           <this.cartMessage />
-           <this.savedMessage/>
-          <this.newMessage/> 
-        </div>
-        //this is the place
-      }
+      
           
 <div style={{position:"fixed",opacity:"0.5",overflow:"hidden",height:"100%",width:"100%",display:`${this.props.categoryModaldisplay}`,backgroundColor:"lightgrey",width:"100%",zIndex:"3"}}>
  </div>
@@ -707,6 +700,9 @@ Proceed</button>
                      </div>    
                  </div>   
                  </div>
+                 <this.cartMessage />
+          <this.savedMessage/>
+          <this.newMessage/> 
                      </Provider>
                 </Router>
             </CookiesProvider>
