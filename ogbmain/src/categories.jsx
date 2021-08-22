@@ -271,7 +271,7 @@ undismodal=()=>{
   })
 }
  cartMessage=()=>{
-  if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+  if(this.props.display === "block" && !navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
   return (
     <div className="mainmodaldiv" ref={(a) => this.modaldiv =a} id="modaldiv" style={{display:`${this.props.display}`}}>
     <div className="modaldiv"  style={{backgroundColor:"white",borderRadius:"5px"}}>
@@ -299,7 +299,8 @@ undismodal=()=>{
 </div>
 </div> 
   )}
-  else{
+  else if(this.props.display === "block" && navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) )
+  {
    return(
     <div className="row bg-dark" style={{display:`${this.props.display}`,transition:"opacity 1s",width:"100%",zIndex:"2",padding:"0px",margin:"0px",position:"fixed",top:"0px"}}>
  <div className="col-12  alert" style={{width:"100%",padding:"2px"}}>
@@ -309,10 +310,12 @@ undismodal=()=>{
 <small className="ml-2" style={{color:"white"}}><Link to={`/cart/checkout`}> Check out</Link></small>
      </div>
     </div>
-  )}
+  )}else{
+    return false
+  }
 }
 savedMessage=()=>{
-if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+  if(this.props.displaysavemodal === "block" && !navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
   return (
     <div className="savemodaldiv" ref={(a) => this.savemodaldiv =a} id="savemodaldiv" style={{display:`${this.props.displaysavemodal}`,zIndex:"1",width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.4)"}}>
     <div className="savediv"  style={{backgroundColor:"white"}}>
@@ -336,7 +339,8 @@ if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|i
         </center>
         </div>
     </div>
-  )}else{
+  
+  )}else if(this.props.displaysavemodal === "block" && navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
     return(
       <div className="row bg-dark" style={{display:`${this.props.displaysavemodal}`,opacity:`${this.props.saveOpacity}`,transition:"opacity 1s",width:"100%",zIndex:"2",padding:"0px",margin:"0px",position:"fixed",top:"0px"}}>
       <div className="col-12  alert" style={{width:"100%",padding:"2px"}}>
@@ -347,6 +351,8 @@ if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|i
           </div>
          </div>
     )
+  }else{
+    return false
   }
 }
 newMessage=()=>{
@@ -702,7 +708,7 @@ Proceed</button>
                  </div>
                  <this.cartMessage />
           <this.savedMessage/>
-          <this.newMessage/> 
+         
                      </Provider>
                 </Router>
             </CookiesProvider>
