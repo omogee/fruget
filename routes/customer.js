@@ -856,7 +856,8 @@ res.send({savedcount,cartcount,ordercount})
 })   })
 })
 })
-})                                       
+})                   
+//fetch                    
 router.get("/save",verifyToken, (req,res)=>{
     const user = req.user;           
     const details = req.query.details
@@ -1246,13 +1247,13 @@ res.send(savedItem[0].savedItems);
 })  
 })   
 })              
-     //clear/followers
+     //fetchbyuserId/saveditems
 router.get("/fetchbyuserId/saveditems",verifyToken,(req,res)=>{
    // const id= req.params.userId;
    const userIdentity= req.user;         
    let id = userIdentity.user["userId"]   
    console.log("na saved items route be this")              
-            conn.query("SELECT * FROM saveditems WHERE userId = ?",[id], (err, files)=>{
+            conn.query("SELECT * FROM saveditems WHERE userId = ? ORDER BY id DESC",[id], (err, files)=>{
             if (err) throw err;                    
             console.log(id,"saved",files)      
              res.send(files)

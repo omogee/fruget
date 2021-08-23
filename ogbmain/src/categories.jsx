@@ -333,7 +333,9 @@ savedMessage=()=>{
    <button className="btn btn-danger" onClick={this.undisplaysavemodal} style={{boxShadow:"2px 3px lightgrey",padding:"8px",color:"white",width:"100%"}} type="button">Done</button> 
    </div>
    <div className="col-6">
+     <a href={`/${Math.floor(Math.random()*1000000000)}/lg/saved_items`}>
    <button className="btn btn-success"  style={{padding:"8px",color:"white",width:"100%",boxShadow:"2px 3px lightgrey"}} >Saved Items</button>
+   </a>
    </div>         
         </div>
         </center>
@@ -347,7 +349,7 @@ savedMessage=()=>{
         <small><span className="fa fa-times mr-1" onClick={this.undisplaysavemodal} style={{float:"right",color:"white"}}></span></small>
      <small style={{fontSize:"15px",color:"lightgrey"}}>{this.props.saveHeader}</small><br/>
      <small style={{padding:"0px",color:"white"}}>{this.props.saveResponse.length > 50 ? this.props.saveResponse.slice(0,50) + "..." : this.props.saveResponse}</small>
-     <small className="ml-2" style={{color:"white"}}><Link to={`/cart/checkout`}> Saved Products</Link></small>
+     <small className="ml-2" style={{color:"white"}}><a href={`/${Math.floor(Math.random()*1000000000)}/lg/saved_items`}> Saved Products</a></small>
           </div>
          </div>
     )
