@@ -237,7 +237,7 @@ class Orders extends Component {
                  );
                         }else{
                           return (         
-                            <div style={{backgroundColor:"white"}}>
+                            <div style={{backgroundColor:"white",position:`${this.props.modalsidenavbarwidth === "90%" ? "fixed" : "static" }`}}>
                                <div className="container">
                                  <div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,zIndex:"2",position:"sticky",top:"0px"}}>               
          <div className="col-5 col-md-6" style={{fontSize:"20px",padding:"10px"}}>                     

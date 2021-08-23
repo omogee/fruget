@@ -876,7 +876,7 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
          );
       }else{
         return (   
-          <div className="" style={{backgroundColor:`${this.props.userdetails.background === "black" ? "black" : "#f5f5f0"}`}}>
+          <div className="" style={{backgroundColor:`${this.props.userdetails.background === "black" ? "black" : "#f5f5f0"}`,position:`${this.props.modalsidenavbarwidth === "90%" ? "fixed" : "static" }`}}>
             <div className="container" >
                 <Suggestions></Suggestions>         
           <div>
@@ -1021,7 +1021,7 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                </div>
                </div>   
                <br/>       
-               <div className="row boxshadower" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"10px"}}>
+               <div className="row boxshadower" style={{backgroundColor:`${this.props.userdetails.background}`,color:`${this.props.userdetails.background === "black" ? "white":"black"}`,padding:"5px"}}>
                <div className="col-12">
                    <small>MEET THE SELLER</small>
                    <small style={{float:"right"}}><button className="btn btn-danger btn-sm" onClick={()=>this.viewsellerdetails(this.props.seller.userId)}>Message Seller</button></small>
@@ -1045,7 +1045,7 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                       </button><br/>
                       </small>
                     </div>  
-                      <div className="col-sm-12 col-md-7" style={{padding:"0px 30px"}}>
+                      <div className="col-sm-12 col-md-7" style={{padding:"0px 5px"}}>
    <small style={{padding:"0px"}}> <span className="fa fa-user-shield"></span> : <span style={{textTransform:"capitalize"}}>{this.props.seller.fullName}</span></small><br/>
     <small className=""> <span className="fa fa-envelope 2x"></span> @<span >{this.props.seller.email}</span></small><br/>
    <small className=""> <span className="fa fa-home mr-2"></span> <span style={{fontWeight:"bold",textTransform:"capitalize"}}>"{this.props.seller.businessName}"</span> located at <span >{this.props.seller.state+" , "+this.props.seller.lga}</span></small><br/>
@@ -1514,6 +1514,7 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
  const mapStateToProps =(store)=>{
  return{
     display:store.display,
+    modalsidenavbarwidth:store.modalsidenavbarwidth,
      save:store.save,
      productDetails:store.productDetails,
     similiarDetails:store.similiarDetails,

@@ -411,34 +411,34 @@ sendmessage=(e)=>{
         <div>
         <div  className="" style={{color:"white"}}>
       <div  style={{display:"flex",position:"fixed",top:"0px",zIndex:"3",flexWrap:"nowrap",backgroundColor: "#006080",width:"100%",padding:"10px 10px 10px 5px",borderBottom:"1px solid lightgrey"}}>             
-      <div style={{width:"5%"}} className="d-block col-1 d-md-none">
+      <div style={{width:"5%",margin:"0px",padding:"0px"}} >
  <a href={`/connections/dk/${Math.floor(Math.random()*100000000)}/${Math.floor(Math.random()*109990000000)}`}>
-<span className="fa fa-arrow-left" style={{marginTop:"6px",color:"white",float:"left"}}></span>
+<span className="fa fa-arrow-left" style={{marginTop:"6px",color:"white",float:"left",fontSize:"17px"}}></span>
 </a>
   </div>
      <div style={{width:"15%"}}>
          <center>
-     <img src={this.props.userdetails.profileImage ? `https://res.cloudinary.com/fruget-com/image/upload/profile/${this.props.userdetails.profileImage}`: require(`./images/maleprofile.png`)}  style={{border:"1px solid grey",borderRadius:"50%",width:"90%",height:"40px"}}  alt=""/>
+     <img src={this.props.otheruserdetails.profileImage ? `https://res.cloudinary.com/fruget-com/image/upload/profile/${this.props.otheruserdetails.profileImage}`: require(`./images/maleprofile.png`)}  style={{border:"1px solid grey",borderRadius:"50%",width:"90%",height:"40px"}}  alt=""/>
      </center>     
      </div>  
      <div  style={{margin:"0px",lineHeight:"15px",paddingLeft:"5px",width:"67%"}}>
-       <Link to={`/profile/${this.props.userdetails.email}`}>
+       <Link to={`/profile/${this.props.otheruserdetails.email}`}>
         <small style={{color:"white",textTransform:"capitalize",fontWeight:"bold",fontSize:"14px",padding:"0px"}}>
-          {this.props.userdetails.fullName}
+          {this.props.otheruserdetails.fullName}
           </small>
           </Link><br/>
         <small style={{marginTop:"5px"}}>
         <i>
-           {this.props.typingClients.includes(parseInt(this.props.userdetails.userId))
+           {this.props.typingClients.includes(parseInt(this.props.otheruserdetails.userId))
             ? "typing"
-           :this.props.connectedclients.includes(this.props.userdetails.userId) ? "Online"
-            : formatlastSeen(this.props.userdetails.lastseen)
+           :this.props.connectedclients.includes(this.props.otheruserdetails.userId) ? "Online"
+            : formatlastSeen(this.props.otheruserdetails.lastseen)
         }
             </i>
             </small><br/>
      </div>
      <div className="col-1">
-     <a href={`tel:${this.props.userdetails.contact}`}  style={{color:"white"}}>
+     <a href={`tel:${this.props.otheruserdetails.contact}`}  style={{color:"white"}}>
      <span className="fa fa-phone" style={{fontSize:"20px"}}></span>
      </a>
      </div>
