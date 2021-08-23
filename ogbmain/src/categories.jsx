@@ -342,7 +342,7 @@ savedMessage=()=>{
   
   )}else if(this.props.displaysavemodal === "block" && navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
     return(
-      <div className="row bg-dark" style={{display:`${this.props.displaysavemodal}`,opacity:`${this.props.saveOpacity}`,transition:"opacity 1s",width:"100%",zIndex:"2",padding:"0px",margin:"0px",position:"fixed",top:"0px"}}>
+      <div className="row bg-dark" style={{display:`${this.props.displaysavemodal}`,opacity:`${this.props.saveOpacity}`,transition:"opacity 1s",width:"100%",zIndex:"100",padding:"0px",margin:"0px",position:"fixed",top:"80px"}}>
       <div className="col-12  alert" style={{width:"100%",padding:"2px"}}>
         <small><span className="fa fa-times mr-1" onClick={this.undisplaysavemodal} style={{float:"right",color:"white"}}></span></small>
      <small style={{fontSize:"15px",color:"lightgrey"}}>{this.props.saveHeader}</small><br/>
