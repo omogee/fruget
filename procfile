@@ -1,0 +1,114 @@
+<<<<<<< HEAD
+web: npm start
+ 
+                 <Route path='/' exact component={Subcats} />
+                 <Route path="/sellerregister" exact component={SellerRegister} />
+                 <Route path="/productupload" exact component={ProductUpload} />
+                 
+               <Route path='/customer/login' exact component={Login}/>
+                 <Route path='/product/:details' exact   component={Details} />  
+                  <Route path='/search' exact   component={SearchApp} />   
+                 <Route path='/profile/:userId' exact component={Profile} />   
+                 <Route path="/saved-items/:userId" exact component={SavedItems} />  
+                 <Route path="/checkout/:userId" exact component={CheckOut}/>       
+                 <Route path="/suggestions" exact component={Suggestions}/>   
+
+                  <div className="row" style={{backgroundColor:"white",margin:"5px 2px"}}>
+                <div className="col-4 col-md-2">
+                 <img src={require("./images/htc-logo.jpg")} style={{width:"100%",marginBottom:"5px"}} alt=""/>
+                </div>
+                 
+                <div className="col-4 col-md-2">
+                 <img src={require("./images/lglogo.png")} style={{width:"100%",marginBottom:"5px"}} alt=""/>
+                </div>
+                <div className="col-4 col-md-2">
+                 <img src={require("./images/hisenselogo.png")} style={{width:"100%",marginBottom:"5px"}} alt=""/>
+                </div>
+                <div className="col-4 col-md-2">
+                 <img src={require("./images/biancoofficial.png")} style={{width:"100%",marginBottom:"5px"}} alt=""/>
+                </div>
+                <div className="col-4 col-md-2">
+                 <img src={require("./images/nexuslogo.png")} style={{width:"100%",marginBottom:"5px"}} alt=""/>
+                </div>
+                <div className="col-4 col-md-2">
+                 <img src={require("./images/midealogo.jpg")} style={{width:"100%",marginBottom:"5px"}} alt=""/>
+                </div>
+              </div>
+
+
+              <div className="row" style={{padding:"10px"}}>
+              <div className="col-12" style={{backgroundColor: "rgb(0, 119, 179)",color:"rgb(64, 64, 64)", borderTopRadius: "4px"}}>
+              <p>
+                <span style={{fontWeight:"bold",color: "white"}}>SUPER DEALS</span>  
+                </p> 
+                </div>
+              <div className="col-12 col-md-2" style={{padding:"10px",border:"1px solid lightgrey",backgroundColor:"white"}}>
+                <div className="row">
+                  <div className="col-8  d-md-none" style={{}}>
+                   <p>Bianco Basket Standing Fan</p>
+                   <small className="text-muted"  style={{fontSize:"10px"}}> With as low as N 5500 you can order an all plastic a/c fan from  fruget with warranty of 6 months</small>
+                  </div>
+                  <div className="col-4 col-md-12">
+                  <img style={{width:"100%",float:"right"}} className="img-thumbnail mainImg" src={require("./images/bia-bask.jpg")} alt=""/>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-2" style={{padding:"10px",border:"1px solid lightgrey",backgroundColor:"white"}}>
+                <div className="row" style={{padding:"0px"}}>
+                  <div className="col-8  d-md-none" style={{}}>
+                    <p>Get a set of TV, wall hanger and power regulator</p>
+                   <small className="text-muted"  style={{fontSize:"10px"}}></small>
+                  </div>
+                  <div className="col-4 col-md-12">
+                  <img style={{width:"100%",float:"right"}} className="img-thumbnail mainImg" src="https://www-konga-com-res.cloudinary.com/image/upload/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/v1595215707/contentservice/3.jpg_rk7D1qGeP.jpg" alt=""/>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-2" style={{padding:"10px",border:"1px solid lightgrey",backgroundColor:"white"}}>
+                <div className="row" style={{padding:"0px"}}>
+                  <div className="col-8  d-md-none" >
+                    <p>Bianco Basket Standing Fan</p>
+                   <small className="text-muted"  style={{fontSize:"10px"}}> With as low as N 5500 you can order an all plastic a/c fan from  fruget with warranty of 6 months</small>
+                  </div>
+                  <div className="col-4 col-md-12">
+                  <img style={{width:"100%",float:"right"}} className="img-thumbnail mainImg" src="https://www-konga-com-res.cloudinary.com/image/upload/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/v1595215707/contentservice/3.jpg_rk7D1qGeP.jpg" alt=""/>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-2" style={{padding:"10px",border:"1px solid lightgrey",backgroundColor:"white"}}>
+                <div className="row" style={{padding:"0px"}}>
+                  <div className="col-8  d-md-none" >
+                    <p>Bianco Basket Standing Fan</p>
+                   <small className="text-muted"  style={{fontSize:"10px"}}> With as low as N 5500 you can order an all plastic a/c fan from  fruget with warranty of 6 months</small>
+                  </div>
+                  <div className="col-4 col-md-12">
+                  <img style={{width:"100%",float:"right"}} className="img-thumbnail mainImg" src="https://www-konga-com-res.cloudinary.com/image/upload/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/v1595215707/contentservice/3.jpg_rk7D1qGeP.jpg" alt=""/>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-2" style={{padding:"10px",border:"1px solid lightgrey",backgroundColor:"white"}}>
+                <div className="row" style={{padding:"0px"}}>
+                  <div className="col-8  d-md-none" >
+                    <p>Bianco Basket Standing Fan</p>
+                   <small className="text-muted"  style={{fontSize:"10px"}}> With as low as N 5500 you can order an all plastic a/c fan from  fruget with warranty of 6 months</small>
+                  </div>
+                  <div className="col-4 col-md-12">
+                  <img style={{width:"100%",float:"right"}} className="img-thumbnail mainImg" src="https://www-konga-com-res.cloudinary.com/image/upload/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/v1595215707/contentservice/3.jpg_rk7D1qGeP.jpg" alt=""/>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-2" style={{padding:"10px",border:"1px solid lightgrey",backgroundColor:"white"}}>
+                <div className="row" style={{padding:"0px"}}>
+                  <div className="col-8  d-md-none" style={{}}>
+                    <p>Bianco Basket Standing Fan</p>
+                   <small className="text-muted"  style={{fontSize:"10px"}}> With as low as N 5500 you can order an all plastic a/c fan from  fruget with warranty of 6 months</small>
+                  </div>
+                  <div className="col-4 col-md-12">
+                  <img style={{width:"100%",float:"right"}} className="img-thumbnail mainImg" src="https://www-konga-com-res.cloudinary.com/image/upload/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/v1595215707/contentservice/3.jpg_rk7D1qGeP.jpg" alt=""/>
+                  </div>
+                </div>
+              </div>                          
+              </div>
+=======
+web: npm start
+>>>>>>> 91b7c2f23a5d3ca8a7583c1bf6138fe56ffd9bac

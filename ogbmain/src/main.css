@@ -1,0 +1,489 @@
+
+.loginbox{
+    background: url("./images/fruget.jpg") center no-repeat;
+    background-size:contain;
+    background-blend-mode: luminosity;
+}
+input:focus,
+.form-control:focus,
+textarea:focus,
+button:focus ,
+ select:focus,input.form-control:focus {
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+.boxshadower{box-shadow:1px 2px 5px 2px lightgrey}
+.details{ display: block; color: black; text-transform: capitalize;width:100%}
+.detailtext{cursor:pointer}
+.catloading{font-size:25px}
+.topmarginerimage{margin-top:8px;}
+.hoversidenav {box-shadow:1px 2px 5px 2px lightgrey}
+.animated {
+    animation: bounce 0.5s infinite alternate;
+  -webkit-animation: bounce 0.5s infinite alternate;
+  } 
+ 
+  @keyframes bounce {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-11px);
+    }
+  }
+  @-webkit-keyframes bounce {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-11px);
+    }
+  }
+  .bounce { 
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+  }
+  .linker{cursor:pointer;}
+  .linker:hover {color:orange}
+div small .blackbg:hover{color:orange}
+div small .whitebg:hover{color:orange}
+ .blackbg{color:white}
+ .whitebg{color:black}
+.likebutton{font-size: 15px;}
+.widthhundred{width:100% !important}
+.point{cursor:pointer}
+.zeropadding{padding:0px}
+.outer{ position:relative; display: inline-block;font-size: 5px;}
+.inner{ position: absolute; top:0px;overflow: hidden;}
+.innerone::before{content:"★";font-family: 'Font Awesome 5 Free';font-size: 20px; color:orange; font-weight: 700;}
+.mainmodaldiv{ position:fixed; top: 0px;left:0px;z-index:1;width:100%;height:100%;background-color:rgba(0,0,0,0.4)}
+.savemodaldiv{ position:fixed; top: 0px;left:0px;}
+.rater .rater1:checked{background-color:red}
+.noscrolling{display:flex;flex-wrap:nowrap; overflow:auto;padding:5px}
+.subcatmodal img{width:50px;padding:"0px";float:"right";align-items: "right";}
+.caro{z-index: 1 !important;}
+.indexer{z-index: 2 !important;}
+.fullheight{max-height:100% !important;width:100% !important;border:2px solid green}
+.caro img{z-index: 1 !important;}
+.stick{position:sticky;top:0px !important;}
+input:focus {
+   border: 1px solid;
+    box-shadow:none !important;
+    outline: none !important;
+}
+input,
+input::-webkit-input-placeholder {
+    font-size: 10px;
+    line-height: 3;
+}
+html{
+    scroll-behavior: smooth;
+}
+.sellerdetaddtocartbtn{visibility:visible;width: 100%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
+.filterdiv{z-index:2;position:fixed;left:0px;color:white;bottom:0px;width:100%;padding:0px}
+ .filterdiv-col{border-right:1px solid white;}
+ .filterdiv-col center{font-size:20px; color:  "black"}
+ .filter-btn{font-weight:bolder;color:white;text-transform:capitalize}
+ .continueshopping{padding:2px;color:white;width:100%;box-shadow:2px 3px #d3d3d3}
+ .checkout{box-shadow:2px 3px lightgrey;padding:3px;color:white;width:100%}
+ .modaldiv p{position:absolute;top:3px;right:10px;font-size:25px;cursor:pointer}
+ .navInput{width:30%}
+ .navInput:focus{width:100%}
+  .grid .addtocartbtn{display: none;}
+  .addtocartbtn{display: none;}
+  .list .addtocartbtn {display:none;width: 80%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
+.unhoveredsubcatapp:hover{color:orange}
+ .hoveredapp:hover .addtocartbtn{display:block;width: 80%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
+.smhoveredapp{box-shadow:1px 2px 5px 2px lightgrey}
+.savedsmhoveredapp{box-shadow:1px 2px 5px 2px lightgrey}
+.hoveredapp:hover {box-shadow:1px 2px 5px 2px lightgrey}
+.smaddtocartbtn{display:block;width: 80%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
+.innermessageBoxlg{height:220px !important}
+.navsearch::-webkit-input-placeholder{color:grey;font-size:16px;}
+
+
+@media all and (min-width: 1200px){
+
+  .servicediv{left:20%;width:60%}
+  .undisplaydiv{left:25%;width:0%}
+  .subcatimg{height:145px}
+  .normal{width:0px}
+  .smcategory{width:17%}
+  .smsubcategory{width:17%;left:28%}
+  .contain{padding:0px 100px}
+  .navbarcomponentlg{width:100%}
+  .registerbtn{left:10%;width:40%}
+  .loginbtn{left:55%;width:40%}
+  .subsuggestions{width:50%}
+ .smaddtocartbtn{margin-top:10px}
+  .addtocartbtn{margin-top: 10px;}
+  .topmarginer{margin-top:30px;}
+    .followdiv{top:20%;left:35%;width:30%}
+    .userratingdiv{top:20%;left:25%;width:50%}
+    .innermessageBox{height:480px;overflow:auto}
+    .messageBox{border:1px solid lightgrey;border-radius:10px}
+    .messages{padding:0px 200px;width:100%}
+    #connections{width:50%}
+    .loadingdiv{position:fixed; top:50%;left:50%}
+    .cartImg{width: 80%;height:60%;}
+    .profImgdiv .fa-bars{display: none;}
+    .suggestion{width:100%;border-radius:3px;background-color:white;padding:0px;z-index:2;box-shadow:1px 2px 5px 2px lightgrey}
+   
+    .detaildiv{height:80px}
+    .smdetaildiv{height:100px}
+    .hoversidenav:hover {box-shadow:1px 2px 5px 2px lightgrey}
+    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:500; font-size: 13px;}
+    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 500;}
+    .modaldiv{ position: absolute;width:35%;top:30%;left:35%}
+    .savediv{ position: absolute;width:45%;top:30%;left:30%;}
+    .register{padding:0px 250px}
+   .didi{display: none;}
+   .dodo{display: "true";}
+   .cartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
+   .lgcartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
+   .mainImg{height:170px;width:100%}
+   .ratingmodaldiv{ position: absolute;width:40%;height:55%;top:25%;left:30%;}
+   .clearcartdiv{ position: absolute;width:40%;height:56%;top:20%;left:30%;}
+   .rowclasslist .imgSymbol{height:40px;width:30%}
+   .rowclass .imgSymbol{height:35px;width:30%}
+   .detailcontainer{margin:20px 280px}
+   .smalldeviceimgshowcase{display:none}
+   .bigdeviceimgshowcase{display:"block"}
+   .gifclass{width: 20%;}
+   .bigdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+   .lgdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+    
+   .profile{padding: 0px 200px;}
+   .smhoveredapp{height:300px}
+
+   .noscrolling{display:flex;flex-wrap:nowrap; overflow:auto;-ms-overflow-style: none;scrollbar-width:none;padding:5px}
+   .noscrolling::-webkit-scrollbar {display: none;} 
+   .registerlg{padding:0px 250px}
+}
+@media all and (max-width: 1200px) and (min-width: 1000px){
+  .undisplaydiv{left:20%;width:0%}
+  .servicediv{left:20%;width:60%}
+  .noscrolling{display:flex;flex-wrap:nowrap; overflow:auto;-ms-overflow-style: none;scrollbar-width:none;padding:5px}
+  .noscrolling::-webkit-scrollbar {display: none;} 
+  .subcatimg{height:145px}
+  .normal{width:0px}
+  .smcategory{width:17%}
+  .smsubcategory{width:17%;left:28%}
+  .navbarcomponentlg{width:100%}
+  .registerbtn{left:5%;width:40%}
+  .loginbtn{left:55%;width:40%}
+  .subsuggestions{width:50%}
+  .smaddtocartbtn{margin-top:20px}
+  .addtocartbtn{margin-top: 25px;}
+  .topmarginer{margin-top:30px;}
+    .followdiv{top:20%;left:35%;width:30%}
+    .userratingdiv{top:20%;left:25%;width:50%}
+    .innermessageBox{height:480px;overflow:auto}
+    .messageBox{border:1px solid lightgrey;border-radius:10px}
+    .messages{padding:0px 100px;width:100%}
+    #connections{width:50%}
+    .loadingdiv{position:fixed; top:50%;left:50%}
+    .cartImg{width: 80%;height:60%;}
+    .profImgdiv .fa-bars{display: none;}
+    .suggestion{width:100%;border-radius:3px;background-color:white;padding:0px;z-index:2;box-shadow:1px 2px 5px 2px lightgrey}
+    .rowclass{height:250px}
+    .detaildiv{height:80px}
+    .smdetaildiv{height:100px}
+    .hoversidenav:hover {box-shadow:1px 2px 5px 2px lightgrey}
+    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 15px;}
+    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 900;}
+    .modaldiv{ position: absolute;width:35%;top:30%;left:35%}
+    .savediv{ position: absolute;width:45%;top:30%;left:30%;}
+    .register{padding:0px 250px}
+    .registerlg{padding:0px 250px}
+   .didi{display: none;}
+   .dodo{display: "true";}
+   .cartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
+   .lgcartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
+  
+   .mainImg{height:170px;width:100%}
+   .ratingmodaldiv{ position: absolute;width:40%;height:55%;top:25%;left:30%;}
+   .clearcartdiv{ position: absolute;width:40%;height:56%;top:20%;left:30%;}
+   .rowclasslist .imgSymbol{height:40px;width:30%}
+   .rowclass .imgSymbol{height:35px;width:30%}
+   .detailcontainer{margin:20px 280px}
+   .smalldeviceimgshowcase{display:none}
+   .bigdeviceimgshowcase{display:"block"}
+   .gifclass{width: 20%;}
+   .bigdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+   .lgdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+   
+   .profile{padding: 0px 200px;}
+  
+}
+
+@media all and (max-width: 1000px) and (min-width: 800px){
+  .undisplaydiv{left:15%;width:0%}
+  .servicediv{left:15%;width:70%}
+  .subcatimg{height:130px}
+  .normal{width:0px}
+  .smcategory{width:17%}
+  .smsubcategory{width:17%;left:28%}
+  .navbarcomponentlg{width:120%}
+  .registerbtn{left:10%;width:40%}
+  .loginbtn{left:65%;width:40%}
+  .subsuggestions{width:100%}
+  .smaddtocartbtn{margin-top:8px}
+  .addtocartbtn{margin-top: 8px;}
+ 
+  .topmarginer{margin-top:10px;}
+    .followdiv{top:20%;left:35%;width:35%}
+    .innermessageBox{height:480px;overflow:auto}
+    .messageBox{border:1px solid lightgrey;border-radius:10px}
+    .messages{padding:0px 80px;width:140%}
+    #connections{width:50% !important}
+    .loadingdiv{position:fixed; top:50%;left:50%}
+    .cartImg{width: 100%;}
+    .profImgdiv .fa-bars{display: block;}
+    .addtocartbtn{visibility:visible;width: 40%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
+    .profile{padding: 0px 100px;}
+    .bigdeviceimgshowcase{display:"block"}
+    .bigdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+    .lgdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+    
+    .suggestion{width:70%;border-radius:7px;background-color:white;padding:15px;z-index:2}
+    .detailcontainer{margin:10px 50px}
+    .rowclass .imgSymbol{height:35px;width:30%}
+    .rowclasslist .imgSymbol{height:35px;width:30%}
+    .rowclass{height:300px}
+    .detaildiv{height:90px}
+    .smdetaildiv{height:90px}
+    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 15px;}
+    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 900;}
+    
+      .mainImg{height:150px;width:100%}
+    .savediv{ position: absolute;width:65%;top:30%;left:20%;border-radius:5px}
+    .cartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
+    .lgcartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
+   
+    .didi{display:"true"}
+    .dodo{display: none;}
+    .noscrolling{display:flex;flex-wrap:nowrap; overflow:auto;-ms-overflow-style: none;scrollbar-width:none;padding:5px}
+ 
+    .modaldiv{ position: absolute;width:55%;top:30%;left:25%;}
+    .register{padding:20px}
+    .registerlg{padding:0px 250px}
+    .ratingmodaldiv{ position: absolute;width:60%;height:55%;top:30%;left:20%;}
+    .clearcartdiv{ position: absolute;width:60%;height:55%;top:20%;left:30%;}
+    .navImg{width:80%;height:60%}
+    .navcartImg{width:50%;height:80%}
+    .nav-margin{margin-top:5px}
+    .navdivsm{padding:0px}
+    .onfocus{border:none}
+    .onfocusbtn{border:none;border-left:2px solid lightgrey}
+    .mynavbtn{color:grey;border:1px solid lightgrey;border-left:none}
+    .onfocus:focus{border:none}
+    .smalldeviceimgshowcase{display:none}
+    .gifclass{width: 40%;}
+}
+@media all and (max-width: 800px) and (min-width: 600px){
+  .undisplaydiv{left:8%;width:0%}
+  .servicediv{left:8%;width:85%}
+  .subcatimg{height:130px}
+  .registerlg{padding:0px 250px}
+  .normal{width:0px}
+  .smcategory{width:17%}
+  .smsubcategory{width:17%;left:28%}
+  .navbarcomponentlg{width:150%}
+  .registerbtn{left:20%;width:40%}
+  .loginbtn{left:80%;width:40%}
+  .subsuggestions{width:100%}
+  .smaddtocartbtn{margin-top:8px}
+  .addtocartbtn{margin-top: 8px;}
+
+  .topmarginer{margin-top:10px;}
+    .followdiv{top:20%;left:35%;width:35%}
+    .innermessageBox{height:480px;overflow:auto}
+    .messageBox{border:1px solid lightgrey;border-radius:10px}
+    .messages{padding:0px 80px;width:140%}
+    #connections{width:50% !important}
+    .loadingdiv{position:fixed; top:50%;left:50%}
+    .cartImg{width: 100%;}
+    .profImgdiv .fa-bars{display: block;}
+    .addtocartbtn{visibility:visible;width: 40%;border-radius:2px;padding: 1px;color:white;background-color: rgba(0, 119, 179,0.9);box-shadow:2px 3px 5px 2px lightgrey;font-weight:bold}
+    .profile{padding: 0px 100px;}
+    .bigdeviceimgshowcase{display:"block"}
+    .bigdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+    .lgdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+    .suggestion{width:70%;border-radius:7px;background-color:white;padding:15px;z-index:2}
+    .detailcontainer{margin:10px 50px}
+    .rowclass .imgSymbol{height:35px;width:30%}
+    .rowclasslist .imgSymbol{height:35px;width:30%}
+    .rowclass{height:300px}
+    .detaildiv{height:90px}
+    .smdetaildiv{height:90px}
+    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 15px;}
+    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 900;}
+    
+      .mainImg{height:150px;width:100%}
+    .savediv{ position: absolute;width:65%;top:30%;left:20%;border-radius:5px}
+    .cartbutton{position:fixed;left:0px;z-index:2;bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:white}
+    .lgcartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
+    
+    .didi{display:"true"}
+    .dodo{display: none;}
+    .noscrolling{display:flex;flex-wrap:nowrap; overflow:auto;-ms-overflow-style: none;scrollbar-width:none;padding:5px}
+    .noscrolling::-webkit-scrollbar {display: none;} 
+    .modaldiv{ position: absolute;width:55%;top:30%;left:25%;}
+    .register{padding:20px}
+    .ratingmodaldiv{ position: absolute;width:60%;height:55%;top:30%;left:20%;}
+    .clearcartdiv{ position: absolute;width:60%;height:55%;top:20%;left:30%;}
+    .navImg{width:80%;height:60%}
+    .navcartImg{width:50%;height:80%}
+    .nav-margin{margin-top:5px}
+    .navdivsm{padding:0px}
+    .onfocus{border:none}
+    .onfocusbtn{border:none;border-left:2px solid lightgrey}
+    .mynavbtn{color:grey;border:1px solid lightgrey;border-left:none}
+    .onfocus:focus{border:none}
+    .smalldeviceimgshowcase{display:none}
+    .gifclass{width: 40%;}
+} 
+
+@media all and (max-width: 600px) and (min-width:450px){
+  .contain{padding: 0px 40px}
+  .undisplaydiv{left:0%;width:0%}
+  .servicediv{left:0%;width:100%}
+  .subcatimg{height:120px}
+  .registerlg{padding:0px 250px}
+  .normal{width:0px}
+  .smcategory{width:30%}
+  .smsubcategory{width:27%;left:52%}
+  .subsuggestions{width:50%}
+  .navbarcomponentlg{width:200%}
+  .registerbtn{left:10%;width:80%}
+  .loginbtn{left:110%;width:80%}
+  .addtocartbtn{margin-top: 10px;}
+  .messages{padding:0px 40px;width:180%}
+  #connections{width:50% !important}
+
+  .smaddtocartbtn{margin-top:4px}
+    .followdiv{top:20%;left:20%;width:60%}
+    .innermessageBox{overflow:scroll !important}
+    
+    .loadingdiv{position:fixed; top:50%;left:25%}
+    .cartImg{width: 80%;height: 50% !important;}
+    .profImgdiv .fa-bars{display: block;}
+    .passport{height:70%}
+    .bigdeviceimgshowcase{display:none}
+    .bigdeviceimgshowcaseflex{display:none}
+    .lgdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+
+    .smalldeviceimgshowcase{display:flex;flex-wrap:nowrap;width:100%}
+    .imgshowcase{margin:10px;overflow-x:auto}
+    .suggestion{width:100%;border-radius:7px;background-color:white;padding:15px;z-index:2}
+    .detailmarginal{margin:10px 5px}
+    .rowclasslist{box-shadow:1px 2px 5px 2px lightgrey }
+    .rowclass .imgSymbol{height:30px;width:30%}
+    .rowclasslist .imgSymbol{height:25px;width:35%}
+    .rowclass{height:270px}
+    .rowclasslist{height:135px}
+    .navImg{width:100%;height:65%}
+    .detaildiv{height:100px}
+    
+    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 900;}
+    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 15px;}
+    
+    .mainImg{height:110px;width:100%}
+    .savediv{ position: absolute;width:94%;top:30%;left:3%;border-radius:5px}
+    .cartbutton{position:fixed;left:0px;z-index:2;bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:7px;color:white}
+    .lgcartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
+    
+    .didi{display:"true"}
+    .dodo{display: none;}
+    .noscrolling{display:flex;flex-wrap:nowrap; overflow:auto;-ms-overflow-style: none;scrollbar-width:none;padding:5px}
+   
+    .modaldiv{ position: absolute;width:94%;top:30%;left:3%;}
+    .ratingmodaldiv{ position: absolute;width:94%;height:60%;top:20%;left:3%;}
+    .clearcartdiv{ position: absolute;width:94%;height:55%;top:20%;left:3%;}
+    .register{padding:0px 20px}
+    .navcartImg{width:60%;height:80%}
+    .nav-margin{margin-top:4px}
+    .navdivsm{padding:0px}
+    .onfocus{border:none}
+    .onfocusbtn{border:none;border-left:2px solid lightgrey}
+    .mynavbtn{color:grey;border:1px solid lightgrey;border-left:none}
+    .onfocus:focus{border:none}
+    .gifclass{width: 50%;}
+   //unhoveredapp
+    .innermessageBoxlg{height:420px !important}
+}
+@media all and (max-width: 450px){
+  .undisplaydiv{left:0%;width:0%}
+  .servicediv{left:0%;width:100%}
+  .subcatimg{height:100px}
+  .normal{width:0px}
+  .smcategory{width:30%}
+  .smsubcategory{width:27%;left:55%}
+  .navbarcomponentlg{width:200%}
+  .registerbtn{left:10%;width:80%}
+  .loginbtn{left:110%;width:80%}
+  .subsuggestions{width:50%}
+  .messages{padding:0px 40px;width:180%}
+    .followdiv{top:20%;left:20%;width:60%}
+    .innermessageBox{overflow:scroll !important}
+    .contain{padding: 0px 40px}
+    .loadingdiv{position:fixed; top:50%;left:25%}
+    .cartImg{width: 70%;}
+    .unhoveredapp{height:260px;}
+    .passport{height:70%}
+    .gifclass{width: 50%;}
+    .bigdeviceimgshowcaseflex{display:none}
+    .lgdeviceimgshowcaseflex{display:flex;flex-wrap:wrap;justify-content:space-between;width:10%;position:absolute}
+
+}
+@media all and (max-width: 450px){
+  .contain{padding: 0px 40px}
+    .bigdeviceimgshowcaseflex{display:none}
+    .bigdeviceimgshowcase{display:none}
+    .smalldeviceimgshowcase{display:flex;flex-wrap:nowrap;width:100%}
+    .imgshowcase{margin:10px;overflow-x:auto}
+    .navdivsm{padding:8px 8px 8px 5px}
+    .nav-margin{margin-top:5px}
+    .navcartImg{width:70%;height:80%}
+    .suggestion{width:100%;border-radius:7px;background-color:white;padding:15px;z-index:2}
+    .detailmarginal{margin:10px 5px}
+    .rowclasslist{box-shadow:1px 2px 5px 2px lightgrey }
+    .rowclass .imgSymbol{height:30px;width:30%}
+    .rowclasslist .imgSymbol{height:27px;width:35%}
+    .rowclass{height:270px}
+    .rowclasslist{height:135px}
+    .navImg{width:100%;height:90%}
+    .detaildiv{height:100px}
+    
+    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 13px; color:orange;font-weight: 900;}
+    .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 13px;}
+    
+    .mainImg{height:100px;width:100%}
+    .savediv{ position: absolute;width:100%;height:35%;top:30%;left:0%;}
+    .cartbutton{position:fixed;left:0px;z-index:2;bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:7px;color:white}
+    .lgcartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
+ 
+    .didi{display:"true"}
+    .dodo{display: none;}
+    .noscrolling{display:flex;flex-wrap:nowrap; overflow:auto;-ms-overflow-style: none;scrollbar-width:none;padding:5px}
+    
+    .modaldiv{ position: absolute;width:94%;height:25%;top:30%;left:3%;}
+    .ratingmodaldiv{ position: absolute;width:94%;height:48%;top:30%;left:3%;}
+    .clearcartdiv{ position: absolute;width:94%;height:45%;top:20%;left:3%;}
+    .register{padding:0px 20px}
+    .onfocus{border:none}
+    .onfocusbtn{border:none;border-left:2px solid lightgrey}
+    .mynavbtn{color:grey;border:1px solid lightgrey;border-left:none}
+    .onfocus:focus{border:none}
+    .registerlg{padding:0px 250px}
+}
