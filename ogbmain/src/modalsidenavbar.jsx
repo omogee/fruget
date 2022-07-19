@@ -16,6 +16,7 @@ class ModalSideNavbar extends Component {
           }
     }
     componentDidMount =()=>{
+      alert("hello")
      this.props.allcategories()
     }
     
@@ -25,6 +26,7 @@ class ModalSideNavbar extends Component {
 
     }
     undisplaysidenav =()=>{
+      alert("unshowing")
       this.props.showmodalsidenavbar()
       }
       opencategory=(e)=>{

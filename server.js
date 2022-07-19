@@ -254,6 +254,12 @@ app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname, 'ogbmain','build', 'index.html'));
 })
 }  
+app.get("/",(req,res)=>{
+  conn.query('SELECT * FROM user',(err,files)=>{
+    if (err) throw err;
+    res.send(files)  
+}) 
+})
 
 /*
 app.get('/',(req,res)=>{

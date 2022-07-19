@@ -95,8 +95,20 @@ class Navbar extends Component {
     displaycategorymodal=()=>{
       this.props.displaycategorymodal()
     }
-    displaysidenav =()=>{
+    displaysidenav =(e)=>{
+      if(this.props.modalsidenavbarwidth === "0px"){
+      e.target.classList.remove("fa-bars")
+      e.target.classList.add("fa-times")
+      e.target.style.color ="indianred"
     this.props.showmodalsidenavbar()
+      }else{
+        e.target.classList.remove("fa-times")
+        e.target.classList.add("fa-bars")
+        e.target.style.color ="rgb(0, 119, 179)"
+
+      this.props.unshowmodalsidenavbar()
+      
+      }
     }
     clearinput=()=>{
       this.setState({inputval:""})
@@ -239,7 +251,7 @@ class Navbar extends Component {
              
                     <div style={{width:"12%",position:"relative",padding:"0px",margin:"0px"}} onMouseLeave={()=>this.setState({accountheight:"0%"})}>
                     <div style={{position:"absolute",bottom:"20%",left:"25%"}}>
-                    <p  onMouseEnter={()=>this.setState({accountheight:"120px"})}>
+                    <p  onMouseEnter={()=>this.setState({accountheight:""})}>
                       <span> Account<i className="fas fa-chevron-down ml-1"></i></span>
                   
                   </p> 
@@ -286,48 +298,31 @@ class Navbar extends Component {
        <div className="container-fluid" style={{width:"100%",position:"sticky", top:"0",backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,zIndex:"4"}}>       
 <div  style={{paddingRight:"10px",width:"100%",display:`${this.props.appDisplay}`,paddingTop:"6px"}}>
   <div style={{display:"flex",flexWrap:"nowrap",flexDirection:"",width:"100%"}}>
-             <div style={{width:"50%"}}>
+             <div style={{width:"80%"}}>
             <div style={{padding:"0px",float:"left"}}>
-<span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"22px",padding:"4px"}}></span>
+<span onClick={this.displaysidenav} className="fa fa-bars nav-margin" style={{fontSize:"22px",color:"rgb(0, 119, 179)",padding:"5px"}}></span>
              <small style={{fontWeight:"bolder",fontSize:"25px",color:"rgb(0, 119, 179)"}}>FRU</small>
             <small style={{fontWeight:"bolder",fontSize:"25px",color:"red"}}>GET</small>
             </div>
              </div>
          
-             <div style={{width:"20%"}}>
-              <center>
-              <span onClick={this.offocus} className="fa fa-search text-muted  nav-margin" style={{fontSize:"25px"}}></span>
-              </center>
-             </div>
-             <div style={{width:"10%"}}>
-         <center>
+          
+         <div style={{width:"10%"}}> 
          <div >
-                  <Link to={`/customer/login`}>
-                  <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontWeight:"bold",fontSize:"25px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
+                  <Link to={`/customer/login`} style={{float:"right"}}>
+                  <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontSize:"25px",float:"right",padding:"5px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
                     <span className="far fa-user nav-margin text-muted"></span>
                 </small> </Link>
                   </div>
-                  <div style={{position:"relative"}} onMouseEnter={()=>this.setState({accountheight:"150px",categoryheight:"0%"})}>
-<div style={{position:"absolute",zIndex:"3",top:"5px",width:"300%",height:`${this.state.accountheight}`,overflow:"hidden",transition:"height 2s",backgroundColor:`${this.props.userdetails.background || "white"}`}}>
-<div style={{padding:"15px",color:"grey",border:"0.5px solid lightgrey",height:"100%",borderRadius:"6px",zIndex:"3"}}>
-<center style={{overflow:"hidden"}}>
-<small style={{padding:"10px"}}><Link style={{color:`${this.props.userdetails.background==="black"?"white":"grey"}`}}><span className="far fa-user"></span> My Profile</Link></small><br/>
-  <small style={{padding:"10px"}}> <Link style={{color:`${this.props.userdetails.background==="black"?"white":"grey"}`}} to="/customer/login"><span className="fa fa-sign-in-alt" ></span> Login</Link></small><br/>
-  <small style={{padding:"10px"}}> <Link style={{color:`${this.props.userdetails.background==="black"?"white":"grey"}`}} to="/customer/register"><span className="fa fa-user-plus"> </span> Register</Link></small><br/>
-  <small style={{padding:"10px"}}> <Link style={{color:`${this.props.userdetails.background==="black"?"white":"grey"}`}} to={`/saveditems`}><i class="fas fa-cloud-download-alt"></i> Saved Items</Link></small><br/>
-  </center>
-  </div>
-     </div>
-      </div>
-         </center>
+
              </div>
             
-             <div style={{width:"20%"}}>
+             <div style={{width:"10%"}}>
 <center>
-<Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/checkout/cart`}>
+<Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,float:"right"}} to={`/checkout/cart`}>
           <small className="mb-5" style={{position:"relative"}}>
-            <span className="fab fa-opencart ml-1 text-muted" style={{fontSize:"25px"}}></span>
-            <div style={{position:"absolute",top:"-5px",left:"20px"}}>
+            <span className="fab fa-opencart ml-1 text-muted" style={{fontSize:"25px",padding:"5px"}}></span>
+            <div style={{position:"absolute",top:"-10px",left:"20px"}}>
             <small className="badge ml-1" style={{backgroundColor:"brown",color:"white",padding:"3px",borderRadius:"50%"}}>
         {this.props.shoppingcarts?this.props.shoppingcarts.length: null}
     </small>

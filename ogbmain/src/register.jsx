@@ -392,7 +392,7 @@ axios.post("https://fruget.herokuapp.com/customer/submit/register", formdata)
                         <div className="input-group">     
                        <input type="password" required className="form-control"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={this.change} value={this.state.password} title="<b>Must contain text and numbers</b>" name="password" id="password" style={{padding:"5px",borderRight:"none"}}/>
                        <div className="input-group-btn">
-                         <button className="btn " className="eye" onclick='changepassType()'  style={{paddingRight: "3px",border:"1px solid lightgrey",backgroundColor:"white"}}><i className="fa fa-eye-slash fa-2x"></i></button>
+                         <button className="btn eye" onclick='changepassType()'  style={{paddingRight: "3px",border:"1px solid lightgrey",backgroundColor:"white"}}><i className="fa fa-eye-slash fa-2x"></i></button>
                        </div>
                         </div>
                         <small><small style={{color:"red"}}>{this.state.passworderr}</small></small>
