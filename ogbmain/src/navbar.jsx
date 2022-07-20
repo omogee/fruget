@@ -216,29 +216,29 @@ class Navbar extends Component {
         return (         
  <div className="navbarcomponentlg " style={{position:"sticky",top:"0px",zIndex:"11",boxShadow:" 0 4px 2px -2px lightgrey"}}>          
          
-       <div className="contain"  style={{backgroundColor:"white"}}>
+       <div className=""  style={{backgroundColor:"white"}}>
           <div>
             <div  style={{backgroundColor:`${this.props.userdetails.background || "white"}`,display:"flex",flexWrap:"nowrap",color:`${this.props.userdetails.background === "black" ? "white" :"black"}`,marginBottom:"0px",padding:"10px 20px 0px 20px"}}>            
             <div style={{width:"10%",padding:"0px",margin:"0px"}}>
              <img src={require (`./images/fruget.jpg`)} style={{width:"100%",padding:"0px",margin:"0px"}}></img>
                </div>
 
-                    <div style={{width:"15%",position:"relative",padding:"0px",margin:"0px"}}>
-                    <div style={{position:"absolute",bottom:"20%",left:"25%"}}>
-                    <p><span className="point" onClick={this.displaycategorymodal}>Our Services<span className="fa fa-question-circle-o ml-1"> </span></span></p>
+                    <div style={{width:"12%",position:"relative",padding:"0px",margin:"0px"}}>
+                    <div style={{position:"absolute",bottom:"0%",left:"25%",fontSize:"14px",textTransform:"uppercase"}}>
+                    <p><span className="point" onClick={this.displaycategorymodal}>Services<span className="fa fa-question-circle-o ml-1"> </span></span></p>
                     </div>
                     </div>
                    {
                      //style={{width:`${this.state.inputwidth}`}}
                    }
-               <div style={{width:"48%"}} >
+               <div style={{width:"40%"}} >
                     <form action="/category/search" style={{width:"100%",display:"flex",flexWrap:"nowrap"}} method="get" onSubmit={this.submit} >
                     <div style={{width:"80%"}}>
                  <center>
-                    <div class="input-group mb-3">
-                    <input type="text" className="form-control navsearch" onBlur={()=>this.setState({inputwidth:"10%"})} onFocus={this.extendinput} style={{paddingBottom:"0px",paddingTop:"0px",borderRight:"0px"}} value={this.state.inputval} name="search" onChange={this.change2} placeholder="Search products , brand and categories here..."/>
-                <div class="input-group-append" style={{border:"1px solid lightgrey",borderTopRightRadius:"5px",borderBottomRightRadius:"5px",borderLeft:"0px"}} className="text-muted">
-                      <span style={{display:`${this.props.inputval.length > 0 ? "block" :"none"}`,cursor:"pointer",padding:"10px 10px 0px 10px",fontSize:"20px",fontWeigth:"normal"}} onClick={this.clearinput} className="fa fa-times"></span>
+                    <div >
+                    <input type="text" className="form-control navsearch" onBlur={()=>this.setState({inputwidth:"10%"})} onFocus={this.extendinput} style={{paddingBottom:"0px",paddingTop:"0px",borderRadius:"30px"}} value={this.state.inputval} name="search" onChange={this.change2} placeholder="Search products , brand and categories here..."/>
+                <div style={{display:`${this.props.inputval.length > 0 ? "block" :"none"}`,border:"1px solid lightgrey",borderTopRightRadius:"5px",borderBottomRightRadius:"5px",borderLeft:"0px"}} className="text-muted">
+                      <span style={{cursor:"pointer",padding:"10px 10px 0px 10px",fontSize:"20px",fontWeigth:"normal"}} onClick={this.clearinput} className="fa fa-times"></span>
                   </div>
                  </div>
                   </center>
@@ -250,15 +250,15 @@ class Navbar extends Component {
                </div>
              
                     <div style={{width:"12%",position:"relative",padding:"0px",margin:"0px"}} onMouseLeave={()=>this.setState({accountheight:"0%"})}>
-                    <div style={{position:"absolute",bottom:"20%",left:"25%"}}>
+                    <div style={{position:"absolute",bottom:"0%",left:"25%",fontSize:"13px",textTransform:"uppercase"}}>
                     <p  onMouseEnter={()=>this.setState({accountheight:""})}>
                       <span> Account<i className="fas fa-chevron-down ml-1"></i></span>
                   
                   </p> 
                     </div>
 <div style={{position:"relative",padding:"0px",margin:"0px"}} onMouseEnter={()=>this.setState({accountheight:"120px"})}>
-  <div  style={{position:"absolute",zIndex:"3",top:"50px",width:"110%",boxShadow:"1px 2px 5px 2px lightgrey",overflow:"hidden",height:`${this.state.accountheight}`,transition:"height 2s",backgroundColor:`${this.props.userdetails.background || "white"}`}}>
-  <div className="smhoveredapp" style={{padding:"10px",color:"grey",height:"100%",borderRadius:"5px",zIndex:"3"}}>
+  <div  style={{position:"absolute",zIndex:"3",top:"50px",width:"110%",overflow:"hidden",height:`${this.state.accountheight}`,transition:"height 2s",backgroundColor:`${this.props.userdetails.background || "white"}`}}>
+  <div className="smhoveredapp" style={{padding:"10px",color:"grey",height:"100%",borderRadius:"5px",boxShadow:"1px 2px 5px 2px lightgrey",zIndex:"3"}}>
   <div className="account" style={{overflow:"hidden"}}>
   <small style={{padding:"10px",fontSize:"14px"}}><Link className={`${this.state.bgcolor}`} to={`/${Math.floor(Math.random()*100000000000000)}/lg`} style={{textDecoration:"none"}}><span className="far fa-user"></span> My Profile</Link></small><br/>
     <small style={{padding:"10px",fontSize:"14px"}}> <Link className={`${this.state.bgcolor}`} to="/customer/login" style={{textDecoration:"none"}} ><span className="fa fa-sign-in-alt" ></span> Login</Link></small><br/>
@@ -269,12 +269,22 @@ class Navbar extends Component {
        </div>
         </div>
                     </div>
-                    <div style={{width:"15%",position:"relative",padding:"0px",margin:"0px"}}>
-                    <div style={{position:"absolute",bottom:"20%",left:"25%"}}>
+                    <div  style={{width:"16%",padding:"0px",margin:"0px",position:"absolute",top:"0px",left:"84%"}}>
+                      <center style={{fontWeight:"bold",color:"rgb(0, 34, 102)",padding:"0px",margin:"0px",paddingBottom:"4px"}}>
+                        <small style={{fontSize:"12px"}}><span style={{fontSize:"18px"}} className='fa fa-globe' ></span> | Support  | <a href="/customer/login"  style={{color:"rgb(0, 34, 102)",textDecoration:"none"}}>Login</a></small><br/>
+                     <a href="/customer/seller/register" >
+                     <button style={{backgroundColor:"indianred",fontWeight:"bold",border:"none",margin:"0px",borderRadius:"20px",color:"white",fontSize:"14px",padding:"2px 13px "}}>
+                        <small>SIGN UP FOR FREE</small>
+                      </button>
+                     </a>
+                      </center>
+                  </div>
+                    <div style={{width:"10%",position:"relative",padding:"0px",margin:"0px"}}>
+                    <div style={{position:"absolute",bottom:"0%",left:"25%",fontSize:"14px",textTransform:"uppercase"}}>
                       <Link to="/checkout/cart">
-                     <p> <span className="fab fa-opencart ml-1" style={{fontWeight:"bold",color:"brown",padding:"5px"}}></span>
+                     <p> <span className="d-none fab fa-opencart ml-1" style={{fontWeight:"bold",color:"brown",padding:"5px"}}></span>
                       <span style={{color:"black"}}>Cart</span>
-                      <small className="badge ml-2" style={{backgroundColor:"brown",color:"white",padding:"3px",borderRadius:"50%"}}>
+                      <small className="badge ml-1" style={{backgroundColor:"brown",color:"white",padding:"3px",borderRadius:"50%"}}>
         {this.props.shoppingcarts?this.props.shoppingcarts.length: null}
     </small></p>
                       </Link>
@@ -309,8 +319,8 @@ class Navbar extends Component {
           
          <div style={{width:"10%"}}> 
          <div >
-                  <Link to={`/customer/login`} style={{float:"right"}}>
-                  <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontSize:"25px",float:"right",padding:"5px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
+                  <Link to={`/customer/login`} style={{}}>
+                  <small style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,fontSize:"25px",padding:"5px"}} onMouseLeave={()=>this.setState({accountheight:"0px"})} onMouseEnter={()=>this.setState({accountheight:"300px",categoryheight:"0%"})}>
                     <span className="far fa-user nav-margin text-muted"></span>
                 </small> </Link>
                   </div>
@@ -318,9 +328,8 @@ class Navbar extends Component {
              </div>
             
              <div style={{width:"10%"}}>
-<center>
-<Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`,float:"right"}} to={`/checkout/cart`}>
-          <small className="mb-5" style={{position:"relative"}}>
+<Link style={{color:`${this.props.userdetails.background === "black"?"white" :"rgb(38,38,38)"}`}} to={`/checkout/cart`}>
+          <small style={{position:"relative"}}>
             <span className="fab fa-opencart ml-1 text-muted" style={{fontSize:"25px",padding:"5px"}}></span>
             <div style={{position:"absolute",top:"-10px",left:"20px"}}>
             <small className="badge ml-1" style={{backgroundColor:"brown",color:"white",padding:"3px",borderRadius:"50%"}}>
@@ -329,7 +338,6 @@ class Navbar extends Component {
     </div>
           </small>
           </Link>
-</center>
         </div>
         </div>   
           </div>

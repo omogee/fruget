@@ -920,13 +920,10 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                       <img src={require(`./images/35.gif`)} style={{width:"38%"}}/>
                       </center>
                    :
-          <i className={`${this.state.bounce} ${this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(this.state.productId)) ? "fa fa-heart" :"far fa-heart"}`} style={{color:"orange",position:"fixed"}}>  
+          <i className={`${this.state.bounce} ${this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(this.state.productId)) ? "fa fa-heart" :"far fa-heart"}`} style={{color:"orange"}}>  
           </i>
                   }
                 </h2>
-                <small><a href=""><span className="fa fa-star-half-alt" style={{color:"orange"}}></span> see our review on this product</a></small><br/>
-               <small><a href="">PROMOTIONS</a></small><br/>
-               <small>share this product on</small><br/>
                    </center>
                </div> 
                <div className="col-12 col-lg-6 detailmarginal" style={{width:"100%",backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : "black"}`}} >

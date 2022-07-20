@@ -356,39 +356,44 @@ loading = "Upload Items with ease and meet buyers in minutes"
           </div>   
           
            {this.state.view === "grid" ? this.props.products.map((product) =>          
-           <div className="col-6 col-md-4 col-lg-3 mb-1"  style={{marginBottom:"0px",width:"100%",padding:"1px",display:"inline-block"}}  key={product.productId} >        
-           <div className={`${this.state.hoverapp} smhoveredapp smunhoveredapp`} style={{backgroundColor:`${this.props.userdetails.background || "white"}`,padding:"5px"}}>
+           <div className="col-6 col-md-4 col-lg-3 mb-1"  style={{marginBottom:"0px",width:"100%",padding:"1px",display:"inline-block",height:"100%"}}  key={product.productId} >        
+           <div className={`${this.state.hoverapp} smhoveredapp smunhoveredapp`} style={{backgroundColor:`${this.props.userdetails.background || "white"}`,padding:"5px",height:"100%"}}>
           <div>
-          <span onClick={()=>this.save({productId:product.productId,details:product.details})} className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(product.productId)) ? "fa fa-heart" : "far fa-heart"} style={{position:"absolute",fontSize:"20px",top:"10px",left:"10px", color:"orange"}}></span>
-            <center>
+            <center style={{position:"relative"}}>
+            <span onClick={()=>this.save({productId:product.productId,details:product.details})} className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(product.productId)) ? "fa fa-heart" : "far fa-heart"} style={{position:"absolute",fontSize:"30px",top:"10px",left:"10px", color:"orange"}}></span>
+          <b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",position:"absolute",right:"5px",top:"5px"}}>{product.discount ? `-${product.discount}%` : null}</b>
+            <small style={{position:"absolute",fontSize:"15px",bottom:"5px",right:"5px",color:`${product.viewrating > 0 ? "orange" : "grey"}`}}><span className="fa fa-eye" ></span> {product.viewrating}</small>
             <img className="mainImg img-responsive"  data-src={`https://res.cloudinary.com/fruget-com/image/upload/${product.generalcategory}/${product.category}/${product.mainimg || 'emptyimg.jpg'}`} ></img>
             </center>
           </div>
           <div> 
 <div className="row" style={{width:"100%"}}>
-<div className="col-12">
-<small style={{float:"left"}}>{product.brand}</small>
-<small style={{float:"right",color:`${product.viewrating > 0 ? "orange" : "grey"}`}}><span className="fa fa-eye" ></span> {product.viewrating}</small>
-</div>
   </div>
 <div className="" style={{lineHeight:"16px"}}> 
  <div  className="details">  
-     <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
+     <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{fontSize:"14px",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
         </div> 
-        <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
+        
+        
         {product.discount ?
        <div>
-         <small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px",whiteSpace:"pre"}}> {product.mainprice}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b>
+        <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> 
+         <small class="text-muted" style={{float:"right",textDecoration:"line-through",fontSize:"12px",whiteSpace:"pre"}}> {product.mainprice}</small>
+        
          </div> 
          : 
          <br/>
          }
-       <div>
-          
-         <div className="outer">     
+         <div>
+        {product.numofrating && product.numofrating > 0 
+        ?  
+        <div>
+           <div className="outer">     
           <div className="inner" style={{width:`${product.productrating*20}%`}}>    
           </div> 
           </div>  <small style={{fontSize:"12px"}}>({product.numofrating}) </small>
+        </div>
+        : <br/>} 
           <small style={{fontStyle:"italic",float:"right",fontSize:"11px"}}>{formater(product.time)}</small></div> 
           <small className="text-muted" style={{letterSpacing:"-1px",textTransform:"capitalize",fontSize:"10px"}}><b style={{color:"orange"}}>{product.store}</b> @ <span className="fa fa-map-marker-alt"></span>{product.lga}</small>
           <div style={{display:"none"}}><img src={require(`./images/fruget.jpg`)} className="imgSymbol" style={{float:"right"}}></img></div>
@@ -443,7 +448,7 @@ loading = "Upload Items with ease and meet buyers in minutes"
   </div>
            <div className="smdetaildiv" style={{lineHeight:"16px"}}> 
             <div  className="details">  
-     <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
+     <small className="detailtext"  onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{fontSize:"14px",cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
         </div> 
         <small  style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> 
        <span><small className="text-muted ml-1" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></span> 
@@ -628,7 +633,7 @@ ADD TO CART
             </div>
                      <div className="" style={{lineHeight:"16px"}}> 
                       <div  className="details">  
-               <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
+               <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{fontSize:"14px",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}>{product.details.length > 40 ? product.details.slice(0,40)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
                   </div> 
                   <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
                  <div><small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></div> 
@@ -669,7 +674,7 @@ ADD TO CART
                   
           
                      {view === "list" && this.props.products.length > 0  ? this.props.products.map((product) =>          
-          <div className="col-12 rowclasslist" onMouseOver={this.hoverapp} className={`${this.state.hoverapp} `}  style={{width:"100%",backgroundColor:`${this.props.userdetails.background || "white"}`,margin:"2px 0px",padding:"3px"}}  key={product.productId} >               
+          <div  onMouseOver={this.hoverapp} className={`col-12 rowclasslist ${this.state.hoverapp} `}  style={{width:"100%",backgroundColor:`${this.props.userdetails.background || "white"}`,margin:"2px 0px",padding:"3px"}}  key={product.productId} >               
                   <div className="row"  style={{margin:"0px"}}>
                     <div className="col-5 col-md-4 col-lg-3"  style={{margin:"0px"}}>
                     <span onClick={()=>this.save({productId:product.productId,details:product.details})} className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(product.productId)) ? "fa fa-heart" : "far fa-heart"} style={{position:"absolute",fontSize:"20px",top:"10px",left:"10px", color:"orange"}}></span>
@@ -686,7 +691,7 @@ ADD TO CART
             </div>
                      <div className="detaildiv" style={{lineHeight:"16px"}}> 
                       <div  className="details">  
-               <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
+               <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{fontSize:"14px",cursor:"pointer",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,fontSize:"11px"}}>{product.details.length > 50 ? product.details.slice(0,50)+ "..." : product.details +"-"+ product.model +"-"+ product.color}</small>  
                   </div> 
                   <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
                  <div><small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></div> 
@@ -762,7 +767,7 @@ ADD TO CART
            <div className="detaildiv" style={{lineHeight:"16px"}}> 
            <br/>
            <div  className="details" style={{backgroundColor:"rgba(242,242,242,0.6)",width:"90%",height:"30px"}}>  
-            <small className="detailtext" style={{fontSize:"14px"}} onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}></small>  
+            <small className="detailtext" onClick={()=>this.openDetails({details:product.details,id:product.productId})} style={{fontSize:"14px",color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,display:`${this.state.griddetails}`,fontSize:"11px"}}></small>  
                </div> 
                <small style={{fontWeight:"bold",fontSize:"14px"}}>{product.mainprice}</small> <br/>
               <div><small class="text-muted" style={{textDecoration:"line-through",fontSize:"12px"}}>{product.discount ? product.mainprice : null}</small><b className="badge" style={{fontSize:"12px",fontWeight:"bolder",color:"rgba(0, 119, 179)",backgroundColor:"rgba(0, 119, 179,0.1)",float:"right"}}>{product.discount ? `-${product.discount}%` : null}</b></div> 

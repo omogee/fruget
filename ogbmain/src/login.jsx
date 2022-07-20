@@ -31,6 +31,7 @@ class Login extends Component {
          }
     }
     componentDidMount= ()=>{
+      document.title="fruget login"
       this.props.unsetredirect()
    //   Cookies.remove("token",{path:"/"})
     //  Cookies.remove("cm_pp",{path:"/"})

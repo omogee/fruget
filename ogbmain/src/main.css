@@ -142,7 +142,7 @@ html{
     .smdetaildiv{height:100px}
     .hoversidenav:hover {box-shadow:1px 2px 5px 2px lightgrey}
     .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:500; font-size: 13px;}
-    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 500;}
+    .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 13px; color:orange;font-weight: 500;}
     .modaldiv{ position: absolute;width:35%;top:30%;left:35%}
     .savediv{ position: absolute;width:45%;top:30%;left:30%;}
     .register{padding:0px 250px}
@@ -398,7 +398,7 @@ html{
     .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 15px; color:orange;font-weight: 900;}
     .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 15px;}
     
-    .mainImg{height:110px;width:100%}
+    .mainImg{height:120px;width:100%}
     .savediv{ position: absolute;width:94%;top:30%;left:3%;border-radius:5px}
     .cartbutton{position:fixed;left:0px;z-index:2;bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:7px;color:white}
     .lgcartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
@@ -419,7 +419,7 @@ html{
     .mynavbtn{color:grey;border:1px solid lightgrey;border-left:none}
     .onfocus:focus{border:none}
     .gifclass{width: 50%;}
-   //unhoveredapp
+
     .innermessageBoxlg{height:420px !important}
 }
 @media all and (max-width: 450px){
@@ -468,7 +468,7 @@ html{
     .inner::before {content: "★★★★★"; font-family: 'Font Awesome 5 Free'; font-size: 13px; color:orange;font-weight: 900;}
     .outer::before { content: "★★★★★"; font-family: 'Font Awesome 5 Free'; color: lightgrey; font-weight:800; font-size: 13px;}
     
-    .mainImg{height:100px;width:100%}
+    .mainImg{height:115px;width:100%}
     .savediv{ position: absolute;width:100%;height:35%;top:30%;left:0%;}
     .cartbutton{position:fixed;left:0px;z-index:2;bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:7px;color:white}
     .lgcartbutton{bottom:0px;width: 100%;background-color:orange;border-radius: 3px;padding:5px;color:rgb(133, 23, 23)}
