@@ -110,8 +110,6 @@ opencat=(data)=>{
                 
  <div className="row" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background==="white"?"black": this.props.userdetails.background==="white"?"black":"black"}`}}>
  <div className="col-sm-12 d-md-none" style={{backgroundColor:`${this.props.userdetails.background || "white"}`,position:"sticky",top:"0px",padding:"0px", zIndex:"10"}}>  
-
- <img src={require(`./images/fruget.jpg`)} style={{height:"40px",marginLeft:"20px"}} alt=""/>
  {this.props.userdetails.email ?         
  <div style={{backgroundColor:"rgb(10, 20, 41)",padding:"10px",color:"white",zIndex:"10"}}>
         <small style={{textTransform:"uppercase",fontWeight:"bold",padding:"0px",fontSize:"15px"}}>Fruget Community</small><br/>

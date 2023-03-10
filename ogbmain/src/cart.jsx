@@ -33,7 +33,7 @@ class Cart extends Component {
       window.addEventListener("click", this.handleundisplaycartmodal)
       window.addEventListener("click", this.handleundisplayconfirmcartmodal)
       setTimeout(()=> this.setState({categoryloading:true}), 6000)
-      setTimeout(()=> this.setState({loader:true}), 7000)
+    //  setTimeout(()=> this.setState({loader:true}), 7000)
     }
     componentDidUpdate(prevProps){
       if(prevProps.productDetails !== this.props.productDetails)
@@ -306,7 +306,7 @@ openDetails=(datum)=>{
                                            <img src={require(`./images/35.gif`)} style={{width:"38%"}}/>
                                            </small>
                                            :
-  <span className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(carts.productId)) ? "fa fa-heart" : "far fa-heart"} onClick={()=>this.saveItem({"detail":carts.details,"id":carts.productId})} style={{cursor:"pointer",fontSize:"18px",color:"orange"}}  onClick={()=>this.saveItem({"detail":carts.details,"id":carts.productId})}></span> 
+  <span className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(carts.productId)) ? "fa fa-heart" : "far fa-heart"} onClick={()=>this.saveItem({"detail":carts.details,"id":carts.productId})} style={{cursor:"pointer",fontSize:"18px",color:"orange"}}  ></span> 
                                           } 
                                          </small>
                                      </center>
@@ -574,7 +574,7 @@ openDetails=(datum)=>{
                                        <img src={require(`./images/35.gif`)} style={{width:"38%"}}/>
                                        </small>
                                        :
-<span className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(carts.productId)) ? "fa fa-heart" : "far fa-heart"} onClick={()=>this.saveItem({"detail":carts.details,"id":carts.productId})} style={{cursor:"pointer",fontSize:"18px",color:"orange"}}  onClick={()=>this.saveItem({"detail":carts.details,"id":carts.productId})}></span> 
+<span className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(carts.productId)) ? "fa fa-heart" : "far fa-heart"} onClick={()=>this.saveItem({"detail":carts.details,"id":carts.productId})} style={{cursor:"pointer",fontSize:"18px",color:"orange"}}  ></span> 
                                       } 
                                      </small>
                                  </center>

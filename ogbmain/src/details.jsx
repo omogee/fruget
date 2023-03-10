@@ -17,6 +17,7 @@ import {unloading,setredirect,likecomment,dislikecomment,setdisplayproductrating
 import {getDistanceFromLatLonInKm} from "./mapdistance"
 import {formater} from "./formatTime"
 import {withRouter} from 'react-router';
+import {FacebookShareButton, InstapaperShareButton, LineShareButton, TwitterShareButton} from "react-share"
 
 const logo = require("./images/goodmark.ico")
 const logo2 = require("./images/good16.ico")
@@ -235,7 +236,7 @@ const {cookies}=this.props
              rating: this.state.chooserating,
              comment: this.state.comment
          }
-        axios.post(`https://fruget.herokuapp.com/details/${this.props.match.params.details}/rate/product`, {data: JSON.stringify(data)},
+        axios.post(`http://localhost:5000/details/${this.props.match.params.details}/rate/product`, {data: JSON.stringify(data)},
         { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":this.state.mainToken,"navigation":JSON.stringify(navigation)} })
         .then(res => console.log(res.data))
         .catch(err => console.log(err)) 
@@ -311,7 +312,7 @@ const {cookies}=this.props
                <img
 onClick={() => this.changesrc(`https://res.cloudinary.com/fruget-com/image/upload/${this.props.productDetails.generalcategory}/${this.props.productDetails.category}/${img}`)} 
 src={`https://res.cloudinary.com/fruget-com/image/upload/${this.props.productDetails.generalcategory}/${this.props.productDetails.category}/${img}`} 
-className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>    
+className="img-responsive" style={{padding:"0px",maxWidth:"100%",height:'100%'}}>    
 </img>
             </div>   
           ) : null} 
@@ -332,9 +333,7 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
        </i>
                }
              </h2>
-             <small><a href=""><span className="fa fa-star-half-alt" style={{color:"orange"}}></span> see our review on this product</a></small><br/>
-            <small><a href="">PROMOTIONS</a></small><br/>
-            <small>share this product on</small><br/>
+           
                 </center>
             </div> 
             <div className="col-5 col-md-6 detailmarginal" style={{width:"100%",backgroundColor:`${this.props.userdetails.background || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : "black"}`}} >
@@ -425,6 +424,42 @@ className="img-responsive" style={{padding:"0px",maxWidth:"100%"}}>
             <small><a href=""><span className="fa fa-star-half-alt" style={{color:"orange"}}></span> see our review on this product</a></small><br/>
             <small><a href="">PROMOTIONS</a></small><br/>
             <small>share this product on</small><br/>
+            <div style={{display:"flex",width:"50%",justifyContent:"space-evenly"}}>
+              <div>
+              
+                <FacebookShareButton 
+                 url={`http://fruget.herokuapp.com`}
+                 quote={this.props.productDetails.productdescription}
+                 hashtag={"#ecommerce"}
+                 description={this.props.productDetails.details + " - " + this.props.productDetails.model  + " - " + this.props.productDetails.color}>
+                    <span className='fa fa-facebook-square text-primary' style={{color:"blue",fontSize:'20px'}}></span>
+                </FacebookShareButton>
+              </div>
+              <div>
+              <TwitterShareButton 
+                 url={`http://fruget.herokuapp.com`}
+                 hashtag={"#ecommerce#webdev"}
+                 title={this.props.productDetails.details + " - " + this.props.productDetails.model  + " - " + this.props.productDetails.color}>
+                    <span className='fa fa-twitter text-primary' style={{color:"blue",fontSize:'20px'}}></span>
+                </TwitterShareButton>
+              </div>
+              <div>
+              <LineShareButton 
+                 url={`http://fruget.herokuapp.com`}
+                 hashtag={"#ecommerce#webdev"}
+                 title={this.props.productDetails.details + " - " + this.props.productDetails.model  + " - " + this.props.productDetails.color}>
+                    <span className='fa fa-linkedin text-primary' style={{color:"blue",fontSize:'20px'}}></span>
+                </LineShareButton>
+              </div>
+              <div>
+              <InstapaperShareButton 
+                 url={`http://fruget.herokuapp.com`}
+                 hashtag={"#ecommerce#webdev"}
+                 title={this.props.productDetails.details + " - " + this.props.productDetails.model  + " - " + this.props.productDetails.color}>
+                    <span className='fa fa-instagram ' style={{color:"brown",fontSize:'20px'}}></span>
+                </InstapaperShareButton>
+              </div>
+            </div>
             </div>
             </div>   
             <br/>       
@@ -1015,6 +1050,42 @@ onClick={()=>alert("Dear User, Only verified Sales can rate a product")} >
                <small><a href=""><span className="fa fa-star-half-alt" style={{color:"orange"}}></span> see our review on this product</a></small><br/>
                <small><a href="">PROMOTIONS</a></small><br/>
                <small>share this product on</small><br/>
+               <div style={{display:"flex",width:"100%",justifyContent:"space-evenly"}}>
+              <div>
+              
+                <FacebookShareButton 
+                 url={`http://fruget.herokuapp.com`}
+                 quote={this.props.productDetails.productdescription}
+                 hashtag={"#ecommerce"}
+                 description={this.props.productDetails.details + " - " + this.props.productDetails.model  + " - " + this.props.productDetails.color}>
+                    <span className='fa fa-facebook-square text-primary' style={{color:"blue",fontSize:'20px'}}></span>
+                </FacebookShareButton>
+              </div>
+              <div>
+              <TwitterShareButton 
+                 url={`http://fruget.herokuapp.com`}
+                 hashtag={"#ecommerce#webdev"}
+                 title={this.props.productDetails.details + " - " + this.props.productDetails.model  + " - " + this.props.productDetails.color}>
+                    <span className='fa fa-twitter text-primary' style={{color:"blue",fontSize:'20px'}}></span>
+                </TwitterShareButton>
+              </div>
+              <div>
+              <LineShareButton 
+                 url={`http://fruget.herokuapp.com`}
+                 hashtag={"#ecommerce#webdev"}
+                 title={this.props.productDetails.details + " - " + this.props.productDetails.model  + " - " + this.props.productDetails.color}>
+                    <span className='fa fa-linkedin text-primary' style={{color:"blue",fontSize:'20px'}}></span>
+                </LineShareButton>
+              </div>
+              <div>
+              <InstapaperShareButton 
+                 url={`http://fruget.herokuapp.com`}
+                 hashtag={"#ecommerce#webdev"}
+                 title={this.props.productDetails.details + " - " + this.props.productDetails.model  + " - " + this.props.productDetails.color}>
+                    <span className='fa fa-instagram ' style={{color:"brown",fontSize:'20px'}}></span>
+                </InstapaperShareButton>
+              </div>
+            </div>
                </div>
                </div>   
                <br/>       

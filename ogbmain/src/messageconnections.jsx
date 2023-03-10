@@ -182,7 +182,7 @@ class messageConnections extends Component {
 <div  style={{backgroundColor:`${this.props.userdetails.background || "white"}`,width:"100%",padding:"3px"}}>
 
 
- {this.state.filteredconn.length > 0 ?this.state.filteredconn.map((follower)=>
+ {this.state.filteredconn && this.state.filteredconn.length > 0 ?this.state.filteredconn.map((follower)=>
  <a  key={follower.userId} style={{textDecoration:"none",color:`${this.props.userdetails.background === "black" ? "white" : "black"}`}} href={`/in_box/dk/${Math.floor(Math.random()*100000)}${follower.userId}${Math.floor(Math.random()*1000)}in_box/${Math.floor(Math.random()*100000000000000000000)}00006862${Math.floor(Math.random()*1000)}`}>
 
     <div className="row"  style={{padding: "5px 10px"}}>
@@ -286,7 +286,7 @@ class messageConnections extends Component {
  <small><span style={{paddingRight:"4px"}} className="fa fa-clock-o text-danger"></span></small>
  : null 
  }
- {follower.message.length > 30 ?
+ {follower.message && follower.message.length > 30 ?
  follower.message.slice(0,30)+"..."
  : follower.message }
  {follower.noOfunread > 0 ?

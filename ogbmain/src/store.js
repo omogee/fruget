@@ -27,7 +27,7 @@ let myMainTokenlen = parseInt(myToken.split("%")[0])
   mainToken = myToken.slice(userIdpos+userIdlen, myMainTokenlen)
  let userId2 = mainToken.slice(userIdpos, userIdpos+userIdlen)
 
-axios.get(`https://fruget.herokuapp.com/details/product/display/userdetailsbyuserId?userId=${userId}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+axios.get(`http://localhost:5000/details/product/display/userdetailsbyuserId?userId=${userId}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
 .then(res => {
   userdetails = res.data.userdetails;
   isLoggedin = res.data.isLogged;
@@ -666,7 +666,7 @@ const store = createStore(reducer, applyMiddleware(thunk,createCookieMiddleware(
 export const countuserdetails =()=>{
   return(dispatch)=>{
     dispatch({type:"countloading"})
-  axios.get(`https://fruget.herokuapp.com/customer/count/userdetails`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+  axios.get(`http://localhost:5000/customer/count/userdetails`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
   .then(res => dispatch({type:"countdetails",payloadcart:res.data.cartcount,payloadsaved:res.data.savedcount,payloadorder:res.data.ordercount}))
   .catch(err => dispatch({type:"err"})) 
 
@@ -708,12 +708,12 @@ export const pushmessages=(data)=>{
 }
 export const fetchunreadmessages =(data)=>{
   return(dispatch)=>{
-    axios.get(`https://fruget.herokuapp.com/details/messages/unread`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/details/messages/unread`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"fetchunreadmessages",payload:res.data[0].unread,payloadcontacts:res.data[0].contacts}))
       .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -722,12 +722,12 @@ export const fetchunreadmessages =(data)=>{
 }
 export const viewsender =(data)=>{
   return(dispatch)=>{
-    axios.get(`https://fruget.herokuapp.com/details/product/display/otheruserdetailsbyuserId?userId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/details/product/display/otheruserdetailsbyuserId?userId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"viewsender",payloaduser:res.data.otheruserdetails}))
       .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -737,7 +737,7 @@ export const viewsender =(data)=>{
 export const dislikecomment =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/customer/dislike/comment?commentId=${data.commentId}&productId=${data.productId}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/dislike/comment?commentId=${data.commentId}&productId=${data.productId}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"dislikecomment", payloadcomments:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
@@ -745,7 +745,7 @@ export const dislikecomment =(data)=>{
 export const likecomment =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/customer/like/comment?commentId=${data.commentId}&productId=${data.productId}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/like/comment?commentId=${data.commentId}&productId=${data.productId}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"likecomment", payloadcomments:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
@@ -765,7 +765,7 @@ export const undisplayclearcartsuccess =()=>{
 export const ratevendor =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
-  axios.post(`https://fruget.herokuapp.com/details/${data.vendor}/rate/vendor`, {data: JSON.stringify(data)},
+  axios.post(`http://localhost:5000/details/${data.vendor}/rate/vendor`, {data: JSON.stringify(data)},
   { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
   .then(res => dispatch({type:"ratevendor",payload:res.data}))
   .catch(err => dispatch({type:"err"})) 
@@ -775,7 +775,7 @@ export const ratevendor =(data)=>{
 export const rateproduct =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
-  axios.post(`https://fruget.herokuapp.com/details/${data.details}/rate/product`, {data: JSON.stringify(data)},
+  axios.post(`http://localhost:5000/details/${data.details}/rate/product`, {data: JSON.stringify(data)},
   { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
   .then(res => dispatch({type:"rateproduct",payload:res.data}))
   .catch(err => dispatch({type:"err"})) 
@@ -861,7 +861,7 @@ export const undisplaysavemodal =()=>{
 export const services =(data)=>{
   return(dispatch)=>{
   //  dispatch({type:"loading"})  displaycategorymodal
-    axios.get(`https://fruget.herokuapp.com/customer/fetch/services?lat=${data.lat}&long=${data.long}`)
+    axios.get(`http://localhost:5000/customer/fetch/services?lat=${data.lat}&long=${data.long}`)
     .then(res => dispatch({type:"services", payload:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
    }
@@ -869,12 +869,12 @@ export const services =(data)=>{
 export const changecolor =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})  
-    axios.get(`https://fruget.herokuapp.com/customer/change/bgcolor?color=${data.color}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/change/bgcolor?color=${data.color}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"changecolor", payload:res.data}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -885,7 +885,7 @@ export const changecolor =(data)=>{
 export const fetchfollowing =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/customer/fetch/following?email=${data}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/fetch/following?email=${data}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"fetchfollowing", payload:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
@@ -894,7 +894,7 @@ export const fetchfollowing =(data)=>{
 export const fetchfollowers =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/customer/fetch/followers?email=${data}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/fetch/followers?email=${data}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"fetchfollowers", payload:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
@@ -903,12 +903,12 @@ export const fetchfollowers =(data)=>{
 export const fetchsavedItembyemail =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/customer/fetchbyemail/saveditems?email=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/fetchbyemail/saveditems?email=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"fetchsavedItembyemail", payload:res.data}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -918,12 +918,12 @@ export const fetchsavedItembyemail =(data)=>{
 export const fetchsavedItembyuserId =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/customer/fetchbyuserId/saveditems`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/fetchbyuserId/saveditems`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"fetchsavedItembyuserId", payload:res.data}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -936,7 +936,7 @@ export const checksaveItem =()=>{
   return(dispatch)=>{
    // dispatch({type:"loading"})
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/customer/check/save`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/check/save`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"check-save-item", payload:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
@@ -946,12 +946,12 @@ export const saveItem =(data)=>{
   return(dispatch)=>{
    // dispatch({type:"loading"})
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/customer/save?productId=${data.productId}&details=${data.details}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/save?productId=${data.productId}&details=${data.details}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"save-item", payload:res.data.messages.message,payloadheader:res.data.messages.header, payloaduser:res.data.userdetails}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -962,12 +962,12 @@ export const unsaveItem =(data)=>{
   return(dispatch)=>{
    // dispatch({type:"loading"})
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/customer/unsave?productId=${data}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/unsave?productId=${data}`, { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"unsave-item", payload:res.data}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -978,14 +978,14 @@ export const unsaveItem =(data)=>{
 //products
 export const subcat2 =(data)=>{
   return(dispatch)=>{
-    axios.get(`https://fruget.herokuapp.com/products/productsellernumOfRows/${data}/subcat2`)
+    axios.get(`http://localhost:5000/products/productsellernumOfRows/${data}/subcat2`)
     .then( res => dispatch({type:"getsubcat2", payload:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
 }
 export const subcat3 =(data)=>{
   return(dispatch)=>{
-      axios.get(`https://fruget.herokuapp.com/products/productsellernumOfRows/${data}/subcat3`)
+      axios.get(`http://localhost:5000/products/productsellernumOfRows/${data}/subcat3`)
     .then( res => dispatch({type:"getsubcat3", payload:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
@@ -1008,22 +1008,22 @@ export const setAppDisplay=()=>{
 export const searcher =(data)=>{
   return (dispatch)=>{
      dispatch({type: 'searched'})
-  axios.post('https://fruget.herokuapp.com/search/search',{data: JSON.stringify(data)})
+  axios.post('http://localhost:5000/search/search',{data: JSON.stringify(data)})
   .then(res => dispatch({type:'searching',payload:res.data.files,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows}))
   .catch(err => dispatch({type: 'error', payload: err}))
 
  // dispatch({type: 'loading'})
-    axios.post(`https://fruget.herokuapp.com/search/searchbrand`, {data: JSON.stringify(data)})
+    axios.post(`http://localhost:5000/search/searchbrand`, {data: JSON.stringify(data)})
     .then(res=> dispatch({type: 'brandsearched', payload: res.data}))
     .then(err => dispatch({type: 'error', payload: err}))
 
    // dispatch({type: 'loading'})
-    axios.post(`https://fruget.herokuapp.com/search/searchcolour`, {data: JSON.stringify(data)})
+    axios.post(`http://localhost:5000/search/searchcolour`, {data: JSON.stringify(data)})
     .then(res=> dispatch({type: 'colorsearched', payload: res.data}))
     .then(err => dispatch({type: 'error', payload: err}))
 
    // dispatch({type: 'loading'})
-    axios.post(`https://fruget.herokuapp.com/search/searchsize`, {data: JSON.stringify(data)})
+    axios.post(`http://localhost:5000/search/searchsize`, {data: JSON.stringify(data)})
     .then(res=> dispatch({type: 'sizesearched', payload: res.data}))
     .then(err => dispatch({type: 'error', payload: err}))
 
@@ -1032,12 +1032,12 @@ export const searcher =(data)=>{
 export const followservice =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/details/follow/service?sellerId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/details/follow/service?sellerId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
    .then(res =>  dispatch({type: 'followservice', payload: res.data.status,payloaduser:res.data.user,payloadservice:res.data.service}))
    .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }
@@ -1047,12 +1047,12 @@ export const followservice =(data)=>{
 export const followseller =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/details/follow/seller?sellerId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/details/follow/seller?sellerId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
    .then(res =>  dispatch({type: 'followseller', payload: res.data.status,payloaduser:res.data.user,payloadseller:res.data.seller}))
    .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }
@@ -1063,7 +1063,7 @@ export const viewsellerdetails =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
     
-    axios.get(`https://fruget.herokuapp.com/details/product/display/sellerdetails?userId=${data}`)
+    axios.get(`http://localhost:5000/details/product/display/sellerdetails?userId=${data}`)
   .then(res => dispatch({type:"sellerdetailsloaded",payloadseller:res.data.seller,payloadnumOfRows:res.data.numOfRows,payloadproducts:res.data.products}))
   .catch(err => dispatch({type:"err",payload:err})) 
   }
@@ -1072,12 +1072,12 @@ export const viewsellerdetails =(data)=>{
 export const viewuserdetails =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})   
-    axios.get(`https://fruget.herokuapp.com/details/product/display/userdetails?email=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/details/product/display/userdetails?email=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
   .then(res => dispatch({type:"userdetailsbyemail",payloadotheruser:res.data.details,payloadnumOfRows:res.data.numOfRows,payloadproducts:res.data.products,payloadcomments:res.data.comments}))
   .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }
@@ -1088,13 +1088,13 @@ export const viewuserdetails =(data)=>{
 export const viewotheruserdetailsbyuserId =(data)=>{
   return(dispatch)=>{
    // dispatch({type:"loading"})   
-    axios.get(`https://fruget.herokuapp.com/details/product/display/otheruserdetailsbyuserId?userId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/details/product/display/otheruserdetailsbyuserId?userId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
   .then(res => dispatch({type:"otheruserdetailsbyid",payloadFailure:res.data.failureMsg,payloadstatus:res.data.status,payloaduser:res.data.otheruserdetails}))
   //,payloadnumOfRows:res.data.numOfRows,payloadproducts:res.data.products
   .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }
@@ -1104,7 +1104,7 @@ export const viewotheruserdetailsbyuserId =(data)=>{
 export const viewuserdetailsbyuserId =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})   
-    axios.get(`https://fruget.herokuapp.com/details/product/display/userdetailsbyuserId?userId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/details/product/display/userdetailsbyuserId?userId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
   .then(res => dispatch({type:"userdetailsbyid",payloadFailure:res.data.failureMsg,payloadstatus:res.data.status,payloadisLoggedin:res.data.isLoggedin,payloaduser:res.data.details,payloadnumOfRows:res.data.numOfRows,payloadproducts:res.data.products}))
   .catch(err => dispatch({type:"errorOutput", payloaderr:err})) 
   }
@@ -1113,12 +1113,12 @@ export const viewuserdetailsbyuserId =(data)=>{
 export const viewmyprofiledetails =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})   
-    axios.get(`https://fruget.herokuapp.com/details/product/display/myprofiledetails`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")} ${mainToken}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/details/product/display/myprofiledetails`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")} ${mainToken}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
   .then(res => dispatch({type:"myprofiledetailsloaded",payloaduser:res.data.details,payloadnumOfRows:res.data.numOfRows,payloadproducts:res.data.products}))
   .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }
@@ -1128,12 +1128,12 @@ export const viewmyprofiledetails =(data)=>{
 
 export const getseller =(data)=>{
   return(dispatch)=>{
-    axios.get(`https://fruget.herokuapp.com/details/product/display/seller?email=${data.email}&details=${data.details}&productId=${data.productId}&user=${data.userId}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/details/product/display/seller?email=${data.email}&details=${data.details}&productId=${data.productId}&user=${data.userId}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
   .then(res => dispatch({type:"sellerloaded",payloadItem:res.data.item,payload:res.data.sellerdetail,payloadotherstores:res.data.otherstores,payloadFollow: !res.data.follow  ? "follow" : "following"}))
   .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }
@@ -1144,24 +1144,24 @@ export const getseller =(data)=>{
 export const getdetails =(data)=>{
  return(dispatch)=>{
    /*
-  axios.get(`https://fruget.herokuapp.com/customer/check/save?productId=${data}`,{ headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`} })
+  axios.get(`http://localhost:5000/customer/check/save?productId=${data}`,{ headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`} })
   .then(res =>  dispatch({type:"checkifsaved",payload:res.data}))
   .catch(err => dispatch({type:"err",payload:err})) 
  */
   dispatch({type:"loading"})
-  axios.get(`https://fruget.herokuapp.com/details/product/${data.productId}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+  axios.get(`http://localhost:5000/details/product/${data.productId}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
   .then(res => dispatch({type:"detailsloaded",payloadOne:res.data.file[0].details,payloadTwo:res.data.file[0].productId,payload: res.data.file[0],payloadSimiliar:res.data.files2,payloadverySimiliar:res.data.files3,payloadcomments:res.data.productcomments}))
   .catch(err =>{ dispatch({type:"err",payload:err})
-  if(err.response.status != 200){
+  if( err.response && err.response.status != 200){
     dispatch({type:"unloading"})
     dispatch({type: 'redirect'})
   }})   
 /*
-  axios.get(`https://fruget.herokuapp.com/details/similiarbrand/${data}`)
+  axios.get(`http://localhost:5000/details/similiarbrand/${data}`)
   .then(res => dispatch({type:"similiarproductsbybrand",payload: res.data}))
   .catch(err => dispatch({type:"err",payload:err}))  
 
-  axios.get(`https://fruget.herokuapp.com/details/product/${data}`)
+  axios.get(`http://localhost:5000/details/product/${data}`)
   .then(res => dispatch({type:"detailsloaded",payloadOne:data,payload: res.data}))
   .catch(err => dispatch({type:"err",payload:err}))   
 */
@@ -1173,28 +1173,28 @@ export const submitsearcher =(data)=>{
   return (dispatch)=>{
      dispatch({type: 'submitsearched'})
      console.log(data)
-  axios.get(`https://fruget.herokuapp.com/search/items/search?search=${data.search}&vendor=${data.vendor}&gun=${data.currentq}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&inches=${data.inches}&litres=${data.litres}&colour=${data.colour}&page=${data.page}`)
+  axios.get(`http://localhost:5000/search/items/search?search=${data.search}&vendor=${data.vendor}&gun=${data.currentq}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&inches=${data.inches}&litres=${data.litres}&colour=${data.colour}&page=${data.page}`)
   .then(res => dispatch({type:'submitsearching',payload:res.data.files,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows}))
   .catch(err => dispatch({type:"err",payload:err}))
   
 
   dispatch({type: 'loading'})
-  axios.get(`https://fruget.herokuapp.com/search/items/searchbrand?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand !== undefined ?data.brand : null}&size=${data.size}&colour=${data.colour}`)
+  axios.get(`http://localhost:5000/search/items/searchbrand?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand !== undefined ?data.brand : null}&size=${data.size}&colour=${data.colour}`)
   .then(res=> dispatch({type: 'submitbrandsearched', payload: res.data}))
   .then(err => dispatch({type: 'error', payload: err}))
 
   dispatch({type: 'loading'})
-  axios.get(`https://fruget.herokuapp.com/search/items/searchcolour?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`)
+  axios.get(`http://localhost:5000/search/items/searchcolour?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}`)
   .then(res=> dispatch({type: 'submitcolorsearched', payload: res.data}))
   .then(err => dispatch({type: 'error', payload: err}))
 
   dispatch({type: 'loading'})
-  axios.get(`https://fruget.herokuapp.com/search/items/searchsize?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand}&selectedInches=${data.inches}&selectedLitres=${data.litres}&colour=${data.colour}`)
+  axios.get(`http://localhost:5000/search/items/searchsize?search=${data.search}&max=${data.max}&min=${data.min}&brand=${data.brand}&selectedInches=${data.inches}&selectedLitres=${data.litres}&colour=${data.colour}`)
   .then(res=> dispatch({type: 'submitsizesearched',payloadInches: res.data.inches,payloadLitres:res.data.litres,payloadWattage:res.data.wattage}))
   .then(err => dispatch({type: 'error', payload: err}))
 
   dispatch({type: 'loading'})
-  axios.get(`https://fruget.herokuapp.com/search/items/searchvendor?search=${data.search}&vendor=${data.vendor}`)
+  axios.get(`http://localhost:5000/search/items/searchvendor?search=${data.search}&vendor=${data.vendor}`)
   .then(res=> dispatch({type: 'submitvendorsearched', payload: res.data}))
   .then(err => dispatch({type: 'error', payload: err}))
 
@@ -1205,7 +1205,7 @@ export const submitsearcher =(data)=>{
 export const checkfilter = data =>{
   return (dispatch) =>{
   dispatch({type: "filter"})
-  axios.get(`https://fruget.herokuapp.com/products/items/filter/${data.category}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&vendor=${data.vendor}&brand=${data.brand}&litres=${data.litres}&inches=${data.inches}&colour=${data.colour}&q=${data.q}&rating=${data.rating}`)
+  axios.get(`http://localhost:5000/products/items/filter/${data.category}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&vendor=${data.vendor}&brand=${data.brand}&litres=${data.litres}&inches=${data.inches}&colour=${data.colour}&q=${data.q}&rating=${data.rating}`)
   .then(res => dispatch({type:"filteritems", payload:res.data.files,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows,payloadoverallMax:res.data.overallMax,payloadoverallMin:res.data.overallMin,payloadmax:res.data.max,payloadmin:res.data.min,input:data.files}))
   .catch(err => console.log(err))
   }
@@ -1214,7 +1214,7 @@ export const checkfilter = data =>{
 export const checkvendorfilter = data =>{
   return (dispatch) =>{
   //dispatch({type: "filter"})
-  axios.get(`https://fruget.herokuapp.com/products/goods/filter/${data.vendor}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&vendor=${data.vendor}&brand=${data.brand}&litres=${data.litres}&inches=${data.inches}&colour=${data.colour}&q=${data.q}&rating=${data.rating}`)
+  axios.get(`http://localhost:5000/products/goods/filter/${data.vendor}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&vendor=${data.vendor}&brand=${data.brand}&litres=${data.litres}&inches=${data.inches}&colour=${data.colour}&q=${data.q}&rating=${data.rating}`)
   .then(res => dispatch({type:"filtervendoritems", payload:res.data.files,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows,payloadoverallMax:res.data.overallMax,payloadoverallMin:res.data.overallMin,payloadmax:res.data.max,payloadmin:res.data.min,input:data.files}))
   .catch(err => console.log(err))
   }
@@ -1227,7 +1227,7 @@ export const getfilteredSuggestions = data =>{
   dispatch({type: "suggestions"})
   dispatch({type:"suggestionloaded", payload:[], input:data})
   /*
-  axios.get("https://fruget.herokuapp.com/suggestions/suggestion")
+  axios.get("http://localhost:5000/suggestions/suggestion")
   .then(res => dispatch({type:"suggestionloaded", payload:res.data, input:data}))
   .catch(err => console.log(err))
   */
@@ -1238,14 +1238,14 @@ export const getfilteredSuggestions = data =>{
  export const getProducts = data =>{
    return (dispatch)=>{
       dispatch({type: 'loading'})
-    axios.get(`https://fruget.herokuapp.com/products/${data.category}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}&rating=${data.rating}`)
+    axios.get(`http://localhost:5000/products/${data.category}?page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}&rating=${data.rating}`)
     .then(res =>{ dispatch({type: 'loaded',payload:data.category, payloadOne: res.data.file,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows,payloadoverallMax:res.data.overallMax,payloadoverallMin:res.data.overallMin,payloadmax:res.data.max,payloadmin:res.data.min})
     dispatch({type:"unloading"})
   })
     .catch(err => dispatch({type: 'error', payload: err}))
 /*
    dispatch({type: 'categoryloading'})
-   axios.get(`https://fruget.herokuapp.com/products/${data.category}/category?page=${data.page}`)
+   axios.get(`http://localhost:5000/products/${data.category}/category?page=${data.page}`)
    .then(res=> dispatch({type: 'categoryloaded', payload: res.data}))
    .catch(err => dispatch({type: 'error', payload: err}))
 */
@@ -1255,12 +1255,12 @@ export const getfilteredSuggestions = data =>{
 export const getvendorProducts = data =>{
   return (dispatch)=>{
      dispatch({type: 'loading'})
-   axios.get(`https://fruget.herokuapp.com/products/goods/${data.vendor}?category=${data.category}&page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}&rating=${data.rating}`)
+   axios.get(`http://localhost:5000/products/goods/${data.vendor}?category=${data.category}&page=${parseInt(data.page)}&sort=${data.sort}&max=${data.max}&min=${data.min}&brand=${data.brand}&size=${data.size}&colour=${data.colour}&rating=${data.rating}`)
    .then(res => dispatch({type: 'vendorproductsloaded',payload:data.category, payloadOne: res.data.file,payloadTwo:res.data.numPages,payloadThree: res.data.currentPage,payloadFour:res.data.numOfRows,payloadoverallMax:res.data.overallMax,payloadoverallMin:res.data.overallMin,payloadmax:res.data.max,payloadmin:res.data.min}))
    .catch(err => dispatch({type: 'error', payload: err}))
 
   dispatch({type: 'categoryloading'})
-  axios.get(`https://fruget.herokuapp.com/products/${data.category}/category?page=${data.page}`)
+  axios.get(`http://localhost:5000/products/${data.category}/category?page=${data.page}`)
   .then(res=> dispatch({type: 'categoryloaded', payload: res.data}))
   .catch(err => dispatch({type: 'error', payload: err}))
  }
@@ -1269,7 +1269,7 @@ export const getvendorProducts = data =>{
 export const addtocart = data =>{
   return (dispatch) =>{
     dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/customer/add-to-cart?id=${data.id}&color=${data.color}&inches=${data.inches}&litres=${data.litres}&wattage=${data.wattage}&kilogram=${data.kilogram}`,
+    axios.get(`http://localhost:5000/customer/add-to-cart?id=${data.id}&color=${data.color}&inches=${data.inches}&litres=${data.litres}&wattage=${data.wattage}&kilogram=${data.kilogram}`,
     { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res =>{
       if(res.data.success){
@@ -1280,9 +1280,9 @@ export const addtocart = data =>{
       }
     })
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1292,12 +1292,12 @@ export const addtocart = data =>{
 export const clearcart =(data)=>{
   return(dispatch)=>{
     dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/customer/clear/cart?cartId=${data.cartId}&productId=${data.productId}&seller=${data.seller}&rating=${data.rating}&comment=${data.comment}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/clear/cart?cartId=${data.cartId}&productId=${data.productId}&seller=${data.seller}&rating=${data.rating}&comment=${data.comment}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"clearcart",payload: res.data.response, payloadcart:res.data.submittedcart}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1307,7 +1307,7 @@ export const clearcart =(data)=>{
 export const submitshoppingcart =()=>{
   return(dispatch)=>{
   dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/customer/submit-to-cart`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/submit-to-cart`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"submitshoppingcart",payload: res.data.message,payloadTwo:"block"}))
     .catch(err => dispatch({type: 'submitshoppingcarterr', payload: err}))
   }
@@ -1316,14 +1316,14 @@ export const submitshoppingcart =()=>{
 export const shoppingcart =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/customer/checkout?user=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/checkout?user=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res =>{ dispatch({type:"shoppingcart",payloadcart: res.data.files,payloadtotalprice:res.data.totalprice})
   dispatch({type:"unloading"})
 })
     .catch(err =>{
      
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1335,12 +1335,12 @@ export const submittedcart =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
     console.log("i am submitting")
-    axios.get(`https://fruget.herokuapp.com/customer/submittedcart?user=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/submittedcart?user=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"submittedcart",payloadsubmittedcart: res.data.files,payloadtotalprice:res.data.totalprice}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1351,14 +1351,14 @@ export const submittedcart =(data)=>{
 export const fetchorders  =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/customer/orders?user=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/orders?user=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => {dispatch({type:"fetchorders",payloadorders: res.data.files,payloadtotalorderprice:res.data.totalprice})
    // dispatch({type:"unloading"})
   })
   .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }
@@ -1368,12 +1368,12 @@ export const fetchorders  =(data)=>{
 export const fetchinvoice  =(data)=>{
   return(dispatch)=>{
     dispatch({type:"fetchinginvoice"})
-    axios.get(`https://fruget.herokuapp.com/customer/invoice?cartId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/invoice?cartId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"fetchinvoice",payloadcart: res.data.cart,payloadbuyer: res.data.buyer,payloadseller:res.data.seller}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1384,14 +1384,14 @@ export const fetchinvoice  =(data)=>{
 export const fetchgroupedcartbyinvoiceId =(data)=>{
   return(dispatch)=>{
     dispatch({type:"fetchinggroupcartbyinvoiceId"})
-    axios.get(`https://fruget.herokuapp.com/customer/group/submittedcart?email=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/group/submittedcart?email=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => {dispatch({type:"fetchgroupedcartbyinvoiceId",payloadcart: res.data.groupcart,payloadtotalprice:res.data.totalprice})
    //  dispatch({type:"unloading"})
     })
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1401,12 +1401,12 @@ export const fetchgroupedcartbyinvoiceId =(data)=>{
 export const fetchcartbyinvoiceId =(data)=>{
   return(dispatch)=>{
     dispatch({type:"fetchingcartbyinvoiceId"})
-    axios.get(`https://fruget.herokuapp.com/customer/group/invoice?invoiceId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/group/invoice?invoiceId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"fetchcartbyinvoiceId",payloadcart: res.data.cart,payloadbuyer: res.data.buyer,payloadseller:res.data.seller}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1416,12 +1416,12 @@ export const fetchcartbyinvoiceId =(data)=>{
 export const increaseshoppingcart =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/customer/increasecart?details=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/increasecart?details=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"increaseshoppingcart",payloadcart: res.data.files,payloadtotalprice:res.data.totalprice}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1432,12 +1432,12 @@ export const increaseshoppingcart =(data)=>{
 export const decreaseshoppingcart =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/customer/decreasecart?details=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/decreasecart?details=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"decreaseshoppingcart",payloadcart: res.data.files,payloadtotalprice:res.data.totalprice}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1449,12 +1449,12 @@ export const decreaseshoppingcart =(data)=>{
 export const removeshoppingcart =(data)=>{
   return(dispatch)=>{
     dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/customer/deletecart?details=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+    axios.get(`http://localhost:5000/customer/deletecart?details=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
     .then(res => dispatch({type:"removeshoppingcart",payload:res.data}))
     .catch(err =>{
-      console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+     // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
      // dispatch({type: 'fetchingcarterr', payload: err})
-      if(err.response.status != 200){
+      if( err.response && err.response.status != 200){
         dispatch({type:"unloading"})
         dispatch({type: 'redirect'})
       }
@@ -1470,7 +1470,7 @@ export const undisplaymodal =()=>{
 export const allcategories = ()=>{
   return(dispatch)=>{
      dispatch({type:"catloading"})
-    axios.get("https://fruget.herokuapp.com/products/products/allcategories")
+    axios.get("http://localhost:5000/products/products/allcategories")
     .then(res => dispatch({type:"allcategories", payload:res.data}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
@@ -1478,7 +1478,7 @@ export const allcategories = ()=>{
 export const allsubcategories = (data)=>{
   return(dispatch)=>{
      dispatch({type:"catloading"})
-    axios.get(`https://fruget.herokuapp.com/products/${data}/category`)
+    axios.get(`http://localhost:5000/products/${data}/category`)
     .then(res => dispatch({type:"allsubcategories", payloadcategory:res.data.distcat,payloadsub1:res.data.distsub1,payloadsub2:res.data.distsub2,payloadsub3:res.data.distsub3}))
     .catch(err => dispatch({type:"err", payload:err}))
   }
@@ -1488,7 +1488,7 @@ export const allsubcategories = (data)=>{
 export const allvendorsubcategories = (data)=>{
   return(dispatch)=>{
      dispatch({type:"loading"})
-    axios.get(`https://fruget.herokuapp.com/products/vendor/${data}/category`)
+    axios.get(`http://localhost:5000/products/vendor/${data}/category`)
     .then(res =>{ dispatch({type:"allvendorsubcategories", payloadcategory:res.data.distcat,payloadsub1:res.data.distsub1,payloadsub2:res.data.distsub2,payloadsub3:res.data.distsub3})
     dispatch({type:"unloading"})})
     .catch(err => dispatch({type:"err", payload:err}))
@@ -1509,24 +1509,24 @@ export const unshowmodalsidenavbar =()=>{
 export const getsidenav = data =>{
   return (dispatch)=>{
    dispatch({type: 'loading'})
-   axios.get(`https://fruget.herokuapp.com/products/${data.category}/brand?selectedBrand=${data.brand}`)
+   axios.get(`http://localhost:5000/products/${data.category}/brand?selectedBrand=${data.brand}`)
    .then(res=> dispatch({type: 'brandloaded', payload: res.data}))
    .then(err => dispatch({type: 'error', payload: err}))
 
-   axios.get(`https://fruget.herokuapp.com/products/${data.category}/color?selectedColour=${data.colour}`)
+   axios.get(`http://localhost:5000/products/${data.category}/color?selectedColour=${data.colour}`)
    .then(res=> dispatch({type: 'colorloaded', payload: res.data}))
    .then(err => dispatch({type: 'error', payload: err}))
 
-   axios.get(`https://fruget.herokuapp.com/products/${data.category}/size?selectedInches=${data.inches}&selectedLitres=${data.litres}`)
+   axios.get(`http://localhost:5000/products/${data.category}/size?selectedInches=${data.inches}&selectedLitres=${data.litres}`)
    .then(res=> dispatch({type: 'sizeloaded', payloadInches: res.data.inches,payloadLitres:res.data.litres,payloadWattage:res.data.wattage}))
    .then(err => dispatch({type: 'error', payload: err}))
 
-   axios.get(`https://fruget.herokuapp.com/products/${data.category}/seller?selectedseller=${data.vendor}`)
+   axios.get(`http://localhost:5000/products/${data.category}/seller?selectedseller=${data.vendor}`)
    .then(res=> dispatch({type:'sellerbycategory', payload: res.data}))
    .then(err => dispatch({type: 'error', payload: err}))
   
    dispatch({type: 'priceloading'})
-   axios.get(`https://fruget.herokuapp.com/products/${data.category}/price`)
+   axios.get(`http://localhost:5000/products/${data.category}/price`)
    .then(res=> dispatch({type: 'priceloaded', payload: res.data}))
    .then(err => dispatch({type: 'error', payload: err}))
 
@@ -1536,19 +1536,19 @@ export const getsidenav = data =>{
 export const getvendorsidenav = data =>{
   return (dispatch)=>{
    dispatch({type: 'loading'})
-   axios.get(`https://fruget.herokuapp.com/products/goods/${data.vendor}/brand?selectedBrand=${data.brand}`)
+   axios.get(`http://localhost:5000/products/goods/${data.vendor}/brand?selectedBrand=${data.brand}`)
    .then(res=> {dispatch({type: 'vendorbrandloaded', payload: res.data})
    dispatch({type:"unloading"})})
    .then(err => dispatch({type: 'error', payload: err}))
 
    dispatch({type: 'loading'})
-   axios.get(`https://fruget.herokuapp.com/products/goods/${data.vendor}/color?selectedColour=${data.colour}`)
+   axios.get(`http://localhost:5000/products/goods/${data.vendor}/color?selectedColour=${data.colour}`)
    .then(res=> {dispatch({type: 'vendorcolorloaded', payload: res.data})
    dispatch({type:"unloading"})})
    .then(err => dispatch({type: 'error', payload: err}))
 
    dispatch({type: 'loading'})
-   axios.get(`https://fruget.herokuapp.com/products/goods/${data.vendor}/size?selectedInches=${data.inches}&selectedLitres=${data.litres}`)
+   axios.get(`http://localhost:5000/products/goods/${data.vendor}/size?selectedInches=${data.inches}&selectedLitres=${data.litres}`)
    .then(res=> {dispatch({type: 'vendorsizeloaded', payloadInches: res.data.inches,payloadLitres:res.data.litres,payloadWattage:res.data.wattage})
    dispatch({type:"unloading"})})
    .then(err => dispatch({type: 'error', payload: err}))
@@ -1559,12 +1559,12 @@ export const getvendorsidenav = data =>{
 export const sendmessage = data =>{
   return (dispatch)=>{
    dispatch({type: 'loading'})
-   axios.post(`https://fruget.herokuapp.com/search/connection/chat/message`,{data:JSON.stringify(data)},{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+   axios.post(`http://localhost:5000/search/connection/chat/message`,{data:JSON.stringify(data)},{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
    .then(res=> dispatch({type: 'sendmessage', payload: res.data}))
    .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }
@@ -1574,12 +1574,12 @@ export const sendmessage = data =>{
 export const fetchmessage = data =>{
   return (dispatch)=>{
    dispatch({type: 'loading'})
-   axios.get(`https://fruget.herokuapp.com/search/fetch/chat/message?otheruserId=${data.otheruserId}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+   axios.get(`http://localhost:5000/search/fetch/chat/message?otheruserId=${data.otheruserId}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
    .then(res=> dispatch({type: 'fetchmessage', payload: res.data.messages}))
    .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }
@@ -1590,12 +1590,12 @@ export const fetchmessage = data =>{
 export const fetchconnections = data =>{
   return (dispatch)=>{
  //  dispatch({type: 'loading'})viewsender
-   axios.get(`https://fruget.herokuapp.com/search/fetch/connected/clients?userId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
+   axios.get(`http://localhost:5000/search/fetch/connected/clients?userId=${data}`,{ headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":mainToken,"navigation":JSON.stringify(navigation)} })
    .then(res=> dispatch({type: 'fetchconnections', payload: res.data}))
    .catch(err =>{
-    console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
+   // console.log(JSON.stringify(err.response.data.error),(JSON.stringify(err.response.status)),(JSON.stringify(err.response.headers)))
    // dispatch({type: 'fetchingcarterr', payload: err})
-    if(err.response.status != 200){
+    if( err.response && err.response.status != 200){
       dispatch({type:"unloading"})
       dispatch({type: 'redirect'})
     }

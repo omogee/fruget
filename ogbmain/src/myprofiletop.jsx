@@ -194,7 +194,7 @@ class myProfileTop extends Component {
 </div>
  <span onClick={this.displaysidenavbar} style={{color:`${this.props.userdetails.background==="white"?"black":"white"}`,position:"absolute",top:"15px",left:"20px"}} className="fa fa-bars "></span>
        */
-    if(!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+    if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
   return ( 
     <div style={{backgroundColor:`${this.props.userdetails.background}`}} className="navbarcomponentlg">
   <div className="contain" style={{height:"100%",overflow:"hidden"}}>
@@ -451,7 +451,8 @@ class myProfileTop extends Component {
       
       </div>
           </div>
-          <div className="col-12" style={{position:"absolute",marginTop:"40px",backgroundColor:"white"}}>
+          <br/><br/>
+          <div className="col-12" style={{marginTop:"50px",backgroundColor:"white"}}>
       <center>
         <div style={{width:"10%",height:"50px",backgroundColor:"brown",color:"white",borderRadius:"50%"}}>
           <p style={{paddingTop:"15px"}}>E</p>
@@ -460,7 +461,8 @@ class myProfileTop extends Component {
       </center>
       </div>
       </div>
-      <div className="row" style={{marginTop:"130px"}} >
+      <br/>
+      <div className="row"> 
   
       <div className="col-12 " style={{borderBottom:"1px solid lightgrey",zIndex:"1"}}>
         <div className="row">

@@ -26,7 +26,7 @@ componentDidMount =()=>{
     let id= userId.split("community")[2]
  //   id = parseInt(id)
     console.log(id)
-    axios.get(`https://fruget.herokuapp.com/customer/userprofile/${id}`)
+    axios.get(`http://localhost:5000/customer/userprofile/${id}`)
     .then(res => {
         if(res.data.message){
             this.setState({user:res.data.file})

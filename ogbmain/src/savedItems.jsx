@@ -21,7 +21,6 @@ class SavedItems extends Component {
      }
     componentDidMount =()=>{
       let mainToken
-  alert(this.props.match.params.compass)
       if(Cookies.get("cm_pp")){
           const myToken = Cookies.get("cm_pp")
           let myMainTokenlen = parseInt(myToken.split("%")[0])
@@ -45,6 +44,7 @@ class SavedItems extends Component {
       if(prevProps.savedProducts !== this.props.savedProducts){
         setTimeout(()=> this.props.unloading(),2000) 
       }
+      setTimeout(()=> this.props.unloading(),4000) 
     }
     scrollIntoview=()=>{
    //  this.SavedItems.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
@@ -353,8 +353,7 @@ images.forEach(image=>{
                            <small > {this.props.savedProducts.length > 0 ? `Saved Items (${this.props.savedProducts.length})`  : null}</small>
                                </div>                           
         <div className="col-4 col-md-3" >                
-              
-                               </div>                                          
+         </div>                                          
                <div style={{padding:"10px",display:`${this.props.savedProducts.length > 0 ? "block" :"none"}`}}>
               <i class="fa fa-th" style={{color:`${view === "grid"  ? "rgb(0, 119, 179)" : this.props.userdetails.background === "black" ? "white" : "black"}`}} onClick={this.grid}></i>
               </div>
@@ -410,7 +409,7 @@ images.forEach(image=>{
                      <div className='col-12' style={{boxShadow:"1px 2px 5px 2px lightgrey",width:"100%",backgroundColor:`${this.props.userdetails.background==="black" || "white"}`,color:`${this.props.userdetails.background === "black" ? "white" : this.props.userdetails.background === "white"?"black" : "black"}`,padding:"2px"}}>                  
                          {view === "list" && this.props.savedProducts.length > 0  ? this.props.savedProducts.map((product) =>          
             <div className="row">
-            <div className="col-12 rowclasslist" onMouseOver={this.hoverapp} className={`${this.state.hoverapp} `}  style={{width:"100%",backgroundColor:`${this.props.userdetails.background || "white"}`,margin:"2px 0px",padding:"3px"}}  key={product.productId} >               
+            <div  onMouseOver={this.hoverapp} className={`col-12 rowclasslist ${this.state.hoverapp} `}  style={{width:"100%",backgroundColor:`${this.props.userdetails.background || "white"}`,margin:"2px 0px",padding:"3px"}}  key={product.productId} >               
                       <div className="row"  style={{margin:"0px"}}>
                         <div className="col-5 col-md-4 col-lg-3"  style={{margin:"0px"}}>
                         <span onClick={()=>this.askToUnsave({details:product.details,id:product.productId})} className={this.props.userdetails.savedItems && JSON.parse(this.props.userdetails.savedItems).includes(parseInt(product.productId)) ? "fa fa-heart" : "far fa-heart"} style={{position:"absolute",fontSize:"20px",top:"10px",left:"10px", color:"orange"}}></span>

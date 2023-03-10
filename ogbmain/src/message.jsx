@@ -198,10 +198,10 @@ sendmessage=(e)=>{
      const parsedQuery =  querystring.parse(this.props.location.search);
    const productId = parsedQuery.item
      const data={
-      "message":this.state.message,
-      "product":this.props.productDetails,
-      "reciept":this.props.otheruserdetails.userId,
-      "sender":parseInt(this.state.userId)
+      message:this.state.message,
+      product:this.props.productDetails,
+      reciept:this.props.otheruserdetails.userId,
+      sender:parseInt(this.state.userId)
    //   "senderId":parseInt(this.state.userId)
         }
     console.log("data",data)
