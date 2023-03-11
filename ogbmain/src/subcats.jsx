@@ -49,23 +49,23 @@ class Subcats extends Component {
     }
     
 
-        axios.get("http://localhost:5000/products/distinct/subcats")
+        axios.get("https://frugetbackend-production.up.railway.app/products/distinct/subcats")
         .then(res => this.setState({category: res.data}))
         .catch(err => console.warn(err))
       
-      axios.get("http://localhost:5000/products/section/one")
+      axios.get("https://frugetbackend-production.up.railway.app/products/section/one")
         .then(res => this.setState({sectionOne: res.data}))
         .catch(err => console.warn(err))
     
-      axios.get("http://localhost:5000/products/section/two")
+      axios.get("https://frugetbackend-production.up.railway.app/products/section/two")
       .then(res => this.setState({sectionTwo: res.data}))
       .catch(err => console.warn(err))
 
-      axios.get("http://localhost:5000/products/section/three")
+      axios.get("https://frugetbackend-production.up.railway.app/products/section/three")
       .then(res => this.setState({sectionThree: res.data}))
       .catch(err => console.warn(err))
 
-      axios.get("http://localhost:5000/products/section/four")
+      axios.get("https://frugetbackend-production.up.railway.app/products/section/four")
       .then(res => this.setState({sectionFour: res.data}))
       .catch(err => console.warn(err))
 

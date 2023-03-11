@@ -20,7 +20,7 @@ class ConfirmEmail extends Component {
       let run2 = parseInt(getdetailsarray.split("mnv")[1]) + 1
       console.log(randalphaarray.slice(run,run+10))
     
-      axios.get(`http://localhost:5000/customer/retrieve/user/email/${randuser.slice(run+1,run+run2)}`)
+      axios.get(`https://frugetbackend-production.up.railway.app/customer/retrieve/user/email/${randuser.slice(run+1,run+run2)}`)
       .then(res =>{
         if(res.data.length === 0){
           console.log("its empty")
@@ -28,7 +28,7 @@ class ConfirmEmail extends Component {
         }else{
           this.setState({email:res.data[0].email})
           console.log("hello")
-          axios.get(`http://localhost:5000/customer/confirm/user/${this.state.email}/email/${randalphaarray.slice(run,run+10)}`)
+          axios.get(`https://frugetbackend-production.up.railway.app/customer/confirm/user/${this.state.email}/email/${randalphaarray.slice(run,run+10)}`)
           .then(res =>this.setState({confirmingmail:false,confirmmessage:res.data}) )
           .catch(err => console.log(err))   
         }      

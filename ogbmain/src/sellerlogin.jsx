@@ -29,7 +29,7 @@ class SellerLogin extends Component {
           email: this.state.email,
           password:this.state.password
       }
-      axios.post("http://localhost:5000/customer/submit/seller/login", {data:JSON.stringify(data)})
+      axios.post("https://frugetbackend-production.up.railway.app/customer/submit/seller/login", {data:JSON.stringify(data)})
       .then(res => this.setState({token:res.data.token, user:res.data.user,displayMessage:"block"},()=>{
           if(res.data.message === "Login Successful"){
   localStorage.setItem("vdhgaujhahjjsbhsjjbxhsfgwwhsywh726781819bahuhvgaygavvxgvxvvcvgsvsvid",res.data.sellerid)

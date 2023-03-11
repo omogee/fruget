@@ -67,7 +67,7 @@ console.log("submitting")
             navigation:JSON.stringify(navigation)
         }
          data =JSON.stringify(data)
-        axios.post("http://localhost:5000/customer/submit/login", {data},  {
+        axios.post("https://frugetbackend-production.up.railway.app/customer/submit/login", {data},  {
             headers: {
               'Content-Type': 'application/json'
             },

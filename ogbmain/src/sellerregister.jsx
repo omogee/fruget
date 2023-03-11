@@ -207,7 +207,7 @@ aboutbusiness:this.state.aboutbusiness
       .catch(err => console.log(err))
       
     */  
-      axios.post("http://localhost:5000/customer/submit/register",formdata)
+      axios.post("https://frugetbackend-production.up.railway.app/customer/submit/register",formdata)
       .then(res => { 
         if(res.data.register){
           this.setState({Message:res.data.message,displayMessage:"block",

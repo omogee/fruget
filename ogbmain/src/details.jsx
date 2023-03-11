@@ -236,7 +236,7 @@ const {cookies}=this.props
              rating: this.state.chooserating,
              comment: this.state.comment
          }
-        axios.post(`http://localhost:5000/details/${this.props.match.params.details}/rate/product`, {data: JSON.stringify(data)},
+        axios.post(`https://frugetbackend-production.up.railway.app/details/${this.props.match.params.details}/rate/product`, {data: JSON.stringify(data)},
         { headers: {"Authorization" : `Markaranter ${Cookies.get("token")}`,"markaranterTwo":this.state.mainToken,"navigation":JSON.stringify(navigation)} })
         .then(res => console.log(res.data))
         .catch(err => console.log(err)) 
